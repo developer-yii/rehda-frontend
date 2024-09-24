@@ -1,0 +1,12 @@
+.form-submit{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.add-color{
+    border-radius: 10px;
+}

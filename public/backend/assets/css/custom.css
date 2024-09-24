@@ -1,0 +1,78 @@
+.required_label:after {
+    content: "*";
+    color: red;
+    font-weight: bold;
+    margin-left: 2px;
+}
+.avatar-rounded-circle
+{
+    max-height: 40px !important;
+}
+.accordion-button.maintenance{
+    background: linear-gradient(72.47deg, #6431c7 22.16%, rgba(115, 103, 240, 0.7) 76.47%) !important;
+}
+
+.accordion-button.spa_booking {
+    background: linear-gradient(72.47deg, #205b97 22.16%, rgba(115, 103, 240, 0.7) 76.47%) !important;
+}
+
+.accordion-button.transportation {
+    background: linear-gradient(72.47deg, #374d76 22.16%, rgba(115, 103, 240, 0.7) 76.47%) !important;
+}
+.menu-vertical .menu-sub {
+    margin-left:25px !important;
+}
+
+table.dataTable thead tr {
+    background-color: rgb(189 194 194 / 18%);
+}
+
+.sorting-table-newsletter c.sorting-table {
+    border-collapse: collapse; /* Collapse borders to keep them solid */
+    width: 100%; /* Optional: Ensure the table takes the full width */
+}
+
+.sorting-table-newsletter .sorting-table th,
+.sorting-table-newsletter .sorting-table td {
+    border: none; /* Remove border from th and td by default */
+}
+
+.sorting-table-newsletter .sorting-table table tr {
+    padding-bottom: 10px;
+}
+
+.sorting-table-newsletter .sorting-table td p {
+    border: 1px dashed #ccc !important;
+    background-color: #f9f9f9 !important;
+    margin-bottom: 0;
+    cursor: move;
+    padding: 15px 20px !important;
+}
+
+.sorting-table-newsletter .sorting-table td {
+    padding: 5px 20px 10px !important;
+}
+
+.sorting-table-newsletter .sorting-table tr:last-child td {
+    border-bottom: none; /* Remove the bottom border for the last row's cells */
+}
+
+
+.sorting-table-newsletter {
+    border: 1px solid #ccc;
+    padding: 30px 0px !important;
+    border-radius: 5px;
+}
+
+
+.permission-title {
+    padding-bottom: 30px;
+}
+
+.permission-member h4 {
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+.dataTables_empty{
+    text-align: -webkit-center !important;
+}

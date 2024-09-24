@@ -1,0 +1,20 @@
+.light-style .dataTable a:not([href]):not([tabindex]) {
+    color:white;
+}
+.col-sm-2.col-form-label{
+    padding-top: 0px;
+}
+#branch{
+    border: none;
+    padding: 0.875rem 0;
+}
+#branch:focus{
+    box-shadow: none;
+    background-color: transparent;
+}
+#approveModal{
+    z-index: 200000;
+}
+.btn-primary {
+    color: white!important;
+}

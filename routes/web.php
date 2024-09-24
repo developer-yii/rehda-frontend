@@ -1,0 +1,223 @@
+<?php
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\backend\CircularController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\backend\RoleController;
+use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\MemberController;
+use App\Http\Controllers\backend\MemberUserController;
+use App\Http\Controllers\backend\MemberBranchApprovalController;
+use App\Http\Controllers\backend\MemberBillingController;
+use App\Http\Controllers\backend\MemberRejectedRegistrationController;
+use App\Http\Controllers\backend\MemberActiveRegistrationController;
+use App\Http\Controllers\backend\MemberInActiveRegistrationController;
+use App\Http\Controllers\backend\MemberUploadCertController;
+use App\Http\Controllers\backend\MemberInfoController;
+use App\Http\Controllers\backend\MembershipNumberController;
+use App\Http\Controllers\backend\MemberStatementAccountController;
+use App\Http\Controllers\backend\NewsletterController;
+use App\Http\Controllers\backend\OrdinaryUserController;
+use App\Http\Controllers\backend\SubsidiaryUserController;
+use App\Http\Controllers\backend\AffiliateUserController;
+use App\Http\Controllers\backend\AssociateUserController;
+use App\Http\Controllers\backend\YouthUserController;
+use App\Http\Controllers\backend\NoticeController;
+use App\Http\Controllers\backend\OfficialRepChangeRequestController;
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Auth::routes();
+Route::get('/', [LoginController::class, 'viewLogin']);
+Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('circular')->as('circulars.')->group(function () {
+        Route::get('/', [CircularController::class, 'index'])->name('index');
+        Route::get('/create', [CircularController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [CircularController::class, 'edit'])->name('edit');
+        Route::post('/store', [CircularController::class, 'store'])->name('store');
+        Route::post('/update', [CircularController::class, 'update'])->name('update');
+        Route::delete('/delete', [CircularController::class, 'delete'])->name('delete');
+        Route::get('/membership', [CircularController::class, 'membership'])->name('membership');
+        Route::delete('/membership-permission/delete', [CircularController::class, 'membershipPermisionDelete'])->name('membership.permision.delete');
+        Route::post('/membership-permission/store', [CircularController::class, 'membershipPermissionStore'])->name('membership.permision.store');
+        Route::get('/branch', [CircularController::class, 'branch'])->name('branch');
+        Route::delete('/branch-permission/delete', [CircularController::class, 'branchPermisionDelete'])->name('branch.permision.delete');
+        Route::post('/branch-permission/store', [CircularController::class, 'branchPermissionStore'])->name('branch.permision.store');
+    });
+
+    Route::prefix('newsletter')->as('newsletters.')->group(function () {
+        Route::get('/', [NewsletterController::class, 'index'])->name('index');
+        Route::get('/create', [NewsletterController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [NewsletterController::class, 'edit'])->name('edit');
+        Route::post('/store', [NewsletterController::class, 'store'])->name('store');
+        Route::post('/update', [NewsletterController::class, 'update'])->name('update');
+        Route::delete('/delete', [NewsletterController::class, 'destroy'])->name('delete');
+        Route::get('/membership', [NewsletterController::class, 'membership'])->name('membership');
+        Route::delete('/membership-permission/delete', [NewsletterController::class, 'membershipPermisionDelete'])->name('membership.permision.delete');
+        Route::post('/membership-permission/store', [NewsletterController::class, 'membershipPermissionStore'])->name('membership.permision.store');
+        Route::get('/sort-table', [NewsletterController::class, 'sortTable'])->name('sortTable');
+        Route::post('/sort/update', [NewsletterController::class, 'sortUpdate'])->name('sortUpdate');
+        Route::get('/branch', [NewsletterController::class, 'branch'])->name('branch');
+        Route::delete('/branch-permission/delete', [NewsletterController::class, 'branchPermisionDelete'])->name('branch.permision.delete');
+        Route::post('/branch-permission/store', [NewsletterController::class, 'branchPermissionStore'])->name('branch.permision.store');
+    });
+
+    Route::prefix('notice')->as('notices.')->group(function () {
+        Route::get('/', [NoticeController::class, 'index'])->name('index');
+        Route::get('/create', [NoticeController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [NoticeController::class, 'edit'])->name('edit');
+        Route::post('/store', [NoticeController::class, 'store'])->name('store');
+        Route::post('/update', [NoticeController::class, 'update'])->name('update');
+        Route::delete('/delete', [NoticeController::class, 'delete'])->name('delete');
+        Route::get('/membership', [NoticeController::class, 'membership'])->name('membership');
+        Route::delete('/membership-permission/delete', [NoticeController::class, 'membershipPermisionDelete'])->name('membership.permision.delete');
+        Route::post('/membership-permission/store', [NoticeController::class, 'membershipPermissionStore'])->name('membership.permision.store');
+        Route::get('/branch', [NoticeController::class, 'branch'])->name('branch');
+        Route::delete('/branch-permission/delete', [NoticeController::class, 'branchPermisionDelete'])->name('branch.permision.delete');
+        Route::post('/branch-permission/store', [NoticeController::class, 'branchPermissionStore'])->name('branch.permision.store');
+    });
+
+      Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+      Route::prefix('user')->as('user.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/getUser', [UserController::class, 'getUser'])->name('getUser');
+            Route::get('/getSingleUser', [UserController::class, 'getSingleUser'])->name('getSingleUser');
+            Route::get('/deleteUser', [UserController::class, 'deleteUser'])->name('deleteUser');
+            Route::post('/createUser', [UserController::class, 'saveOrUpdateUser'])->name('createUser');
+      });
+      Route::prefix('profile')->as('profile.')->group(function () {
+            Route::get('edit-prfile/{id}', [ProfileController::class, 'editprofile'])->name('editprofile');
+            Route::post('update-prfile', [ProfileController::class, 'updateprofile'])->name('update');
+      });
+      Route::prefix('roles')->as('roles.')->group(function () {
+            Route::get('/', [RoleController::class, 'index'])->name('index');
+            Route::get('/create', [RoleController::class, 'addeditrole'])->name('create');
+            Route::post('/create', [RoleController::class, 'saveOrUpdateRole'])->name('add');
+            Route::get('/delete', [RoleController::class, 'delete'])->name('delete');
+      });
+
+      Route::prefix('members')->as('members.')->group(function () {
+            Route::get('/newRegistration', [MemberController::class, 'newRegistration'])->name('newRegistration');
+            Route::get('/newReg/{id}/edit', [MemberController::class, 'edit'])->name('edit');
+            Route::post('/newReg/{id}/update', [MemberController::class, 'update'])->name('update');
+            Route::post('/newReg/reject', [MemberController::class, 'reject'])->name('reject');
+      });
+
+      Route::prefix('members')->as('members.')->group(function () {
+            Route::post('/branch/approve', [MemberBranchApprovalController::class, 'approve'])->name('branch.approve');
+            Route::post('/branch/getSingle', [MemberBranchApprovalController::class, 'getSingle'])->name('branch.getSingle');
+      });
+
+      Route::prefix('members')->as('mm-registration-reject.')->group(function () {
+            Route::get('/rejectedRegistration', [MemberRejectedRegistrationController::class, 'rejectedRegistration'])->name('index');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/active/', [MemberActiveRegistrationController::class, 'activeMembers'])->name('index');
+            Route::get('/registration/{id}/edit', [MemberActiveRegistrationController::class, 'edit'])->name('edit');
+            Route::post('/registration/{id}/update', [MemberActiveRegistrationController::class, 'update'])->name('update');
+            Route::get('/profile/{id}/edit', [MemberActiveRegistrationController::class, 'profileEdit'])->name('profile.edit');
+            Route::post('/profile/{id}/update', [MemberActiveRegistrationController::class, 'profileUpdate'])->name('profile.update');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/upload-cert/show', [MemberUploadCertController::class, 'showCert'])->name('uploadcert.show');
+            Route::post('/upload-cert/delete', [MemberUploadCertController::class, 'deleteCert'])->name('uploadcert.delete');
+            Route::post('/upload-cert/update', [MemberUploadCertController::class, 'updateCert'])->name('uploadcert.update');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/member-info', [MemberInfoController::class, 'index'])->name('member-info');
+            Route::post('/change-password', [MemberInfoController::class, 'resetPassword'])->name('resetPassword');
+            Route::get('/edit-mmuser', [MemberInfoController::class, 'editUser'])->name('editUser');
+            Route::post('/update-mmuser', [MemberInfoController::class, 'updateUser'])->name('updateUser');
+            Route::post('/delete-user', [MemberInfoController::class, 'deleteUser'])->name('deleteUser');
+            Route::get('/add-mmoffuser', [MemberInfoController::class, 'addmmOffUser'])->name('addmmOffUser');
+            Route::post('/post-add-mmoffuser', [MemberInfoController::class, 'postAddmmOffUser'])->name('post-addmmOffUser');
+            Route::get('/add-mmadmuser', [MemberInfoController::class, 'addmmAdmUser'])->name('addmmAdmUser');
+            Route::post('/post-add-mmadmuser', [MemberInfoController::class, 'postAddmmAdmUser'])->name('post-addmmAdmUser');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/getStatementOfAccount', [MemberStatementAccountController::class, 'getStatement'])->name('getStatementOfAccount');
+            Route::get('/generateStatement', [MemberStatementAccountController::class, 'generateStatement'])->name('generateStatement');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/getStatementOfAccount', [MemberStatementAccountController::class, 'getStatement'])->name('getStatementOfAccount');
+            Route::get('/generateStatement', [MemberStatementAccountController::class, 'generateStatement'])->name('generateStatement');
+      });
+
+      Route::prefix('members')->as('active-members.')->group(function () {
+            Route::get('/getMembershipNoDetail', [MembershipNumberController::class, 'getMembershipNoDetail'])->name('getMembershipNoDetail');
+            Route::post('/updateMembershipNo', [MembershipNumberController::class, 'updateMembershipNo'])->name('updateMembershipNo');
+      });
+
+      // inActive member registration
+      Route::prefix('members/in-active')->as('in-active-members.')->group(function () {
+            Route::get('/', [MemberInActiveRegistrationController::class, 'inActiveMembers'])->name('index');
+      });
+      // inActive member registration route ends
+
+      // List of member users
+      Route::prefix('members')->as('members.')->group(function () {
+            Route::get('/ordinary-users', [OrdinaryUserController::class, 'ordinaryUsers'])->name('ordinaryUsers');
+            Route::get('/subsidiary-users', [SubsidiaryUserController::class, 'subsidiaryUsers'])->name('subsidiaryUsers');
+            Route::get('/affiliate-users', [AffiliateUserController::class, 'affiliateUsers'])->name('affiliateUsers');
+            Route::get('/associate-users', [AssociateUserController::class, 'associateUsers'])->name('associateUsers');
+            Route::get('/youth-users', [YouthUserController::class, 'youthUsers'])->name('youthUsers');
+      });
+
+      Route::prefix('official-rep')->as('official-rep.')->group(function () {
+            Route::get('/change/requests', [OfficialRepChangeRequestController::class, 'index'])->name('change.requests');
+            Route::post('/change/approve', [OfficialRepChangeRequestController::class, 'approve'])->name('change.approve');
+            Route::post('/change/reject', [OfficialRepChangeRequestController::class, 'reject'])->name('change.reject');
+      });
+
+      Route::prefix('mm-userlists')->as('mm-userlists.')->group(function () {
+            Route::get('/', [MemberUserController::class, 'userlists'])->name('userlists');
+            Route::post('/change/status', [MemberUserController::class, 'changeStatus'])->name('change-status');
+            Route::get('/billing', [MemberBillingController::class, 'billing'])->name('billing');
+            Route::get('/inv-view', [MemberBillingController::class, 'invoiceView'])->name('invoice-view');
+            Route::get('/send-inv', [MemberBillingController::class, 'sendInvoice'])->name('invoice-send');
+      });
+
+      Route::prefix('setting')->as('setting.')->group(function () {
+            Route::get('/', [SettingController::class, 'index'])->name('index');
+            Route::post('/update', [SettingController::class, 'uppdateSetting'])->name('update');
+      });
+
+      Route::prefix('dashboard')->as('dashboard.')->group(function () {
+
+      });
+
+      /* Comman Routes */
+      Route::group(['prefix' => 'notification'], function () {
+      Route::post('/get', [\App\Http\Controllers\backend\MyNotification::class, 'getNotification'])->name('notification.getNotification');
+      Route::get('/', [\App\Http\Controllers\backend\MyNotification::class, 'index'])->name('notification.index');
+  });
+
+});
+
+// Frontend Routes //
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'lang']);
+
+Route::any('/desk-webhook', [App\Http\Controllers\HomeController::class, 'deskLog'])->name('store.log');

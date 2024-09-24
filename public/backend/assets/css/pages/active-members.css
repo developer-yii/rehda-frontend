@@ -1,0 +1,9 @@
+.light-style .dataTable a:not([href]):not([tabindex]) {
+    color:white;
+}
+.col-sm-2.col-form-label{
+    padding-top: 0px;
+}
+.btn-primary {
+    color: white!important;
+}
