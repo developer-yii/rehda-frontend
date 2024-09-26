@@ -49,203 +49,18 @@
         </li>
 
 
-        <li class="menu-item {{ request()->is('user') || request()->is('roles') ? 'active' : '' }}">
+
+
+        <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-user"></i>
-                <div data-i18n="{{ __('translation.label_user_access') }}">{{ __('translation.label_user_access') }}
-                </div>
+                <i class="menu-icon  ti ti-file-invoice"></i>
+                <div data-i18n="Bulletin">Bulletin</div>
             </a>
             <ul class="menu-sub">
-                <!-- User interface -->
-                <li class="menu-item {{ request()->is('user') ? 'active' : '' }}">
-                    <a href="{{ route('user.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-user"></i>
-                        <div data-i18n="{{ __('translation.label_users') }}">{{ __('translation.label_users') }}</div>
-                    </a>
-                </li>
-
-                <li class="menu-item {{ request()->is('roles') ? 'active' : '' }}">
-                    <a href="{{ route('roles.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-lock"></i>
-                        <div data-i18n="{{ __('translation.label_role_management') }}">
-                            {{ __('translation.label_role_management') }}</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="menu-item {{ request()->is('members') ? 'active' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Members">Members</div>
-            </a>
-            <ul class="menu-sub">
-
-                <!-- User interface -->
-                <li class="menu-item {{ request()->routeIs('members.newRegistration') ? 'active' : '' }}">
-                    <a href="{{ route('members.newRegistration') }}" class="menu-link">
+                <li class="menu-item">
+                    <a href="{{ route('bulletin.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="New Registration">New Registration</div>
-                    </a>
-                </li>
-
-
-                <li class="menu-item {{ request()->routeIs('mm-registration-reject.index') ? 'active' : '' }}">
-                    <a href="{{ route('mm-registration-reject.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Rejected Registration">Rejected Registration</div>
-                    </a>
-                </li>
-
-                <li class="menu-item {{ request()->routeIs('active-members.index') ? 'active' : '' }}">
-                    <a href="{{ route('active-members.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Active Members">Active Members</div>
-                    </a>
-                </li>
-
-                    <li class="menu-item {{ request()->routeIs('in-active-members.index') ? 'active' : '' }}">
-                        <a href="{{route('in-active-members.index')}}" class="menu-link">
-                            <i class="menu-icon tf-icons ti ti-devices"></i>
-                            <div data-i18n="Inactive Members">Inactive Members</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item {{ request()->is('members') ? 'active' : '' }}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons ti ti-users"></i>
-                            <div data-i18n="List of Member Users">List of Member Users</div>
-                        </a>
-                        <ul class="menu-sub">
-                                <!-- User interface -->
-                                <li class="menu-item {{ request()->routeIs('members.ordinaryUsers') ? 'active' : '' }}">
-                                    <a href="{{route('members.ordinaryUsers')}}" class="menu-link">
-                                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                                    <div data-i18n="Ordinary Users">Ordinary Users</div>
-                                    </a>
-                                </li>
-
-                                <!-- User interface -->
-                                <li class="menu-item {{ request()->routeIs('members.subsidiaryUsers') ? 'active' : '' }}">
-                                    <a href="{{route('members.subsidiaryUsers')}}" class="menu-link">
-                                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                                    <div data-i18n="Subsidiary Users">Subsidiary Users</div>
-                                    </a>
-                                </li>
-
-                                <li class="menu-item {{ request()->routeIs('members.affiliateUsers') ? 'active' : '' }}">
-                                    <a href="{{route('members.affiliateUsers')}}" class="menu-link">
-                                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                                    <div data-i18n="Affiliate Users">Affiliate Users</div>
-                                    </a>
-                                </li>
-
-                                <li class="menu-item {{ request()->routeIs('members.associateUsers') ? 'active' : '' }}">
-                                    <a href="{{route('members.associateUsers')}}" class="menu-link">
-                                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                                    <div data-i18n="Associate Users">Associate Users</div>
-                                    </a>
-                                </li>
-
-                                <li class="menu-item {{ request()->routeIs('members.youthUsers') ? 'active' : '' }}">
-                                    <a href="{{route('members.youthUsers')}}" class="menu-link">
-                                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                                    <div data-i18n="Youth Users">Youth Users</div>
-                                    </a>
-                                </li>
-
-
-                        </ul>
-                    </li>
-
-            </ul>
-        </li>
-
-        <li class="menu-item {{ request()->is('official-rep') ? 'active' : '' }}">
-            <a href="{{route('official-rep.change.requests')}}" class="menu-link">
-                <i class="menu-icon ti ti-refresh"></i>
-                <div data-i18n="Request Change Official Rep">Request Change Official Rep</div>
-            </a>
-        </li>
-
-        <li class="menu-item {{ request()->is('circulars') ? 'active' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon ti ti-speakerphone"></i>
-                <div data-i18n="Circulars">Circulars</div>
-            </a>
-            <ul class="menu-sub">
-
-                <!-- Branch -->
-                <li class="menu-item {{ request()->routeIs('circulars.index') ? 'active' : '' }}">
-                    <a href="{{ route('circulars.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="List of Circulars">List of Circulars</div>
-                    </a>
-                </li>
-
-                <li
-                    class="menu-item {{ request()->routeIs('circulars.create') || request()->routeIs('circulars.edit') ? 'active' : '' }}">
-                    <a href="{{ route('circulars.create') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Add New Circulars">Add New Circulars</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="menu-item {{ request()->is('newsletters') ? 'active' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon ti ti-news"></i>
-                <div data-i18n="Branch Newsletters">Branch Newsletters</div>
-            </a>
-            <ul class="menu-sub">
-
-                <!-- Branch -->
-                <li class="menu-item {{ request()->routeIs('newsletters.index') ? 'active' : '' }}">
-                    <a href="{{ route('newsletters.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="List of Branch Newsletters">List of Branch Newsletters</div>
-                    </a>
-                </li>
-
-                <li
-                    class="menu-item {{ request()->routeIs('newsletters.create') || request()->routeIs('newsletters.edit') ? 'active' : '' }}">
-                    <a href="{{ route('newsletters.create') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Add New Branch Newsletter">Add New Branch Newsletter</div>
-                    </a>
-                </li>
-
-                <li class="menu-item {{ request()->routeIs('newsletters.sortTable') ? 'active' : '' }}">
-                    <a href="{{ route('newsletters.sortTable') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Sort Branch Newsletter">Sort Branch Newsletter</div>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-
-        <li class="menu-item {{ request()->is('notices') ? 'active' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-speakerphone"></i>
-                <div data-i18n="Branch Circulars">Branch Circulars</div>
-            </a>
-            <ul class="menu-sub">
-
-                <!-- Branch -->
-                <li class="menu-item {{ request()->routeIs('notices.index') ? 'active' : '' }}">
-                    <a href="{{ route('notices.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="List of Branch Circulars">List of Branch Circulars</div>
-                    </a>
-                </li>
-
-                <li
-                    class="menu-item {{ request()->routeIs('notices.create') || request()->routeIs('notices.edit') ? 'active' : '' }}">
-                    <a href="{{ route('notices.create') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Add New Branch Circulars">Add New Branch Circulars</div>
+                        <div data-i18n="Bulletin">Bulletin</div>
                     </a>
                 </li>
             </ul>
@@ -254,28 +69,28 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-file-invoice"></i>
-                <div data-i18n="Invoice / Receipt / Payment">Invoice / Receipt / Payment</div>
+                <div data-i18n="Annual Report">Annual Report</div>
             </a>
             <ul class="menu-sub">
-
                 <li class="menu-item">
-                    <a href="{{ route('notices.index') }}" class="menu-link">
+                    <a href="{{ route('annualreport.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Unpaid Invoices">Unpaid Invoices</div>
+                        <div data-i18n="Annual Report">Annual Report</div>
                     </a>
                 </li>
+            </ul>
+        </li>
 
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-file-invoice"></i>
+                <div data-i18n="Membership Certificate">Membership Certificate</div>
+            </a>
+            <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('notices.index') }}" class="menu-link">
+                    <a href="{{ route('membership-certificate.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Paid Invoices">Paid Invoices</div>
-                    </a>
-                </li>
-
-                <li class="menu-item">
-                    <a href="{{ route('notices.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Cancelled Invoices">Cancelled Invoices</div>
+                        <div data-i18n="Membership Certificate">Membership Certificate</div>
                     </a>
                 </li>
             </ul>

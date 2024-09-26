@@ -27,5 +27,10 @@ class MemberUserProfile extends Model
         return $this->hasOne(MemberUser::class, 'ml_uid', 'up_id');
     }
 
+    public function memberUserNew()
+    {
+        return $this->belongsTo(MemberUser::class, 'up_id', 'ml_uid');
+    }
+
     protected $guarded = [];
 }

@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'member_users',
         ],
     ],
 
@@ -63,6 +63,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'member_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MemberUser::class, // Your custom model
         ],
 
         // 'users' => [
@@ -94,6 +99,13 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'member_users' => [
+            'provider' => 'member_users', // Custom provider
+            'table' => 'password_resets', // Can use the same `password_resets` table
             'expire' => 60,
             'throttle' => 60,
         ],

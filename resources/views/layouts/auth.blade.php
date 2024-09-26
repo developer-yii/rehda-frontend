@@ -102,6 +102,8 @@
         </script>
         @php Session::forget('warning') @endphp
     @endif
+
+    @yield('auth-js')
 </body>
 
 </html>

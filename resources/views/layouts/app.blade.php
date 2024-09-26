@@ -193,8 +193,7 @@
                                                 <div class="flex-grow-1">
                                                     <span
                                                         class="fw-medium d-block">{{ Auth::user()->first_name }}</span>
-                                                    <small
-                                                        class="text-muted">{{ implode(', ', Auth::user()->getRoleNames()->toArray()) }}</small>
+
                                                 </div>
                                             </div>
                                         </a>
