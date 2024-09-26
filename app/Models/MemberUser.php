@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class MemberUser extends Model
+class MemberUser extends Authenticatable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CanResetPassword, Notifiable;
 
     protected $table = 'member_users';
     protected $primaryKey = 'ml_id';
@@ -31,5 +34,26 @@ class MemberUser extends Model
     public function memberUserProfile()
     {
         return $this->belongsTo(MemberUserProfile::class, 'ml_uid', 'up_id');
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'ml_emailadd'; // Use 'emailadd' instead of 'email'
+    }
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->emailadd; // Return the 'emailadd' field for password resets
+    }
+
+    public function getImageUrl()
+    {
+        if($this->profile_image){
+            if(Storage::disk('local')->exists("public/user_image/" . $this->profile_image)) {
+                return asset('storage/user_image')."/".$this->profile_image;
+            }
+        }
+        return asset('backend/assets/img/avatars/avatar.png');
+
     }
 }

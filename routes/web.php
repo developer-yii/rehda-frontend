@@ -26,7 +26,10 @@ use App\Http\Controllers\backend\AssociateUserController;
 use App\Http\Controllers\backend\YouthUserController;
 use App\Http\Controllers\backend\NoticeController;
 use App\Http\Controllers\backend\OfficialRepChangeRequestController;
-
+use App\Http\Controllers\frontend\AnnualreportController;
+use App\Http\Controllers\frontend\BulletinController;
+use App\Http\Controllers\frontend\ChooseCompanyController;
+use App\Http\Controllers\frontend\MembershipCertificateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +46,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', [LoginController::class, 'viewLogin']);
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
+Route::post('forgot-pwd', [LoginController::class, 'forgotpwd'])->name('forgot.pwd');
 
 Route::middleware('auth')->group(function () {
 
@@ -212,6 +216,13 @@ Route::middleware('auth')->group(function () {
       Route::post('/get', [\App\Http\Controllers\backend\MyNotification::class, 'getNotification'])->name('notification.getNotification');
       Route::get('/', [\App\Http\Controllers\backend\MyNotification::class, 'index'])->name('notification.index');
   });
+
+      Route::get('/bulletin', [BulletinController::class, 'index'])->name('bulletin.index');
+      Route::get('/annualreport', [AnnualreportController::class, 'index'])->name('annualreport.index');
+      Route::get('/choose-company', [ChooseCompanyController::class, 'index'])->name('choosecompant.index');
+      Route::post('/save-account', [ChooseCompanyController::class, 'saveAccount'])->name('saveaccount');
+      Route::get('user-profile', [ChooseCompanyController::class, 'index'])->name('userprofile');
+      Route::get('/membership-certificate', [MembershipCertificateController::class, 'index'])->name('membership-certificate.index');
 
 });
 
