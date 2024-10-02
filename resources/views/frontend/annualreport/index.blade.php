@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Circulars | List')
+@section('title', 'Annual Report')
 
 @section('css')
 <link href=""></link>
@@ -35,13 +35,13 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <center>
-                                <img class="img-fluid d-flex mb-4 rounded" src="{{ $report->ar_img_cover }}">
+                                <img class="img-fluid d-flex mb-4 rounded" src="{{ asset('storage/storage/'.$report->ar_img_cover) }}">
 
                                 <h5>{{ $report->ar_name }}</h5>
                                 <h4>{{ $report->ar_yr }}</h4>
 
-                                <a href="{{ $report->ar_file_path }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
-                                <a href="{{ $report->ar_file_path }}" download class="btn btn-outline-primary waves-effect">Download</a>
+                                <a href="{{ asset('storage/storage/'.$report->ar_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
+                                <a href="{{ asset('storage/storage/'.$report->ar_file_path) }}" download class="btn btn-outline-primary waves-effect">Download</a>
                                 </center>
                             </div>
                         </div>

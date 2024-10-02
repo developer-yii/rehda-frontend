@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\MemberUser;
 use Illuminate\Support\Facades\Password;
-use App\Mail\ResetPasswordMail;
-use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -44,11 +42,11 @@ class LoginController extends Controller
             return $this->redirectTo();
         }
 
-        if (auth()->user()->ml_priv == "CompanyAdmin") {
-            return '/bulletin';
-        } else {
+        // if (auth()->user()->ml_priv == "CompanyAdmin") {
+        //     return '/bulletin';
+        // } else {
             return '/choose-company';
-        }
+        // }
 
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';

@@ -27,9 +27,18 @@ use App\Http\Controllers\backend\YouthUserController;
 use App\Http\Controllers\backend\NoticeController;
 use App\Http\Controllers\backend\OfficialRepChangeRequestController;
 use App\Http\Controllers\frontend\AnnualreportController;
+use App\Http\Controllers\frontend\BranchCircularController;
+use App\Http\Controllers\frontend\BranchNewsletterController;
 use App\Http\Controllers\frontend\BulletinController;
 use App\Http\Controllers\frontend\ChooseCompanyController;
+use App\Http\Controllers\frontend\Circularcontroller as FrontendCircularcontroller;
+use App\Http\Controllers\frontend\CompanyinfoController;
+use App\Http\Controllers\frontend\InvoiceController;
 use App\Http\Controllers\frontend\MembershipCertificateController;
+use App\Http\Controllers\frontend\OfficialRepresentativeController;
+use App\Http\Controllers\frontend\OthersController;
+use App\Http\Controllers\frontend\StatementOfAccountController;
+use App\Http\Controllers\frontend\UserprofileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -223,6 +232,31 @@ Route::middleware('auth')->group(function () {
       Route::post('/save-account', [ChooseCompanyController::class, 'saveAccount'])->name('saveaccount');
       Route::get('user-profile', [ChooseCompanyController::class, 'index'])->name('userprofile');
       Route::get('/membership-certificate', [MembershipCertificateController::class, 'index'])->name('membership-certificate.index');
+      Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index');
+      Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
+      Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
+      Route::get('invoice/paymentfpx/{order_no}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
+      Route::get('invoice/paymentcard/{order_no}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
+      Route::post('invoice/paymentsubmit', [InvoiceController::class, 'invoicePaymentsubmit'])->name('invoice.paymentsubmit');
+      Route::get('/invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
+      Route::get('payment/fail', [InvoiceController::class, 'paymentFail'])->name('payment.fail');
+      Route::get('payment/success', [InvoiceController::class, 'paymentSuccess'])->name('payment.success');
+
+      Route::get('/statement-of-account', [StatementOfAccountController::class, 'index'])->name('statement-of-account.index');
+      Route::get('/statement-of-account/view/{id}', [StatementOfAccountController::class, 'view'])->name('statement-of-account.view');
+      Route::get('/statement-of-account/download/{id}', [StatementOfAccountController::class, 'download'])->name('statement-of-account.download');
+      Route::get('/companyinfo', [CompanyinfoController::class, 'index'])->name('companyinfo.index');
+      Route::post('/companyinfo/update', [CompanyinfoController::class, 'update'])->name('companyinfo.update');
+      Route::get('user-profile', [UserprofileController::class, 'index'])->name('userprofile.index');
+      Route::post('user-profile/updatemember', [UserprofileController::class, 'updateMember'])->name('userprofile.updatemember');
+      Route::post('user-profile/updateadmin', [UserprofileController::class, 'updateadmin'])->name('userprofile.updateadmin');
+      Route::get('official-representative', [OfficialRepresentativeController::class, 'index'])->name('official-representative.index');
+      Route::post('official-representative/update', [OfficialRepresentativeController::class, 'update'])->name('official-representative.update');
+      Route::post('official-representative/new1', [OfficialRepresentativeController::class, 'new1'])->name('official-representative.new1');
+      Route::get('/circular', [FrontendCircularcontroller::class, 'index'])->name('circular.index');
+      Route::get('branch-newsletter', [BranchNewsletterController::class, 'index'])->name('branch-newsletter.index');
+      Route::get('branch-circular.index', [BranchCircularController::class, 'index'])->name('branch-circular.index');
+      Route::get('others', [OthersController::class, 'index'])->name('others.index');
 
 });
 

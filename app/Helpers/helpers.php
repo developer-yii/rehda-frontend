@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Branch;
 use App\Models\Setting;
 use App\Models\MemberComp;
 use App\Models\MemberUserProfile;
@@ -11,7 +12,6 @@ use App\Models\PlanTier;
 use App\Models\LogSystem;
 use App\Models\Salutation;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -500,4 +500,58 @@ if (!function_exists('cacheclear')) {
     {
         return time();
     }
+}
+
+
+function getMembershipNo($mid)
+{
+    $member = Member::where('mid', $mid)->first();
+    if($member->m_type != 6) {
+        $mno = $member->m_no_p1 . $member->m_no_p2 . $member->m_no_p3 . $member->m_no_p4 . config('constant.MNP2') .$member->m_no_p5;
+    } else {
+        $memberProfile = MemberUserProfile::join('member_comps', 'member_userprofiles.up_mid', '=', 'member_comps.did')->where('member_comps.d_mid', $mid)->select('member_userprofiles.*', 'member_comps.*')->first();
+        $mno = $memberProfile->up_mykad;
+    }
+    return $mno;
+}
+
+function getMemberType($mid)
+{
+    $member = Member::join('member_comps', 'member_comps.d_mid', '=', 'members.mid')
+    ->where('member_comps.did', $mid)
+    ->select('members.*')
+    ->first();
+
+    return $member->m_type;
+}
+
+function getMemberDid($mid)
+{
+    $memberComp = MemberComp::where('did', $mid)->first();
+    return $memberComp->d_mid;
+}
+
+function getChildMid($pmid)
+{
+    $mid = getMemberDid($pmid);
+    $memberComparray = MemberComp::where('d_parentcomp', $mid)->pluck('did')->toArray();
+    return $memberComparray;
+}
+
+function getMMRegDate($mid)
+{
+    $memberComp = MemberComp::where('did', $mid)->first();
+    return $memberComp->d_created_at;
+}
+
+function getMemberBid($mid)
+{
+    $member = Member::where('mid', $mid)->first();
+    return $member->m_branch;
+}
+
+function getMemberBranch($bid)
+{
+    $branch = Branch::where('bid', $bid)->first();
+    return $branch->bname;
 }

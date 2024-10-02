@@ -56,4 +56,14 @@ class MemberComp extends Model
     {
         return $this->hasOne(MemberUserProfile::class, 'up_mid', 'did');
     }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'd_compaddstate', 'state_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'd_compaddcountry', 'country_id');
+    }
 }

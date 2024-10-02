@@ -24,28 +24,36 @@
                     <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
                     <form name="saveaccount" id="saveaccount" method="POST" action="{{ route('saveaccount') }}">
                     @csrf
+
                     @php
-                    if ($userProfiles->count() > 0) {
-                        foreach ($userProfiles as $profile) {
+                    if(count($upMidList) > 1) {
 
-                            $companies = App\Models\MemberComp::where('did', $profile->up_mid)->where('d_status', 1)->orderBy('d_compname')->get();
+                        foreach($upMidList as $up_mid) {
+                            $memberComps = App\Models\MemberComp::where('did', $up_mid)->where('d_status',1)->orderBy('d_compname','ASC')->get();
 
-                            foreach ($companies as $company) {
+                            foreach($memberComps as $memberComp){
+
                                 @endphp
 
-                                <div class="form-text">
+                                <div class="mb-2">
                                     <label class="radio-label">
-                                        <input type="radio" class="radio-input" name="chooseCompany" value="<?= $company->did ?>">
-                                        <!-- <div class="radio-design"></div> -->
-                                        <!-- <div class="radio-text">{{ $company->d_compname }} []</div> -->
-                                        <span class="radio-text">{{ $company->d_compname }} [{{ auth()->user()->ml_username }}]</span>
+                                        <input type="radio" class="form-check-input" name="chooseCompany" id="chooseCompany{{$memberComp->did}}" value="<?= $memberComp->did ?>">
+                                        <label class="form-check-label" for="chooseCompany{{$memberComp->did}}">{{ $memberComp->d_compname }} [{{ getMembershipNo($memberComp->d_mid) }}]</label>
                                     </label>
                                 </div>
 
                                 @php
-
                             }
+
                         }
+
+
+                    } else if(count($upMidList) == 1) {
+
+                        session([ 'compid' => $upMidList[0] ]);
+                        header('Location: ' . route('dashboard'));
+                        exit();
+
                     }
                     @endphp
                     <div class="submit">
