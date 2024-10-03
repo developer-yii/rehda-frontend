@@ -269,6 +269,8 @@ Route::middleware('auth')->group(function () {
 // Frontend Routes //
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'termsAndConditions'])->name('termsAndConditions');
+
 Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'lang']);
 
 Route::any('/desk-webhook', [App\Http\Controllers\HomeController::class, 'deskLog'])->name('store.log');
