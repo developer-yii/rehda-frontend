@@ -12,4 +12,5 @@ class Payment extends Model
     protected $table = 'payments';
     protected $primaryKey = 'pid';
     protected $guarded = [];
+    public $timestamps = false;
 }

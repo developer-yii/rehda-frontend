@@ -46,12 +46,14 @@ class InvoiceController extends Controller
                 $buttons = '';
 
                 if($row->order_status == 1) {
-                    $buttons .= '<a href="'.route('invoice.paymentfpx', $row->order_no).'" target="_blank" class="btn btn-outline-primary waves-effect me-2">Pay with FPX</a>';
-                    $buttons .= '<a href="'.route('invoice.paymentcard', $row->order_no).'" target="_blank" class="btn btn-outline-primary waves-effect me-2">Pay with Credit/Debit Card<br><small>+'.config('constant.CC_FEE').'% Handling Fee</small></a>';
-                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2">Proforma Invoice</a>';
+                    $invno = config('constant.ORDERID_SET').$row->order_no;
+                    $auth = md5($invno).sha1($invno).md5(sha1($invno));
+                    $buttons .= '<a href="'.route('invoice.paymentfpx', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with FPX</a>';
+                    $buttons .= '<a href="'.route('invoice.paymentcard', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with Credit/Debit Card<br><small>+'.config('constant.CC_FEE').'% Handling Fee</small></a>';
+                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Proforma Invoice</a>';
                 } else {
-                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2">Invoice</a>';
-                    $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect">Receipt</a>';
+                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Invoice</a>';
+                    $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1">Receipt</a>';
                 }
 
                 return $buttons;
@@ -127,18 +129,30 @@ class InvoiceController extends Controller
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
-    public function invoicePaymentfpx($order_no)
+    public function invoicePaymentfpx($order_no, $auth)
     {
-        $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
-        $memberDetails = getMemberToSendInv($order->order_mid);
-        return view('frontend.invoice.paymentfpx', compact('order','memberDetails'));
+        $authcodex = md5($order_no).sha1($order_no).md5(sha1($order_no));
+        $order_no = str_replace(config('constant.ORDERID_SET'),'',$order_no);
+        if($authcodex != $auth) {
+            die();
+        } else {
+            $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
+            $memberDetails = getMemberToSendInv($order->order_mid);
+            return view('frontend.invoice.paymentfpx', compact('order','memberDetails'));
+        }
     }
 
-    public function invoicePaymentcard($order_no)
+    public function invoicePaymentcard($order_no, $auth)
     {
-        $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
-        $memberDetails = getMemberToSendInv($order->order_mid);
-        return view('frontend.invoice.paymentcard', compact('order','memberDetails'));
+        $authcodex = md5($order_no).sha1($order_no).md5(sha1($order_no));
+        $order_no = str_replace(config('constant.ORDERID_SET'),'',$order_no);
+        if($authcodex != $auth) {
+            die();
+        } else {
+            $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
+            $memberDetails = getMemberToSendInv($order->order_mid);
+            return view('frontend.invoice.paymentcard', compact('order','memberDetails'));
+        }
     }
 
     public function invoicePaymentsubmit(Request $request)
@@ -148,23 +162,22 @@ class InvoiceController extends Controller
 
     public function invoicePaymentreturn(Request $request)
     {
-        if ( !empty($_REQUEST["PaymentId"]) && !empty( $_REQUEST["RefNo"] ) )
+        if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )
         {
             $now = date('Y-m-d H:i:s');
             $orderid = date('YmdHis')."-CC";
 
-            $path="";
-            $merchantcode = $_REQUEST["MerchantCode"];
-            $paymentid = $_REQUEST["PaymentId"];
-            $refno = $_REQUEST["RefNo"];
-            $pamount = $_REQUEST["Amount"];
-            $ecurrency = $_REQUEST["Currency"];
-            $remark = $_REQUEST["Remark"];
-            $transid = $_REQUEST["TransId"];
-            $authcode = $_REQUEST["AuthCode"];
-            $response_code = $_REQUEST["Status"];
-            $errdesc = $_REQUEST["ErrDesc"];
-            $signature = $_REQUEST["Signature"];
+            $merchantcode = $request->MerchantCode;
+            $paymentid = $request->PaymentId;
+            $refno = $request->RefNo;
+            $pamount = $request->Amount;
+            $ecurrency = $request->Currency;
+            $remark = $request->Remark;
+            $transid = $request->TransId;
+            $authcode = $request->AuthCode;
+            $response_code = $request->Status;
+            $errdesc = $request->ErrDesc;
+            $signature = $request->Signature;
             $decrypt = "IPAY88";
             $ttype = 2; //CC
 
@@ -269,13 +282,70 @@ class InvoiceController extends Controller
                 $newgt = $pamount + $order->order_payfpx;
             }
 
-            // $orderUpdate = Order::where('oid', $order->oid)->where('order_status',1);
+            $orderUpdate = Order::where('oid', $order->oid)->where('order_status',1)->update([
+                'order_status' => $order_status_paid,
+                'order_paid_at' => $now,
+                'order_pm' => $paymentid,
+                'order_grandtotal' => $newgt
+            ]);
+
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    public function invoicePaymentreturncallback(Request $request)
+    {
+        if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )
+        {
+            $now = date('Y-m-d H:i:s');
+            $orderid = date('YmdHis')."-CC";
+
+            $merchantcode = $request->MerchantCode;
+            $paymentid = $request->PaymentId;
+            $refno = $request->RefNo;
+            $pamount = $request->Amount;
+            $ecurrency = $request->Currency;
+            $remark = $request->Remark;
+            $transid = $request->TransId;
+            $authcode = $request->AuthCode;
+            $response_code = $request->Status;
+            $errdesc = $request->ErrDesc;
+            $signature = $request->Signature;
+            $decrypt = "IPAY88";
+            $ttype = 2; //CC
+
+            if($response_code == 1)
+            {
+                $result = $this->succUpdateMember($orderid,$ttype,$merchantcode,$paymentid,$refno,$pamount,$ecurrency,$remark,$transid,$authcode,$response_code,$errdesc,$signature);
+            } else { //failed
+                $payment = Payment::create([
+                    'trans_id' => $transid,
+                    'authcode' => $authcode,
+                    'pstatus' => $response_code,
+                    'pamount' => $pamount,
+                    'refno' => $refno,
+                    'pymtid' => $paymentid,
+                    'ecurr' => $ecurrency,
+                    'remark' => $remark,
+                    'errdesc' => $errdesc,
+                    'sign' => $signature,
+                    'pymt_dt' => $now
+                ]);
+            }
+
         }
     }
 
     public function paymentFail()
     {
+        return view('frontend.invoice.paymentfail');
+    }
 
+    public function paymentSuccess()
+    {
+        return view('frontend.invoice.paymentsuccess');
     }
 
 }

@@ -98,7 +98,7 @@
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-file-invoice"></i>
+                <i class="menu-icon  ti ti-report"></i>
                 <div data-i18n="Statement Of Account">Statement Of Account</div>
             </a>
             <ul class="menu-sub">
@@ -158,7 +158,7 @@
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-news"></i>
+                <i class="menu-icon  ti ti-book"></i>
                 <div data-i18n="Bulletin">Bulletin</div>
             </a>
             <ul class="menu-sub">
@@ -173,7 +173,7 @@
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-news"></i>
+                <i class="menu-icon  ti ti-speakerphone"></i>
                 <div data-i18n="Circular">Circular</div>
             </a>
             <ul class="menu-sub">
@@ -203,7 +203,7 @@
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-news"></i>
+                <i class="menu-icon  ti ti-speakerphone"></i>
                 <div data-i18n="Branch Circular">Branch Circular</div>
             </a>
             <ul class="menu-sub">

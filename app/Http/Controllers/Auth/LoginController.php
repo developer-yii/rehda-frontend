@@ -88,6 +88,7 @@ class LoginController extends Controller
         // dd($user);
 
         if ($user) {
+            $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {
                 // Old password verification using sha512 + salt

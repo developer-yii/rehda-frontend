@@ -57,6 +57,10 @@ Route::get('/', [LoginController::class, 'viewLogin']);
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
 Route::post('forgot-pwd', [LoginController::class, 'forgotpwd'])->name('forgot.pwd');
 
+Route::post('invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
+Route::get('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
+
+
 Route::middleware('auth')->group(function () {
 
     Route::prefix('circular')->as('circulars.')->group(function () {
@@ -235,12 +239,14 @@ Route::middleware('auth')->group(function () {
       Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index');
       Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
       Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
-      Route::get('invoice/paymentfpx/{order_no}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
-      Route::get('invoice/paymentcard/{order_no}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
+      Route::get('invoice/paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
+      Route::get('invoice/paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
       Route::post('invoice/paymentsubmit', [InvoiceController::class, 'invoicePaymentsubmit'])->name('invoice.paymentsubmit');
-      Route::get('/invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
+
+      // Route::match(['get', 'post'], 'invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
       Route::get('payment/fail', [InvoiceController::class, 'paymentFail'])->name('payment.fail');
       Route::get('payment/success', [InvoiceController::class, 'paymentSuccess'])->name('payment.success');
+      Route::get('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
 
       Route::get('/statement-of-account', [StatementOfAccountController::class, 'index'])->name('statement-of-account.index');
       Route::get('/statement-of-account/view/{id}', [StatementOfAccountController::class, 'view'])->name('statement-of-account.view');

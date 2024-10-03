@@ -12,4 +12,5 @@ class Paymentdev extends Model
     protected $table = 'payments_dev';
     protected $primaryKey = 'pid';
     protected $guarded = [];
+    public $timestamps = false;
 }

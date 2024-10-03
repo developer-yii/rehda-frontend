@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', 'Invoice/Receipt/Payment')
 
@@ -35,8 +35,7 @@
 
             $hashcode = hash('sha256', 'GXk0rFMnVv'.'M38849'.$order->order_no.$amounthash.'MYR');
             @endphp
-            <form method="POST" name="paymentfpx" id="paymentfpx" action="{{ route('invoice.paymentsubmit') }}">
-                @csrf
+            <form method="POST" name="paymentfpx" id="paymentfpx" action="https://payment.ipay88.com.my/epayment/entry.asp">
                 <input type="hidden" name="MerchantCode" value="M38849">
                 <input type="hidden" name="PaymentId" value="16">
                 <input type="hidden" name="RefNo" value="{{ $order->order_no }}">
@@ -48,19 +47,20 @@
                 <input type="hidden" name="UserContact" value="{{ $memberDetails['hp'] }}">
                 <input type="hidden" name="Lang" value="UTF-8">
                 <input type="hidden" name="SignatureType" value="SHA256">
-				<input type="hidden" name="Signature" value="<?=$hashcode;?>">
+				<input type="hidden" name="Signature" value="{{ $hashcode }}">
 				<input type="hidden" name="ResponseURL" value="{{ route('invoice.paymentreturn') }}">
-				<input type="hidden" name="BackendURL" value="pymt_returncallback.php">
+				<input type="hidden" name="BackendURL" value="{{ route('invoice.paymentreturncallback') }}">
 				<input type="submit" id="startrunning" value="Proceed with Payment" name="Submit" style="display:none;">
             </form>
         </div>
 </div>
 @endsection
 
-@section('page-js')
-<script>
-    $(window).on("load", function() {
-        $("#paymentfpx").submit();
-    });
+@section('auth-js')
+<script type="text/javascript">
+    function submitForm() {
+        document.getElementById("paymentfpx").submit(); // Automatically submit the form
+    }
+    window.onload = submitForm; // Call the function on page load
 </script>
 @endsection

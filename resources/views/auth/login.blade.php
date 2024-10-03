@@ -110,9 +110,15 @@
                             <small>Forgot Password?</small>
                         </a>
                     </div>
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-5">
+                        <div class="title">
+                            <a href="{{ route('register') }}" class="btn btn-primary">New Member Registration</a>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-            <hr>
+
+
         </div>
     </div>
 </div>

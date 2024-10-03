@@ -60,7 +60,7 @@
                             <a class="accordion-button {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#target{{$year[$firstKey]->ar_id}}" aria-expanded="false" aria-controls="yearid{{$year[$firstKey]->ar_id}}" role="button">
                                 <span>
                                     <span class="d-flex gap-2 align-items-baseline">
-                                        <span class="h4 mb-1">{{ date('Y', strtotime($year[$firstKey]->ar_date)) }}</span>
+                                        <span class="h4 mb-1 text-white">{{ date('Y', strtotime($year[$firstKey]->ar_date)) }}</span>
                                     </span>
                                 </span>
                             </a>

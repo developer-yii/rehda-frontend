@@ -34,7 +34,8 @@ $(document).ready(function () {
             },
         ],
         columnDefs: [
-            { orderable: false, targets: 1 }
+            { orderable: false, targets: 1 },
+            { width: '15%', targets: 3 },
         ],
         buttons: [],
         dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-3 d-flex justify-content-center justify-content-md-start dataTables_length"B><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
