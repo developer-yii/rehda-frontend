@@ -120,6 +120,19 @@
                             </div>
                         </div>
 
+                        <div class="flex-grow-1 ms-5">
+                            <span class="fw-medium d-block">{{ Auth::user()->memberUserProfile->up_fullname }}</span>
+                            <small class="text-muted">{{ Auth::user()->ml_priv }}</small>
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                            <span class="fw-medium d-block">{{ getMembershipNobyMID(Auth::user()->memberUserProfile->up_mid) }}</span>
+                            <small class="text-muted">Membership No.</small>
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                            <span class="fw-medium d-block">{{ getMemberBranch(getMemberBid(getMemberDid(Auth::user()->memberUserProfile->up_mid))) }}</span>
+                            <small class="text-muted">Branch</small>
+                        </div>
+
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -192,7 +205,9 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span
-                                                        class="fw-medium d-block">{{ Auth::user()->first_name }}</span>
+                                                        class="fw-medium d-block">{{ Auth::user()->memberUserProfile->up_fullname }}</span>
+                                                    <small
+                                                        class="text-muted">{{ Auth::user()->ml_priv }}</small>
 
                                                 </div>
                                             </div>
@@ -202,8 +217,8 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('profile.editprofile', Auth::id()) }}">
+                                        <!-- <a class="dropdown-item" href="{{ route('profile.editprofile', Auth::id()) }}"> -->
+                                        <a class="dropdown-item" href="">
                                             <i class="ti ti-user-check me-2 ti-sm"></i>
                                             <span class="align-middle">{{ __('profile')['my profile'] }}</span>
                                         </a>

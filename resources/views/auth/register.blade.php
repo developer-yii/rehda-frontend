@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,6 +69,74 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<style>
+    .leftside{
+        /* padding: 3rem 8px; */
+        padding: 20px 40px;
+        border-right: 1px solid black;
+    }
+    .leftside ul{
+        list-style: none;
+        padding-left: 0;
+    }
+    .leftside ul button{
+        text-align: left !important;
+    }
+</style>
+
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header border-bottom d-flex justify-content-between">
+            <h5 class="card-title mb-3">Rehda Member Portal</h5>
+        </div>
+
+        <div class="choose-company-section section-padding mb-5">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                    <div class="title mt-2">
+                        <h3>New Member Registration</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 leftside">
+                    <h3>Type of Membership Applying for</h3>
+
+                    <ul>
+                        <li>
+                            <h2>
+                                <button class="btn w-100 btn-lg btn-primary">Ordinary</button>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                <button class="btn w-100 btn-lg">Subsidiary / Related</button>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                <button class="btn w-100 btn-lg">Affiliate</button>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                <button class="btn w-100 btn-lg">Associate</button>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                <button class="btn w-100 btn-lg">Rehda Youth</button>
+                            </h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+
                 </div>
             </div>
         </div>

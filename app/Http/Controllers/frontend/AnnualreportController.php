@@ -11,10 +11,14 @@ class AnnualreportController extends Controller
 {
     public function index()
     {
-        if(auth()->user()->ml_priv == "CompanyAdmin"){
-            return redirect(route('bulletin.index'));
-        }
+        // if(auth()->user()->ml_priv == "CompanyAdmin"){
+        //     return redirect(route('bulletin.index'));
+        // }
         // $annualreports = Annualreport::where('ar_status',2)->get();
+
+        if(session('compid') == null){
+            return redirect(route('login'));
+        }
 
         $membercomp = MemberComp::with('member')->where('did', session('compid'))->first();
 

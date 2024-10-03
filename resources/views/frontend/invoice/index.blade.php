@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Membership Certificate')
+@section('title', 'Invoice/Receipt/Payment')
 
 @section('css')
 <link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
@@ -17,7 +17,7 @@
                         <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
                     </li>
 
-                    <li class="breadcrumb-item active">Membership Certificate</li>
+                    <li class="breadcrumb-item active">Invoice/Receipt/Payment</li>
 
                 </ol>
             </nav>
@@ -25,13 +25,15 @@
 
         <div class="card">
             <div class="card-header border-bottom d-flex justify-content-between">
-                <h5 class="card-title mb-3">Membership Certificate</h5>
+                <h5 class="card-title mb-3">Invoice/Receipt/Payment</h5>
             </div>
             <div class="card-datatable table-responsive">
-                <table class="datatables-users table" id="membershipCertificateTable">
+                <table class="datatables-users table" id="invoiceTable">
                     <thead class="border-top">
                         <tr>
                             <th>Date</th>
+                            <th>Invoice No.</th>
+                            <th>Amount</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,7 +47,7 @@
 
 @section('page-js')
 <script>
-        var getMembershipCertificate = "{{ route('membership-certificate.index') }}";
+        var getInvoice = "{{ route('invoice.index') }}";
 </script>
-<script src="{{ asset('frontend/js/pages/membership-certificate.js') }}"></script>
+<script src="{{ asset('frontend/js/pages/invoice.js') }}"></script>
 @endsection

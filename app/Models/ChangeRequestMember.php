@@ -11,6 +11,7 @@ class ChangeRequestMember extends Model
 
     protected $table = 'requestchg_member';
     protected $primaryKey = 'rc_id';
+    protected $guarded = [];
 
     public $timestamps = ["rc_created_at","rc_mod_at"];
 

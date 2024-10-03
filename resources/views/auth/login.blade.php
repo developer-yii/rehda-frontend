@@ -33,8 +33,8 @@
                         <form name="membership-no-login" action="{{ route('login') }}" method="POST">
                             @csrf
                             <input type="hidden" name="form_type" value="membership">
-                            <div class="form-text">
-                                <label for="membership">Membership No.</label>
+                            <div class="mb-3">
+                                <label for="membership" class="form-label required_label">Membership No.</label>
                                 <input type="text" class="form-control {{ $errors->has('username') && session('form') == 'membership' ? 'is-invalid' : '' }}" name="username" id="username" value="{{ session('form') == 'membership' ? old('username') : '' }}">
                                 @if ($errors->has('username') && session('form') == 'membership')
                                     <span class="invalid-feedback" role="alert">
@@ -43,8 +43,8 @@
                                 @enderror
                             </div>
 
-                            <div class="form-text">
-                                <label for="memberLogin">Password</label>
+                            <div class="mb-3">
+                                <label for="memberLogin" class="form-label required_label">Password</label>
                                 <input type="password" class="form-control {{ $errors->has('password') && session('form') == 'membership' ? 'is-invalid' : '' }}" name="password" id="password">
                                 @if ($errors->has('password') && session('form') == 'membership')
                                     <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="submit form-text">
-                                <input type="submit" name="membership-submit" id="membership-submit" value="Login">
+                                <button type="submit" name="membership-submit" id="membership-submit" class="btn btn-primary">Login</button>
                             </div>
 
                             <!-- JOYCE HERE IS THE LOADING -->
@@ -66,7 +66,7 @@
                         </form>
 
                         <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalcompanyadmin">
-                            <p>Forgot Password?</p>
+                            <small>Forgot Password?</small>
                         </a>
                     </div>
                     <div class="tab-pane fade {{ session('form') == 'representative' ? 'show active' : '' }}" id="representative" role="tabpanel" aria-labelledby="representative-tab">
@@ -74,8 +74,8 @@
                         <form name="mykad-login" method="POST" action="{{ route('login') }}">
                             @csrf
                             <input type="hidden" name="form_type" value="representative">
-                            <div class="form-text">
-                                <label for="mykad">MyKad No.</label>
+                            <div class="mb-3">
+                                <label for="mykad" class="form-label required_label">MyKad No.</label>
                                 <input type="text" class="form-control {{ $errors->has('username') && session('form') == 'representative' ? 'is-invalid' : '' }}" name="username" id="mykadUn" value="{{ session('form') == 'representative' ? old('username') : '' }}">
                                 @if ($errors->has('username') && session('form') == 'representative')
                                     <span class="invalid-feedback" role="alert">
@@ -84,8 +84,8 @@
                                 @enderror
                             </div>
 
-                            <div class="form-text">
-                                <label for="mykadLogin">Password</label>
+                            <div class="mb-3">
+                                <label for="mykadLogin" class="form-label required_label">Password</label>
                                 <input type="password" class="form-control {{ $errors->has('password') && session('form') == 'representative' ? 'is-invalid' : '' }}" name="password" id="mykadLogin">
                                 @if ($errors->has('password') && session('form') == 'representative')
                                     <span class="invalid-feedback" role="alert">
@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="submit form-text">
-                                <input type="submit" name="mykad-submit" id="mykad-submit" value="login">
+                                <button type="submit" name="mykad-submit" id="mykad-submit" class="btn btn-primary">Login</button>
                             </div>
 
                             <!-- JOYCE HERE IS THE LOADING -->
@@ -107,12 +107,18 @@
                         </form>
 
                         <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalrepresentative">
-                            <p>Forgot Password?</p>
+                            <small>Forgot Password?</small>
                         </a>
                     </div>
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-5">
+                        <div class="title">
+                            <a href="{{ route('register') }}" class="btn btn-primary">New Member Registration</a>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-            <hr>
+
+
         </div>
     </div>
 </div>

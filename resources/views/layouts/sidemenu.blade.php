@@ -49,18 +49,63 @@
         </li>
 
 
-
-
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-file-invoice"></i>
-                <div data-i18n="Bulletin">Bulletin</div>
+                <i class="menu-icon  ti ti-user"></i>
+                <div data-i18n="User Profile">User Profile</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('bulletin.index') }}" class="menu-link">
+                    <a href="{{ route('userprofile.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Bulletin">Bulletin</div>
+                        <div data-i18n="User Profile">User Profile</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-info-circle"></i>
+                <div data-i18n="Company Info">Company Info</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('companyinfo.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Company Info">Company Info</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        @if(auth()->user()->ml_priv == "CompanyAdmin")
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-users-group"></i>
+                <div data-i18n="Official Representative">Official Representative</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('official-representative.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Official Representative">Official Representative</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-report"></i>
+                <div data-i18n="Statement Of Account">Statement Of Account</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('statement-of-account.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Statement Of Account">Statement Of Account</div>
                     </a>
                 </li>
             </ul>
@@ -69,6 +114,36 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-file-invoice"></i>
+                <div data-i18n="Invoice / Receipt / Payment">Invoice / Receipt / Payment</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('invoice.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Invoice / Receipt / Payment">Invoice / Receipt / Payment</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-file-certificate"></i>
+                <div data-i18n="Membership Certificate">Membership Certificate</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('membership-certificate.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Membership Certificate">Membership Certificate</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-report-analytics"></i>
                 <div data-i18n="Annual Report">Annual Report</div>
             </a>
             <ul class="menu-sub">
@@ -83,19 +158,78 @@
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon  ti ti-file-invoice"></i>
-                <div data-i18n="Membership Certificate">Membership Certificate</div>
+                <i class="menu-icon  ti ti-book"></i>
+                <div data-i18n="Bulletin">Bulletin</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('membership-certificate.index') }}" class="menu-link">
+                    <a href="{{ route('bulletin.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-devices"></i>
-                        <div data-i18n="Membership Certificate">Membership Certificate</div>
+                        <div data-i18n="Bulletin">Bulletin</div>
                     </a>
                 </li>
             </ul>
         </li>
 
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-speakerphone"></i>
+                <div data-i18n="Circular">Circular</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('circular.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Circular">Circular</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-news"></i>
+                <div data-i18n="Branch Newsletter">Branch Newsletter</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('branch-newsletter.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Branch Newsletter">Branch Newsletter</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-speakerphone"></i>
+                <div data-i18n="Branch Circular">Branch Circular</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('branch-circular.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Branch Circular">Branch Circular</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon  ti ti-news"></i>
+                <div data-i18n="Others">Others</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('others.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Others">Others</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         @can('setting-view')
             <li class="menu-item {{ request()->is('category') || request()->is('templates') ? 'active' : '' }}">

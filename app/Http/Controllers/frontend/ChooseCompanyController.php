@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\MemberComp;
-use App\Models\MemberUserProfile;
+use App\Models\MemberUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ChooseCompanyController extends Controller
 {
@@ -14,23 +12,27 @@ class ChooseCompanyController extends Controller
     {
         $currentUser = auth()->user();
 
-        // $userProfiles = MemberUserProfile::where('up_mid', $currentUser->ml_id)->groupBy('up_mid')->orderBy('up_mid')->get();
+        $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
+        ->where('member_users.ml_username', auth()->user()->ml_username)
+        ->groupBy('member_userprofiles.up_mid')
+        ->orderBy('member_userprofiles.up_mid', 'asc')
+        ->pluck('member_userprofiles.up_mid')->toArray();
 
-        $userProfiles = MemberUserProfile::select(
-            'up_mid',
-            DB::raw('MIN(up_id) as up_id'),          // Get the minimum up_id for each up_mid
-            DB::raw('MIN(up_fullname) as up_fullname') // Get the minimum up_fullname for each up_mid
-        )
-        ->where('up_mid', $currentUser->ml_id)
-        ->groupBy('up_mid') // Group by up_mid
-        ->orderBy('up_mid')
-        ->get();
+        if(count($upMidList) > 1) {
+            return view('frontend.choosecompany.index', compact('upMidList'));
+        } else if(count($upMidList)==1){
+            session([ 'compid' => $upMidList[0] ]);
 
-        // dd($userProfiles);
-        // $userProfiles = $userProfiles->groupBy('up_mid');
-        // dd($userProfiles);
+            if(session('compid') && session('compid') != null) {
 
-        return view('frontend.choosecompany.index', compact('userProfiles'));
+                return redirect(route('dashboard'));
+            } else {
+                return redirect(route('logout'));
+            }
+        } else {
+            return redirect(route('login'));
+        }
+
     }
 
     public function saveAccount(Request $request)
