@@ -466,7 +466,10 @@ if (!function_exists('getBackgroundStyle')) {
 function getFavicon()
 {
     $setting = Setting::where('name', 'favicon')->first();
-    return asset('storage/backend/assets/img/favicon') . "/" . $setting->value;
+    if($setting && $setting->value)
+        return asset('storage/backend/assets/img/favicon') . "/" . $setting->value;
+    else
+        return asset('backend/assets/img/favicon/favicon.ico');
 }
 function getSetting($key)
 {
