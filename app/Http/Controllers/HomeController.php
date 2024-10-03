@@ -16,46 +16,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    public function termsAndConditions()
     {
-        // $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(Request $request)
-    {
-        $rules = [
-            'qr_code' => 'required',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return view('home');
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-        $qrCode = $request->qr_code;
-
-        $room = $this->checkRoomQR($qrCode);
-        // if (empty($room)) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Room Not found!'
-        //     ], 404);
-        // }
-        return view('home', compact('room'));
-    }
-
-    public function checkRoomQR($qrCode)
-    {
-        return Room::where('unique_uuid', $qrCode)->first();
+        return view('frontend.terms-and-conditions');
     }
 
     public function deskLog(Request $request)
