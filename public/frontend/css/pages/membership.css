@@ -1,0 +1,248 @@
+
+.lopgBox {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.lopgBox a img {
+    max-width: 110px;
+}
+
+.memberBox {
+    padding: 30px 0;
+}
+
+.mainTitle {
+    color: #5d596c;
+    font-weight: 900;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    font-size: 28px;
+}
+
+.commonPtext {
+    color: #a5a3ae;
+    line-height: 1.8;
+}
+
+.commonPtext > b {
+    border-bottom: 1px solid #9d95f7;
+    color: #9d95f7;
+}
+
+.commonBtn {
+    background-color: #7367f0;
+    border-radius: 5px;
+    display: inline-block;
+    color: white !important;
+    margin: 2rem 0;
+    max-width: 200px;
+    padding: 10px;
+    transition: 0.4s;
+    width: 100%;
+    text-align: center;
+}
+
+.comInnerTitle {
+    color: #5d596c;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.typeOfmember .icon,
+.typeOfmember .col {
+    margin-bottom: 20px;
+}
+
+.typeOfmember .col {
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(1):before {
+    color: #7367f0;
+    content: '1';
+    font-size: 200px;
+    left: 0;
+    line-height: 1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+}
+.typeOfmember .col:nth-child(2):before {
+    color: #7367f0;
+    content: '2';
+    font-size: 200px;
+    left: 0;
+    line-height: 1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+}
+.typeOfmember .col:nth-child(3):before {
+    color: #7367f0;
+    content: '3';
+    font-size: 200px;
+    left: 0;
+    line-height: 1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+}
+.typeOfmember .col:nth-child(4):before {
+    color: #7367f0;
+    content: '4';
+    font-size: 200px;
+    left: 0;
+    line-height: 1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+}
+.typeOfmember .col:nth-child(5):before {
+    color: #7367f0;
+    content: '5';
+    font-size: 200px;
+    left: 0;
+    line-height: 1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+}
+
+.typeOfmember .icon {
+    height: 70px;
+    margin: 0 0 1rem;
+    width: 70px;
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(1) .icon:before {
+    background-color: #7367f0;
+    content: '';
+    height: 70px;
+    left: 0;
+    margin: auto;
+    -webkit-mask-image: url("../../../assets/img/building.svg");
+    mask-image: url("../../../assets/img/building.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    right: 0;
+    width: 70px;
+}
+
+.typeOfmember .col:nth-child(1) .icon {
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(2) .icon:before {
+    background-color: #7367f0;
+    content: '';
+    height: 70px;
+    left: 0;
+    margin: auto;
+    -webkit-mask-image: url("../../../assets/img/american-sign-language-interpreting.svg");
+    mask-image: url("../../../assets/img/american-sign-language-interpreting.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    right: 0;
+    width: 70px;
+}
+
+.typeOfmember .col:nth-child(2) .icon {
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(3) .icon:before {
+    background-color: #7367f0;
+    content: '';
+    height: 70px;
+    left: 0;
+    margin: auto;
+    -webkit-mask-image: url("../../../assets/img/affiliate-affiliation-affilitate.svg");
+    mask-image: url("../../../assets/img/affiliate-affiliation-affilitate.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    right: 0;
+    width: 70px;
+}
+
+.typeOfmember .col:nth-child(3) .icon {
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(4) .icon:before {
+    background-color: #7367f0;
+    content: '';
+    height: 70px;
+    left: 0;
+    margin: auto;
+    -webkit-mask-image: url("../../../assets/img/child.svg");
+    mask-image: url("../../../assets/img/child.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    right: 0;
+    width: 70px;
+}
+
+.typeOfmember .col:nth-child(4) .icon {
+    position: relative;
+}
+
+.typeOfmember .col:nth-child(5) .icon:before {
+    background-color: #7367f0;
+    content: '';
+    height: 70px;
+    left: 0;
+    margin: auto;
+    -webkit-mask-image: url("../../../assets/img/angellist.svg");
+    mask-image: url("../../../assets/img/angellist.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    right: 0;
+    width: 70px;
+}
+
+.typeOfmember .col:nth-child(5) .icon {
+    position: relative;
+}
+
+
+.ourInformation .table thead {
+    background-color: #7367f0;
+}
+
+.ourInformation .table thead th {
+    border: 1px solid white;
+    color: white !important;
+    text-transform: uppercase;
+
+}
+
+.ourInformation .table td {
+    border: 1px solid #dee2e6;
+}
