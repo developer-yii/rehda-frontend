@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Terms & Conditions')
+@section('title', 'Membership')
 
 @section('auth-css')
     <link href="{{ asset('frontend/css/pages/choosecompany.css') }}" rel="stylesheet" type="text/css" />

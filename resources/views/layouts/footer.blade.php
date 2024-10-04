@@ -41,7 +41,7 @@
     <div class="d-flex justify-content-center flex-wrap gap-3 mb-3">
       <a href="{{ route('termsAndConditions')}}" class="text-primary" target="_blank">Term and Conditions</a>
       <span class="text-muted">|</span>
-      <a href="#" class="text-primary">Membership</a>
+      <a href="{{ route('membership')}}" class="text-primary" target="_blank">Membership</a>
       <span class="text-muted">|</span>
       <a href="{{ route('termsAndConditions')}}#privacy-policy" class="text-primary" target="_blank">Privacy Policy</a>
       <span class="text-muted">|</span>
