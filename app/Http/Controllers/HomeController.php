@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('frontend.terms-and-conditions');
     }
 
+    public function membership()
+    {
+        return view('frontend.membership');
+    }
+
     public function deskLog(Request $request)
     {
         // Parse JSON data from the request body

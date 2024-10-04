@@ -271,6 +271,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'termsAndConditions'])->name('termsAndConditions');
 
+Route::get('/membership', [App\Http\Controllers\HomeController::class, 'membership'])->name('membership');
+
 Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'lang']);
 
 Route::any('/desk-webhook', [App\Http\Controllers\HomeController::class, 'deskLog'])->name('store.log');
