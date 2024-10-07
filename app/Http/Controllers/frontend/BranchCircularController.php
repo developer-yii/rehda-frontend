@@ -62,8 +62,8 @@ class BranchCircularController extends Controller
             ->addColumn('actions', function ($row) {
                 $buttons = '';
 
-                $buttons .= '<a href="'. config('app.url') .'storage/'. str_replace('../','',$row->ar_file_path) .'" target="_blank" class="btn btn-outline-primary waves-effect me-2">View</a>';
-                $buttons .= '<a href="'. config('app.url') .'storage/'. str_replace('../','',$row->ar_file_path) .'" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>';
+                $buttons .= '<a href="'. config('app.backendurl').'storage/'.str_replace('../','',$row->ar_file_path) .'" target="_blank" class="btn btn-outline-primary waves-effect me-2">View</a>';
+                $buttons .= '<a href="'. config('app.backendurl').'storage/'.str_replace('../','',$row->ar_file_path) .'" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>';
 
                 return $buttons;
             })

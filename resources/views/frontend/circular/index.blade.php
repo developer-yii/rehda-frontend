@@ -87,8 +87,8 @@
                                         <td width="20%">
                                             <div>
                                                 <ul>
-                                                    <a href="{{ config('app.url').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank"><li>View</li></a>
-                                                    <a href="{{ config('app.url').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank" download><li>Download</li></a>
+                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank"><li>View</li></a>
+                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank" download><li>Download</li></a>
                                                 </ul>
                                             </div>
                                         </td>

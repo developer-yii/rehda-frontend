@@ -59,7 +59,7 @@
                     </div>
                     <div class="mb-3 col-md-12">
                         <label for="state" class="form-label form-label-lg required_label">State</label>
-                        <select id="state" name="state" class="form-select" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
+                        <select id="state" name="state" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
                             <option value="">Select State</option>
                             @foreach($states as $state)
                                 <option value="{{ $state->state_id }}" {{ ($state->state_id == $memberComp->d_compaddstate) ? 'selected' : '' }}>{{ $state->state_name }}</option>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="mb-3 col-md-12">
                         <label for="country" class="form-label form-label-lg required_label">Country</label>
-                        <select id="country" name="country" class="form-select" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
+                        <select id="country" name="country" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
                             <option value="">Select Country</option>
                             @foreach($countries as $country)
                                 <option value="{{ $country->country_id }}" {{ ($country->country_id == $memberComp->d_compaddcountry) ? 'selected' : '' }}>{{ $country->country_name }}</option>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="mb-3 col-md-12">
                         <label for="latest_paid_up_capital" class="form-label form-label-lg required_label">Latest Paid-Up Capital</label>
-                        <select id="latest_paid_up_capital" name="latest_paid_up_capital" class="form-select" disabled>
+                        <select id="latest_paid_up_capital" name="latest_paid_up_capital" class="form-select form-select-lg" disabled>
                             @foreach($paidups as $paidup)
                                 <option value="{{ $paidup->pt_id }}" {{ ($paidup->pt_id == $memberComp->d_paidcapital) ? 'selected' : '' }}>{{ $paidup->pt_desc }}</option>
                             @endforeach
