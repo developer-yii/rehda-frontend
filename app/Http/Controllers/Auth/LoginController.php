@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\MemberUser;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 class LoginController extends Controller
@@ -54,7 +55,7 @@ class LoginController extends Controller
 
     protected function username()
     {
-        return 'username';
+        return 'ml_username';
     }
 
     public function viewLogin()
@@ -87,7 +88,8 @@ class LoginController extends Controller
         $user = MemberUser::where('ml_username', $request->input($this->username()))->first();
         // dd($user);
 
-        if ($user) {
+        $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
+        if ($user && $ml_priv == $user->ml_priv) {
             $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {
@@ -179,8 +181,8 @@ class LoginController extends Controller
         // dd($request);
 
         $status = Password::broker('member_users')->sendResetLink(
-            $request->only('ml_emailadd')
-            // ['email' => $request->input('ml_emailadd')]
+            // $request->only('ml_emailadd')
+            ['ml_emailadd' => $request->input('ml_emailadd')]
         );
 
         if ($status === Password::RESET_LINK_SENT) {

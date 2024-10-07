@@ -12,6 +12,7 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $primaryKey = 'oid';
+    protected $guarded = [];
 
     const CREATED_AT = 'order_created_at';
     const UPDATED_AT = 'order_updated_at';

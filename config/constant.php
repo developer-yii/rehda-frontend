@@ -30,5 +30,6 @@ return [
     'MAINDOMAIN' => env('MAINDOMAIN', 'https://members.rehda.com/'),
     'MAINDOMAINWWW' => env('MAINDOMAINWWW', 'https://members.rehda.com/'),
     'CC_FEE' => env('CC_FEE', '2.5'),
+    'FPX_FEE' => env('FPX_FEE', '0'),
 
 ];

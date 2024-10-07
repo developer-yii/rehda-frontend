@@ -45,6 +45,8 @@
     <!-- Page -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/pages/page-auth.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/frontend.css') }}" />
+    <link href="{{ asset('assets/vendor/libs/toastr/toastr.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css?v=' . assetVersion() . time()) }}" />
 
     <!-- Helpers -->
     <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>

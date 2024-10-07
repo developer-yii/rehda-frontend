@@ -65,7 +65,10 @@
                             </div> -->
                         </form>
 
-                        <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalcompanyadmin">
+                        <!-- <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalcompanyadmin">
+                            <small>Forgot Password?</small>
+                        </a> -->
+                        <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal">
                             <small>Forgot Password?</small>
                         </a>
                     </div>
@@ -106,15 +109,18 @@
                             </div> -->
                         </form>
 
-                        <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalrepresentative">
+                        <!-- <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetmodalrepresentative">
+                            <small>Forgot Password?</small>
+                        </a> -->
+                        <a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal1">
                             <small>Forgot Password?</small>
                         </a>
                     </div>
-                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-5">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-5">
                         <div class="title">
                             <a href="{{ route('register') }}" class="btn btn-primary">New Member Registration</a>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -123,11 +129,85 @@
     </div>
 </div>
 
+<div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Reset Password?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" name="reset-password-companyadmin" id="reset-password-companyadmin" method="post">
+            @csrf
+            <input type="hidden" name="form_type_reset" value="membership">
+            <div class="modal-body">
+                <p>Please follow the step below.</p>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="membershipno" class="form-label">Membership Number: <small>(Company Admin)</small></label>
+                        <input type="text" name="membershipno" id="membershipno" class="form-control" placeholder="Enter Membership Number" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email1" class="form-control" placeholder="Enter email" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" class="btn btn-primary">Reset</button>
+            </div>
+            <div id="forgotpwdmmno-msg" style="padding-top:10px;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="basicModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Reset Password?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" name="reset-password-companyadmin" id="reset-password-companyadmin" method="post">
+            @csrf
+            <input type="hidden" name="form_type_reset" value="representative">
+            <div class="modal-body">
+                <p>Please follow the step below.</p>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="mykadno" class="form-label">MyKad No.: <small>(Official Representative)</label>
+                        <input type="text" name="mykadno" id="mykadno" class="form-control" placeholder="Enter MyKad No." />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email2" class="form-control" placeholder="Enter email" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" class="btn btn-primary">Reset</button>
+            </div>
+            <div id="forgotpwdmmno-msg" style="padding-top:10px;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="rehda-modal modal fade reset-password" id="resetmodalcompanyadmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="{{ asset('assets/img/question.png') }}">
+                <!-- <img src="{{ asset('assets/img/question.png') }}"> -->
                 <h5 class="modal-title reset-title" id="staticBackdropLabel">
                     Reset Password?
                 </h5>
@@ -140,7 +220,7 @@
             </div>
 
             <div class="modal-body">
-                <form action="" name="reset-password-companyadmin" id="reset-password-companyadmin" method="post">
+                <form action="" name="reset-password-companyadmin1" id="reset-password-companyadmin1" method="post">
                     @csrf
                     <input type="hidden" name="form_type_reset" value="membership">
                     <div class="form-text">
@@ -175,6 +255,7 @@
     </div>
 </div>
 
+<input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
 <div class="rehda-modal modal fade reset-password" id="resetmodalrepresentative" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

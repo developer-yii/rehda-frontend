@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\backend\CircularController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ProfileController;
@@ -59,6 +60,12 @@ Route::post('forgot-pwd', [LoginController::class, 'forgotpwd'])->name('forgot.p
 
 Route::post('invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
 Route::get('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
+
+Route::post('ordinary-register', [RegisterController::class, 'ordinaryRegister'])->name('ordinary.register');
+Route::post('subsidiary-register', [RegisterController::class, 'subsidiaryRegister'])->name('subsidiary.register');
+Route::post('affiliate-register', [RegisterController::class, 'affiliateRegister'])->name('affiliate.register');
+Route::post('associate-register', [RegisterController::class, 'associateRegister'])->name('associate.register');
+Route::post('rehdayouth-register', [RegisterController::class, 'rehdayouthRegister'])->name('rehdayouth.register');
 
 
 Route::middleware('auth')->group(function () {
