@@ -76,3 +76,14 @@ table.dataTable thead tr {
 .dataTables_empty{
     text-align: -webkit-center !important;
 }
+
+
+.annualreportimage{
+    height: 280px !important;
+}
+.bulletinimage{
+    height: 300px !important;
+}
+.othersimage{
+    height: 280px !important;
+}
