@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\State;
 use App\Models\Country;
 use App\Models\Gender;
+use App\Models\InvoiceRunningNo;
 use App\Models\PlanTier;
 use App\Models\LogSystem;
 use App\Models\Salutation;
@@ -554,4 +555,41 @@ function getMemberBranch($bid)
 {
     $branch = Branch::where('bid', $bid)->first();
     return $branch->bname;
+}
+
+function getRunningNo()
+{
+    $today = date('Y-m');
+    $runno = InvoiceRunningNo::where('irn_date', $today)->max('irn_runningno');
+    if($runno == "" || $runno == 0){
+        $startnum = 1;
+
+        $invoiceRunningNo = InvoiceRunningNo::create([
+            'irn_date' => $today,
+            'irn_runningno' => $startnum
+        ]);
+        return str_pad($startnum, 4, "0", STR_PAD_LEFT);
+    } else {
+        $continue = $runno+1;
+
+        $invoiceRunningNo = InvoiceRunningNo::create([
+            'irn_date' => $today,
+            'irn_runningno' => $continue
+        ]);
+        return str_pad($continue, 4, "0", STR_PAD_LEFT);
+    }
+}
+
+function chkMembershipNo($str)
+{
+    $member = Member::selectRaw("CONCAT(m_no_p1, m_no_p2, m_no_p3, m_no_p4, '/', m_no_p5) AS member_no, mid")
+    ->where('m_no_p1', '!=', '')
+    ->having('member_no', '=', $str)
+    ->first();
+
+    if($member) {
+        return $member->mid;
+    } else {
+        return $member;
+    }
 }
