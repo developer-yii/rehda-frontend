@@ -55,7 +55,7 @@ class LoginController extends Controller
 
     protected function username()
     {
-        return 'ml_username';
+        return 'username';
     }
 
     public function viewLogin()
