@@ -45,9 +45,9 @@
                 <!-- <div class="accordion accordion-flush accordion-arrow-left" id="year"> -->
                     <div class="accordion-item border-bottom {{ $count < 2 ? 'active' : '' }}">
                         <div class="accordion-header d-flex justify-content-between align-items-center flex-wrap flex-sm-nowrap" id="yearid{{$year[$firstKey]->bu_yr}}">
-                            <a class="accordion-button {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#target{{$year[$firstKey]->bu_yr}}" aria-expanded="false" aria-controls="yearid{{$year[$firstKey]->bu_yr}}" role="button">
+                            <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#target{{$year[$firstKey]->bu_yr}}" aria-expanded="false" aria-controls="yearid{{$year[$firstKey]->bu_yr}}" role="button">
                                 <span>
-                                    <span class="d-flex gap-2 align-items-baseline">
+                                    <span class="d-flex gap-2 align-items-baseline ms-3">
                                         <span class="h4 mb-1 text-white">{{ $year[$firstKey]->bu_yr }}</span>
                                     </span>
                                 </span>
@@ -55,16 +55,17 @@
                         </div>
                         <div id="target{{$year[$firstKey]->bu_yr}}" class="accordion-collapse collapse {{ $count < 2 ? 'show' : '' }}" data-bs-parent="#accordionYearParent">
 
-                            <div class="row pt-4">
+                            <div class="row pt-2">
+                                <h4 class="fw-bolder">BULLETIN {{$year[$firstKey]->bu_yr }}</h4>
                                 @foreach($year as $yeardata)
                                 <div class="col-md-6 col-lg-4 mb-3">
                                     <div class="card h-100">
-                                        <div class="card-body">
+                                        <div class="card-body card-body-box">
                                             <center>
-                                            <img class="img-fluid d-flex mb-4 rounded bulletinimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_img_cover) }}">
+                                            <img class="img-fluid d-flex mb-3 rounded bulletinimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_img_cover) }}">
 
                                             <h5>{{ strtoupper($yeardata->bu_name) }}</h5>
-                                            <h4>{{ $yeardata->bu_yr }}</h4>
+                                            <h4 class="fw-bolder">{{ $yeardata->bu_yr }}</h4>
 
                                             <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
                                             <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>

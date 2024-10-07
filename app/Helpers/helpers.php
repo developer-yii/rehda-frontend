@@ -37,7 +37,7 @@ function getLogoPath()
     if ($setting && file_exists(public_path($logoPath))) {
         return asset($logoPath);
     } else {
-        return asset('backend/assets/img/branding/logo.png'); // Path to default logo
+        return asset('frontend/img/logo/email-rehda-logo-blue.png'); // Path to default logo
     }
 }
 

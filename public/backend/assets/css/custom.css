@@ -87,3 +87,20 @@ table.dataTable thead tr {
 .othersimage{
     height: 280px !important;
 }
+.accordion-button-removearrow::before {
+    display: none !important;
+}
+.card-body-box h5{
+    margin-bottom: 0;
+    font-size: 1.005rem;
+}
+.card-body h4{
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.box-annualreport h5, .box-others h5{
+    font-size: 22px !important;
+}
+.box-others h4{
+    font-size: 30px;
+}

@@ -35,12 +35,12 @@
                 @foreach($papers as $paper)
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <div class="card-body">
+                            <div class="card-body card-body-box box-others">
                                 <center>
-                                <img class="img-fluid d-flex mb-4 rounded othersimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$paper->ar_img_cover) }}">
+                                <img class="img-fluid d-flex mb-3 rounded othersimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$paper->ar_img_cover) }}">
 
                                 <h5>{{ strtoupper($paper->ar_name) }}</h5>
-                                <h4>{{ $paper->ar_yr }}</h4>
+                                <h4 class="fw-bolder">{{ $paper->ar_yr }}</h4>
 
                                 <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$paper->ar_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
                                 <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$paper->ar_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>
