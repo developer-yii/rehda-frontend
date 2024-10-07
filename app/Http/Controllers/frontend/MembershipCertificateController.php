@@ -26,9 +26,9 @@ class MembershipCertificateController extends Controller
             ->addColumn('actions', function ($row) {
                 $buttons = '';
 
-                $buttons .= '<a href="'. asset('storage/storage/'.$row->mc_cert_path) .'" target="_blank" class="btn btn-outline-primary waves-effect me-2">View</a>';
+                $buttons .= '<a href="'. config('app.backendurl').'storage/'.str_replace('../','',$row->mc_cert_path) .'" target="_blank" class="btn btn-outline-primary waves-effect me-2">View</a>';
 
-                $buttons .= '<a href="'. asset('storage/storage/'.$row->mc_cert_path) .'" download class="btn btn-outline-primary waves-effect">Download</a>';
+                $buttons .= '<a href="'. config('app.backendurl').'storage/'.str_replace('../','',$row->mc_cert_path) .'" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>';
 
                 return $buttons;
             })

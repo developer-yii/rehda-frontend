@@ -61,12 +61,12 @@
                                     <div class="card h-100">
                                         <div class="card-body">
                                             <center>
-                                            <img class="img-fluid d-flex mb-4 rounded" src="{{ asset('storage/storage/'.$yeardata->bu_img_cover) }}">
+                                            <img class="img-fluid d-flex mb-4 rounded" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_img_cover) }}">
 
                                             <h5>{{ $yeardata->bu_name }}</h5>
 
-                                            <a href="{{ asset('storage/storage/'.$yeardata->bu_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
-                                            <a href="{{ asset('storage/storage/'.$yeardata->bu_file_path) }}" download class="btn btn-outline-primary waves-effect">Download</a>
+                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
+                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>
                                             </center>
                                         </div>
                                     </div>

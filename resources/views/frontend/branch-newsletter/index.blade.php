@@ -110,15 +110,15 @@
                                 @foreach($newslettersData as $data)
 
                                     <div class="bulletin-desc">
-                                        <div class="bg-image" style="background-image: url('{{ config('app.url').'storage/'.str_replace('../','',$data->bu_img_cover)}}'"></div>
+                                        <div class="bg-image" style="background-image: url('{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_img_cover) }}'"></div>
 
                                         <h4>{{ $data->bu_name }}</h4>
                                         <h3>{{ $data->bu_yr }}</h3>
                                         <ul>
-                                            <a href="{{ config('app.url').'storage/'.str_replace('../','',$data->bu_file_path) }}" target="_blank">
+                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" target="_blank">
                                                 <li>View</li>
                                             </a>
-                                            <a href="{{ config('app.url').'storage/'.str_replace('../','',$data->bu_file_path) }}" download>
+                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" download>
                                                 <li>Download</li>
                                             </a>
                                         </ul>
