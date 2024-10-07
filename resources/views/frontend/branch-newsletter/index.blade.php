@@ -91,9 +91,9 @@
 
                     <div class="accordion-item border-bottom {{ $count < 2 ? 'active' : '' }}">
                         <div class="accordion-header d-flex justify-content-between align-items-center flex-wrap flex-sm-nowrap" id="yearid{{$year[$firstKey]->bu_yr}}">
-                            <a class="accordion-button {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#target{{$year[$firstKey]->bu_yr}}" aria-expanded="false" aria-controls="yearid{{$year[$firstKey]->bu_yr}}" role="button">
+                            <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#target{{$year[$firstKey]->bu_yr}}" aria-expanded="false" aria-controls="yearid{{$year[$firstKey]->bu_yr}}" role="button">
                                 <span>
-                                    <span class="d-flex gap-2 align-items-baseline">
+                                    <span class="d-flex gap-2 align-items-baseline ms-3">
                                         <span class="h4 mb-1 text-white">{{ $year[$firstKey]->bu_yr }}</span>
                                     </span>
                                 </span>
