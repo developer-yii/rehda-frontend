@@ -3,7 +3,7 @@
 @section('title', 'Annual Report')
 
 @section('css')
-<link href=""></link>
+<link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
 @endsection
 
 @section('content')
@@ -35,9 +35,9 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <center>
-                                <img class="img-fluid d-flex mb-4 rounded" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->ar_img_cover) }}">
+                                <img class="img-fluid d-flex mb-4 rounded annualreportimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->ar_img_cover) }}">
 
-                                <h5>{{ $report->ar_name }}</h5>
+                                <h5>{{ strtoupper($report->ar_name) }}</h5>
                                 <h4>{{ $report->ar_yr }}</h4>
 
                                 <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->ar_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
