@@ -40,12 +40,12 @@
                             <p style="margin:0 0 20px 0;font-size:16px;line-height:24px;">Please refer to the attachment.</p>
                             <p style="margin:0 0 20px 0;font-size:16px;line-height:24px;">Click below to pay now! Thank you.</p>
                             <div>
-                                <a href="{{ url('paymentOB.php?ref='.$invno.'&auth='.$auth) }}" target="_blank">
+                                <a href="{{ route('invoice.paymentfpx', [$invno, $auth]) }}" target="_blank">
                                     <button style="border: 1px solid #003264; background: white; cursor: pointer; font-family: Outfit, sans-serif; font-weight: 300; padding: 15px; color: #003264; max-width: 200px; text-transform: uppercase; width: 100%;">Pay with FPX</button>
                                 </a>
                             </div>
                             <div>
-                                <a href="{{ url('payment.php?ref='.$invno.'&auth='.$auth) }}" target="_blank">
+                                <a href="{{ route('invoice.paymentcard', [$invno, $auth]) }}" target="_blank">
                                     <button style="border: 1px solid #003264; background: white; cursor: pointer; font-family: Outfit, sans-serif; font-weight: 300; padding: 15px; color: #003264; max-width: 200px; text-transform: uppercase; width: 100%;">Pay with Credit/Debit Card <small>+{{ config('constant.CC_FEE') }}% Handling Fee</small></button>
                                 </a>
                             </div>

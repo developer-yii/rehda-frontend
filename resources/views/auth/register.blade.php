@@ -1,79 +1,6 @@
 @extends('layouts.auth')
 
 @section('content')
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <style>
     .leftside{
@@ -87,6 +14,9 @@
     }
     .leftside ul button{
         text-align: left !important;
+    }
+    .register-box h4{
+        text-transform: uppercase;
     }
 </style>
 
@@ -151,7 +81,7 @@
             </div>
             <div class="row mt-4 p-2">
                 <!-- Navigation -->
-                <div class="col-lg-3 col-md-4 col-12 mb-md-0 mb-3">
+                <div class="col-lg-3 col-md-4 col-12 mb-md-0 mb-3 register-box">
                     <h4>Type of Membership Applying for</h4>
                     <div class="d-flex justify-content-between flex-column mb-2 mb-md-0">
                         <ul class="nav nav-align-left nav-pills flex-column">
@@ -646,8 +576,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="ordinaryOfficial2Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('ordinaryOfficial2Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="ordinaryOfficial2Gender" id="ordinaryOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('ordinaryOfficial2Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="ordinaryOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                     @if ($errors->has('ordinaryOfficial2Gender'))
@@ -980,8 +910,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="subsidiaryOfficial1Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('subsidiaryOfficial1Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="subsidiaryOfficial1Gender" id="subsidiaryOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('subsidiaryOfficial1Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="subsidiaryOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -1273,8 +1203,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="affiliateOfficial1Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial1Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="affiliateOfficial1Gender" id="affiliateOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial1Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="affiliateOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -1387,8 +1317,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="affiliateOfficial2Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial2Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="affiliateOfficial2Gender" id="affiliateOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial2Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="affiliateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -1680,8 +1610,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="associateOfficial1Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial1Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="associateOfficial1Gender" id="associateOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial1Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="associateOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -1794,8 +1724,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="associateOfficial2Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial2Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="associateOfficial2Gender" id="associateOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial2Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="associateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -1993,8 +1923,8 @@
                                                     <br>
                                                     @foreach($genders as $gender)
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="rehdaYouthOfficial1Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('rehdaYouthOfficial1Gender') ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                                        <input class="form-check-input" type="radio" name="rehdaYouthOfficial1Gender" id="rehdaYouthOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('rehdaYouthOfficial1Gender') ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="rehdaYouthOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                                     </div>
                                                     @endforeach
                                                 </div>

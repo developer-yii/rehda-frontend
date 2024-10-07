@@ -105,7 +105,7 @@ return [
 
         'member_users' => [
             'provider' => 'member_users', // Custom provider
-            'table' => 'password_resets', // Can use the same `password_resets` table
+            'table' => 'member_tokens', // Can use the same `password_resets` table
             'expire' => 60,
             'throttle' => 60,
         ],
