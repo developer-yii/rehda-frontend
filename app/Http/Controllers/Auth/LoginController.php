@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPasswordMail;
+use App\Models\MemberToken;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
@@ -43,12 +45,7 @@ class LoginController extends Controller
             return $this->redirectTo();
         }
 
-        // if (auth()->user()->ml_priv == "CompanyAdmin") {
-        //     return '/bulletin';
-        // } else {
-            return '/choose-company';
-        // }
-
+        return '/choose-company';
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
     }
@@ -74,7 +71,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if (!$user->ml_status) {
+        if ($user != null && !$user->ml_status) {
             Auth::logout();
             return redirect()->route('login')->with('error', 'Your account is inactive.');
         }
@@ -84,42 +81,37 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        // $user = User::where($this->username(), $request->input($this->username()))->first();
         $user = MemberUser::where('ml_username', $request->input($this->username()))->first();
-        // dd($user);
-
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
+
         if ($user && $ml_priv == $user->ml_priv) {
-            $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {
                 // Old password verification using sha512 + salt
                 $hashedPassword = hash('sha512', $request->input('password') . $user->ml_salt);
 
                 if ($hashedPassword === $user->ml_pwd) {
-
-                    // Log the user in manually
-                    // Auth::login($user);
-
-                    // dd($user);
-                    \Log::info('User logged in manually', ['user_id' => $user->ml_id]);
                     $this->guard()->login($user);
-                    // dd($user);
-
-                    // Optionally rehash the password with bcrypt and remove the salt
-                    // $this->rehashPassword($user, $request->input('password'));
-
                     return true;
                 }
             } else {
                 // Use Laravel's default Hash::check if no salt is present
                 if (Hash::check($request->input('password'), $user->ml_pwd)) {
-                    return $this->guard()->login($user);
+                    $this->guard()->login($user);
+                    return true;
                 }
             }
+
+            // If we reach here, the password is incorrect
+            throw ValidationException::withMessages([
+                'password' => [trans('auth.password')],
+            ]);
         }
 
-        return false;
+        // If we reach here, the username is incorrect
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
     }
 
     /**
@@ -144,15 +136,15 @@ class LoginController extends Controller
 
     protected function forgotpwd(Request $request)
     {
-        if($request->form_type_reset == "membership") {
+        if ($request->form_type_reset == "membership") {
             $request->validate(['email' => 'required|email|exists:member_users,ml_emailadd', 'membershipno' => 'required']);
-        } else if($request->form_type_reset == "representative"){
+        } else if ($request->form_type_reset == "representative") {
             $request->validate(['email' => 'required|email|exists:member_users,ml_emailadd', 'mykadno' => 'required']);
         } else {
             $request->validate(['email' => 'required|email|exists:member_users,ml_emailadd']);
         }
 
-        if($request->form_type_reset == "membership"){
+        if ($request->form_type_reset == "membership") {
             $ml_username = $request->membershipno;
             $errormsg = "Invalid membership number or email";
         } else {
@@ -161,34 +153,24 @@ class LoginController extends Controller
         }
         $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->first();
 
-        // if(!$checkUser){
-        //     return response()->json(['status' => 'error', 'message' => $errormsg], 400);
-        // }
-
-        // // Generate the password reset token
-        // $token = app('auth.password.broker')->createToken($checkUser);
-        // // $token = Password::broker('members')->createToken($checkUser);
-
-        // Mail::to($request->emailadd)->send(new ResetPasswordMail($token, $request->emailadd));
-        // dd($checkUser);
-
-        // $sendsPasswordResetEmails = new SendsPasswordResetEmails();
-        // $sendsPasswordResetEmails->sendResetLinkEmail($request->email);
-
-        // Send the password reset link
-
-        $request->request->add(['ml_emailadd' => $request->email]);
-        // dd($request);
-
-        $status = Password::broker('member_users')->sendResetLink(
-            // $request->only('ml_emailadd')
-            ['ml_emailadd' => $request->input('ml_emailadd')]
-        );
-
-        if ($status === Password::RESET_LINK_SENT) {
-            return response()->json(['status' => 'success', 'message' => __($status)]);
+        if(!$checkUser){
+            return response()->json(['status' => 'error', 'message' => 'User not found with the provided email and username.'], 400);
         }
 
-        return response()->json(['status' => 'error', 'message' => __($status)], 400);
+        // Generate the password reset token
+        $token = app('auth.password.broker')->createToken($checkUser);
+
+        $request->request->add(['ml_emailadd' => $request->email]);
+
+        MemberToken::create([
+            'mt_uid' => $checkUser->ml_id,
+            'mt_token' => $token,
+            'mt_created_at' => date('Y-m-d H:i:s'),
+        ]);
+        if (Mail::to($request->ml_emailadd)->send(new ResetPasswordMail($token, $request->ml_emailadd))) {
+            return response()->json(['status' => 'success', 'message' => 'Reset password link send to your mail']);
+        }
+        return response()->json(['status' => 'error', 'message' => 'Failed to send reset password link send to your mail'], 400);
+
     }
 }

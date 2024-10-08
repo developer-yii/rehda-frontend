@@ -60,6 +60,8 @@ Route::post('forgot-pwd', [LoginController::class, 'forgotpwd'])->name('forgot.p
 
 Route::post('invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
 Route::get('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
+Route::get('invoice/paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
+Route::get('invoice/paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
 
 Route::post('ordinary-register', [RegisterController::class, 'ordinaryRegister'])->name('ordinary.register');
 Route::post('subsidiary-register', [RegisterController::class, 'subsidiaryRegister'])->name('subsidiary.register');
@@ -246,8 +248,6 @@ Route::middleware('auth')->group(function () {
       Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index');
       Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
       Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
-      Route::get('invoice/paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
-      Route::get('invoice/paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
       Route::post('invoice/paymentsubmit', [InvoiceController::class, 'invoicePaymentsubmit'])->name('invoice.paymentsubmit');
 
       // Route::match(['get', 'post'], 'invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
