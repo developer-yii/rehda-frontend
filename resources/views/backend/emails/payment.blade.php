@@ -30,7 +30,7 @@
                 <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #eeeeee;border-spacing:0;text-align:left;">
                     <tr>
                         <td align="center" style="padding:60px 0 30px 0;background:#003264;border: 1px solid #003264;">
-                            <a style="cursor: pointer;" target="_blank"><img src="{{ asset('backend/assets/img/logo/email-rehda-logo-white.png') }}" alt="Rehda Logo" width="150" style="height: auto; display: block;"></a>
+                            <a style="cursor: pointer;" target="_blank"><img src="{{ config('app.url').'frontend/img/logo/email-rehda-logo-white.png' }}" alt="Rehda Logo" width="150" style="height: auto; display: block;"></a>
                         </td>
                     </tr>
                     <!-- VIEW INVOICE / BILL STATEMENT -->
@@ -60,7 +60,7 @@
                         <td style="padding: 15px 30px;background:#ffffff; margin: 15px 0 0; text-align: center;">
                             <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;">
                                 <tr style="text-align: center;">
-                                    <a style="cursor: pointer;" target="_blank"><img src="{{ asset('backend/assets/img/logo/email-rehda-logo-blue.png') }}" alt="Rehda Logo" width="80" style="height: auto; margin: auto; display: block;"></a>
+                                    <a style="cursor: pointer;" target="_blank"><img src="{{ config('app.url').'frontend/img/logo/email-rehda-logo-blue.png' }}" alt="Rehda Logo" width="80" style="height: auto; margin: auto; display: block;"></a>
                                     <p style="font-size: 14px; font-weight: bold;">{!! config('constant.COMPANY_NAME') !!} <br> <small>({{ config('constant.COMPANY_REGISTRATION_NUMBER') }})</small></p>
                                     <p style="font-size: 14px;">{{ config('constant.COMPANY_ADDRESS') }}<br>{{ config('constant.COMPANY_ADDRESS1') }}<br>{{ config('constant.COMPANY_ADDRESS2') }}</p>
                                 </tr>

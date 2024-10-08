@@ -82,7 +82,7 @@
                             <div class="text-center">
                                 <a href="{{ route('login') }}">
                                     <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
-                                    {{ __('translation.label_back_to_login) }}
+                                    {{ __('translation.label_back_to_login') }}
                                 </a>
                             </div>
                         </form>

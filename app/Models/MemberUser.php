@@ -43,7 +43,7 @@ class MemberUser extends Authenticatable
 
     public function getEmailForPasswordReset()
     {
-        return $this->emailadd; // Return the 'emailadd' field for password resets
+        return $this->ml_emailadd; // Return the 'emailadd' field for password resets
     }
 
     public function getImageUrl()
