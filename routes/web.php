@@ -59,7 +59,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
 Route::post('forgot-pwd', [LoginController::class, 'forgotpwd'])->name('forgot.pwd');
 
 Route::post('invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentreturn'])->name('invoice.paymentreturn');
-Route::get('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
+Route::post('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
 Route::get('invoice/paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
 Route::get('invoice/paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
 Route::get('payment/fail', [InvoiceController::class, 'paymentFail'])->name('payment.fail');

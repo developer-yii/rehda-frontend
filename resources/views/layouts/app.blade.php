@@ -213,16 +213,16 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
-                                    <li>
+                                    <li> -->
                                         <!-- <a class="dropdown-item" href="{{ route('profile.editprofile', Auth::id()) }}"> -->
-                                        <a class="dropdown-item" href="">
+                                        <!-- <a class="dropdown-item" href="">
                                             <i class="ti ti-user-check me-2 ti-sm"></i>
                                             <span class="align-middle">{{ __('profile')['my profile'] }}</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
