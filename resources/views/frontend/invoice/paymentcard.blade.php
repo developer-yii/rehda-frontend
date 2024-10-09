@@ -36,7 +36,6 @@
             $hashcode = hash('sha256', 'GXk0rFMnVv'.'M38849'.$order->order_no.$amounthash.'MYR');
             @endphp
             <form method="POST" name="paymentcard" id="paymentcard" action="https://payment.ipay88.com.my/epayment/entry.asp">
-                @csrf
                 <input type="hidden" name="MerchantCode" value="M38849">
                 <input type="hidden" name="PaymentId" value="2">
                 <input type="hidden" name="RefNo" value="{{ $order->order_no }}">

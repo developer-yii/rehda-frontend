@@ -1979,6 +1979,8 @@
     </div>
 </div>
 
+@include('layouts.footer')
+
 @endsection
 
 @section('auth-js')
