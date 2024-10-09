@@ -57,7 +57,7 @@
                                 <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#official-representative-1" aria-expanded="false" aria-controls="official-representative-1" role="button">
                                     <span>
                                         <span class="d-flex gap-2 align-items-baseline ms-3">
-                                            <span class="h4 mb-1 text-white">Official Representative 1 <span>Required</span></span>
+                                            <span class="h5 mb-1 text-white">Official Representative 1 <span class="badge bg-danger ms-2">Required</span></span>
                                         </span>
                                     </span>
                                 </a>
@@ -231,7 +231,7 @@
                                 <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#official-representative-2" aria-expanded="false" aria-controls="official-representative-2" role="button">
                                     <span>
                                         <span class="d-flex gap-2 align-items-baseline ms-3">
-                                            <span class="h4 mb-1 text-white">Official Representative 2 <span>Required</span></span>
+                                            <span class="h5 mb-1 text-white">Official Representative 2 <span class="badge bg-danger ms-2">Required</span></span>
                                         </span>
                                     </span>
                                 </a>

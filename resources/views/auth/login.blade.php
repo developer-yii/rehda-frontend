@@ -18,10 +18,10 @@
         <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
             <div class="w-px-400 mx-auto">
                 <!-- Logo -->
-                <div class="app-brand mb-4">
+                <div class="app-brand mb-4 justify-content-center">
                     <a href="{{ route('login') }}" class="app-brand-link gap-2">
                         <span class="app-brand-logo demo w-auto h-auto">
-                            <img src="{{ getLogoPath() }}" width="350" height="160" />
+                            <img src="{{ getLogoPath() }}" width="210" height="" />
                         </span>
                     </a>
                 </div>
@@ -47,12 +47,14 @@
                                 <input type="hidden" name="form_type" value="membership">
                                 <div class="mb-3">
                                     <label for="membership" class="form-label required_label">Membership No.</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" value="{{ old('username') }}">
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="form-control  @if(session('form') == 'membership') @error('username') is-invalid @enderror @endif" name="username" id="username" value="{{ (session('form') == 'membership') ? old('username') : '' }}">
+                                    @if(session('form') == 'membership')
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    @endif
                                 </div>
 
                                 <div class="mb-3 form-password-toggle">
@@ -65,16 +67,17 @@
                                         @endif
                                     </div>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                        <input type="password" id="password" class="form-control @if(session('form') == 'membership') @error('password') is-invalid @enderror @endif" name="password"
                                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                             aria-describedby="password" />
-                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
+                                        @if(session('form') == 'membership')
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        @endif
                                     </div>
                                 </div>
 
@@ -90,12 +93,14 @@
                                 <input type="hidden" name="form_type" value="representative">
                                 <div class="mb-3">
                                     <label for="mykad" class="form-label required_label">MyKad No.</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="mykadUn" value="{{ old('username') }}">
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="form-control @if(session('form') == 'representative') @error('username') is-invalid @enderror @endif" name="username" id="mykadUn" value="{{ (session('form') == 'representative') ? old('username') : '' }}">
+                                    @if(session('form') == 'representative')
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    @endif
                                 </div>
 
                                 <div class="mb-3 form-password-toggle">
@@ -108,16 +113,17 @@
                                         @endif
                                     </div>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="mykadLogin" class="form-control @error('password') is-invalid @enderror" name="password"
+                                        <input type="password" id="mykadLogin" class="form-control @if(session('form') == 'representative') @error('password') is-invalid @enderror @endif" name="password"
                                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                             aria-describedby="password" />
-                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
+                                        @if(session('form') == 'representative')
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        @endif
                                     </div>
                                 </div>
 

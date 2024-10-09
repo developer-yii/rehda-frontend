@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -119,16 +120,51 @@ class RegisterController extends Controller
             'ordinarySSMRegNumber' => 'required',
             'ordinaryDateOfCompanyFormation' => 'required',
             'ordinaryLatestPaidUpCapital' => 'required',
-            'ordinaryCopySSMCert' => 'required',
-            'ordinaryCopyOfAnnualReturn' => 'required',
+            'ordinaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
             'ordinaryHouseDevelopingLicense' => 'required',
-            'ordinaryCopyOfHousingDeveloperLicense' => 'required',
+            'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
 
             'ordinaryAdminTitle' => 'required',
             'ordinaryNameOfAdmin' => 'required',
+            'ordinaryAdminDesignation' => 'required',
+            'ordinaryAdminEmail' => 'required|email',
+            'ordinaryAdminContactNumber' => 'required',
+
+            'ordinaryOfficial1Title' => 'required',
+            'ordinaryOfficial1Nop' => 'required',
+            'ordinaryMyKad' => 'required',
+            'ordinaryOfficial1Designation' => 'required',
+            'ordinaryGender' => 'required',
+            'ordinaryOfficial1Email' => 'required|email',
+            'ordinaryOfficial1Contact' => 'required',
+            'ordinaryOfficial1Address' => 'required',
+            'ordinaryOfficial1AddressCity' => 'required',
+            'ordinaryOfficial1AddressState' => 'required',
+            'ordinaryOfficial1AddressPc' => 'required',
+            'ordinaryOfficial1AddressCountry' => 'required',
+            'ordinaryOfficial1SecretartEmail' => 'nullable|email',
+
             'ordinaryOfficial2Title' => 'required',
+            'ordinaryOfficial2Nop' => 'required',
+            'ordinaryMyKad2' => 'required',
+            'ordinaryOfficial2Designation' => 'required',
+            'ordinaryOfficial2Gender' => 'required',
+            'ordinaryOfficial2Email' => 'required|email',
+            'ordinaryOfficial2Contact' => 'required',
+            'ordinaryOfficial2Address' => 'required',
+            'ordinaryOfficial2AddressCity' => 'required',
+            'ordinaryOfficial2AddressState' => 'required',
+            'ordinaryOfficial2AddressPc' => 'required',
+            'ordinaryOfficial2AddressCountry' => 'required',
+            'ordinaryOfficial2SecretartEmail' => 'nullable|email',
         ],[
             'required' => 'This field is required.',
+            'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'email' => 'Please enter a valid email address.',
         ]);
 
         $dir = 'uploads/members/';
@@ -138,20 +174,10 @@ class RegisterController extends Controller
 
             $path1 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path1 === "1001") {
-                $result = "Copy of SSM Certification is too large.";
-            } elseif ($path1 === "1002") {
-                $result = "Copy of SSM Certification is not a valid format.";
-            } elseif ($path1 === "1003") {
-                $result = "Copy of SSM Certification has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path1 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryCopySSMCert' => $result, // Return error message if upload fails
+                        'ordinaryCopySSMCert' => "Copy of SSM Certification has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -162,20 +188,10 @@ class RegisterController extends Controller
 
             $path2 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path2 === "1001") {
-                $result = "Copy of Form 24 is too large.";
-            } elseif ($path2 === "1002") {
-                $result = "Copy of Form 24 is not a valid format.";
-            } elseif ($path2 === "1003") {
-                $result = "Copy of Form 24 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path2 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryCopyForm24' => $result, // Return error message if upload fails
+                        'ordinaryCopyForm24' => "Copy of Form 24 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -186,20 +202,10 @@ class RegisterController extends Controller
 
             $path3 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path3 === "1001") {
-                $result = "Copy of Form 49 is too large.";
-            } elseif ($path3 === "1002") {
-                $result = "Copy of Form 49 is not a valid format.";
-            } elseif ($path3 === "1003") {
-                $result = "Copy of Form 49 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path3 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryCopyForm49' => $result, // Return error message if upload fails
+                        'ordinaryCopyForm49' => "Copy of Form 49 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -210,20 +216,10 @@ class RegisterController extends Controller
 
             $path4 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path4 === "1001") {
-                $result = "Copy of Annual Return is too large.";
-            } elseif ($path4 === "1002") {
-                $result = "Copy of Annual Return is not a valid format.";
-            } elseif ($path4 === "1003") {
-                $result = "Copy of Annual Return has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path4 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryCopyOfAnnualReturn' => $result, // Return error message if upload fails
+                        'ordinaryCopyOfAnnualReturn' => "Copy of Annual Return has an error while uploading."
                     ],
                 ], 422);
             }
@@ -234,27 +230,14 @@ class RegisterController extends Controller
 
             $path5 = $this->uploadPDF($file, $dir, 100);
 
-            $result = "";
-
-            if ($path5 === "1001") {
-                $result = "Copy of Housing Developer's Licence No is too large.";
-            } elseif ($path5 === "1002") {
-                $result = "Copy of Housing Developer's Licence No is not a valid format.";
-            } elseif ($path5 === "1003") {
-                $result = "Copy of Housing Developer's Licence No has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path5 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryCopyOfHousingDeveloperLicense' => $result, // Return error message if upload fails
+                        'ordinaryCopyOfHousingDeveloperLicense' => "Copy of Housing Developer's Licence No has an error while uploading.",
                     ],
                 ], 422);
             }
         }
-
-        // $orderno = date('ym').getRunningNo();
-        // dd("1111",$path1, $path5, $orderno);
 
         $ord = 1;
         $now = date("Y-m-d H:i:s");
@@ -453,6 +436,53 @@ class RegisterController extends Controller
 
     public function subsidiaryRegister(Request $request)
     {
+        $request->validate([
+            'subsidiaryCompanyPreferBranch' => 'required',
+            'subsidiaryOrdinaryMembershipNumber' => 'required',
+            'subsidiaryCompanyName' => 'required',
+            'subsidiaryCompanyAddress' => 'required',
+            'subsidiaryCompanyAddressCity' => 'required',
+            'subsidiaryCompanyAddressState' => 'required',
+            'subsidiaryCompanyAddressPc' => 'required',
+            'subsidiaryCompanyAddressCountry' => 'required',
+            'subsidiaryOfficialWebsite' => 'required',
+            'subsidiaryOfficialNumber' => 'required',
+            'subsidiarySSMRegNumber' => 'required',
+            'subsidiaryDateOfCompanyFormation' => 'required',
+            'subsidiaryLatestPaidUpCapital' => 'required',
+            'subsidiaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryHouseDevelopingLicense' => 'required',
+            'subsidiaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+
+            'subsidiaryAdminTitle' => 'required',
+            'subsidiaryNameOfAdmin' => 'required',
+            'subsidiaryAdminDesignation' => 'required',
+            'subsidiaryAdminEmail' => 'required|email',
+            'subsidiaryAdminContactNumber' => 'required',
+
+            'subsidiaryOfficial1Title' => 'required',
+            'subsidiaryOfficial1Nop' => 'required',
+            'subsidiaryMyKad' => 'required',
+            'subsidiaryOfficial1Designation' => 'required',
+            'subsidiaryOfficial1Gender' => 'required',
+            'subsidiaryOfficial1Email' => 'required|email',
+            'subsidiaryOfficial1Contact' => 'required',
+            'subsidiaryOfficial1Address' => 'required',
+            'subsidiaryOfficial1AddressCity' => 'required',
+            'subsidiaryOfficial1AddressState' => 'required',
+            'subsidiaryOfficial1AddressPc' => 'required',
+            'subsidiaryOfficial1AddressCountry' => 'required',
+            'subsidiaryOfficial1SecretartEmail' => 'nullable|email',
+        ],[
+            'required' => 'This field is required.',
+            'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'email' => 'Please enter a valid email address.',
+        ]);
+
         $parentid = chkMembershipNo($request->subsidiaryOrdinaryMembershipNumber);
         if($parentid == null){
             return response()->json([
@@ -469,20 +499,10 @@ class RegisterController extends Controller
 
             $path1 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path1 === "1001") {
-                $result = "Copy of SSM Certification is too large.";
-            } elseif ($path1 === "1002") {
-                $result = "Copy of SSM Certification is not a valid format.";
-            } elseif ($path1 === "1003") {
-                $result = "Copy of SSM Certification has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path1 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'subsidiaryCopySSMCert' => $result, // Return error message if upload fails
+                        'subsidiaryCopySSMCert' => "Copy of SSM Certification has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -493,20 +513,10 @@ class RegisterController extends Controller
 
             $path2 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path2 === "1001") {
-                $result = "Copy of Form 24 is too large.";
-            } elseif ($path2 === "1002") {
-                $result = "Copy of Form 24 is not a valid format.";
-            } elseif ($path2 === "1003") {
-                $result = "Copy of Form 24 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path2 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'subsidiaryCopyForm24' => $result, // Return error message if upload fails
+                        'subsidiaryCopyForm24' => "Copy of Form 24 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -517,20 +527,10 @@ class RegisterController extends Controller
 
             $path3 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path3 === "1001") {
-                $result = "Copy of Form 49 is too large.";
-            } elseif ($path3 === "1002") {
-                $result = "Copy of Form 49 is not a valid format.";
-            } elseif ($path3 === "1003") {
-                $result = "Copy of Form 49 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path3 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'subsidiaryCopyForm49' => $result, // Return error message if upload fails
+                        'subsidiaryCopyForm49' => "Copy of Form 49 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -541,20 +541,10 @@ class RegisterController extends Controller
 
             $path4 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path4 === "1001") {
-                $result = "Copy of Annual Return is too large.";
-            } elseif ($path4 === "1002") {
-                $result = "Copy of Annual Return is not a valid format.";
-            } elseif ($path4 === "1003") {
-                $result = "Copy of Annual Return has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path4 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'subsidiaryCopyOfAnnualReturn' => $result, // Return error message if upload fails
+                        'subsidiaryCopyOfAnnualReturn' => "Copy of Annual Return has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -565,20 +555,10 @@ class RegisterController extends Controller
 
             $path5 = $this->uploadPDF($file, $dir, 100);
 
-            $result = "";
-
-            if ($path5 === "1001") {
-                $result = "Copy of Housing Developer's Licence No is too large.";
-            } elseif ($path5 === "1002") {
-                $result = "Copy of Housing Developer's Licence No is not a valid format.";
-            } elseif ($path5 === "1003") {
-                $result = "Copy of Housing Developer's Licence No has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path5 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'subsidiaryCopyOfHousingDeveloperLicense' => $result, // Return error message if upload fails
+                        'subsidiaryCopyOfHousingDeveloperLicense' => "Copy of Housing Developer's Licence No has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -668,21 +648,6 @@ class RegisterController extends Controller
         }
 
         $plan = Plan::where('pid', $ord)->first();
-        $plantier = PlanTier::where('pt_id', $request->ordinaryLatestPaidUpCapital)->first();
-        $curr_mth = date('n');
-
-        // if($curr_mth==1 || $curr_mth==2 || $curr_mth==3){
-        //     $fee = $plantier->pt_fee;
-        // } else if($curr_mth==4 || $curr_mth==5 || $curr_mth==6){
-        //     $fee = round(0.75*$plantier->pt_fee);
-        // } else if($curr_mth==7 || $curr_mth==8 || $curr_mth==9){
-        //     $fee = round(0.5*$plantier->pt_fee);
-        // } else if($curr_mth==10 || $curr_mth==11){
-        //     $fee = round(0.25*$plantier->pt_fee);
-        // } else {
-        //     $fee = 0;
-        // }
-
         $fee = $plan->plan_yearly_fee;
 
         $total = $fee + $plan->plan_entrance_fee;
@@ -756,6 +721,66 @@ class RegisterController extends Controller
 
     public function affiliateRegister(Request $request)
     {
+        $request->validate([
+            'affiliateCompanyPreferBranch' => 'required',
+            'affiliateOrdinaryMembershipNumber' => 'required',
+            'affiliateCompanyName' => 'required',
+            'affiliateCompanyAddress' => 'required',
+            'affiliateCompanyAddressCity' => 'required',
+            'affiliateCompanyAddressState' => 'required',
+            'affiliateCompanyAddressPc' => 'required',
+            'affiliateCompanyAddressCountry' => 'required',
+            'affiliateOfficialWebsite' => 'required',
+            'affiliateOfficialNumber' => 'required',
+            'affiliateSSMRegNumber' => 'required',
+            'affiliateDateOfCompanyFormation' => 'required',
+            'affiliateLatestPaidUpCapital' => 'required',
+            'affiliateCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateHouseDevelopingLicense' => 'required',
+            'affiliateCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+
+            'affiliateAdminTitle' => 'required',
+            'affiliateNameOfAdmin' => 'required',
+            'affiliateAdminDesignation' => 'required',
+            'affiliateAdminEmail' => 'required|email',
+            'affiliateAdminContactNumber' => 'required',
+
+            'affiliateOfficial1Title' => 'required',
+            'affiliateOfficial1Nop' => 'required',
+            'affiliateMyKad' => 'required',
+            'affiliateOfficial1Designation' => 'required',
+            'affiliateOfficial1Gender' => 'required',
+            'affiliateOfficial1Email' => 'required|email',
+            'affiliateOfficial1Contact' => 'required',
+            'affiliateOfficial1Address' => 'required',
+            'affiliateOfficial1AddressCity' => 'required',
+            'affiliateOfficial1AddressState' => 'required',
+            'affiliateOfficial1AddressPc' => 'required',
+            'affiliateOfficial1AddressCountry' => 'required',
+            'affiliateOfficial1SecretartEmail' => 'nullable|email',
+
+            'affiliateOfficial2Title' => 'required',
+            'affiliateOfficial2Nop' => 'required',
+            'affiliateMyKad2' => 'required',
+            'affiliateOfficial2Designation' => 'required',
+            'affiliateOfficial2Gender' => 'required',
+            'affiliateOfficial2Email' => 'required|email',
+            'affiliateOfficial2Contact' => 'required',
+            'affiliateOfficial2Address' => 'required',
+            'affiliateOfficial2AddressCity' => 'required',
+            'affiliateOfficial2AddressState' => 'required',
+            'affiliateOfficial2AddressPc' => 'required',
+            'affiliateOfficial2AddressCountry' => 'required',
+            'affiliateOfficial2SecretartEmail' => 'nullable|email',
+        ],[
+            'required' => 'This field is required.',
+            'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'email' => 'Please enter a valid email address.',
+        ]);
 
         $parentid = chkMembershipNo($request->affiliateOrdinaryMembershipNumber);
         if($parentid == null){
@@ -773,20 +798,10 @@ class RegisterController extends Controller
 
             $path1 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path1 === "1001") {
-                $result = "Copy of SSM Certification is too large.";
-            } elseif ($path1 === "1002") {
-                $result = "Copy of SSM Certification is not a valid format.";
-            } elseif ($path1 === "1003") {
-                $result = "Copy of SSM Certification has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path1 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'affiliateCopySSMCert' => $result, // Return error message if upload fails
+                        'affiliateCopySSMCert' =>  "Copy of SSM Certification has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -797,20 +812,10 @@ class RegisterController extends Controller
 
             $path2 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path2 === "1001") {
-                $result = "Copy of Form 24 is too large.";
-            } elseif ($path2 === "1002") {
-                $result = "Copy of Form 24 is not a valid format.";
-            } elseif ($path2 === "1003") {
-                $result = "Copy of Form 24 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path2 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'affiliateCopyForm24' => $result, // Return error message if upload fails
+                        'affiliateCopyForm24' => "Copy of Form 24 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -821,20 +826,10 @@ class RegisterController extends Controller
 
             $path3 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path3 === "1001") {
-                $result = "Copy of Form 49 is too large.";
-            } elseif ($path3 === "1002") {
-                $result = "Copy of Form 49 is not a valid format.";
-            } elseif ($path3 === "1003") {
-                $result = "Copy of Form 49 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path3 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'affiliateCopyForm49' => $result, // Return error message if upload fails
+                        'affiliateCopyForm49' => "Copy of Form 49 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -845,20 +840,10 @@ class RegisterController extends Controller
 
             $path4 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path4 === "1001") {
-                $result = "Copy of Annual Return is too large.";
-            } elseif ($path4 === "1002") {
-                $result = "Copy of Annual Return is not a valid format.";
-            } elseif ($path4 === "1003") {
-                $result = "Copy of Annual Return has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path4 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'affiliateCopyOfAnnualReturn' => $result, // Return error message if upload fails
+                        'affiliateCopyOfAnnualReturn' => "Copy of Annual Return has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -869,20 +854,10 @@ class RegisterController extends Controller
 
             $path5 = $this->uploadPDF($file, $dir, 100);
 
-            $result = "";
-
-            if ($path5 === "1001") {
-                $result = "Copy of Housing Developer's Licence No is too large.";
-            } elseif ($path5 === "1002") {
-                $result = "Copy of Housing Developer's Licence No is not a valid format.";
-            } elseif ($path5 === "1003") {
-                $result = "Copy of Housing Developer's Licence No has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path5 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'affiliateCopyOfHousingDeveloperLicense' => $result, // Return error message if upload fails
+                        'affiliateCopyOfHousingDeveloperLicense' => "Copy of Housing Developer's Licence No has an error while uploading.", // Return error message if upload fails
                     ],
                 ], 422);
             }
@@ -1000,21 +975,6 @@ class RegisterController extends Controller
         }
 
         $plan = Plan::where('pid', $ord)->first();
-        $plantier = PlanTier::where('pt_id', $request->ordinaryLatestPaidUpCapital)->first();
-        $curr_mth = date('n');
-
-        // if($curr_mth==1 || $curr_mth==2 || $curr_mth==3){
-        //     $fee = $plantier->pt_fee;
-        // } else if($curr_mth==4 || $curr_mth==5 || $curr_mth==6){
-        //     $fee = round(0.75*$plantier->pt_fee);
-        // } else if($curr_mth==7 || $curr_mth==8 || $curr_mth==9){
-        //     $fee = round(0.5*$plantier->pt_fee);
-        // } else if($curr_mth==10 || $curr_mth==11){
-        //     $fee = round(0.25*$plantier->pt_fee);
-        // } else {
-        //     $fee = 0;
-        // }
-
         $fee = $plan->plan_yearly_fee;
 
         $total = $fee + $plan->plan_entrance_fee;
@@ -1087,6 +1047,67 @@ class RegisterController extends Controller
 
     public function associateRegister(Request $request)
     {
+        $request->validate([
+            'associateCompanyPreferBranch' => 'required',
+            'associateAccType' => 'required',
+            'associateCompanyName' => 'required',
+            'associateCompanyAddress' => 'required',
+            'associateCompanyAddressCity' => 'required',
+            'associateCompanyAddressState' => 'required',
+            'associateCompanyAddressPc' => 'required',
+            'associateCompanyAddressCountry' => 'required',
+            'associateOfficialWebsite' => 'required',
+            'associateOfficialNumber' => 'required',
+
+            'associateSSMRegNumber' => 'required_if:associateAccType,==,1',
+            'associateDateOfCompanyFormation' => 'required_if:associateAccType,==,1',
+            'associateLatestPaidUpCapital' => 'required_if:associateAccType,==,1',
+            'associateCopySSMCert' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'associateCopyForm24' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'associateCopyForm49' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'associateCopyOfAnnualReturn' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+
+            'associateAdminTitle' => 'required_if:associateAccType,==,1',
+            'associateNameOfAdmin' => 'required_if:associateAccType,==,1',
+            'associateAdminDesignation' => 'required_if:associateAccType,==,1',
+            'associateAdminEmail' => 'required_if:associateAccType,==,1|email',
+            'associateAdminContactNumber' => 'required_if:associateAccType,==,1',
+
+            'associateOfficial1Title' => 'required',
+            'associateOfficial1Nop' => 'required',
+            'associateOfficial1MyKad' => 'required',
+            'associateOfficial1Designation' => 'required',
+            'associateOfficial1Gender' => 'required',
+            'associateOfficial1Email' => 'required|email',
+            'associateOfficial1Contact' => 'required',
+            'associateOfficial1Address' => 'required',
+            'associateOfficial1AddressCity' => 'required',
+            'associateOfficial1AddressState' => 'required',
+            'associateOfficial1AddressPc' => 'required',
+            'associateOfficial1Country' => 'required',
+            'associateOfficial1SecretartEmail' => 'nullable|email',
+
+            'associateOfficial2Title' => 'required_if:associateAccType,==,1',
+            'associateOfficial2Nop' => 'required_if:associateAccType,==,1',
+            'associateOfficial2MyKad' => 'required_if:associateAccType,==,1',
+            'associateOfficial2Designation' => 'required_if:associateAccType,==,1',
+            'associateOfficial2Gender' => 'required_if:associateAccType,==,1',
+            'associateOfficial2Email' => 'required_if:associateAccType,==,1|email',
+            'associateOfficial2Contact' => 'required_if:associateAccType,==,1',
+            'associateOfficial2Address' => 'required_if:associateAccType,==,1',
+            'associateOfficial2AddressCity' => 'required_if:associateAccType,==,1',
+            'associateOfficial2AddressState' => 'required_if:associateAccType,==,1',
+            'associateOfficial2AddressPc' => 'required_if:associateAccType,==,1',
+            'associateOfficial2AddressCountry' => 'required_if:associateAccType,==,1',
+            'associateOfficial2SecretartEmail' => 'nullable|email',
+        ],[
+            'required' => 'This field is required.',
+            'required_if' => 'This field is required.',
+            'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'email' => 'Please enter a valid email address.',
+        ]);
+
         $dir = 'uploads/members/';
 
         if ($request->hasFile('associateCopySSMCert')) {
@@ -1094,20 +1115,10 @@ class RegisterController extends Controller
 
             $path1 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path1 === "1001") {
-                $result = "Copy of SSM Certification is too large.";
-            } elseif ($path1 === "1002") {
-                $result = "Copy of SSM Certification is not a valid format.";
-            } elseif ($path1 === "1003") {
-                $result = "Copy of SSM Certification has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path1 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'associateCopySSMCert' => $result, // Return error message if upload fails
+                        'associateCopySSMCert' => "Copy of SSM Certification has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -1118,20 +1129,10 @@ class RegisterController extends Controller
 
             $path2 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path2 === "1001") {
-                $result = "Copy of Form 24 is too large.";
-            } elseif ($path2 === "1002") {
-                $result = "Copy of Form 24 is not a valid format.";
-            } elseif ($path2 === "1003") {
-                $result = "Copy of Form 24 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path2 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'associateCopyForm24' => $result, // Return error message if upload fails
+                        'associateCopyForm24' => "Copy of Form 24 has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -1142,20 +1143,10 @@ class RegisterController extends Controller
 
             $path3 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path3 === "1001") {
-                $result = "Copy of Form 49 is too large.";
-            } elseif ($path3 === "1002") {
-                $result = "Copy of Form 49 is not a valid format.";
-            } elseif ($path3 === "1003") {
-                $result = "Copy of Form 49 has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path3 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'associateCopyForm49' => $result, // Return error message if upload fails
+                        'associateCopyForm49' => "Copy of Form 49 has an error while uploading.", // Return error message if upload fails
                     ],
                 ], 422);
             }
@@ -1166,20 +1157,10 @@ class RegisterController extends Controller
 
             $path4 = $this->uploadPDF($file, $dir, 300);
 
-            $result = "";
-
-            if ($path4 === "1001") {
-                $result = "Copy of Annual Return is too large.";
-            } elseif ($path4 === "1002") {
-                $result = "Copy of Annual Return is not a valid format.";
-            } elseif ($path4 === "1003") {
-                $result = "Copy of Annual Return has an error while uploading.";
-            }
-
-            if ($result != "") {
+            if ($path4 === "1003") {
                 return response()->json([
                     'errors' => [
-                        'associateCopyOfAnnualReturn' => $result, // Return error message if upload fails
+                        'associateCopyOfAnnualReturn' => "Copy of Annual Return has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -1326,21 +1307,6 @@ class RegisterController extends Controller
 
 
         $plan = Plan::where('pid', $ord)->first();
-        $plantier = PlanTier::where('pt_id', $request->ordinaryLatestPaidUpCapital)->first();
-        $curr_mth = date('n');
-
-        // if($curr_mth==1 || $curr_mth==2 || $curr_mth==3){
-        //     $fee = $plantier->pt_fee;
-        // } else if($curr_mth==4 || $curr_mth==5 || $curr_mth==6){
-        //     $fee = round(0.75*$plantier->pt_fee);
-        // } else if($curr_mth==7 || $curr_mth==8 || $curr_mth==9){
-        //     $fee = round(0.5*$plantier->pt_fee);
-        // } else if($curr_mth==10 || $curr_mth==11){
-        //     $fee = round(0.25*$plantier->pt_fee);
-        // } else {
-        //     $fee = 0;
-        // }
-
         $fee = $plan->plan_yearly_fee;
 
         $total = $fee + $plan->plan_entrance_fee;
@@ -1413,6 +1379,35 @@ class RegisterController extends Controller
 
     public function rehdayouthRegister(Request $request)
     {
+        $request->validate([
+            'rehdaYouthOrdinaryMembershipNumber' => 'required',
+            'rehdaYouthCompanyName' => 'required',
+            'rehdaYouthCompanyAddress' => 'required',
+            'rehdaYouthCompanyAddressCity' => 'required',
+            'rehdaYouthCompanyAddressState' => 'required',
+            'rehdaYouthCompanyAddressPc' => 'required',
+            'rehdaYouthCompanyAddressCountry' => 'required',
+            'rehdaYouthOfficialWebsite' => 'required',
+            'rehdaYouthOfficialNumber' => 'required',
+
+            'rehdaYouthOfficial1Title' => 'required',
+            'rehdaYouthOfficial1Nop' => 'required',
+            'rehdaYouthOfficial1MyKad' => 'required',
+            'rehdaYouthOfficial1Designation' => 'required',
+            'rehdaYouthOfficial1Gender' => 'required',
+            'rehdaYouthOfficial1Email' => 'required|email',
+            'rehdaYouthOfficial1Contact' => 'required',
+            'rehdaYouthOfficial1Address' => 'required',
+            'rehdaYouthOfficial1AddressCity' => 'required',
+            'rehdaYouthOfficial1AddressState' => 'required',
+            'rehdaYouthOfficial1AddressPc' => 'required',
+            'rehdaYouthOfficial1AddressCountry' => 'required',
+            'rehdaYouthOfficial1SecretartEmail' => 'nullable|email',
+        ],[
+            'required' => 'This field is required.',
+            'email' => 'Please enter a valid email address.',
+        ]);
+
         $parentid = chkMembershipNo($request->rehdaYouthOrdinaryMembershipNumber);
         if($parentid == null){
             return response()->json([
@@ -1479,20 +1474,6 @@ class RegisterController extends Controller
         }
 
         $plan = Plan::where('pid', $ord)->first();
-        $plantier = PlanTier::where('pt_id', $request->ordinaryLatestPaidUpCapital)->first();
-        $curr_mth = date('n');
-
-        // if($curr_mth==1 || $curr_mth==2 || $curr_mth==3){
-        //     $fee = $plantier->pt_fee;
-        // } else if($curr_mth==4 || $curr_mth==5 || $curr_mth==6){
-        //     $fee = round(0.75*$plantier->pt_fee);
-        // } else if($curr_mth==7 || $curr_mth==8 || $curr_mth==9){
-        //     $fee = round(0.5*$plantier->pt_fee);
-        // } else if($curr_mth==10 || $curr_mth==11){
-        //     $fee = round(0.25*$plantier->pt_fee);
-        // } else {
-        //     $fee = 0;
-        // }
 
         $fee = $plan->plan_yearly_fee;
 
@@ -1595,6 +1576,17 @@ class RegisterController extends Controller
             // $newFileName = Str::limit($indfile['filename'], $filenameLimit - ( strlen(date('YmdHis')) + strlen($extension) ) - 1) . '.' . $extension;
             $newFileName = Str::limit($indfile['filename'], ($filenameLimit - 39)) . '-' . date('YmdHis') . '.' . $extension;
             $newPath = $path . $newFileName;
+
+            $admin_url = config('app.backendurl')."api/doc-upload";
+            $response = Http::attach(
+                'document', file_get_contents($file), $newFileName
+            )->withOptions(['verify' => false])->post($admin_url, ['image_secret' => config('app.image_secret')]);
+
+            if ($response->successful()) {
+                return $newPath;
+            } else {
+                return "1003";
+            }
 
             try {
                 $file->storeAs($path, $newFileName, 'public'); // Store in the public disk

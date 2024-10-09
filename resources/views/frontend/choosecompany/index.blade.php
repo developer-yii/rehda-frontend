@@ -4,25 +4,36 @@
 
 @section('auth-css')
     <link href="{{ asset('frontend/css/pages/choosecompany.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/pages/membership.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 
 @section('content')
 
+    <div class="lopgBox">
+        <a href="">
+        <img src="{{ asset('assets/img/rehda-logo.svg') }}" alt="">
+        </a>
+    </div>
     <div class="container mb-4">
-        <div class="card mt-5">
-            <div class="card-header border-bottom d-flex justify-content-between">
-                <h5 class="card-title mb-3">Rehda Member Portal</h5>
+        <div class="card">
+            <div class="card-header border-bottom d-flex justify-content-center">
+                <h3 class="card-title mb-3">Select Account</h3>
             </div>
 
             <div class="choose-company-section section-padding mb-5">
                 <!-- <div class="container"> -->
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                         <h2 class="text-center mb-4 mt-0 mt-md-4">Select Account</h2>
-                    </div>
+                    </div> -->
 
-                    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
+                    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 mt-4">
+                        @error('chooseCompany')
+                            <div class="alert alert-danger mb-4">
+                                <i class="icon_error-circle_alt"></i>{{ $message }}
+                            </div>
+                        @enderror
                         <form name="saveaccount" id="saveaccount" method="POST" action="{{ route('saveaccount') }}">
                             @csrf
 

@@ -155,11 +155,6 @@ class InvoiceController extends Controller
         }
     }
 
-    public function invoicePaymentsubmit(Request $request)
-    {
-        dd($request);
-    }
-
     public function invoicePaymentreturn(Request $request)
     {
         if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )

@@ -37,6 +37,12 @@ class ChooseCompanyController extends Controller
 
     public function saveAccount(Request $request)
     {
+        $request->validate([
+            'chooseCompany' => 'required'
+        ],[
+            'chooseCompany' => 'Please Select Your Company.',
+        ]);
+
         session(['compid' => $request->chooseCompany]);
 
         return redirect(route('bulletin.index'));

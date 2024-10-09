@@ -127,3 +127,8 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+.passwordspan{
+  border-top-right-radius: var(--bs-border-radius) !important;
+  border-bottom-right-radius: var(--bs-border-radius) !important;
+}

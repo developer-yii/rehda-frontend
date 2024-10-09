@@ -1,31 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
-@section('title', 'Invoice/Receipt/Payment')
+@section('title', 'Payment Fail')
 
-@section('css')
+@section('auth-css')
 <link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
+<link href="{{ asset('frontend/css/pages/membership.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
 
-<div class="container-xxl flex-grow-1 container-p-y">
-    <div class="d-flex justify-content-end">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
-                </li>
-
-                <li class="breadcrumb-item active">Invoice/Receipt/Payment</li>
-
-            </ol>
-        </nav>
-    </div>
-
+<div class="lopgBox">
+    <a href="">
+        <img src="{{ asset('assets/img/rehda-logo.svg') }}" alt="">
+    </a>
+</div>
+<div class="container mb-4">
     <div class="card">
         <div class="card-header border-bottom d-flex justify-content-between">
-            <h5 class="card-title mb-3">Invoice/Receipt/Payment</h5>
+            <h3 class="card-title mb-3">Rehda Member Portal</h3>
         </div>
 
         <div class="card-body pt-3">
