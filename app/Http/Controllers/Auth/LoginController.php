@@ -85,6 +85,7 @@ class LoginController extends Controller
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
 
         if ($user && $ml_priv == $user->ml_priv) {
+            $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {
                 // Old password verification using sha512 + salt
