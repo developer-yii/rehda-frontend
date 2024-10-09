@@ -103,25 +103,26 @@
 
                             <div class="row pt-4">
 
-                                @if(count($newslettersData) == 0)
                                 <h2>Newsletter {{$year[$firstKey]->bu_yr}}</h2>
+                                @if(count($newslettersData) == 0)
                                 <p>Stay tune for more content...</p>
                                 @else
                                 @foreach($newslettersData as $data)
 
-                                    <div class="bulletin-desc">
-                                        <div class="bg-image" style="background-image: url('{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_img_cover) }}'"></div>
+                                    <div class="col-md-6 col-lg-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body card-body-box">
+                                                <center>
+                                                <img class="img-fluid d-flex mb-3 rounded bulletinimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_img_cover) }}">
 
-                                        <h4>{{ $data->bu_name }}</h4>
-                                        <h3>{{ $data->bu_yr }}</h3>
-                                        <ul>
-                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" target="_blank">
-                                                <li>View</li>
-                                            </a>
-                                            <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" download>
-                                                <li>Download</li>
-                                            </a>
-                                        </ul>
+                                                <h5>{{ strtoupper($data->bu_name) }}</h5>
+                                                <h4 class="fw-bolder">{{ $data->bu_yr }}</h4>
+
+                                                <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
+                                                <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->bu_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>
+                                                </center>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 @endforeach

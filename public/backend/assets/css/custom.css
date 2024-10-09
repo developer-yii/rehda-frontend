@@ -104,3 +104,6 @@ table.dataTable thead tr {
 .box-others h4{
     font-size: 30px;
 }
+.displaytext-vertical{
+    vertical-align: top;
+}

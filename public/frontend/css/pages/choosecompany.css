@@ -14,3 +14,26 @@
 #downButton {
     bottom: 20px;
 }
+
+form .error:not(li):not(input) {
+    font-size: large;
+}
+
+.leftside {
+    /* padding: 3rem 8px; */
+    padding: 20px 40px;
+    border-right: 1px solid black;
+}
+
+.leftside ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.leftside ul button {
+    text-align: left !important;
+}
+
+.register-box h4 {
+    text-transform: uppercase;
+}

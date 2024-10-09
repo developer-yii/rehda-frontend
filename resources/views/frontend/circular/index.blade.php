@@ -31,7 +31,7 @@
             @if(count($circulers) == 0)
             <p class="mt-3 mb-0">Stay tune for more content...</p>
             @else
-            <div class="accordion accordion-flush accordion-arrow-left" id="accordionYearParent">
+            <div class="accordion accordion-flush accordion-arrow-left mt-4" id="accordionYearParent">
 
                 @php
 
@@ -65,16 +65,16 @@
                                 </span>
                             </a>
                         </div>
-                        <div id="target{{$year[$firstKey]->ar_id}}" class="accordion-collapse collapse {{ $count < 2 ? 'show' : '' }}" data-bs-parent="#accordionYearParent">
+                        <div id="target{{$year[$firstKey]->ar_id}}" class="p-3 accordion-collapse collapse {{ $count < 2 ? 'show' : '' }}" data-bs-parent="#accordionYearParent">
 
                             <!-- <div class="row pt-4"> -->
-                                <table class="mt-3">
-                                    <!-- <thead>
+                                <table class="mt-3 table dataTable border">
+                                    <thead>
                                         <tr>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
-                                    </thead> -->
+                                    </thead>
                                     <tbody>
                                     @foreach($year as $key => $data)
                                     <tr>
@@ -84,11 +84,11 @@
                                                 <p>{{ $data->ar_yr }}</p>
                                             </div>
                                         </td>
-                                        <td width="20%">
+                                        <td width="20%" class="displaytext-vertical">
                                             <div>
-                                                <ul>
-                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank"><li>View</li></a>
-                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank" download><li>Download</li></a>
+                                                <ul class="ps-0">
+                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1"><li class="list-unstyled">View</li></a>
+                                                    <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$data->ar_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect me-2 mb-1"><li class="list-unstyled">Download</li></a>
                                                 </ul>
                                             </div>
                                         </td>

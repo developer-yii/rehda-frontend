@@ -56,6 +56,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
     'backendurl' => env('BACKEND_URL', 'http://rehda.test/'),
+    'image_secret' => env('IMAGE_SECRET'),
 
     'asset_url' => env('ASSET_URL', '/'),
 
