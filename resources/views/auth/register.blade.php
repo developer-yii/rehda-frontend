@@ -9,7 +9,7 @@
 
 
 <div class="lopgBox">
-    <a href="">
+    <a href="{{ route('login') }}">
         <img src="{{ asset('assets/img/rehda-logo.svg') }}" alt="">
     </a>
 </div>
@@ -639,7 +639,7 @@
                                     </div>
 
                                     <div class="pt-4">
-                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="ordinary-btn">Update</button>
                                     </div>
 
                                 </form>
@@ -936,7 +936,7 @@
                                     </div>
 
                                     <div class="pt-4">
-                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="subsidiary-btn">Update</button>
                                     </div>
 
                                 </form>
@@ -1347,7 +1347,7 @@
                                     </div>
 
                                     <div class="pt-4">
-                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="affiliate-btn">Update</button>
                                     </div>
 
                                 </form>
@@ -1762,7 +1762,7 @@
                                     </div>
 
                                     <div class="pt-4">
-                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="associate-btn">Update</button>
                                     </div>
 
                                 </form>
@@ -1953,8 +1953,8 @@
                                                         <input class="form-control form-control-lg" type="email" id="rehdaYouthOfficial1SecretartEmail" name="rehdaYouthOfficial1SecretartEmail" value="{{ old('rehdaYouthOfficial1SecretartEmail') }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-12">
-                                                        <label for="rehdarehdaYouthouthOfficial1SecretartContact" class="form-label form-label-lg">Secretary Contact No.</label>
-                                                        <input class="form-control form-control-lg" type="number" id="rehdarehdaYouthouthOfficial1SecretartContact" name="rehdarehdaYouthouthOfficial1SecretartContact" value="{{ old('rehdarehdaYouthouthOfficial1SecretartContact') }}" />
+                                                        <label for="rehdaYouthOfficial1SecretartContact" class="form-label form-label-lg">Secretary Contact No.</label>
+                                                        <input class="form-control form-control-lg" type="number" id="rehdaYouthOfficial1SecretartContact" name="rehdaYouthOfficial1SecretartContact" value="{{ old('rehdaYouthOfficial1SecretartContact') }}" />
                                                     </div>
 
                                                 </div>
@@ -1963,7 +1963,7 @@
                                     </div>
 
                                     <div class="pt-4">
-                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="rehdayouth-btn">Update</button>
                                     </div>
 
                                 </form>
@@ -2081,6 +2081,7 @@
             submitHandler: function(form) {
 
                 var formData = new FormData(form);
+                $("#ordinary-btn").prop('disabled', true);
 
                 $('.error-message').remove();
                 // Clear any existing error messages
@@ -2103,11 +2104,14 @@
                             $('input[type="radio"]').prop('checked', false);
                             $('select').prop('selectedIndex', 0);
                             toastr.success(response.message, 'Success');
+                            $("#ordinary-btn").prop('disabled', false);
                         } else {
                             toastr.error(response.message, 'Error');
+                            $("#ordinary-btn").prop('disabled', false);
                         }
                     },
                     error: function(xhr) {
+                        $("#ordinary-btn").prop('disabled', false);
                         var errors = xhr.responseJSON.errors;
 
                         // Flag to track if an accordion item has been opened
@@ -2216,6 +2220,7 @@
             submitHandler: function(form) {
 
                 var formData = new FormData(form);
+                $("#subsidiary-btn").prop('disabled', true);
 
                 $('.error-message').remove();
                 // Clear any existing error messages
@@ -2236,12 +2241,14 @@
                             $('input[type="radio"]').prop('checked', false);
                             $('select').prop('selectedIndex', 0);
                             toastr.success(response.message, 'Success');
+                            $("#subsidiary-btn").prop('disabled', false);
                         } else {
                             toastr.error(response.message, 'Error');
+                            $("#subsidiary-btn").prop('disabled', false);
                         }
                     },
                     error: function(xhr) {
-
+                        $("#subsidiary-btn").prop('disabled', false);
                         var errors = xhr.responseJSON.errors;
 
                         // Flag to track if an accordion item has been opened
@@ -2366,6 +2373,7 @@
             submitHandler: function(form) {
 
                 var formData = new FormData(form);
+                $("#affiliate-btn").prop('disabled', true);
 
                 $('.error-message').remove();
                 // Clear any existing error messages
@@ -2386,12 +2394,14 @@
                             $('input[type="radio"]').prop('checked', false);
                             $('select').prop('selectedIndex', 0);
                             toastr.success(response.message, 'Success');
+                            $("#affiliate-btn").prop('disabled', false);
                         } else {
                             toastr.error(response.message, 'Error');
+                            $("#affiliate-btn").prop('disabled', false);
                         }
                     },
                     error: function(xhr) {
-
+                        $("#affiliate-btn").prop('disabled', false);
                         var errors = xhr.responseJSON.errors;
 
                         // Flag to track if an accordion item has been opened
@@ -2573,6 +2583,7 @@
             submitHandler: function(form) {
 
                 var formData = new FormData(form);
+                $("#associate-btn").prop('disabled', true);
 
                 $('.error-message').remove();
                 // Clear any existing error messages
@@ -2593,12 +2604,14 @@
                             $('input[type="radio"]').prop('checked', false);
                             $('select').prop('selectedIndex', 0);
                             toastr.success(response.message, 'Success');
+                            $("#associate-btn").prop('disabled', false);
                         } else {
                             toastr.error(response.message, 'Error');
+                            $("#associate-btn").prop('disabled', false);
                         }
                     },
                     error: function(xhr) {
-
+                        $("#associate-btn").prop('disabled', false);
                         var errors = xhr.responseJSON.errors;
 
                         // Flag to track if an accordion item has been opened
@@ -2695,6 +2708,7 @@
             submitHandler: function(form) {
 
                 var formData = new FormData(form);
+                $("#rehdayouth-btn").prop('disabled', true);
 
                 $('.error-message').remove();
                 // Clear any existing error messages
@@ -2715,12 +2729,14 @@
                             $('input[type="radio"]').prop('checked', false);
                             $('select').prop('selectedIndex', 0);
                             toastr.success(response.message, 'Success');
+                            $("#rehdayouth-btn").prop('disabled', false);
                         } else {
                             toastr.error(response.message, 'Error');
+                            $("#rehdayouth-btn").prop('disabled', false);
                         }
                     },
                     error: function(xhr) {
-
+                        $("#rehdayouth-btn").prop('disabled', false);
                         var errors = xhr.responseJSON.errors;
 
                         // Flag to track if an accordion item has been opened

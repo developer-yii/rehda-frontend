@@ -24,6 +24,7 @@ $(document).ready(function () {
           resetNor1MyKad: "Please Insert A Valid My Kad Number"
         },
         submitHandler: function(form) {
+            $("#submit1").prop('disabled', true);
             var resetNor1Name = $('#resetNor1Name').val().trim();
             var resetNor1MyKad = $('#resetNor1MyKad').val().trim();
             var resetNor1Id = $('#resetNor1Id').val().trim();
@@ -44,8 +45,10 @@ $(document).ready(function () {
                             $("#resetNor1Name").val('');
                             $("#resetNor1MyKad").val('');
                             $("#chgreq1-msg").html('');
+                            $("#submit1").prop('disabled', false);
                         }, 1000);
                     } else {
+                        $("#submit1").prop('disabled', false);
                         $("#chgreq1-msg").html('<div class="alert-danger"><i class="fa fa-close"> Failed to submit! Please contact administrator.</div>');
                     }
                 }
@@ -69,6 +72,7 @@ $(document).ready(function () {
           resetNor2MyKad: "Please Insert A Valid My Kad Number"
         },
         submitHandler: function(form) {
+            $("#submit2").prop('disabled', true);
             var resetNor2Name = $('#resetNor2Name').val().trim();
             var resetNor2MyKad = $('#resetNor2MyKad').val().trim();
             var resetNor2Id = $('#resetNor2Id').val().trim();
@@ -89,8 +93,10 @@ $(document).ready(function () {
                             $("#resetNor2Name").val('');
                             $("#resetNor2MyKad").val('');
                             $("#chgreq2-msg").html('');
+                            $("#submit2").prop('disabled', false);
                         }, 1000);
                     } else {
+                        $("#submit2").prop('disabled', false);
                         $("#chgreq2-msg").html('<div class="alert-danger"><i class="fa fa-close"> Failed to submit! Please contact administrator.</div>');
                     }
                 }
@@ -99,3 +105,9 @@ $(document).ready(function () {
     });
 
 });
+
+function disableSubmitButton(form) {
+    // Disable the submit button
+    const submitButton = form.querySelector("#submitBtn");
+    submitButton.disabled = true;
+}

@@ -11,7 +11,7 @@
 @section('content')
 
     <div class="lopgBox">
-        <a href="">
+        <a href="{{ route('login') }}">
            <img src="{{ asset('assets/img/rehda-logo.svg') }}" alt="">
         </a>
     </div>
@@ -30,7 +30,7 @@
                                 <p class="commonPtext">One can apply to become a member via REHDA Branch or Headquarters by filling in the Membership Application form.</p>
                                 <p class="commonPtext">Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
                                 <p class="commonPtext">The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the President will be issued to the successful applicants.</p>
-                                <a class="commonBtn" href="javascript:void(0)">Membership Application</a>
+                                <a class="commonBtn" href="{{ route('register') }}">Membership Application</a>
                             </div>
 
                             <div class="typeOfmember">
@@ -43,7 +43,7 @@
                                         <li>
                                             <p class="commonPtext">Any person, company, firm or corporation who carries on the business of housing and property development and undertakes such development within 5 years of membership entry.</p>
                                         </li>
-                        
+
                                         <li>
                                             <p class="commonPtext">A member shall belong to the branch of the Association in which it has principal housing project.</p>
                                         </li>
@@ -56,7 +56,7 @@
                                         <li>
                                             <p class="commonPtext">An ordinary member who is a company, firm, or corporation who has subsidiaries or related companies, wishing to join the Association as subsidiary or related members.</p>
                                         </li>
-                        
+
                                         <li>
                                             <p class="commonPtext">A subsidiary or related member shall not be entitled to vote or hold office.</p>
                                         </li>
@@ -87,7 +87,7 @@
                                         <li>
                                             <p class="commonPtext">An executive employee of ordinary members, under the age of forty years, is eligible for REHDA Youth membership.</p>
                                         </li>
-                        
+
                                         <li>
                                             <p class="commonPtext">The REHDA Youth membership is limited to a maximum of two eligible employees for each ordinary member.</p>
                                         </li>
@@ -99,7 +99,7 @@
                             <div class="benefitBox">
                                 <h3 class="mainTitle">member-benefit</h3>
                                 <p class="commonPtext">REHDA members get the very best information, advocacy, education and networking opportunities for their Membership! When you join the Association as a member, you automatically become a full member at the Branch level. This will benefit you in terms of your dealing with local issues and practices, as well as in federal controlled matters. REHDA offers plenty of resources to help each member make the most of this investment and connect with the benefits they value most.</p>
-                                <a class="commonBtn" href="javascript:void(0)">Membership Application</a>
+                                <a class="commonBtn" href="{{ route('register') }}">Membership Application</a>
                                 <p class="commonPtext">By becoming a member you will enjoy the following benefits:-</p>
                                 <ul>
                                     <li>
@@ -151,7 +151,7 @@
                                         <th colspan="2">Yearly Subscription Fee</th>
                                         </tr>
                                     </thead>
-                    
+
                                     <tbody>
                                         <tr>
                                         <td rowspan="5">Ordinary</td>

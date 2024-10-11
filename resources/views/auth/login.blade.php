@@ -30,108 +30,104 @@
                 @endif
                 <!-- /Logo -->
 
-                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                <!-- <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link {{ session('form') == 'membership' || (!session('form') && !old('form_type')) || old('form_type') == 'membership' ? 'active' : '' }}" id="membership-tab" data-bs-toggle="tab" href="#membership" role="tab" aria-controls="membership" aria-selected="true">Member's Admin Login</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link {{ session('form') == 'representative' || old('form_type') == 'representative' ? 'active' : '' }}" id="representative-tab" data-bs-toggle="tab" href="#representative" role="tab" aria-controls="representative" aria-selected="false">Representative Login</a>
                     </li>
-                </ul>
+                </ul> -->
 
-                <div class="tab-content pt-4 pb-0 ps-0 pe-0" id="myTabContent">
-                    <div class="tab-pane fade {{ session('form') == 'membership' || (!session('form') && !old('form_type')) || old('form_type') == 'membership' ? 'show active' : '' }}" id="membership" role="tabpanel" aria-labelledby="membership-tab">
-                        <div id="login-msg-m" class="clearfix"></div>
-                            <form name="membership-no-login" action="{{ route('login') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="form_type" value="membership">
-                                <div class="mb-3">
-                                    <label for="membership" class="form-label required_label">Membership No.</label>
-                                    <input type="text" class="form-control  @if(session('form') == 'membership') @error('username') is-invalid @enderror @endif" name="username" id="username" value="{{ (session('form') == 'membership') ? old('username') : '' }}">
-                                    @if(session('form') == 'membership')
-                                        @error('username')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                <!-- <div class="tab-content pt-4 pb-0 ps-0 pe-0" id="myTabContent"> -->
+                    <!-- <div class="tab-pane fade {{ session('form') == 'membership' || (!session('form') && !old('form_type')) || old('form_type') == 'membership' ? 'show active' : '' }}" id="membership" role="tabpanel" aria-labelledby="membership-tab"> -->
+                        <!-- <div id="login-msg-m" class="clearfix"></div> -->
+                        <form name="membership-no-login" action="{{ route('login') }}" method="POST" onsubmit="disableSubmitButton(this)">
+                            @csrf
+                            <input type="hidden" name="form_type" id="form_type" value="membership">
+                            <div class="mb-3">
+                                <label for="username" class="form-label required_label" id="label-username">Membership No.</label>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror " name="username" id="username" value="{{ old('username') }}">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label required_label" for="password">{{ __('translation.label_password') }}</label>
+                                    @if (Route::has('password.request'))
+                                        <a href="javascript:void(0);" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                            <small>Forgot Password?</small>
+                                        </a>
                                     @endif
                                 </div>
-
-                                <div class="mb-3 form-password-toggle">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label required_label" for="password">{{ __('translation.label_password') }}</label>
-                                        @if (Route::has('password.request'))
-                                            <a href="javascript:void(0);" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal">
-                                                <small>Forgot Password?</small>
-                                            </a>
-                                        @endif
-                                    </div>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control @if(session('form') == 'membership') @error('password') is-invalid @enderror @endif" name="password"
-                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                            aria-describedby="password" />
-                                        <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
-                                        @if(session('form') == 'membership')
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        @endif
-                                    </div>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control @error('password') is-invalid @enderror " name="password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password" />
+                                    <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
+                            </div>
 
-                                <div class="submit form-text">
-                                    <button type="submit" name="membership-submit" id="membership-submit" class="btn btn-primary d-grid w-100">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                    <div class="tab-pane fade {{ session('form') == 'representative' || old('form_type') == 'representative' ? 'show active' : '' }}" id="representative" role="tabpanel" aria-labelledby="representative-tab">
+                            <div class="submit form-text">
+                                <button type="submit" name="membership-submit" id="membership-submit" class="btn btn-primary d-grid w-100">Login</button>
+                            </div>
+                        </form>
+                    <!-- </div> -->
+                    <!-- <div class="tab-pane fade {{ session('form') == 'representative' || old('form_type') == 'representative' ? 'show active' : '' }}" id="representative" role="tabpanel" aria-labelledby="representative-tab">
                         <div id="login-msg" class="clearfix"></div>
-                            <form name="mykad-login" method="POST" action="{{ route('login') }}">
-                                @csrf
-                                <input type="hidden" name="form_type" value="representative">
-                                <div class="mb-3">
-                                    <label for="mykad" class="form-label required_label">MyKad No.</label>
-                                    <input type="text" class="form-control @if(session('form') == 'representative') @error('username') is-invalid @enderror @endif" name="username" id="mykadUn" value="{{ (session('form') == 'representative') ? old('username') : '' }}">
+                        <form name="mykad-login" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <input type="hidden" name="form_type" value="representative">
+                            <div class="mb-3">
+                                <label for="mykad" class="form-label required_label">MyKad No.</label>
+                                <input type="text" class="form-control @if(session('form') == 'representative') @error('username') is-invalid @enderror @endif" name="username" id="mykadUn" value="{{ (session('form') == 'representative') ? old('username') : '' }}">
+                                @if(session('form') == 'representative')
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                @endif
+                            </div>
+
+                            <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label required_label" for="mykadLogin">{{ __('translation.label_password') }}</label>
+                                    @if (Route::has('password.request'))
+                                        <a href="javascript:void(0);" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal1">
+                                            <small>Forgot Password?</small>
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="mykadLogin" class="form-control @if(session('form') == 'representative') @error('password') is-invalid @enderror @endif" name="password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password" />
+                                    <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
                                     @if(session('form') == 'representative')
-                                        @error('username')
+                                        @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     @endif
                                 </div>
+                            </div>
 
-                                <div class="mb-3 form-password-toggle">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label required_label" for="mykadLogin">{{ __('translation.label_password') }}</label>
-                                        @if (Route::has('password.request'))
-                                            <a href="javascript:void(0);" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#basicModal1">
-                                                <small>Forgot Password?</small>
-                                            </a>
-                                        @endif
-                                    </div>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="mykadLogin" class="form-control @if(session('form') == 'representative') @error('password') is-invalid @enderror @endif" name="password"
-                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                            aria-describedby="password" />
-                                        <span class="input-group-text cursor-pointer passwordspan"><i class="ti ti-eye-off"></i></span>
-                                        @if(session('form') == 'representative')
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="submit form-text">
-                                    <button type="submit" name="mykad-submit" id="mykad-submit" class="btn btn-primary d-grid w-100">Login</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="submit form-text">
+                                <button type="submit" name="mykad-submit" id="mykad-submit" class="btn btn-primary d-grid w-100">Login</button>
+                            </div>
+                        </form>
+                    </div> -->
                     <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-3">
                         <div class="title">
                             <a href="{{ route('register') }}" class="btn btn-primary d-grid w-100">New Member Registration</a>
@@ -260,8 +256,8 @@
                 <p>Please follow the step below.</p>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="membershipno" class="form-label">Membership Number: <small>(Company Admin)</small></label>
-                        <input type="text" name="membershipno" id="membershipno" class="form-control" placeholder="Enter Membership Number" />
+                        <label for="membershipno" class="form-label" id="label-username-forgotpass">Membership Number: <small>(Company Admin)</small></label>
+                        <input type="text" name="membershipno" id="membershipno" class="form-control" placeholder="Enter Number" />
                     </div>
                 </div>
                 <div class="row">
@@ -275,7 +271,7 @@
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
                     Close
                 </button>
-                <button type="submit" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary" id="btn-resetpass">Reset</button>
             </div>
             <div id="forgotpwdmmno-msg" style="padding-top:10px;"></div>
             </form>

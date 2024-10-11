@@ -31,7 +31,7 @@
         <div class="card-body">
         @if(isset($memberComp) && $memberComp)
             @if($memberComp->member->m_type != 6)
-            <form method="POST" action="{{ route('companyinfo.update') }}">
+            <form method="POST" action="{{ route('companyinfo.update') }}" onsubmit="disableSubmitButton(this)">
             @csrf
             @endif
                 <div class="row mt-3">
@@ -164,7 +164,7 @@
                 </div>
                 @if($memberComp->member->m_type != 6)
                 <div class="mt-2">
-                    <button type="submit" class="btn btn-lg btn-primary me-2">Update</button>
+                    <button type="submit" class="btn btn-lg btn-primary me-2" id="submitBtn">Update</button>
                 </div>
             </form>
                 @endif
@@ -174,3 +174,11 @@
 
 </div>
 @endsection
+
+<script>
+    function disableSubmitButton(form) {
+        // Disable the submit button
+        const submitButton = form.querySelector("#submitBtn");
+        submitButton.disabled = true;
+    }
+</script>
