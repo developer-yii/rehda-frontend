@@ -29,7 +29,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('userprofile.updatemember') }}">
+            <form method="POST" action="{{ route('userprofile.updatemember') }}" onsubmit="disableSubmitButton(this)">
                 @csrf
                 <!-- <div class="row mt-3">
                     <div class="mb-3 col-md-12">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
                 <div class="pt-4">
-                    <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                    <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="submitBtn">Update</button>
                 </div>
             </form>
         </div>
@@ -242,5 +242,11 @@
         } else {
             passInput.style.display = "none";
         }
+    }
+
+    function disableSubmitButton(form) {
+        // Disable the submit button
+        const submitButton = form.querySelector("#submitBtn");
+        submitButton.disabled = true;
     }
 </script>

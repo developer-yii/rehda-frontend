@@ -1,9 +1,63 @@
 $(document).ready(function () {
 
+    function updateLabelUsername(username) {
+
+        var firstChar = username.charAt(0);
+
+        if (firstChar.match(/[a-zA-Z]/)) {
+            $('#label-username').text('Membership No.');
+            $("#form_type").val('membership');
+        } else if (firstChar.match(/[0-9]/)) {
+            $('#label-username').text('MyKad No.');
+            $("#form_type").val('representative');
+        } else {
+            $('#label-username').text('Membership No.');
+            $("#form_type").val('membership');
+        }
+    }
+
+    var oldUsername = $('#username').val();
+    if (oldUsername) {
+        updateLabelUsername(oldUsername);
+    }
+
+    $('#username').on('input', function() {
+        var username = $(this).val();
+        updateLabelUsername(username);
+    });
+
+    function updateForgotpassLabelUsername(username) {
+
+        var firstChar = username.charAt(0);
+
+        if (firstChar.match(/[a-zA-Z]/)) {
+            $('#label-username-forgotpass').html('Membership Number: <small>(Company Admin)</small>');
+            $("#form_type_reset").val('membership');
+        } else if (firstChar.match(/[0-9]/)) {
+            $('#label-username-forgotpass').html('MyKad No.: <small>(Official Representative)');
+            $("#form_type_reset").val('representative');
+        } else {
+            $('#label-username-forgotpass').html('Membership Number: <small>(Company Admin)</small>');
+            $("#form_type_reset").val('membership');
+        }
+    }
+
+    var oldUsernameForgotpass = $('#membershipno').val();
+    if (oldUsernameForgotpass) {
+        updateForgotpassLabelUsername(oldUsernameForgotpass);
+    }
+
+    $('#membershipno').on('input', function() {
+        var username = $(this).val();
+        updateForgotpassLabelUsername(username);
+    });
+
+
     $(document).on("submit", "#reset-password-companyadmin", function(e){
 
         $("#forgotpwdmmno-msg").html('');
         e.preventDefault();
+        $("#btn-resetpass").prop('disabled', true);
 
         $.ajax({
             type: 'POST',
@@ -18,12 +72,18 @@ $(document).ready(function () {
                         '</div>');
                     setTimeout(() => {
                         $('#basicModal').modal('hide');
+                        $('.text-danger').remove();
+                        $("#forgotpwdmmno-msg").html('');
+                        $("#btn-resetpass").prop('disabled', false);
                     }, 1000);
 
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 400 || xhr.status === 422) {  // Laravel validation error
+
+                    $("#btn-resetpass").prop('disabled', false);
+
                     var errors = xhr.responseJSON.errors;
                     // Clear previous error messages
                     $('.text-danger').remove();
@@ -103,3 +163,9 @@ $(document).ready(function () {
     });
 
 });
+
+function disableSubmitButton(form) {
+    // Disable the submit button
+    const submitButton = form.querySelector("#submitBtn");
+    submitButton.disabled = true;
+}

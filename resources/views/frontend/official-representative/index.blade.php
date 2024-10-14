@@ -30,7 +30,7 @@
 
         <div class="card-body pt-4">
             <div class="accordion accordion-flush accordion-arrow-left" id="accordionYearParent">
-                <form method="POST" action="{{ route('official-representative.update') }}">
+                <form method="POST" action="{{ route('official-representative.update') }}" onsubmit="disableSubmitButton(this)">
                     @csrf
                     @php
                     $i = 1;
@@ -406,7 +406,7 @@
                     @endforeach
 
                     <div class="pt-4">
-                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                        <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="submitBtn">Update</button>
                     </div>
                 </form>
             </div>
@@ -438,7 +438,7 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor1MyKad" name="resetNor1MyKad" value="" />
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light" id="submit1">Submit</button>
                         <button type="reset" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                     </div>
                     <div id="chgreq1-msg" style="padding-top:10px;"></div>
@@ -472,7 +472,7 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor2MyKad" name="resetNor2MyKad" value="" />
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light" id="submit2">Submit</button>
                         <button type="reset" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                     </div>
                     <div id="chgreq2-msg" style="padding-top:10px;"></div>

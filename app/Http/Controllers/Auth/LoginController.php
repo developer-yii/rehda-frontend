@@ -85,6 +85,7 @@ class LoginController extends Controller
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
 
         if ($user && $ml_priv == $user->ml_priv) {
+        // if ($user) {
             $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {
@@ -155,7 +156,11 @@ class LoginController extends Controller
         $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->first();
 
         if(!$checkUser){
-            return response()->json(['status' => 'error', 'message' => 'User not found with the provided email and username.'], 400);
+            return response()->json([
+                'errors' => [
+                    'membershipno' => ["User not found with the provided number and email."],
+                ],
+            ], 422);
         }
 
         // Generate the password reset token
