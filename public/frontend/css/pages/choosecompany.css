@@ -37,3 +37,9 @@ form .error:not(li):not(input) {
 .register-box h4 {
     text-transform: uppercase;
 }
+
+
+
+.bs-stepper-header .step:hover{
+    cursor: pointer;
+}

@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="lopgBox">
-    <a href="">
+    <a href="{{ route('dashboard') }}">
         <img src="{{ asset('assets/img/rehda-logo.svg') }}" alt="">
     </a>
 </div>
