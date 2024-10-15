@@ -11,7 +11,7 @@ $(document).ready(function () {
             $('#label-username').text('MyKad No.');
             $("#form_type").val('representative');
         } else {
-            $('#label-username').text('Membership No.');
+            $('#label-username').text('Membership No. / MyKad No.');
             $("#form_type").val('membership');
         }
     }

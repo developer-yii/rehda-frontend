@@ -46,7 +46,7 @@
                             @csrf
                             <input type="hidden" name="form_type" id="form_type" value="membership">
                             <div class="mb-3">
-                                <label for="username" class="form-label required_label" id="label-username">Membership No.</label>
+                                <label for="username" class="form-label required_label" id="label-username">Membership No. / MyKad No.</label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror " name="username" id="username" value="{{ old('username') }}">
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
