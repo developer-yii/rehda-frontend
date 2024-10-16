@@ -37,7 +37,7 @@ $(document).ready(function () {
             $('#label-username-forgotpass').html('MyKad No.: <small>(Official Representative)');
             $("#form_type_reset").val('representative');
         } else {
-            $('#label-username-forgotpass').html('Membership Number: <small>(Company Admin)</small>');
+            $('#label-username-forgotpass').html('Membership Number / MyKad No.');
             $("#form_type_reset").val('membership');
         }
     }

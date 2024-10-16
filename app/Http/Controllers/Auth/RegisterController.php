@@ -66,7 +66,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $branches = Branch::orderBy('bname','ASC')->get();
-        $states = State::orderBy('state_name', 'ASC')->get();
+        $states = State::where('state_name','!=','Singapore')->orderBy('state_name', 'ASC')->get();
         $countries = Country::orderBy('country_id', 'ASC')->get();
         $paidups = PlanTier::orderBy('pt_id', 'ASC')->get();
         $titles = Salutation::orderBy('sname', 'ASC')->get();
@@ -1597,5 +1597,10 @@ class RegisterController extends Controller
         }
 
         return null;
+    }
+
+    public function registerSuccess()
+    {
+        return view("auth.register-success");
     }
 }
