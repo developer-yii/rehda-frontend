@@ -496,7 +496,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input ordinaryGender" type="radio" name="ordinaryGender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('ordinaryGender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -610,7 +610,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="ordinaryOfficial2Gender" id="ordinaryOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('ordinaryOfficial2Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="ordinaryOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="ordinaryOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -886,7 +886,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="subsidiaryOfficial1Gender" id="subsidiaryOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('subsidiaryOfficial1Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="subsidiaryOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="subsidiaryOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -1162,7 +1162,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input affiliateOfficial1Gender" type="radio" name="affiliateOfficial1Gender" id="{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial1Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -1276,7 +1276,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="affiliateOfficial2Gender" id="affiliateOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('affiliateOfficial2Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="affiliateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="affiliateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -1378,11 +1378,11 @@
                                 <br>
                                 <div class="form-check-inline">
                                     <input class="form-check-input associateAccType" type="radio" name="associateAccType" id="associateAccType1" value="1" checked>
-                                    <label class="form-check-label" for="associateAccType1">Company</label>
+                                    <label class="form-check-label form-label-lg" for="associateAccType1">Company</label>
                                 </div>
                                 <div class="form-check-inline">
                                     <input class="form-check-input associateAccType" type="radio" name="associateAccType" id="associateAccType2" value="2">
-                                    <label class="form-check-label" for="associateAccType2">Company</label>
+                                    <label class="form-check-label form-label-lg" for="associateAccType2">Individual</label>
                                 </div>
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1554,7 +1554,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input associateOfficial1Gender" type="radio" name="associateOfficial1Gender" id="associateOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial1Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="associateOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="associateOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -1668,7 +1668,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="associateOfficial2Gender" id="associateOfficial2Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('associateOfficial2Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="associateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="associateOfficial2Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -1852,7 +1852,7 @@
                                 @foreach($genders as $gender)
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="rehdaYouthOfficial1Gender" id="rehdaYouthOfficial1Gender{{ $gender->gid }}" value="{{ $gender->gid }}" {{ $gender->gid == old('rehdaYouthOfficial1Gender') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="rehdaYouthOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
+                                    <label class="form-check-label form-label-lg" for="rehdaYouthOfficial1Gender{{ $gender->gid }}">{{ $gender->gname }}</label>
                                 </div>
                                 @endforeach
                             </div>
