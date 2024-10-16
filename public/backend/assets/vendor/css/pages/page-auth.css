@@ -112,3 +112,8 @@
 .dark-style .auth-cover-bg-color {
   background-color: #25293c;
 }
+
+#loginlogo{
+  height: auto !important;
+  max-width: 100% !important;
+}

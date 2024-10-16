@@ -43,3 +43,7 @@ form .error:not(li):not(input) {
 .bs-stepper-header .step:hover{
     cursor: pointer;
 }
+
+.required-badge{
+    margin-left: 1.2rem;
+}

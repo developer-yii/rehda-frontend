@@ -70,6 +70,7 @@ Route::post('subsidiary-register', [RegisterController::class, 'subsidiaryRegist
 Route::post('affiliate-register', [RegisterController::class, 'affiliateRegister'])->name('affiliate.register');
 Route::post('associate-register', [RegisterController::class, 'associateRegister'])->name('associate.register');
 Route::post('rehdayouth-register', [RegisterController::class, 'rehdayouthRegister'])->name('rehdayouth.register');
+Route::get('register-success', [RegisterController::class, 'registerSuccess'])->name('register-success');
 
 
 Route::middleware('auth')->group(function () {

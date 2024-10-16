@@ -21,7 +21,7 @@
                 <div class="app-brand mb-4 justify-content-center">
                     <a href="{{ route('login') }}" class="app-brand-link gap-2">
                         <span class="app-brand-logo demo w-auto h-auto">
-                            <img src="{{ getLogoPath() }}" width="210" height="" />
+                            <img src="{{ getLogoPath() }}" width="210" id="loginlogo" />
                         </span>
                     </a>
                 </div>
@@ -256,7 +256,7 @@
                 <p>Please follow the step below.</p>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="membershipno" class="form-label" id="label-username-forgotpass">Membership Number: <small>(Company Admin)</small></label>
+                        <label for="membershipno" class="form-label" id="label-username-forgotpass">Membership Number / MyKad No.</label>
                         <input type="text" name="membershipno" id="membershipno" class="form-control" placeholder="Enter Number" />
                     </div>
                 </div>
