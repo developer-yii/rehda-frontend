@@ -267,9 +267,10 @@ Route::middleware('auth')->group(function () {
       Route::get('official-representative', [OfficialRepresentativeController::class, 'index'])->name('official-representative.index');
       Route::post('official-representative/update', [OfficialRepresentativeController::class, 'update'])->name('official-representative.update');
       Route::post('official-representative/new1', [OfficialRepresentativeController::class, 'new1'])->name('official-representative.new1');
+      Route::get('alternate-representative', [OfficialRepresentativeController::class, 'alternateIndex'])->name('alternate-representative.index');
       Route::get('/circular', [FrontendCircularcontroller::class, 'index'])->name('circular.index');
       Route::get('branch-newsletter', [BranchNewsletterController::class, 'index'])->name('branch-newsletter.index');
-      Route::get('branch-circular.index', [BranchCircularController::class, 'index'])->name('branch-circular.index');
+      Route::get('branch-circular', [BranchCircularController::class, 'index'])->name('branch-circular.index');
       Route::get('others', [OthersController::class, 'index'])->name('others.index');
 
 });

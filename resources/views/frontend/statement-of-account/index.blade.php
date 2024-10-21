@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Statement Of Account')
+@section('title', 'Statement of Account')
 
 @section('css')
 <link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
@@ -14,10 +14,10 @@
                 <ol class="breadcrumb">
 
                     <li class="breadcrumb-item">
-                        <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
+                        <a href="{{ route('choosecompant.index') }}">Back</a>
                     </li>
 
-                    <li class="breadcrumb-item active">Statement Of Account</li>
+                    <li class="breadcrumb-item active">Statement of Account</li>
 
                 </ol>
             </nav>
@@ -25,7 +25,7 @@
 
         <div class="card">
             <div class="card-header border-bottom d-flex justify-content-between">
-                <h5 class="card-title mb-3">Statement Of Account</h5>
+                <h5 class="card-title mb-3">Statement of Account</h5>
             </div>
             <div class="card-datatable table-responsive">
                 <table class="datatables-users table" id="stattemenrOfAccountTable">

@@ -67,7 +67,7 @@
                             @elseif(count($upMidList) == 1)
                                 @php
                                     session(['compid' => $upMidList[0]]);
-                                    header('Location: ' . route('dashboard'));
+                                    header('Location: ' . route('bulletin.index'));
                                     exit();
                                 @endphp
                             @endif

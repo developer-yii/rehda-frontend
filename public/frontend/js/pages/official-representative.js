@@ -12,10 +12,17 @@ $(document).ready(function () {
         rules: {
             resetNor1Name: "required",
             resetNor1MyKad: {
-                required: true,
+                required: function(element) {
+                    return $("#resetNor1MyKadSelect").val() == 1;
+                },
                 digits: true,
                 minlength:12,
                 maxlength:12
+            },
+            resetNor1Passportno: {
+                required: function(element) {
+                    return $("#resetNor1MyKadSelect").val() == 2;
+                },
             }
         },
 
@@ -27,10 +34,13 @@ $(document).ready(function () {
             $("#submit1").prop('disabled', true);
             var resetNor1Name = $('#resetNor1Name').val().trim();
             var resetNor1MyKad = $('#resetNor1MyKad').val().trim();
+            var resetNor1Passportno = $('#resetNor1Passportno').val().trim();
             var resetNor1Id = $('#resetNor1Id').val().trim();
+            var resetNor1contact = $("#resetNor1contact").val();
+            var resetNor1email = $("#resetNor1email").val();
             $("#chgreq1-msg").html('');
 
-            var passData = {resetNorName:resetNor1Name,resetNorMyKad:resetNor1MyKad,resetNorId:resetNor1Id};
+            var passData = {resetNorName:resetNor1Name,resetNorMyKad:resetNor1MyKad,resetNorId:resetNor1Id,resetNorPassportno:resetNor1Passportno,resetNorContact:resetNor1contact,resetNorEmail:resetNor1email};
             $.ajax({
                 type:'POST',
                 url:nor1url,
@@ -44,6 +54,9 @@ $(document).ready(function () {
                             $("#resetNor1").modal('hide');
                             $("#resetNor1Name").val('');
                             $("#resetNor1MyKad").val('');
+                            $("#resetNor1Passportno").val('');
+                            $("#resetNor1contact").val('');
+                            $("#resetNor1email").val('');
                             $("#chgreq1-msg").html('');
                             $("#submit1").prop('disabled', false);
                         }, 1000);
@@ -60,10 +73,17 @@ $(document).ready(function () {
         rules: {
             resetNor2Name: "required",
             resetNor2MyKad: {
-                required: true,
+                required: function(element) {
+                    return $("#resetNor2MyKadSelect").val() == 1;
+                },
                 digits: true,
                 minlength:12,
                 maxlength:12
+            },
+            resetNor2resetNor1Passportno: {
+                required: function(element) {
+                    return $("#resetNor2MyKadSelect").val() == 2;
+                },
             }
         },
 
@@ -75,10 +95,13 @@ $(document).ready(function () {
             $("#submit2").prop('disabled', true);
             var resetNor2Name = $('#resetNor2Name').val().trim();
             var resetNor2MyKad = $('#resetNor2MyKad').val().trim();
+            var resetNor2resetNor1Passportno = $("#resetNor2resetNor1Passportno").val().trim();
+            var resetNor2contact = $('#resetNor2contact').val();
+            var resetNor2email = $('#resetNor2email').val();
             var resetNor2Id = $('#resetNor2Id').val().trim();
             $("#chgreq2-msg").html('');
 
-            var passData = {resetNorName:resetNor2Name,resetNorMyKad:resetNor2MyKad,resetNorId:resetNor2Id};
+            var passData = {resetNorName:resetNor2Name,resetNorMyKad:resetNor2MyKad,resetNorId:resetNor2Id,resetNorPassportno:resetNor2resetNor1Passportno,resetNorContact:resetNor2contact,resetNorEmail:resetNor2email};
             $.ajax({
                 type:'POST',
                 url:nor1url,
@@ -92,6 +115,9 @@ $(document).ready(function () {
                             $("#resetNor2").modal('hide');
                             $("#resetNor2Name").val('');
                             $("#resetNor2MyKad").val('');
+                            $("#resetNor2resetNor1Passportno").val('');
+                            $('#resetNor2contact').val('');
+                            $('#resetNor2email').val('');
                             $("#chgreq2-msg").html('');
                             $("#submit2").prop('disabled', false);
                         }, 1000);
@@ -101,6 +127,21 @@ $(document).ready(function () {
                     }
                 }
             });
+        }
+    });
+
+    $(".mykadDiv").show();
+    $(".passportDiv").hide();
+
+    $(".mykadSelect").on("change", function() {
+        if($(this).val() == 1){
+            $(".mykadDiv").show();
+            $(".passportDiv").hide();
+            $(".passport").val('');
+        } else {
+            $(".mykadDiv").hide();
+            $(".passportDiv").show();
+            $(".mykad").val('');
         }
     });
 

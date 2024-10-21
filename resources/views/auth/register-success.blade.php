@@ -17,14 +17,14 @@
 <div class="container mb-4">
     <div class="card mt-1 mb-5">
         <div class="card-header border-bottom d-flex justify-content-between">
-            <h3 class="card-title mb-3">Rehda Member Portal</h3>
+            <h3 class="card-title mb-3">REHDA Member Portal</h3>
             <a href="{{ route('login') }}">BACK TO HOME PAGE <i class="ti ti-arrow-right"></i></a>
         </div>
 
         <div class="card-body text-center pt-4">
-              <h4>Your registration has been submitted!</h4>
+              <h4>“Your Application has been submitted”</h4>
 
-              <h5>Please check your email now for the invoice and payment link. Thank you.</h5>
+              <h5>Please check your email for the membership fees, invoice and payment link. Thank you.</h5>
         </div>
     </div>
 </div>

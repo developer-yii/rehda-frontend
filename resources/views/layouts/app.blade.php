@@ -120,40 +120,40 @@
                             </div>
                         </div>
 
+                        @php
+
+                        if(auth()->user()->ml_priv == "OfficeRep") {
+                            $user = App\Models\MemberUser::whereHas('memberUserProfile', function ($query) {
+                                $query->where('up_mid', session('compid'));
+                            })
+                            //->where('ml_username', auth()->user()->ml_username)
+                            ->where('ml_priv', "OfficeRep")
+                            ->where('ml_status', 1)
+                            ->first();
+                        } else {
+                            $user = auth()->user();
+                            $memberComp = App\Models\MemberComp::with('member')->where('did', session('compid'))->first();
+                        }
+
+                        $profile = App\Models\MemberUserProfile::where('up_id', $user->ml_uid)->first();
+
+                        @endphp
+
                         <div class="flex-grow-1 ms-5">
-                            <span class="fw-medium d-block">{{ Auth::user()->memberUserProfile->up_fullname }}</span>
+                            <span class="fw-medium d-block">{{ (auth()->user()->ml_priv == "OfficeRep") ? $profile->up_fullname : $memberComp->d_compname }}</span>
                             <small class="text-muted">{{ Auth::user()->ml_priv }}</small>
                         </div>
                         <div class="flex-grow-1 ms-2">
-                            <span class="fw-medium d-block">{{ getMembershipNobyMID(Auth::user()->memberUserProfile->up_mid) }}</span>
+                            <span class="fw-medium d-block">{{ getMembershipNobyMID($profile->up_mid) }}</span>
                             <small class="text-muted">Membership No.</small>
                         </div>
                         <div class="flex-grow-1 ms-2">
-                            <span class="fw-medium d-block">{{ getMemberBranch(getMemberBid(getMemberDid(Auth::user()->memberUserProfile->up_mid))) }}</span>
+                            <span class="fw-medium d-block">{{ getMemberBranch(getMemberBid(getMemberDid($profile->up_mid))) }}</span>
                             <small class="text-muted">Branch</small>
                         </div>
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-language rounded-circle ti-md"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item @if (App::getLocale() == 'en') active @endif"
-                                            href="{{ url('/lang/en') }}" data-text-direction="ltr">
-                                            <span class="align-middle">{{ __('translation.label_english') }}</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item @if (App::getLocale() == 'id') active @endif"
-                                            href="{{ url('/lang/id') }}" data-text-direction="ltr">
-                                            <span class="align-middle">{{ __('translation.label_indonesia') }}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             @can('order-view')
                                 <!-- Notification -->
                                 <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1" id="app-notification">

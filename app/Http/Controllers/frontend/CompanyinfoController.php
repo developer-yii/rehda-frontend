@@ -29,7 +29,7 @@ class CompanyinfoController extends Controller
         $request->validate([
             'address' => 'required',
             'city' => 'required',
-            'state' => 'required',
+            // 'state' => 'required',
             'postcode' => 'required',
             'country' => 'required',
             'official_website' => 'required',
@@ -41,7 +41,7 @@ class CompanyinfoController extends Controller
         $memberComp = MemberComp::where('did',session('compid'))->first();
         $memberComp->d_compadd = $request->address;
         $memberComp->d_compaddcity = $request->city;
-        $memberComp->d_compaddstate = $request->state;
+        $memberComp->d_compaddstate = $request->state ?? 0;
         $memberComp->d_compaddpcode = $request->postcode;
         $memberComp->d_compaddcountry = $request->country;
         $memberComp->d_comp_weburl = $request->official_website;

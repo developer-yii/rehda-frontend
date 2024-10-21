@@ -18,6 +18,7 @@ class ChooseCompanyController extends Controller
         ->orderBy('member_userprofiles.up_mid', 'asc')
         ->pluck('member_userprofiles.up_mid')->toArray();
 
+        // dd($upMidList);
         if(count($upMidList) > 1) {
             return view('frontend.choosecompany.index', compact('upMidList'));
         } else if(count($upMidList)==1){
@@ -25,7 +26,7 @@ class ChooseCompanyController extends Controller
 
             if(session('compid') && session('compid') != null) {
 
-                return redirect(route('dashboard'));
+                return redirect(route('bulletin.index'));
             } else {
                 return redirect(route('logout'));
             }

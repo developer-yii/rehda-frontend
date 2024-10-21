@@ -27,7 +27,15 @@ class UserprofileController extends Controller
             return view('frontend.userprofile.adminprofile', compact('profile','titles'));
         } else {
 
-            $profile = MemberUserProfile::where('up_id', auth()->user()->ml_uid)->first();
+            $userfind = MemberUser::whereHas('memberUserProfile', function ($query) {
+                $query->where('up_mid', session('compid'));
+            })
+            ->where('ml_username', auth()->user()->ml_username)
+            ->where('ml_priv', "OfficeRep")
+            ->where('ml_status', 1)
+            ->first();
+
+            $profile = MemberUserProfile::where('up_id', $userfind->ml_uid)->first();
             $titles = Salutation::orderBy('sname', 'ASC')->get();
             $genders = Gender::orderBy('gname','ASC')->get();
             $states = State::orderBy('state_name', 'ASC')->get();
@@ -38,6 +46,9 @@ class UserprofileController extends Controller
 
     public function updateMember(Request $request)
     {
+
+        $userfind = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
+
         $request->validate([
             'title' => 'required',
             'designation' => 'required',
@@ -49,6 +60,22 @@ class UserprofileController extends Controller
             'postcode' => 'required',
             'country' => 'required',
             'contact_no' => 'required',
+            'old_password' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) use($userfind, $request) {
+                    if ($userfind->ml_salt) {
+                        $hashedPassword = hash('sha512', $request->input('old_password') . $userfind->ml_salt);
+                        if ($hashedPassword !== $userfind->ml_pwd) {
+                            $fail('The old password is incorrect.');
+                        }
+                    } else {
+                        if (!Hash::check($request->input('password'), $userfind->ml_pwd)) {
+                            $fail('The old password is incorrect.');
+                        }
+                    }
+                }
+            ],
             'new_password' => [
                 'nullable', // Password can be null
                 'string',   // Must be a string
@@ -58,10 +85,10 @@ class UserprofileController extends Controller
             'retype_password' => 'required_with:new_password|same:new_password',
         ]);
 
-        if(isset($request->changePass)) {
+        if(isset($request->new_password) && $request->new_password != '') {
 
-            $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
-
+            // $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
+            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
             // Generate new salt and hash new password
             $newSalt = Hash::make(uniqid(openssl_random_pseudo_bytes(16), TRUE));
 
@@ -72,7 +99,19 @@ class UserprofileController extends Controller
             $user->save();
         }
 
-        $profile = MemberUserProfile::where('up_id', auth()->user()->ml_uid)->where('up_mid', session('compid'))->first();
+        if(auth()->user()->ml_priv == "OfficeRep") {
+            $userfind = MemberUser::whereHas('memberUserProfile', function ($query) {
+                $query->where('up_mid', session('compid'));
+            })
+            ->where('ml_username', auth()->user()->ml_username)
+            ->where('ml_priv', "OfficeRep")
+            ->where('ml_status', 1)
+            ->first();
+        } else {
+            $userfind = auth()->user();
+        }
+
+        $profile = MemberUserProfile::where('up_id', $userfind->ml_uid)->where('up_mid', session('compid'))->first();
         $profile->up_title = $request->title;
         $profile->up_designation = $request->designation;
         $profile->up_gender = $request->gender;
@@ -113,9 +152,10 @@ class UserprofileController extends Controller
             'new_password.regex' => 'The new password must contain at least one lowercase letter, one uppercase letter, and one number.',
         ]);
 
-        if(isset($request->changePass)) {
+        if(isset($request->new_password) && $request->new_password != '') {
 
-            $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
+            // $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
+            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
 
             // Generate new salt and hash new password
             $newSalt = Hash::make(uniqid(openssl_random_pseudo_bytes(16), TRUE));

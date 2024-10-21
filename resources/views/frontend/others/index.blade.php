@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
+                    <a href="{{ route('choosecompant.index') }}">Back</a>
                 </li>
 
                 <li class="breadcrumb-item active">Others</li>
