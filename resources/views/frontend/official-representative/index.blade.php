@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
+                    <a href="{{ route('choosecompant.index') }}">Back</a>
                 </li>
 
                 <li class="breadcrumb-item active">Official Representative</li>
@@ -31,6 +31,34 @@
         <div class="card-body pt-4">
             <div class="accordion accordion-flush accordion-arrow-left" id="accordionYearParent">
                 <form method="POST" action="{{ route('official-representative.update') }}" onsubmit="disableSubmitButton(this)">
+
+                    <div class="row">
+                        <div class="mb-3 col-md-12">
+
+                        <div class="nav-align-top">
+                            <ul class="nav nav-tabs border-bottom-0" role="tablist">
+                                <li class="nav-item">
+                                    <button type="button" class="nav-link @if( (!$errors->has('official2designation') && !$errors->has('official2email') && !$errors->has('official2contact_no') && !$errors->has('official2address') && !$errors->has('official2city') && !$errors->has('official2state') && !$errors->has('official2postcode') && !$errors->has('official2country')) && !isset($alternate) ) active @endif"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#navs-info"
+                                        aria-controls="navs-info"
+                                        aria-selected="@if( (!$errors->has('official2designation') && !$errors->has('official2email') && !$errors->has('official2contact_no') && !$errors->has('official2address') && !$errors->has('official2city') && !$errors->has('official2state') && !$errors->has('official2postcode') && !$errors->has('official2country')) && !isset($alternate) ) true @else false @endif">
+                                        Official Representative
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="nav-link @if($errors->has('official2designation') || $errors->has('official2email') || $errors->has('official2contact_no') || $errors->has('official2address') || $errors->has('official2city') || $errors->has('official2state') || $errors->has('official2postcode') || $errors->has('official2country') || isset($alternate)) active @endif"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#navs-password"
+                                        aria-controls="navs-password"
+                                        aria-selected="@if($errors->has('official2designation') || $errors->has('official2email') || $errors->has('official2contact_no') || $errors->has('official2address') || $errors->has('official2city') || $errors->has('official2state') || $errors->has('official2postcode') || $errors->has('official2country') || isset($alternate)) true @else false @endif">
+                                        Alternate Representative
+                                    </button>
+                                </li>
+                            </ul>
+
                     @csrf
                     @php
                     $i = 1;
@@ -50,20 +78,23 @@
 
                         @if($i==1)
 
+                        <div class="tab-content ps-0 pe-0 pb-0">
+                            <div class="tab-pane fade @if( (!$errors->has('official2designation') && !$errors->has('official2email') && !$errors->has('official2contact_no') & !$errors->has('official2address') && !$errors->has('official2city') && !$errors->has('official2state') && !$errors->has('official2postcode') && !$errors->has('official2country')) && !isset($alternate) ) show active @endif" id="navs-info" role="tabpanel">
+
                         <input type="hidden" name="official1" id="official1" value="{{ $profile->up_id }}">
 
-                        <div class="accordion-item border-bottom {{ ($count < 2 && $errorcheck != 2) ? 'active' : '' }}">
+                        <!-- <div class="accordion-item border-bottom {{ ($count < 2 && $errorcheck != 2) ? 'active' : '' }}">
                             <div class="accordion-header d-flex justify-content-between align-items-center flex-wrap flex-sm-nowrap" id="{{$profile->up_id}}">
                                 <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#official-representative-1" aria-expanded="false" aria-controls="official-representative-1" role="button">
                                     <span>
                                         <span class="d-flex gap-2 align-items-baseline ms-3">
-                                            <span class="h5 mb-1 text-white">Official Representative 1 <span class="badge bg-danger ms-2">Required</span></span>
+                                            <span class="h5 mb-1 text-white">Official Representative <span class="badge bg-danger ms-2">Required</span></span>
                                         </span>
                                     </span>
                                 </a>
                             </div>
-                            <div id="official-representative-1" class="accordion-collapse collapse {{ ($count < 2 && $errorcheck != 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent">
-                                <div class="card-body">
+                            <div id="official-representative-1" class="accordion-collapse collapse {{ ($count < 2 && $errorcheck != 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
+                                <!-- <div class="card-body"> -->
                                     <a class="edit-name-of-offcial-representative text-danger" id="nor1" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
                                         <i class="menu-icon ti ti-edit"></i>Click here to change Official Representative
                                     </a>
@@ -80,6 +111,7 @@
                                         <div class="mb-3 col-md-12">
                                             <label for="official1title" class="form-label form-label-lg required_label">Title:</label>
                                             <select id="official1title" name="official1title" class="form-select form-select-lg">
+                                                <option value="0" {{ ($profile->up_title == 0) ? 'selected' : '' }}>-</option>
                                                 @foreach($titles as $title)
                                                     <option value="{{ $title->sid }}" {{ ($title->sid == $profile->up_title) ? 'selected' : '' }}>{{ $title->sname }}</option>
                                                 @endforeach
@@ -194,6 +226,7 @@
                                             <label for="official1secretary_title" class="form-label form-label-lg">Secretary Title:</label>
                                             <select id="official1secretary_title" name="official1secretary_title" class="form-select form-select-lg">
                                                 <option value="" selected disabled>Select Title</option>
+                                                <option value="0" {{ ($profile->up_sec_title == 0) ? 'selected' : '' }}>-</option>
                                                 @foreach($titles as $title)
                                                     <option value="{{ $title->sid }}" {{ $title->sid == old('official1secretary_title', $profile->up_sec_title) ? 'selected' : '' }}>{{ $title->sname }}</option>
                                                 @endforeach
@@ -218,34 +251,39 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                <!-- </div> -->
+                            <!-- </div>
+                        </div> -->
+
                             </div>
-                        </div>
+
 
                         @elseif($i==2)
 
+                            <div class="tab-pane fade @if($errors->has('official2designation') || $errors->has('official2email') || $errors->has('official2contact_no') || $errors->has('official2address') || $errors->has('official2city') || $errors->has('official2state') || $errors->has('official2postcode') || $errors->has('official2country') || isset($alternate)) show active @endif" id="navs-password" role="tabpanel">
+
                         <input type="hidden" name="official2" id="official2" value="{{ $profile->up_id }}">
 
-                        <div class="accordion-item border-bottom {{ ($count < 2 || $errorcheck == 2)  ? 'active' : '' }}">
+                        <!-- <div class="accordion-item border-bottom {{ ($count < 2 || $errorcheck == 2)  ? 'active' : '' }}">
                             <div class="accordion-header d-flex justify-content-between align-items-center flex-wrap flex-sm-nowrap" id="{{$profile->up_id}}">
                                 <a class="accordion-button accordion-button-removearrow {{ $count < 2 ? 'collapsed' : '' }}" data-bs-toggle="collapse" data-bs-target="#official-representative-2" aria-expanded="false" aria-controls="official-representative-2" role="button">
                                     <span>
                                         <span class="d-flex gap-2 align-items-baseline ms-3">
-                                            <span class="h5 mb-1 text-white">Official Representative 2 <span class="badge bg-danger ms-2">Required</span></span>
+                                            <span class="h5 mb-1 text-white">Alternate Representative <span class="badge bg-danger ms-2">Required</span></span>
                                         </span>
                                     </span>
                                 </a>
                             </div>
-                            <div id="official-representative-2" class="accordion-collapse collapse {{ ($count < 2 || $errorcheck == 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent">
-                                <div class="card-body">
+                            <div id="official-representative-2" class="accordion-collapse collapse {{ ($count < 2 || $errorcheck == 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
+                                <!-- <div class="card-body"> -->
                                     <a class="edit-name-of-offcial-representative text-danger" id="nor2" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
-                                        <i class="menu-icon ti ti-edit"></i>Click here to change Official Representative
+                                        <i class="menu-icon ti ti-edit"></i>Click here to change Alternate Representative
                                     </a>
                                     @php $id2 = $profile->up_id; @endphp
 
                                     <div class="row mt-3">
                                         <div class="mb-3 col-md-12">
-                                            <label for="official2nop" class="form-label form-label-lg required_label">Name of Official Representative:</label>
+                                            <label for="official2nop" class="form-label form-label-lg required_label">Name of Alternate Representative:</label>
                                             <input class="form-control form-control-lg" type="text" id="official2nop" name="official2nop" value="{{ $profile->up_fullname }}" disabled />
                                             @if ($errors->has('official2nop'))
                                             <span class="error">{{ $errors->first('official2nop') }}</span>
@@ -254,6 +292,7 @@
                                         <div class="mb-3 col-md-12">
                                             <label for="official2title" class="form-label form-label-lg required_label">Title:</label>
                                             <select id="official2title" name="official2title" class="form-select form-select-lg">
+                                                <option value="0" {{ ($profile->up_title == 0) ? 'selected' : '' }}>-</option>
                                                 @foreach($titles as $title)
                                                     <option value="{{ $title->sid }}" {{ ($title->sid == $profile->up_title) ? 'selected' : '' }}>{{ $title->sname }}</option>
                                                 @endforeach
@@ -368,6 +407,7 @@
                                             <label for="official2secretary_title" class="form-label form-label-lg">Secretary Title:</label>
                                             <select id="official2secretary_title" name="official2secretary_title" class="form-select form-select-lg">
                                                 <option value="" selected disabled>Select Title</option>
+                                                <option value="0" {{ ($profile->up_sec_title == 0) ? 'selected' : '' }}>-</option>
                                                 @foreach($titles as $title)
                                                     <option value="{{ $title->sid }}" {{ $title->sid == old('official2secretary_title', $profile->up_sec_title) ? 'selected' : '' }}>{{ $title->sname }}</option>
                                                 @endforeach
@@ -392,7 +432,10 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                <!-- </div> -->
+                            <!-- </div>
+                        </div> -->
+
                             </div>
                         </div>
 
@@ -405,7 +448,11 @@
 
                     @endforeach
 
-                    <div class="pt-4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
                         <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="submitBtn">Update</button>
                     </div>
                 </form>
@@ -420,7 +467,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="text-center mb-4">
-                    <h3 class="mb-2">New Official Representative 1</h3>
+                    <h3 class="mb-2">New Official Representative</h3>
                     <p>
                         <small>**Please ensure the email address belongs to the new Representative. <br>
                         First-time login password will be sent to the email address.**</small>
@@ -434,8 +481,27 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor1Name" name="resetNor1Name" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor1MyKadSelect">MyKad No.:</label>
+                        <select name="resetNor1MyKadSelect" id="resetNor1MyKadSelect" class="form-select form-select-lg mykadSelect">
+                            <option value="1">MyKad No.</option>
+                            <option value="2">Passport No.</option>
+                        </select>
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container mykadDiv">
                         <label class="form-label form-label-lg" for="resetNor1MyKad">MyKad No.:</label>
-                        <input class="form-control form-control-lg" type="text" id="resetNor1MyKad" name="resetNor1MyKad" value="" />
+                        <input class="form-control form-control-lg mykad" type="text" id="resetNor1MyKad" name="resetNor1MyKad" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container passportDiv">
+                        <label class="form-label form-label-lg" for="resetNor1Passportno">Passport No.:</label>
+                        <input class="form-control form-control-lg passport" type="text" id="resetNor1Passportno" name="resetNor1Passportno" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor1contact">Contact No.:</label>
+                        <input class="form-control form-control-lg" type="number" id="resetNor1contact" name="resetNor1contact" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor1email">Email Address:</label>
+                        <input class="form-control form-control-lg" type="text" id="resetNor1email" name="resetNor1email" value="" />
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light" id="submit1">Submit</button>
@@ -454,7 +520,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="text-center mb-4">
-                    <h3 class="mb-2">New Official Representative 2</h3>
+                    <h3 class="mb-2">New Alternate Representative</h3>
                     <p>
                         <small>**Please ensure the email address belongs to the new Representative. <br>
                         First-time login password will be sent to the email address.**</small>
@@ -468,8 +534,27 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor2Name" name="resetNor2Name" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor2MyKadSelect">MyKad No.:</label>
+                        <select name="resetNor2MyKadSelect" id="resetNor2MyKadSelect" class="form-select form-select-lg mykadSelect">
+                            <option value="1">MyKad No.</option>
+                            <option value="2">Passport No.</option>
+                        </select>
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container mykadDiv">
                         <label class="form-label form-label-lg" for="resetNor2MyKad">MyKad No.:</label>
-                        <input class="form-control form-control-lg" type="text" id="resetNor2MyKad" name="resetNor2MyKad" value="" />
+                        <input class="form-control form-control-lg mykad" type="text" id="resetNor2MyKad" name="resetNor2MyKad" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container passportDiv">
+                        <label class="form-label form-label-lg" for="resetNor2resetNor1Passportno">Passport No.:</label>
+                        <input class="form-control form-control-lg passport" type="text" id="resetNor2resetNor1Passportno" name="resetNor2resetNor1Passportno" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor2contact">Contact No.:</label>
+                        <input class="form-control form-control-lg" type="number" id="resetNor2contact" name="resetNor2contact" value="" />
+                    </div>
+                    <div class="col-12 fv-plugins-icon-container">
+                        <label class="form-label form-label-lg" for="resetNor2email">Email Address:</label>
+                        <input class="form-control form-control-lg" type="text" id="resetNor2email" name="resetNor2email" value="" />
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light" id="submit2">Submit</button>

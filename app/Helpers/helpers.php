@@ -245,6 +245,9 @@ if (!function_exists('getMemberUserType')) {
 if (!function_exists('getTitle')) {
     function getTitle($sid)
     {
+        if($sid == 0){
+            return "-";
+        }
         $salutation = Salutation::find($sid);
         if($salutation){
             return $salutation->sname;
@@ -538,8 +541,16 @@ function getMemberDid($mid)
 function getChildMid($pmid)
 {
     $mid = getMemberDid($pmid);
-    $memberComparray = MemberComp::where('d_parentcomp', $mid)->pluck('did')->toArray();
-    return $memberComparray;
+
+    $memberComps = MemberComp::where('d_parentcomp', $mid)->get();
+
+    $a[] = $pmid;
+
+    foreach ($memberComps as $comp) {
+        $a[] = $comp->did; // Assuming 'did' is a column in 'member_comps' table
+    }
+
+    return $a;
 }
 
 function getMMRegDate($mid)

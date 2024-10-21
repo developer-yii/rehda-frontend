@@ -31,7 +31,7 @@
                             <span class="bs-stepper-subtitle">Select Membership Type</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger ms-1">Required</span>
+                    <span class="badge bg-danger text-uppercase ms-1">Required</span>
                 </div>
 
                 <div class="line ordinary-head">
@@ -45,7 +45,7 @@
                             <span class="bs-stepper-subtitle">Add General Information</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line ordinary-head">
                     <i class="ti ti-chevron-right"></i>
@@ -58,7 +58,7 @@
                             <span class="bs-stepper-subtitle">Add Company Admin</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line ordinary-head">
                     <i class="ti ti-chevron-right"></i>
@@ -67,11 +67,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">4</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Official Representative 1</span>
-                            <span class="bs-stepper-subtitle">Add Official Representative 1</span>
+                            <span class="bs-stepper-title">Official Representative</span>
+                            <span class="bs-stepper-subtitle">Add Official Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line ordinary-head">
                     <i class="ti ti-chevron-right"></i>
@@ -80,11 +80,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">5</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Alternative Representative</span>
-                            <span class="bs-stepper-subtitle">Add Alternative Representative</span>
+                            <span class="bs-stepper-title">Alternate Representative</span>
+                            <span class="bs-stepper-subtitle">Add Alternate Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
 
 
@@ -99,7 +99,7 @@
                             <span class="bs-stepper-subtitle">Add General Information</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line subsidiary-head">
                     <i class="ti ti-chevron-right"></i>
@@ -112,7 +112,7 @@
                             <span class="bs-stepper-subtitle">Add Company Admin</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line subsidiary-head">
                     <i class="ti ti-chevron-right"></i>
@@ -121,11 +121,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">4</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Official Representative 1</span>
-                            <span class="bs-stepper-subtitle">Add Official Representative 1</span>
+                            <span class="bs-stepper-title">Official Representative</span>
+                            <span class="bs-stepper-subtitle">Add Official Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
 
 
@@ -140,7 +140,7 @@
                             <span class="bs-stepper-subtitle">Add General Information</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line affiliate-head">
                     <i class="ti ti-chevron-right"></i>
@@ -153,7 +153,7 @@
                             <span class="bs-stepper-subtitle">Add Company Admin</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line affiliate-head">
                     <i class="ti ti-chevron-right"></i>
@@ -162,11 +162,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">4</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Official Representative 1</span>
-                            <span class="bs-stepper-subtitle">Add Official Representative 1</span>
+                            <span class="bs-stepper-title">Official Representative</span>
+                            <span class="bs-stepper-subtitle">Add Official Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line affiliate-head">
                     <i class="ti ti-chevron-right"></i>
@@ -175,11 +175,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">5</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Alternative Representative</span>
-                            <span class="bs-stepper-subtitle">Add Alternative Representative</span>
+                            <span class="bs-stepper-title">Alternate Representative</span>
+                            <span class="bs-stepper-subtitle">Add Alternate Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
 
 
@@ -194,7 +194,7 @@
                             <span class="bs-stepper-subtitle">Add General Information</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line associate-head">
                     <i class="ti ti-chevron-right"></i>
@@ -208,7 +208,7 @@
                         </span>
                     </button>
                     <div class="requiredtitle">
-                        <span class="badge bg-danger required-badge">Required</span>
+                        <span class="badge bg-danger text-uppercase required-badge">Required</span>
                     </div>
                 </div>
                 <div class="line associate-head">
@@ -218,11 +218,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">4</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Official Representative 1</span>
-                            <span class="bs-stepper-subtitle">Add Official Representative 1</span>
+                            <span class="bs-stepper-title">Official Representative</span>
+                            <span class="bs-stepper-subtitle">Add Official Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line associate-head">
                     <i class="ti ti-chevron-right"></i>
@@ -231,12 +231,12 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">5</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Alternative Representative</span>
-                            <span class="bs-stepper-subtitle">Add Alternative Representative</span>
+                            <span class="bs-stepper-title">Alternate Representative</span>
+                            <span class="bs-stepper-subtitle">Add Alternate Representative</span>
                         </span>
                     </button>
                     <div class="requiredtitle">
-                        <span class="badge bg-danger required-badge">Required</span>
+                        <span class="badge bg-danger text-uppercase required-badge">Required</span>
                     </div>
                 </div>
 
@@ -252,7 +252,7 @@
                             <span class="bs-stepper-subtitle">Add General Information</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
                 <div class="line rehdayouth-head">
                     <i class="ti ti-chevron-right"></i>
@@ -261,11 +261,11 @@
                     <button type="button" class="step-trigger">
                         <span class="bs-stepper-circle">3</span>
                         <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Official Representative 1</span>
-                            <span class="bs-stepper-subtitle">Add Official Representative 1</span>
+                            <span class="bs-stepper-title">Official Representative</span>
+                            <span class="bs-stepper-subtitle">Add Official Representative</span>
                         </span>
                     </button>
-                    <span class="badge bg-danger required-badge">Required</span>
+                    <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
 
 
@@ -276,15 +276,44 @@
                         @csrf
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
-                                <label for="membertype" class="form-label form-label-lg required_label">Member Type</label>
-                                <select class="form-select form-select-lg" id="membertype" name="membertype">
+                                <label for="membertype" class="form-label form-label-lg required_label">Type of Membership</label>
+                                <!-- <select class="form-select form-select-lg" id="membertype" name="membertype">
                                     <option value="">Select Member Type</option>
                                     <option value="ordinary">Ordinary</option>
                                     <option value="subsidiary">Subsidiary / Related</option>
                                     <option value="affiliate">Affiliate</option>
                                     <option value="associate">Associate</option>
                                     <option value="rehdayouth">Rehda Youth</option>
-                                </select>
+                                </select> -->
+
+                                <br><br>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-ordinary" value="ordinary">
+                                    <label class="form-check-label form-label-lg ms-1" for="membertype-ordinary"><b>Ordinary Member</b></label>
+                                    <p class="ms-4">Any person, company, firm or corporation who carries on the business of housing and property development and undertakes such development within 5 years of membership entry. A member shall belong to the branch of the Association in which it has principal housing project.</p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-subsidiary" value="subsidiary">
+                                    <label class="form-check-label form-label-lg ms-1" for="membertype-subsidiary"><b>Subsidiary/Related Member</b></label>
+                                    <p class="ms-4">An ordinary member who is a company, firm, or corporation who has subsidiaries or related companies, wishing to join the Association as subsidiary or related members. A subsidiary or related member shall not be entitled to vote or hold office.</p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-affiliate" value="affiliate">
+                                    <label class="form-check-label form-label-lg ms-1" for="membertype-affiliate"><b>Affiliate Member</b></label>
+                                    <p class="ms-4">An ordinary member with a branch office in another state may apply to be an Affiliate Member of the branch.</p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-associate" value="associate">
+                                    <label class="form-check-label form-label-lg ms-1" for="membertype-associate"><b>Associate Member</b></label>
+                                    <p class="ms-4">Any person, company, firm or corporation who carries on the business which is related to the business of housing and property development.</p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-rehdayouth" value="rehdayouth">
+                                    <label class="form-check-label form-label-lg ms-1" for="membertype-rehdayouth"><b>REHDA Youth Member</b></label>
+                                    <p class="ms-4">An executive employee of ordinary members, under the age of forty years, is eligible for REHDA Youth membership.
+                                    <br>
+                                    The REHDA Youth membership is limited to a maximum of two eligible employees for each ordinary member.</p>
+                                </div>
                             </div>
 
                         </div>
@@ -307,13 +336,13 @@
                 @csrf
                     <div id="ordinary-general-information" class="content ordinary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">General Information</h5>
+                            <h5 class="mb-0 text-uppercase">General Information</h5>
                         </div>
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyPreferBranch" class="form-label form-label-lg required_label">Preferred Branch</label>
+                                <label for="ordinaryCompanyPreferBranch" class="form-label form-label-lg required_label">Select Branch</label>
                                 <select class="form-select form-select-lg" id="ordinaryCompanyPreferBranch" name="ordinaryCompanyPreferBranch">
-                                    <option value="" selected disabled>Select Preferred Branch</option>
+                                    <option value="" selected disabled>Select Branch</option>
                                     @foreach($branches as $branch)
                                     <option value="{{ $branch->bid }}" {{ $branch->bid == old('ordinaryCompanyPreferBranch') ? 'selected' : '' }}>{{ $branch->bname }}</option>
                                     @endforeach
@@ -321,18 +350,18 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryCompanyName" class="form-label form-label-lg required_label">Company Name</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyName" name="ordinaryCompanyName" value="{{ old('ordinaryCompanyName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyName" name="ordinaryCompanyName" value="{{ old('ordinaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddress" class="form-label form-label-lg required_label">Address:</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddress" name="ordinaryCompanyAddress" value="{{ old('ordinaryCompanyAddress') }}" />
+                                <label for="ordinaryCompanyAddress" class="form-label form-label-lg required_label">Address Line 1:</label>
+                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddress" name="ordinaryCompanyAddress" value="{{ old('ordinaryCompanyAddress') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddressCity" class="form-label form-label-lg required_label">City:</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddressCity" name="ordinaryCompanyAddressCity" value="{{ old('ordinaryCompanyAddressCity') }}" />
+                                <label for="ordinaryCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2:</label>
+                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddressCity" name="ordinaryCompanyAddressCity" value="{{ old('ordinaryCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddressState" class="form-label form-label-lg required_label">State:</label>
+                                <label for="ordinaryCompanyAddressState" class="form-label form-label-lg">Address Line 3:</label>
                                 <select id="ordinaryCompanyAddressState" name="ordinaryCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -353,7 +382,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryOfficialWebsite" class="form-label form-label-lg required_label">Official Website</label>
+                                <label for="ordinaryOfficialWebsite" class="form-label form-label-lg">Official Website</label>
                                 <input class="form-control form-control-lg" type="text" id="ordinaryOfficialWebsite" name="ordinaryOfficialWebsite" value="{{ old('ordinaryOfficialWebsite') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -362,11 +391,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryFaxNumber" class="form-label form-label-lg">Fax No.</label>
-                                <input class="form-control form-control-lg" type="number" id="ordinaryFaxNumber" name="ordinaryFaxNumber" value="{{ old('ordinaryFaxNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="ordinaryFaxNumber" name="ordinaryFaxNumber" value="{{ old('ordinaryFaxNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinarySSMRegNumber" class="form-label form-label-lg required_label">SSM Registration No.</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinarySSMRegNumber" name="ordinarySSMRegNumber" value="{{ old('ordinarySSMRegNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinarySSMRegNumber" name="ordinarySSMRegNumber" value="{{ old('ordinarySSMRegNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryDateOfCompanyFormation" class="form-label form-label-lg required_label">Date of Company Formation</label>
@@ -398,7 +427,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryHouseDevelopingLicense" class="form-label form-label-lg required_label">Housing Developer's Licence No.</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryHouseDevelopingLicense" name="ordinaryHouseDevelopingLicense" value="{{ old('ordinaryHouseDevelopingLicense') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryHouseDevelopingLicense" name="ordinaryHouseDevelopingLicense" value="{{ old('ordinaryHouseDevelopingLicense') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryCopyOfHousingDeveloperLicense" class="form-label form-label-lg required_label">Attachment: Copy of Housing Developer's Licence No.</label>
@@ -421,13 +450,14 @@
                     </div>
                     <div id="ordinary-company-admin" class="content ordinary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Company Admin</h5>
+                            <h5 class="mb-0 text-uppercase">Company Admin</h5>
                         </div>
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryAdminTitle" class="form-label form-label-lg">Title</label>
                                 <select id="ordinaryAdminTitle" name="ordinaryAdminTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('ordinaryAdminTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -435,11 +465,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryNameOfAdmin" class="form-label form-label-lg required_label">Admin Name</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryNameOfAdmin" name="ordinaryNameOfAdmin" value="{{ old('ordinaryNameOfAdmin') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryNameOfAdmin" name="ordinaryNameOfAdmin" value="{{ old('ordinaryNameOfAdmin') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryAdminDesignation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryAdminDesignation" name="ordinaryAdminDesignation" value="{{ old('ordinaryAdminDesignation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryAdminDesignation" name="ordinaryAdminDesignation" value="{{ old('ordinaryAdminDesignation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryAdminEmail" class="form-label form-label-lg required_label">Email</label>
@@ -466,29 +496,42 @@
                     </div>
                     <div id="ordinary-official-representative-1" class="content ordinary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Official Representative 1</h5>
+                            <h5 class="mb-0 text-uppercase">Official Representative</h5>
                         </div>
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="ordinaryOfficial1Title" name="ordinaryOfficial1Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('ordinaryOfficial1Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryOfficial1Nop" class="form-label form-label-lg required_label">Official Representative 1 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Nop" name="ordinaryOfficial1Nop" value="{{ old('ordinaryOfficial1Nop') }}" />
+                                <label for="ordinaryOfficial1Nop" class="form-label form-label-lg required_label">Official Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Nop" name="ordinaryOfficial1Nop" value="{{ old('ordinaryOfficial1Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="ordinaryMyKadSelect" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="ordinaryMyKadSelect" name="ordinaryMyKadSelect" class="form-select form-select-lg mykadSelect1">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv1">
                                 <label for="ordinaryMyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="ordinaryMyKad" name="ordinaryMyKad" value="{{ old('ordinaryMyKad') }}" />
+                                <input class="form-control form-control-lg mykad1" type="number" id="ordinaryMyKad" name="ordinaryMyKad" value="{{ old('ordinaryMyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv1">
+                                <label for="ordinaryPassportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport1" type="text" id="ordinaryPassportno" name="ordinaryPassportno" value="{{ old('ordinaryPassportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Designation" name="ordinaryOfficial1Designation" value="{{ old('ordinaryOfficial1Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Designation" name="ordinaryOfficial1Designation" value="{{ old('ordinaryOfficial1Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryGender" class="form-label form-label-lg required_label">Gender:</label>
@@ -502,7 +545,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1ProQualification" name="ordinaryOfficial1ProQualification" value="{{ old('ordinaryOfficial1ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1ProQualification" name="ordinaryOfficial1ProQualification" value="{{ old('ordinaryOfficial1ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1Email" class="form-label form-label-lg required_label">Email</label>
@@ -514,11 +557,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Address" name="ordinaryOfficial1Address" value="{{ old('ordinaryOfficial1Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1Address" name="ordinaryOfficial1Address" value="{{ old('ordinaryOfficial1Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1AddressCity" name="ordinaryOfficial1AddressCity" value="{{ old('ordinaryOfficial1AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1AddressCity" name="ordinaryOfficial1AddressCity" value="{{ old('ordinaryOfficial1AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1AddressState" class="form-label form-label-lg required_label">State</label>
@@ -546,6 +589,7 @@
                                 <label for="ordinaryOfficial1SecretartTitle" class="form-label form-label-lg">Secretary Title</label>
                                 <select id="ordinaryOfficial1SecretartTitle" name="ordinaryOfficial1SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('ordinaryOfficial1SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -553,7 +597,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1SecretarName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1SecretarName" name="ordinaryOfficial1SecretarName" value="{{ old('ordinaryOfficial1SecretarName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial1SecretarName" name="ordinaryOfficial1SecretarName" value="{{ old('ordinaryOfficial1SecretarName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial1SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -580,29 +624,42 @@
                     </div>
                     <div id="ordinary-official-representative-2" class="content ordinary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Alternative Representative</h5>
+                            <h5 class="mb-0 text-uppercase">Alternate Representative</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="ordinaryOfficial2Title" name="ordinaryOfficial2Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('ordinaryOfficial2Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryOfficial2Nop" class="form-label form-label-lg required_label">Official Representative 2 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Nop" name="ordinaryOfficial2Nop" value="{{ old('ordinaryOfficial2Nop') }}" />
+                                <label for="ordinaryOfficial2Nop" class="form-label form-label-lg required_label">Alternate Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Nop" name="ordinaryOfficial2Nop" value="{{ old('ordinaryOfficial2Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="ordinaryMyKad2Select" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="ordinaryMyKad2Select" name="ordinaryMyKad2Select" class="form-select form-select-lg mykadSelect2">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv2">
                                 <label for="ordinaryMyKad2" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="ordinaryMyKad2" name="ordinaryMyKad2" value="{{ old('ordinaryMyKad2') }}" />
+                                <input class="form-control form-control-lg mykad2" type="number" id="ordinaryMyKad2" name="ordinaryMyKad2" value="{{ old('ordinaryMyKad2') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv2">
+                                <label for="ordinary2Passportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport2" type="text" id="ordinary2Passportno" name="ordinary2Passportno" value="{{ old('ordinary2Passportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Designation" name="ordinaryOfficial2Designation" value="{{ old('ordinaryOfficial2Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Designation" name="ordinaryOfficial2Designation" value="{{ old('ordinaryOfficial2Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -616,7 +673,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2ProQualification" name="ordinaryOfficial2ProQualification" value="{{ old('ordinaryOfficial2ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2ProQualification" name="ordinaryOfficial2ProQualification" value="{{ old('ordinaryOfficial2ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2Email" class="form-label form-label-lg required_label">Email</label>
@@ -628,11 +685,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Address" name="ordinaryOfficial2Address" value="{{ old('ordinaryOfficial2Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2Address" name="ordinaryOfficial2Address" value="{{ old('ordinaryOfficial2Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2AddressCity" name="ordinaryOfficial2AddressCity" value="{{ old('ordinaryOfficial2AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2AddressCity" name="ordinaryOfficial2AddressCity" value="{{ old('ordinaryOfficial2AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2AddressState" class="form-label form-label-lg required_label">State</label>
@@ -660,6 +717,7 @@
                                 <label for="ordinaryOfficial2SecretartTitle" class="form-label form-label-lg">Secretary Title</label>
                                 <select id="ordinaryOfficial2SecretartTitle" name="ordinaryOfficial2SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('ordinaryOfficial2SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -667,7 +725,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2SecretartName" name="ordinaryOfficial2SecretartName" value="{{ old('ordinaryOfficial2SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficial2SecretartName" name="ordinaryOfficial2SecretartName" value="{{ old('ordinaryOfficial2SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficial2SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -694,13 +752,13 @@
                 @csrf
                     <div id="subsidiary-general-information" class="content subsidiary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">General Information</h5>
+                            <h5 class="mb-0 text-uppercase">General Information</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyPreferBranch" class="form-label form-label-lg required_label">Preferred Branch</label>
+                                <label for="subsidiaryCompanyPreferBranch" class="form-label form-label-lg required_label">Select Branch</label>
                                 <select class="form-select form-select-lg" id="subsidiaryCompanyPreferBranch" name="subsidiaryCompanyPreferBranch">
-                                    <option value="" selected disabled>Select Preferred Branch</option>
+                                    <option value="" selected disabled>Select Branch</option>
                                     @foreach($branches as $branch)
                                     <option value="{{ $branch->bid }}" {{ $branch->bid == old('subsidiaryCompanyPreferBranch') ? 'selected' : '' }}>{{ $branch->bname }}</option>
                                     @endforeach
@@ -712,18 +770,18 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryCompanyName" class="form-label form-label-lg required_label">Company Name</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyName" name="subsidiaryCompanyName" value="{{ old('subsidiaryCompanyName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyName" name="subsidiaryCompanyName" value="{{ old('subsidiaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyAddress" class="form-label form-label-lg required_label">Address</label>
+                                <label for="subsidiaryCompanyAddress" class="form-label form-label-lg">Address Line 1</label>
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddress" name="subsidiaryCompanyAddress" value="{{ old('subsidiaryCompanyAddress') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyAddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddressCity" name="subsidiaryCompanyAddressCity" value="{{ old('subsidiaryCompanyAddressCity') }}" />
+                                <label for="subsidiaryCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2</label>
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddressCity" name="subsidiaryCompanyAddressCity" value="{{ old('subsidiaryCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyAddressState" class="form-label form-label-lg required_label">State</label>
+                                <label for="subsidiaryCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
                                 <select id="subsidiaryCompanyAddressState" name="subsidiaryCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -744,20 +802,20 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryOfficialWebsite" class="form-label form-label-lg required_label">Official Website</label>
+                                <label for="subsidiaryOfficialWebsite" class="form-label form-label-lg">Official Website</label>
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryOfficialWebsite" name="subsidiaryOfficialWebsite" value="{{ old('subsidiaryOfficialWebsite') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="subsidiaryOfficialNumber" name="subsidiaryOfficialNumber" value="{{ old('subsidiaryOfficialNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="subsidiaryOfficialNumber" name="subsidiaryOfficialNumber" value="{{ old('subsidiaryOfficialNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryFaxNumber" class="form-label form-label-lg">Fax No.</label>
-                                <input class="form-control form-control-lg" type="number" id="subsidiaryFaxNumber" name="subsidiaryFaxNumber" value="{{ old('subsidiaryFaxNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="subsidiaryFaxNumber" name="subsidiaryFaxNumber" value="{{ old('subsidiaryFaxNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiarySSMRegNumber" class="form-label form-label-lg required_label">SSM Registration No.</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiarySSMRegNumber" name="subsidiarySSMRegNumber" value="{{ old('subsidiarySSMRegNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiarySSMRegNumber" name="subsidiarySSMRegNumber" value="{{ old('subsidiarySSMRegNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryDateOfCompanyFormation" class="form-label form-label-lg required_label">Date of Company Formation</label>
@@ -812,13 +870,14 @@
                     </div>
                     <div id="subsidiary-company-admin" class="content subsidiary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Company Admin</h5>
+                            <h5 class="mb-0 text-uppercase">Company Admin</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryAdminTitle" class="form-label form-label-lg">Title</label>
                                 <select id="subsidiaryAdminTitle" name="subsidiaryAdminTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('subsidiaryAdminTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -826,11 +885,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryNameOfAdmin" class="form-label form-label-lg required_label">Admin Name</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryNameOfAdmin" name="subsidiaryNameOfAdmin" value="{{ old('subsidiaryNameOfAdmin') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryNameOfAdmin" name="subsidiaryNameOfAdmin" value="{{ old('subsidiaryNameOfAdmin') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryAdminDesignation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryAdminDesignation" name="subsidiaryAdminDesignation" value="{{ old('subsidiaryAdminDesignation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryAdminDesignation" name="subsidiaryAdminDesignation" value="{{ old('subsidiaryAdminDesignation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryAdminEmail" class="form-label form-label-lg required_label">Email</label>
@@ -856,29 +915,42 @@
                     </div>
                     <div id="subsidiary-official-representative-1" class="content subsidiary-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Official Representative 1</h5>
+                            <h5 class="mb-0 text-uppercase">Official Representative</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="subsidiaryOfficial1Title" name="subsidiaryOfficial1Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('subsidiaryOfficial1Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryOfficial1Nop" class="form-label form-label-lg required_label">Official Representative 1 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Nop" name="subsidiaryOfficial1Nop" value="{{ old('subsidiaryOfficial1Nop') }}" />
+                                <label for="subsidiaryOfficial1Nop" class="form-label form-label-lg required_label">Official Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Nop" name="subsidiaryOfficial1Nop" value="{{ old('subsidiaryOfficial1Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="subsidiaryMyKadSelect" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="subsidiaryMyKadSelect" name="subsidiaryMyKadSelect" class="form-select form-select-lg mykadSelect1">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv1">
                                 <label for="subsidiaryMyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="subsidiaryMyKad" name="subsidiaryMyKad" value="{{ old('subsidiaryMyKad') }}" />
+                                <input class="form-control form-control-lg mykad1" type="number" id="subsidiaryMyKad" name="subsidiaryMyKad" value="{{ old('subsidiaryMyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv1">
+                                <label for="subsidiaryPassportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport1" type="text" id="subsidiaryPassportno" name="subsidiaryPassportno" value="{{ old('subsidiaryPassportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Designation" name="subsidiaryOfficial1Designation" value="{{ old('subsidiaryOfficial1Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Designation" name="subsidiaryOfficial1Designation" value="{{ old('subsidiaryOfficial1Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -892,7 +964,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1ProQualification" name="subsidiaryOfficial1ProQualification" value="{{ old('subsidiaryOfficial1ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1ProQualification" name="subsidiaryOfficial1ProQualification" value="{{ old('subsidiaryOfficial1ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1Email" class="form-label form-label-lg required_label">Email</label>
@@ -904,11 +976,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Address" name="subsidiaryOfficial1Address" value="{{ old('subsidiaryOfficial1Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1Address" name="subsidiaryOfficial1Address" value="{{ old('subsidiaryOfficial1Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1AddressCity" name="subsidiaryOfficial1AddressCity" value="{{ old('subsidiaryOfficial1AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1AddressCity" name="subsidiaryOfficial1AddressCity" value="{{ old('subsidiaryOfficial1AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1AddressState" class="form-label form-label-lg required_label">State</label>
@@ -936,6 +1008,7 @@
                                 <label for="subsidiaryOfficial1SecretartTitle" class="form-label form-label-lg">Title</label>
                                 <select id="subsidiaryOfficial1SecretartTitle" name="subsidiaryOfficial1SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('subsidiaryOfficial1SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -943,7 +1016,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1SecretartName" name="subsidiaryOfficial1SecretartName" value="{{ old('subsidiaryOfficial1SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficial1SecretartName" name="subsidiaryOfficial1SecretartName" value="{{ old('subsidiaryOfficial1SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficial1SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -970,13 +1043,13 @@
                 @csrf
                     <div id="affiliate-general-information" class="content affiliate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">General Information</h5>
+                            <h5 class="mb-0 text-uppercase">General Information</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateCompanyPreferBranch" class="form-label form-label-lg required_label">Preferred Branch</label>
+                                <label for="affiliateCompanyPreferBranch" class="form-label form-label-lg required_label">Select Branch</label>
                                 <select class="form-select form-select-lg" id="affiliateCompanyPreferBranch" name="affiliateCompanyPreferBranch">
-                                    <option value="" selected disabled>Select Preferred Branch</option>
+                                    <option value="" selected disabled>Select Branch</option>
                                     @foreach($branches as $branch)
                                     <option value="{{ $branch->bid }}" {{ $branch->bid == old('affiliateCompanyPreferBranch') ? 'selected' : '' }}>{{ $branch->bname }}</option>
                                     @endforeach
@@ -988,18 +1061,18 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateCompanyName" class="form-label form-label-lg required_label">Company Name</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyName" name="affiliateCompanyName" value="{{ old('affiliateCompanyName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyName" name="affiliateCompanyName" value="{{ old('affiliateCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateCompanyAddress" class="form-label form-label-lg required_label">Address</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddress" name="affiliateCompanyAddress" value="{{ old('affiliateCompanyAddress') }}" />
+                                <label for="affiliateCompanyAddress" class="form-label form-label-lg required_label">Address Line 1</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddress" name="affiliateCompanyAddress" value="{{ old('affiliateCompanyAddress') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateCompanyAddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddressCity" name="affiliateCompanyAddressCity" value="{{ old('affiliateCompanyAddressCity') }}" />
+                                <label for="affiliateCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddressCity" name="affiliateCompanyAddressCity" value="{{ old('affiliateCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateCompanyAddressState" class="form-label form-label-lg required_label">State</label>
+                                <label for="affiliateCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
                                 <select id="affiliateCompanyAddressState" name="affiliateCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1020,7 +1093,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateOfficialWebsite" class="form-label form-label-lg required_label">Official Website</label>
+                                <label for="affiliateOfficialWebsite" class="form-label form-label-lg">Official Website</label>
                                 <input class="form-control form-control-lg" type="text" id="affiliateOfficialWebsite" name="affiliateOfficialWebsite" value="{{ old('affiliateOfficialWebsite') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1029,11 +1102,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateFaxNumber" class="form-label form-label-lg">Fax No.</label>
-                                <input class="form-control form-control-lg" type="number" id="affiliateFaxNumber" name="affiliateFaxNumber" value="{{ old('affiliateFaxNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="affiliateFaxNumber" name="affiliateFaxNumber" value="{{ old('affiliateFaxNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateSSMRegNumber" class="form-label form-label-lg required_label">SSM Registration No.</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateSSMRegNumber" name="affiliateSSMRegNumber" value="{{ old('affiliateSSMRegNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateSSMRegNumber" name="affiliateSSMRegNumber" value="{{ old('affiliateSSMRegNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateDateOfCompanyFormation" class="form-label form-label-lg required_label">Date of Company Formation</label>
@@ -1065,7 +1138,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateHouseDevelopingLicense" class="form-label form-label-lg required_label">Housing Developer's Licence No.</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateHouseDevelopingLicense" name="affiliateHouseDevelopingLicense" value="{{ old('affiliateHouseDevelopingLicense') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateHouseDevelopingLicense" name="affiliateHouseDevelopingLicense" value="{{ old('affiliateHouseDevelopingLicense') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateCopyOfHousingDeveloperLicense" class="form-label form-label-lg required_label">Attachment: Copy of Housing Developer's Licence No.</label>
@@ -1088,13 +1161,14 @@
                     </div>
                     <div id="affiliate-company-admin" class="content affiliate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Company Admin</h5>
+                            <h5 class="mb-0 text-uppercase">Company Admin</h5>
                         </div>
                         <div class="row mt-3">
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateAdminTitle" class="form-label form-label-lg">Title</label>
                                 <select id="affiliateAdminTitle" name="affiliateAdminTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('affiliateAdminTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1102,11 +1176,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateNameOfAdmin" class="form-label form-label-lg required_label">Admin Name</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateNameOfAdmin" name="affiliateNameOfAdmin" value="{{ old('affiliateNameOfAdmin') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateNameOfAdmin" name="affiliateNameOfAdmin" value="{{ old('affiliateNameOfAdmin') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateAdminDesignation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateAdminDesignation" name="affiliateAdminDesignation" value="{{ old('affiliateAdminDesignation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateAdminDesignation" name="affiliateAdminDesignation" value="{{ old('affiliateAdminDesignation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateAdminEmail" class="form-label form-label-lg required_label">Email</label>
@@ -1132,29 +1206,42 @@
                     </div>
                     <div id="affiliate-official-representative-1" class="content affiliate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Official Representative 1</h5>
+                            <h5 class="mb-0 text-uppercase">Official Representative</h5>
                         </div>
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="affiliateOfficial1Title" name="affiliateOfficial1Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('affiliateOfficial1Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateOfficial1Nop" class="form-label form-label-lg required_label">Official Representative 1 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Nop" name="affiliateOfficial1Nop" value="{{ old('affiliateOfficial1Nop') }}" />
+                                <label for="affiliateOfficial1Nop" class="form-label form-label-lg required_label">Official Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Nop" name="affiliateOfficial1Nop" value="{{ old('affiliateOfficial1Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="affiliateMyKadSelect" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="affiliateMyKadSelect" name="affiliateMyKadSelect" class="form-select form-select-lg mykadSelect1">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv1">
                                 <label for="affiliateMyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="affiliateMyKad" name="affiliateMyKad" value="{{ old('affiliateMyKad') }}" />
+                                <input class="form-control form-control-lg mykad1" type="number" id="affiliateMyKad" name="affiliateMyKad" value="{{ old('affiliateMyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv1">
+                                <label for="affiliatePassportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport1" type="text" id="affiliatePassportno" name="affiliatePassportno" value="{{ old('affiliatePassportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Designation" name="affiliateOfficial1Designation" value="{{ old('affiliateOfficial1Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Designation" name="affiliateOfficial1Designation" value="{{ old('affiliateOfficial1Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -1168,7 +1255,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1ProQualification" name="affiliateOfficial1ProQualification" value="{{ old('affiliateOfficial1ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1ProQualification" name="affiliateOfficial1ProQualification" value="{{ old('affiliateOfficial1ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1Email" class="form-label form-label-lg required_label">Email</label>
@@ -1180,11 +1267,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Address" name="affiliateOfficial1Address" value="{{ old('affiliateOfficial1Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1Address" name="affiliateOfficial1Address" value="{{ old('affiliateOfficial1Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1AddressCity" name="affiliateOfficial1AddressCity" value="{{ old('affiliateOfficial1AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1AddressCity" name="affiliateOfficial1AddressCity" value="{{ old('affiliateOfficial1AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1AddressState" class="form-label form-label-lg required_label">State</label>
@@ -1212,6 +1299,7 @@
                                 <label for="affiliateOfficial1SecretartTitle" class="form-label form-label-lg">Secretary Title</label>
                                 <select id="affiliateOfficial1SecretartTitle" name="affiliateOfficial1SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('affiliateOfficial1SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1219,7 +1307,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1SecretartName" name="affiliateOfficial1SecretartName" value="{{ old('affiliateOfficial1SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial1SecretartName" name="affiliateOfficial1SecretartName" value="{{ old('affiliateOfficial1SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial1SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -1246,29 +1334,42 @@
                     </div>
                     <div id="affiliate-official-representative-2" class="content affiliate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Alternative Representative</h5>
+                            <h5 class="mb-0 text-uppercase">Alternate Representative</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="affiliateOfficial2Title" name="affiliateOfficial2Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('affiliateOfficial2Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateOfficial2Nop" class="form-label form-label-lg required_label">Official Representative 2 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Nop" name="affiliateOfficial2Nop" value="{{ old('affiliateOfficial2Nop') }}" />
+                                <label for="affiliateOfficial2Nop" class="form-label form-label-lg required_label">Alternate Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Nop" name="affiliateOfficial2Nop" value="{{ old('affiliateOfficial2Nop') }}"  oninput="this.value = this.value.toUpperCase();"/>
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="affiliateMyKad2Select" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="affiliateMyKad2Select" name="affiliateMyKad2Select" class="form-select form-select-lg mykadSelect2">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv2">
                                 <label for="affiliateMyKad2" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="affiliateMyKad2" name="affiliateMyKad2" value="{{ old('affiliateMyKad2') }}" />
+                                <input class="form-control form-control-lg mykad2" type="number" id="affiliateMyKad2" name="affiliateMyKad2" value="{{ old('affiliateMyKad2') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv2">
+                                <label for="affiliate2Passportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport2" type="text" id="affiliate2Passportno" name="affiliate2Passportno" value="{{ old('affiliate2Passportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Designation" name="affiliateOfficial2Designation" value="{{ old('affiliateOfficial2Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Designation" name="affiliateOfficial2Designation" value="{{ old('affiliateOfficial2Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -1282,7 +1383,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2ProQualification" name="affiliateOfficial2ProQualification" value="{{ old('affiliateOfficial2ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2ProQualification" name="affiliateOfficial2ProQualification" value="{{ old('affiliateOfficial2ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2Email" class="form-label form-label-lg required_label">Email</label>
@@ -1294,11 +1395,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Address" name="affiliateOfficial2Address" value="{{ old('affiliateOfficial2Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2Address" name="affiliateOfficial2Address" value="{{ old('affiliateOfficial2Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2AddressCity" name="affiliateOfficial2AddressCity" value="{{ old('affiliateOfficial2AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2AddressCity" name="affiliateOfficial2AddressCity" value="{{ old('affiliateOfficial2AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2AddressState" class="form-label form-label-lg required_label">State</label>
@@ -1326,6 +1427,7 @@
                                 <label for="affiliateOfficial2SecretartTitle" class="form-label form-label-lg">Title</label>
                                 <select id="affiliateOfficial2SecretartTitle" name="affiliateOfficial2SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('affiliateOfficial2SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1333,7 +1435,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2SecretartName" name="affiliateOfficial2SecretartName" value="{{ old('affiliateOfficial2SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficial2SecretartName" name="affiliateOfficial2SecretartName" value="{{ old('affiliateOfficial2SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficial2SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -1361,13 +1463,13 @@
                 @csrf
                     <div id="associate-general-information" class="content associate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">General Information</h5>
+                            <h5 class="mb-0 text-uppercase">General Information</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
-                                <label for="associateCompanyPreferBranch" class="form-label form-label-lg required_label">Preferred Branch</label>
+                                <label for="associateCompanyPreferBranch" class="form-label form-label-lg required_label">Select Branch</label>
                                 <select class="form-select form-select-lg" id="associateCompanyPreferBranch" name="associateCompanyPreferBranch">
-                                    <option value="" selected disabled>Select Preferred Branch</option>
+                                    <option value="" selected disabled>Select Branch</option>
                                     @foreach($branches as $branch)
                                     <option value="{{ $branch->bid }}" {{ $branch->bid == old('associateCompanyPreferBranch') ? 'selected' : '' }}>{{ $branch->bname }}</option>
                                     @endforeach
@@ -1387,18 +1489,18 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateCompanyName" class="form-label form-label-lg required_label">Company Name</label>
-                                <input class="form-control form-control-lg" type="text" id="associateCompanyName" name="associateCompanyName" value="{{ old('associateCompanyName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateCompanyName" name="associateCompanyName" value="{{ old('associateCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateCompanyAddress" class="form-label form-label-lg required_label">Address</label>
-                                <input class="form-control form-control-lg" type="text" id="associateCompanyAddress" name="associateCompanyAddress" value="{{ old('associateCompanyAddress') }}" />
+                                <label for="associateCompanyAddress" class="form-label form-label-lg required_label">Address Line 1</label>
+                                <input class="form-control form-control-lg" type="text" id="associateCompanyAddress" name="associateCompanyAddress" value="{{ old('associateCompanyAddress') }}"  oninput="this.value = this.value.toUpperCase();"/>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateCompanyAddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="associateCompanyAddressCity" name="associateCompanyAddressCity" value="{{ old('associateCompanyAddressCity') }}" />
+                                <label for="associateCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2</label>
+                                <input class="form-control form-control-lg" type="text" id="associateCompanyAddressCity" name="associateCompanyAddressCity" value="{{ old('associateCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateCompanyAddressState" class="form-label form-label-lg required_label">State</label>
+                                <label for="associateCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
                                 <select id="associateCompanyAddressState" name="associateCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1419,7 +1521,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateOfficialWebsite" class="form-label form-label-lg required_label">Official Website</label>
+                                <label for="associateOfficialWebsite" class="form-label form-label-lg">Official Website</label>
                                 <input class="form-control form-control-lg" type="text" id="associateOfficialWebsite" name="associateOfficialWebsite" value="{{ old('associateOfficialWebsite') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1428,11 +1530,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateFaxNumber" class="form-label form-label-lg">Fax No.</label>
-                                <input class="form-control form-control-lg" type="number" id="associateFaxNumber" name="associateFaxNumber" value="{{ old('associateFaxNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="associateFaxNumber" name="associateFaxNumber" value="{{ old('associateFaxNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateSSMRegNumber" class="form-label form-label-lg required_label">SSM Registration No.</label>
-                                <input class="form-control form-control-lg" type="text" id="associateSSMRegNumber" name="associateSSMRegNumber" value="{{ old('associateSSMRegNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateSSMRegNumber" name="associateSSMRegNumber" value="{{ old('associateSSMRegNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateDateOfCompanyFormation" class="form-label form-label-lg required_label">Date of Company Formation</label>
@@ -1479,13 +1581,14 @@
                     </div>
                     <div id="associate-company-admin" class="content associate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Company Admin</h5>
+                            <h5 class="mb-0 text-uppercase">Company Admin</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="associateAdminTitle" class="form-label form-label-lg">Title</label>
                                 <select id="associateAdminTitle" name="associateAdminTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('associateAdminTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1493,11 +1596,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateNameOfAdmin" class="form-label form-label-lg required_label">Admin Name</label>
-                                <input class="form-control form-control-lg" type="text" id="associateNameOfAdmin" name="associateNameOfAdmin" value="{{ old('associateNameOfAdmin') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateNameOfAdmin" name="associateNameOfAdmin" value="{{ old('associateNameOfAdmin') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateAdminDesignation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="associateAdminDesignation" name="associateAdminDesignation" value="{{ old('associateAdminDesignation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateAdminDesignation" name="associateAdminDesignation" value="{{ old('associateAdminDesignation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateAdminEmail" class="form-label form-label-lg required_label">Email</label>
@@ -1524,29 +1627,42 @@
                     </div>
                     <div id="associate-official-representative-1" class="content associate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Official Representative 1</h5>
+                            <h5 class="mb-0 text-uppercase">Official Representative</h5>
                         </div>
                         <div class="row g3">
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="associateOfficial1Title" name="associateOfficial1Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('associateOfficial1Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateOfficial1Nop" class="form-label form-label-lg required_label">Official Representative 1 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Nop" name="associateOfficial1Nop" value="{{ old('associateOfficial1Nop') }}" />
+                                <label for="associateOfficial1Nop" class="form-label form-label-lg required_label">Official Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Nop" name="associateOfficial1Nop" value="{{ old('associateOfficial1Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="associateOfficial1MyKadSelect" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="associateOfficial1MyKadSelect" name="associateOfficial1MyKadSelect" class="form-select form-select-lg mykadSelect1">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv1">
                                 <label for="associateOfficial1MyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="associateOfficial1MyKad" name="associateOfficial1MyKad" value="{{ old('associateOfficial1MyKad') }}" />
+                                <input class="form-control form-control-lg mykad1" type="number" id="associateOfficial1MyKad" name="associateOfficial1MyKad" value="{{ old('associateOfficial1MyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv1">
+                                <label for="associateOfficial1Passportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport1" type="text" id="associateOfficial1Passportno" name="associateOfficial1Passportno" value="{{ old('associateOfficial1Passportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Designation" name="associateOfficial1Designation" value="{{ old('associateOfficial1Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Designation" name="associateOfficial1Designation" value="{{ old('associateOfficial1Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -1560,7 +1676,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1ProQualification" name="associateOfficial1ProQualification" value="{{ old('associateOfficial1ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1ProQualification" name="associateOfficial1ProQualification" value="{{ old('associateOfficial1ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1Email" class="form-label form-label-lg required_label">Email</label>
@@ -1572,11 +1688,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Address" name="associateOfficial1Address" value="{{ old('associateOfficial1Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1Address" name="associateOfficial1Address" value="{{ old('associateOfficial1Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1AddressCity" name="associateOfficial1AddressCity" value="{{ old('associateOfficial1AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1AddressCity" name="associateOfficial1AddressCity" value="{{ old('associateOfficial1AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1AddressState" class="form-label form-label-lg required_label">State</label>
@@ -1604,6 +1720,7 @@
                                 <label for="associateOfficial1SecretartTitle" class="form-label form-label-lg">Title</label>
                                 <select id="associateOfficial1SecretartTitle" name="associateOfficial1SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('associateOfficial1SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1611,7 +1728,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial1SecretartName" name="associateOfficial1SecretartName" value="{{ old('associateOfficial1SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial1SecretartName" name="associateOfficial1SecretartName" value="{{ old('associateOfficial1SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -1638,29 +1755,42 @@
                     </div>
                     <div id="associate-official-representative-2" class="content associate-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Alternative Representative</h5>
+                            <h5 class="mb-0 text-uppercase">Alternate Representative</h5>
                         </div>
                         <div class="row mt-3">
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="associateOfficial2Title" name="associateOfficial2Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('associateOfficial2Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateOfficial2Nop" class="form-label form-label-lg required_label">Official Representative 2 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Nop" name="associateOfficial2Nop" value="{{ old('associateOfficial2Nop') }}" />
+                                <label for="associateOfficial2Nop" class="form-label form-label-lg required_label">Alternate Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Nop" name="associateOfficial2Nop" value="{{ old('associateOfficial2Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="associateOfficial2MyKad2Select" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="associateOfficial2MyKad2Select" name="associateOfficial2MyKad2Select" class="form-select form-select-lg mykadSelect2">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv2">
                                 <label for="associateOfficial2MyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="associateOfficial2MyKad" name="associateOfficial2MyKad" value="{{ old('associateOfficial2MyKad') }}" />
+                                <input class="form-control form-control-lg mykad2" type="number" id="associateOfficial2MyKad" name="associateOfficial2MyKad" value="{{ old('associateOfficial2MyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv2">
+                                <label for="associateOfficial2Passportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport2" type="text" id="associateOfficial2Passportno" name="associateOfficial2Passportno" value="{{ old('associateOfficial2Passportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Designation" name="associateOfficial2Designation" value="{{ old('associateOfficial2Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Designation" name="associateOfficial2Designation" value="{{ old('associateOfficial2Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -1674,7 +1804,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2ProQualification" class="form-label form-label-lg">Professional Qualification (If Any)</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2ProQualification" name="associateOfficial2ProQualification" value="{{ old('associateOfficial2ProQualification') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2ProQualification" name="associateOfficial2ProQualification" value="{{ old('associateOfficial2ProQualification') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2Email" class="form-label form-label-lg required_label">Email</label>
@@ -1686,11 +1816,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Address" name="associateOfficial2Address" value="{{ old('associateOfficial2Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2Address" name="associateOfficial2Address" value="{{ old('associateOfficial2Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2AddressCity" name="associateOfficial2AddressCity" value="{{ old('associateOfficial2AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2AddressCity" name="associateOfficial2AddressCity" value="{{ old('associateOfficial2AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2AddressState" class="form-label form-label-lg required_label">State</label>
@@ -1718,6 +1848,7 @@
                                 <label for="associateOfficial2SecretartTitle" class="form-label form-label-lg">Title</label>
                                 <select id="associateOfficial2SecretartTitle" name="associateOfficial2SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('associateOfficial2SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1725,7 +1856,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="associateOfficial2SecretartName" name="associateOfficial2SecretartName" value="{{ old('associateOfficial2SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficial2SecretartName" name="associateOfficial2SecretartName" value="{{ old('associateOfficial2SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -1753,7 +1884,7 @@
                 @csrf
                     <div id="rehdayouth-general-information" class="content rehdayouth-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">General Information</h5>
+                            <h5 class="mb-0 text-uppercase">General Information</h5>
                         </div>
                         <div class="row mt-3">
                             <div class="mb-3 col-md-12">
@@ -1762,18 +1893,18 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthCompanyName" class="form-label form-label-lg required_label">Company Name</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyName" name="rehdaYouthCompanyName" value="{{ old('rehdaYouthCompanyName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyName" name="rehdaYouthCompanyName" value="{{ old('rehdaYouthCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthCompanyAddress" class="form-label form-label-lg required_label">Address</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddress" name="rehdaYouthCompanyAddress" value="{{ old('rehdaYouthCompanyAddress') }}" />
+                                <label for="rehdaYouthCompanyAddress" class="form-label form-label-lg required_label">Address Line 1</label>
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddress" name="rehdaYouthCompanyAddress" value="{{ old('rehdaYouthCompanyAddress') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthCompanyAddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddressCity" name="rehdaYouthCompanyAddressCity" value="{{ old('rehdaYouthCompanyAddressCity') }}" />
+                                <label for="rehdaYouthCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2</label>
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddressCity" name="rehdaYouthCompanyAddressCity" value="{{ old('rehdaYouthCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthCompanyAddressState" class="form-label form-label-lg required_label">State</label>
+                                <label for="rehdaYouthCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
                                 <select id="rehdaYouthCompanyAddressState" name="rehdaYouthCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1794,7 +1925,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthOfficialWebsite" class="form-label form-label-lg required_label">Official Website</label>
+                                <label for="rehdaYouthOfficialWebsite" class="form-label form-label-lg">Official Website</label>
                                 <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficialWebsite" name="rehdaYouthOfficialWebsite" value="{{ old('rehdaYouthOfficialWebsite') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1803,7 +1934,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthFaxNumber" class="form-label form-label-lg">Fax No.</label>
-                                <input class="form-control form-control-lg" type="number" id="rehdaYouthFaxNumber" name="rehdaYouthFaxNumber" value="{{ old('rehdaYouthFaxNumber') }}" />
+                                <input class="form-control form-control-lg" type="number" id="rehdaYouthFaxNumber" name="rehdaYouthFaxNumber" value="{{ old('rehdaYouthFaxNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
 
                         </div>
@@ -1822,29 +1953,42 @@
                     </div>
                     <div id="rehdayouth-official-representative-1" class="content rehdayouth-body">
                         <div class="content-header mb-3">
-                            <h5 class="mb-0">Official Representative 1</h5>
+                            <h5 class="mb-0 text-uppercase">Official Representative</h5>
                         </div>
                         <div class="row mt-3">
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1Title" class="form-label form-label-lg required_label">Title</label>
                                 <select id="rehdaYouthOfficial1Title" name="rehdaYouthOfficial1Title" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('rehdaYouthOfficial1Title') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthOfficial1Nop" class="form-label form-label-lg required_label">Official Representative 1 Name</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Nop" name="rehdaYouthOfficial1Nop" value="{{ old('rehdaYouthOfficial1Nop') }}" />
+                                <label for="rehdaYouthOfficial1Nop" class="form-label form-label-lg required_label">Official Representative Name</label>
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Nop" name="rehdaYouthOfficial1Nop" value="{{ old('rehdaYouthOfficial1Nop') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="rehdaYouthOfficial1MyKadSelect" class="form-label
+                                form-label-lg required_label">MyKad No.</label>
+                                <select id="rehdaYouthOfficial1MyKadSelect" name="rehdaYouthOfficial1MyKadSelect" class="form-select form-select-lg mykadSelect1">
+                                    <option value="1">MyKad No.</option>
+                                    <option value="2">Passport No.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12 mykadDiv1">
                                 <label for="rehdaYouthOfficial1MyKad" class="form-label form-label-lg required_label">MyKad No.</label>
-                                <input class="form-control form-control-lg" type="number" id="rehdaYouthOfficial1MyKad" name="rehdaYouthOfficial1MyKad" value="{{ old('rehdaYouthOfficial1MyKad') }}" />
+                                <input class="form-control form-control-lg mykad1" type="number" id="rehdaYouthOfficial1MyKad" name="rehdaYouthOfficial1MyKad" value="{{ old('rehdaYouthOfficial1MyKad') }}" />
+                            </div>
+                            <div class="mb-3 col-md-12 passportDiv1">
+                                <label for="rehdaYouthOfficial1Passportno" class="form-label form-label-lg required_label">Passport No.</label>
+                                <input class="form-control form-control-lg passport1" type="text" id="rehdaYouthOfficial1Passportno" name="rehdaYouthOfficial1Passportno" value="{{ old('rehdaYouthOfficial1Passportno') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1Designation" class="form-label form-label-lg required_label">Designation</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Designation" name="rehdaYouthOfficial1Designation" value="{{ old('rehdaYouthOfficial1Designation') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Designation" name="rehdaYouthOfficial1Designation" value="{{ old('rehdaYouthOfficial1Designation') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1Gender" class="form-label form-label-lg required_label">Gender:</label>
@@ -1870,11 +2014,11 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1Address" class="form-label form-label-lg required_label">Correspondence Address</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Address" name="rehdaYouthOfficial1Address" value="{{ old('rehdaYouthOfficial1Address') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1Address" name="rehdaYouthOfficial1Address" value="{{ old('rehdaYouthOfficial1Address') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1AddressCity" class="form-label form-label-lg required_label">City</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1AddressCity" name="rehdaYouthOfficial1AddressCity" value="{{ old('rehdaYouthOfficial1AddressCity') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1AddressCity" name="rehdaYouthOfficial1AddressCity" value="{{ old('rehdaYouthOfficial1AddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1AddressState" class="form-label form-label-lg required_label">State</label>
@@ -1902,6 +2046,7 @@
                                 <label for="rehdaYouthOfficial1SecretartTitle" class="form-label form-label-lg">Title</label>
                                 <select id="rehdaYouthOfficial1SecretartTitle" name="rehdaYouthOfficial1SecretartTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
+                                    <option value="0">-</option>
                                     @foreach($titles as $title)
                                     <option value="{{ $title->sid }}" {{ $title->sid == old('rehdaYouthOfficial1SecretartTitle') ? 'selected' : '' }}>{{ $title->sname }}</option>
                                     @endforeach
@@ -1909,7 +2054,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1SecretartName" class="form-label form-label-lg">Secretary Name (If any)</label>
-                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1SecretartName" name="rehdaYouthOfficial1SecretartName" value="{{ old('rehdaYouthOfficial1SecretartName') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficial1SecretartName" name="rehdaYouthOfficial1SecretartName" value="{{ old('rehdaYouthOfficial1SecretartName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1SecretartEmail" class="form-label form-label-lg">Secretary Email</label>
@@ -1978,10 +2123,10 @@
                 ordinaryCompanyName: "required",
                 ordinaryCompanyAddress: "required",
                 ordinaryCompanyAddressCity: "required",
-                ordinaryCompanyAddressState: "required",
+                //ordinaryCompanyAddressState: "required",
                 ordinaryCompanyAddressPc: "required",
                 ordinaryCompanyAddressCountry: "required",
-                ordinaryOfficialWebsite: "required",
+                // ordinaryOfficialWebsite: "required",
                 ordinaryOfficialNumber: "required",
                 ordinarySSMRegNumber: "required",
                 ordinaryDateOfCompanyFormation: "required",
@@ -1997,7 +2142,19 @@
                 ordinaryAdminContactNumber: "required",
                 ordinaryOfficial1Nop: "required",
                 ordinaryOfficial1Title: "required",
-                ordinaryMyKad: "required",
+                ordinaryMyKadSelect: "required",
+                ordinaryMyKad: {
+                    required: function(element) {
+                        return $("#ordinaryMyKadSelect").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                ordinaryPassportno: {
+                    required: function(element) {
+                        return $("#ordinaryMyKadSelect").val() == 2;
+                    }
+                },
                 ordinaryOfficial1Designation: "required",
                 ordinaryGender: "required",
                 ordinaryOfficial1Email: {
@@ -2012,7 +2169,19 @@
                 ordinaryOfficial1AddressCountry: "required",
                 ordinaryOfficial2Nop: "required",
                 ordinaryOfficial2Title: "required",
-                ordinaryMyKad2: "required",
+                ordinaryMyKad2Select: "required",
+                ordinaryMyKad2: {
+                    required: function(element) {
+                        return $("#ordinaryMyKad2Select").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                ordinary2Passportno: {
+                    required: function(element) {
+                        return $("#ordinaryMyKad2Select").val() == 2;
+                    }
+                },
                 ordinaryOfficial2Designation: "required",
                 ordinaryOfficial2Gender: "required",
                 ordinaryOfficial2Email: {
@@ -2135,7 +2304,7 @@
                                 }
 
                                 // Show the error message
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                                 inputField.focus();
 
@@ -2144,7 +2313,7 @@
                             } else {
                                 // If already opened, just show the error message without opening another accordion
                                 var inputField = $("#" + field);
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                             }
                         });
@@ -2165,10 +2334,10 @@
                 subsidiaryCompanyName: "required",
                 subsidiaryCompanyAddress: "required",
                 subsidiaryCompanyAddressCity: "required",
-                subsidiaryCompanyAddressState: "required",
+                // subsidiaryCompanyAddressState: "required",
                 subsidiaryCompanyAddressPc: "required",
                 subsidiaryCompanyAddressCountry: "required",
-                subsidiaryOfficialWebsite: "required",
+                // subsidiaryOfficialWebsite: "required",
                 subsidiaryOfficialNumber: "required",
                 subsidiarySSMRegNumber: "required",
                 subsidiaryDateOfCompanyFormation: "required",
@@ -2184,7 +2353,19 @@
                 subsidiaryAdminContactNumber: "required",
                 subsidiaryOfficial1Nop: "required",
                 subsidiaryOfficial1Title: "required",
-                subsidiaryMyKad: "required",
+                subsidiaryMyKadSelect: "required",
+                subsidiaryMyKad: {
+                    required: function(element) {
+                        return $("#subsidiaryMyKadSelect").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                subsidiaryPassportno: {
+                    required: function(element) {
+                        return $("#subsidiaryMyKadSelect").val() == 2;
+                    }
+                },
                 subsidiaryOfficial1Designation: "required",
                 subsidiaryOfficial1Gender: "required",
                 subsidiaryOfficial1Email: {
@@ -2301,7 +2482,7 @@
                                 }
 
                                 // Show the error message
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                                 inputField.focus();
 
@@ -2310,7 +2491,7 @@
                             } else {
                                 // If already opened, just show the error message without opening another accordion
                                 var inputField = $("#" + field);
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                             }
                         });
@@ -2332,10 +2513,10 @@
                 affiliateCompanyName: "required",
                 affiliateCompanyAddress: "required",
                 affiliateCompanyAddressCity: "required",
-                affiliateCompanyAddressState: "required",
+                // affiliateCompanyAddressState: "required",
                 affiliateCompanyAddressPc: "required",
                 affiliateCompanyAddressCountry: "required",
-                affiliateOfficialWebsite: "required",
+                // affiliateOfficialWebsite: "required",
                 affiliateOfficialNumber: "required",
                 affiliateSSMRegNumber: "required",
                 affiliateDateOfCompanyFormation: "required",
@@ -2351,7 +2532,19 @@
                 affiliateAdminContactNumber: "required",
                 affiliateOfficial1Nop: "required",
                 affiliateOfficial1Title: "required",
-                affiliateMyKad: "required",
+                affiliateMyKadSelect: "required",
+                affiliateMyKad: {
+                    required: function(element) {
+                        return $("#affiliateMyKadSelect").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                affiliatePassportno: {
+                    required: function(element) {
+                        return $("#affiliateMyKadSelect").val() == 2;
+                    }
+                },
                 affiliateOfficial1Designation: "required",
                 affiliateOfficial1Gender: "required",
                 affiliateOfficial1Email: {
@@ -2366,7 +2559,19 @@
                 affiliateOfficial1AddressCountry: "required",
                 affiliateOfficial2Nop: "required",
                 affiliateOfficial2Title: "required",
-                affiliateMyKad2: "required",
+                affiliateMyKad2Select: "required",
+                affiliateMyKad2: {
+                    required: function(element) {
+                        return $("#affiliateMyKad2Select").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                affiliate2Passportno: {
+                    required: function(element) {
+                        return $("#affiliateMyKad2Select").val() == 2;
+                    }
+                },
                 affiliateOfficial2Designation: "required",
                 affiliateOfficial2Gender: "required",
                 affiliateOfficial2Email: {
@@ -2488,7 +2693,7 @@
                                 }
 
                                 // Show the error message
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                                 inputField.focus();
 
@@ -2497,7 +2702,7 @@
                             } else {
                                 // If already opened, just show the error message without opening another accordion
                                 var inputField = $("#" + field);
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                             }
                         });
@@ -2521,7 +2726,7 @@
                 $('#associateCompayAdminButton').html('Company Admin <span>Required</span>');
                 $("#associate-official-representative-2 :input").not(':button').attr("disabled", false);
                 $("#associate-company-admin :input").not(':button').attr("disabled", false);
-                $(".requiredtitle").html('<span class="badge bg-danger required-badge">Required</span>');
+                $(".requiredtitle").html('<span class="badge bg-danger text-uppercase required-badge">Required</span>');
             } else if ($(this).is(':checked') && $(this).val() == 2) {
                 $('#associateSSMRegNumber').prop("disabled", true);
                 $('#associateDateOfCompanyFormation').prop("disabled", true);
@@ -2535,7 +2740,7 @@
                 $('#associateCompayAdminButton').html('Company Admin <span style="background-color:darkgrey;">Not Applicable</span>');
                 $("#associate-official-representative-2 :input").not(':button').attr("disabled", true);
                 $("#associate-company-admin :input").not(':button').attr("disabled", true);
-                $(".requiredtitle").html('<span class="badge bg-secondary required-badge">Not Applicable</span>');
+                $(".requiredtitle").html('<span class="badge bg-secondary text-uppercase required-badge">Not Applicable</span>');
             }
         });
 
@@ -2548,10 +2753,10 @@
                 associateCompanyName: "required",
                 associateCompanyAddress: "required",
                 associateCompanyAddressCity: "required",
-                associateCompanyAddressState: "required",
+                // associateCompanyAddressState: "required",
                 associateCompanyAddressPc: "required",
                 associateCompanyAddressCountry: "required",
-                associateOfficialWebsite: "required",
+                // associateOfficialWebsite: "required",
                 associateOfficialNumber: "required",
                 associateSSMRegNumber: {
                     required: function(element) {
@@ -2595,7 +2800,19 @@
 
                 associateOfficial1Nop: "required",
                 associateOfficial1Title: "required",
-                associateOfficial1MyKad: "required",
+                associateOfficial1MyKadSelect: "required",
+                associateOfficial1MyKad: {
+                    required: function(element) {
+                        return $("#associateOfficial1MyKadSelect").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                associateOfficial1Passportno: {
+                    required: function(element) {
+                        return $("#associateOfficial1MyKadSelect").val() == 2;
+                    }
+                },
                 associateOfficial1Designation: "required",
                 associateOfficial1Gender: "required",
                 associateOfficial1Email: {
@@ -2611,7 +2828,19 @@
 
                 associateOfficial2Nop: "required",
                 associateOfficial2Title: "required",
-                associateOfficial2MyKad: "required",
+                associateOfficial2MyKad2Select: "required",
+                associateOfficial2MyKad: {
+                    required: function(element) {
+                        return $("#associateOfficial2MyKad2Select").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                associateOfficial2Passportno: {
+                    required: function(element) {
+                        return $("#associateOfficial2MyKad2Select").val() == 2;
+                    }
+                },
                 associateOfficial2Designation: "required",
                 associateOfficial2Gender: "required",
                 associateOfficial2Email: {
@@ -2667,7 +2896,7 @@
                             $('select').prop('selectedIndex', 0);
                             // toastr.success(response.message, 'Success');
                             $("#associate-btn").prop('disabled', false);
-                            // $(".requiredtitle").html('<span class="badge bg-danger required-badge">Required</span>');
+                            // $(".requiredtitle").html('<span class="badge bg-danger text-uppercase required-badge">Required</span>');
                             // setDefaultHeader();
                             // stepper.to(0);
                             window.location.href = "{{ route('register-success') }}";
@@ -2732,7 +2961,7 @@
                                 }
 
                                 // Show the error message
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                                 inputField.focus();
 
@@ -2741,7 +2970,7 @@
                             } else {
                                 // If already opened, just show the error message without opening another accordion
                                 var inputField = $("#" + field);
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                             }
                         });
@@ -2762,14 +2991,26 @@
                 rehdaYouthCompanyName: "required",
                 rehdaYouthCompanyAddress: "required",
                 rehdaYouthCompanyAddressCity: "required",
-                rehdaYouthCompanyAddressState: "required",
+                // rehdaYouthCompanyAddressState: "required",
                 rehdaYouthCompanyAddressPc: "required",
                 rehdaYouthCompanyAddressCountry: "required",
-                rehdaYouthOfficialWebsite: "required",
+                // rehdaYouthOfficialWebsite: "required",
                 rehdaYouthOfficialNumber: "required",
                 rehdaYouthOfficial1Nop: "required",
                 rehdaYouthOfficial1Title: "required",
-                rehdaYouthOfficial1MyKad: "required",
+                rehdaYouthOfficial1MyKadSelect: "required",
+                rehdaYouthOfficial1MyKad: {
+                    required: function(element) {
+                        return $("#rehdaYouthOfficial1MyKadSelect").val() == 1;
+                    },
+                    minlength: 12,
+                    maxlength: 12,
+                },
+                rehdaYouthOfficial1Passportno: {
+                    required: function(element) {
+                        return $("#rehdaYouthOfficial1MyKadSelect").val() == 2;
+                    }
+                },
                 rehdaYouthOfficial1Designation: "required",
                 rehdaYouthOfficial1Gender: "required",
                 rehdaYouthOfficial1Email: {
@@ -2871,7 +3112,7 @@
                                 }
 
                                 // Show the error message
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                                 inputField.focus();
 
@@ -2880,7 +3121,7 @@
                             } else {
                                 // If already opened, just show the error message without opening another accordion
                                 var inputField = $("#" + field);
-                                var errorElement = $('<div class="error-message" style="color:red;"></div>').text(message);
+                                var errorElement = $('<div class="error-message form-label-lg" style="color:red;"></div>').text(message);
                                 inputField.after(errorElement);
                             }
                         });
@@ -2890,6 +3131,13 @@
 
         });
 
+        // $(".membertype-next").on("click", function () {
+        //     if($(".membertype").valid()){
+        //         stepper.next();
+        //     } else {
+        //         ordinaryMembershipForm.find(":input.error").first().focus();
+        //     }
+        // });
 
         $(".ordinary-general-information-btn").on("click", function () {
             if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense").valid()){
@@ -2998,15 +3246,15 @@
         $(".member-prev").on("click", function () {
             // stepper.previous();
             var activeStepIndex = $('.step.active').index('.step');
-            if($("#membertype").val() == "ordinary") {
+            if($('input[name="membertype"]:checked').val() == "ordinary") {
                 stepper.previous();
-            } else if(activeStepIndex == 5 && $("#membertype").val() == "subsidiary") {
+            } else if(activeStepIndex == 5 && $('input[name="membertype"]:checked').val() == "subsidiary") {
                 stepper.to(0);
-            } else if(activeStepIndex == 8 && $("#membertype").val() == "affiliate") {
+            } else if(activeStepIndex == 8 && $('input[name="membertype"]:checked').val() == "affiliate") {
                 stepper.to(0);
-            } else if(activeStepIndex == 12 && $("#membertype").val() == "associate") {
+            } else if(activeStepIndex == 12 && $('input[name="membertype"]:checked').val() == "associate") {
                 stepper.to(0);
-            } else if(activeStepIndex == 16 && $("#membertype").val() == "rehdayouth") {
+            } else if(activeStepIndex == 16 && $('input[name="membertype"]:checked').val() == "rehdayouth") {
                 stepper.to(0);
             } else {
                 stepper.previous();
@@ -3015,7 +3263,7 @@
 
         setDefaultHeader();
 
-        $("#membertype").on("change", function() {
+        $(".membertype").on("change", function() {
             if($(this).val() == "ordinary") {
                 $(".ordinary-head").show();
                 $(".subsidiary-head").hide();
@@ -3075,17 +3323,47 @@
             },
             submitHandler: function(form) {
                 // stepper.next();
-                if($("#membertype").val() == "ordinary") {
+                if($('input[name="membertype"]:checked').val() == "ordinary") {
                     stepper.next();
-                } else if($("#membertype").val() == "subsidiary") {
+                } else if($('input[name="membertype"]:checked').val() == "subsidiary") {
                     stepper.to(6);
-                } else if($("#membertype").val() == "affiliate") {
+                } else if($('input[name="membertype"]:checked').val() == "affiliate") {
                     stepper.to(9);
-                } else if($("#membertype").val() == "associate") {
+                } else if($('input[name="membertype"]:checked').val() == "associate") {
                     stepper.to(13);
-                } else if($("#membertype").val() == "rehdayouth") {
+                } else if($('input[name="membertype"]:checked').val() == "rehdayouth") {
                     stepper.to(17);
                 }
+            }
+        });
+
+        $(".mykadDiv1").show();
+        $(".passportDiv1").hide();
+
+        $(".mykadSelect1").on("change", function() {
+            if($(this).val() == 1){
+                $(".mykadDiv1").show();
+                $(".passportDiv1").hide();
+                $(".passport1").val('');
+            } else {
+                $(".mykadDiv1").hide();
+                $(".passportDiv1").show();
+                $(".mykad1").val('');
+            }
+        });
+
+        $(".mykadDiv2").show();
+        $(".passportDiv2").hide();
+
+        $(".mykadSelect2").on("change", function() {
+            if($(this).val() == 1){
+                $(".mykadDiv2").show();
+                $(".passportDiv2").hide();
+                $(".passport2").val('');
+            } else {
+                $(".mykadDiv2").hide();
+                $(".passportDiv2").show();
+                $(".mykad2").val('');
             }
         });
 

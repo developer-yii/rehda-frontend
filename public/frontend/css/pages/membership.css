@@ -246,3 +246,7 @@
 .ourInformation .table td {
     border: 1px solid #dee2e6;
 }
+
+.bs-stepper-title, .bs-stepper-subtitle{
+    text-transform: uppercase;
+}

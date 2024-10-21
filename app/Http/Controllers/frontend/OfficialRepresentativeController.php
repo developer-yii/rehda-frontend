@@ -131,15 +131,34 @@ class OfficialRepresentativeController extends Controller
             ChangeRequestMember::create([
                 'rc_uid' => $request->resetNorId,
                 'rc_name' => $request->resetNorName,
-                'rc_mykad' => $request->resetNorMyKad,
+                'rc_mykad' => $request->resetNorMyKad ?? $request->resetNorPassportno,
+                'rc_contactno' => $request->resetNorContact,
+                'rc_emailadd' => $request->resetNorEmail,
                 'rc_created_at' => date('Y-m-d H:i:s'),
                 'rc_oldname' => $userProfile->up_fullname,
                 'rc_oldmykad' => $userProfile->up_mykad,
+                'rc_oldcontactno' => $userProfile->up_contactno,
+                'rc_oldemailadd' => $userProfile->up_emailadd,
             ]);
 
             return response()->json(['status' => 1]);
         } else {
             return response()->json(['status' => 0]);
         }
+    }
+
+    public function alternateIndex()
+    {
+        if(session('compid') == null){
+            return redirect(route('login'));
+        }
+
+        $userProfiles = MemberUserProfile::where('up_mid', session('compid'))->where('up_usertype',1)->orderBy('up_id','ASC')->get();
+        $titles = Salutation::orderBy('sname', 'ASC')->get();
+        $genders = Gender::orderBy('gname','ASC')->get();
+        $states = State::orderBy('state_name', 'ASC')->get();
+        $countries = Country::orderBy('country_id', 'ASC')->get();
+        $alternate = 1;
+        return view('frontend.official-representative.index', compact('userProfiles','titles','genders','states','countries','alternate'));
     }
 }

@@ -84,8 +84,8 @@ class LoginController extends Controller
         $user = MemberUser::where('ml_username', $request->input($this->username()))->first();
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
 
-        if ($user && $ml_priv == $user->ml_priv) {
-        // if ($user) {
+        // if ($user && $ml_priv == $user->ml_priv) {
+        if ($user) {
             $request->session()->flush();
             // Check if the user has a salt field (legacy user)
             if ($user->ml_salt) {

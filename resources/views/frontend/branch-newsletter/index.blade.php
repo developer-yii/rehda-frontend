@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
+                    <a href="{{ route('choosecompant.index') }}">Back</a>
                 </li>
 
                 <li class="breadcrumb-item active">Branch Newsletter</li>
@@ -38,6 +38,8 @@
                     return $key;
                 });
                 $count = 0;
+
+                $datacount = 0;
                 @endphp
 
                 @foreach($years as $key => $year)
@@ -45,7 +47,7 @@
                     $firstKey = $year->keys()->first();
                     $count++;
 
-                    $year[$firstKey]->bu_yr = str_replace('/','-',$year[$firstKey]->bu_yr);
+                    //$year[$firstKey]->bu_yr = str_replace('/','-',$year[$firstKey]->bu_yr);
                     $ctype = 'newsletter';
 
                     $memberComp = App\Models\MemberComp::with('member')->where('did', session('compid'))->first();
@@ -53,41 +55,15 @@
 
                     $newslettersData = App\Models\Newsletter::where('bu_status', 2)
                     ->where('bu_yr', $year[$firstKey]->bu_yr)
-                    ->where(function ($query) use ($ctype, $member) {
-                        // HQ level condition
-                        $query->where(function ($subquery) use ($ctype, $member) {
-                            $subquery->where('bu_level', 'HQ')
-                                ->whereIn('bu_id', function ($q) use ($ctype, $member) {
-                                    // Subquery for content_mperm
-                                    $q->select('cm_item')
-                                        ->from('content_mperm')
-                                        ->where('cm_item_type', $ctype)
-                                        ->where('cm_membertype', $member['member_type']);
-                                })
-                                ->whereIn('bu_id', function ($q) use ($ctype, $member) {
-                                    // Subquery for content_perm
-                                    $q->select('cp_item')
-                                        ->from('content_perm')
-                                        ->where('cp_branch', $member['branchid'])
-                                        ->where('cp_item_type', $ctype);
-                                });
-                        })
-                        // Branch level condition
-                        ->orWhere(function ($subquery) use ($ctype, $member) {
-                            $subquery->where('bu_level', 'Branch')
-                                ->where('bu_branchid', $member['branchid'])
-                                ->whereIn('bu_id', function ($q) use ($ctype, $member) {
-                                    // Subquery for content_mperm
-                                    $q->select('cm_item')
-                                        ->from('content_mperm')
-                                        ->where('cm_item_type', $ctype)
-                                        ->where('cm_membertype', $member['member_type']);
-                                });
-                        });
-                    })
                     ->orderBy('bu_sorting', 'asc')
                     ->get();
+
+                    $year[$firstKey]->bu_yr = str_replace('/','-',$year[$firstKey]->bu_yr);
                     @endphp
+
+                    @if(count($newslettersData) != 0)
+
+                    @php $datacount++; @endphp
 
                     <div class="accordion-item border-bottom {{ $count < 2 ? 'active' : '' }}">
                         <div class="accordion-header d-flex justify-content-between align-items-center flex-wrap flex-sm-nowrap" id="yearid{{$year[$firstKey]->bu_yr}}">
@@ -134,7 +110,13 @@
 
                     </div>
 
+                    @endif
+
                 @endforeach
+
+                @if($datacount == 0)
+                    <p>Stay tune for more content...</p>
+                @endif
             </div>
             @endif
 

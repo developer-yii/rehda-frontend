@@ -11,7 +11,9 @@
     <div class="authentication-inner row">
         <!-- /Left Text -->
         <div class="d-none d-lg-flex col-lg-7 p-0">
-            <img src="{{ getCoverImagePath() }}" alt="auth-login-cover" class="auth-cover-bg auauth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+            <!-- <img src="{{ getCoverImagePath() }}" alt="auth-login-cover" class="auth-cover-bg auauth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center"> -->
+
+            <video autoplay loop muted src="{{ asset('frontend/video/rehda-video-1080.mp4') }}" type="video/mp4" class="auth-cover-bg auauth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center h-auto"></video>
         </div>
 
         <!-- Login -->
@@ -128,15 +130,25 @@
                             </div>
                         </form>
                     </div> -->
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-3">
-                        <div class="title">
-                            <a href="{{ route('register') }}" class="btn btn-primary d-grid w-100">New Member Registration</a>
-                        </div>
-                    </div>
+
                 </div>
 
 
             </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center pt-2 ps-5 pe-5 pb-2">
+                    <h3>How to Become a REHDA Member?</h3>
+
+                    <p>Applicants may fill in the REHDA Membership Application form.</p>
+
+                    <p>Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
+
+                    <p>The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the President will be issued to the successful applicants.</p>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center mb-5 d-flex justify-content-center">
+                   <a href="{{ route('register') }}" class="btn btn-outline-primary d-grid w-25">New Member Registration</a>
+                </div>
         </div>
         <!-- /Login -->
 

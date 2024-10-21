@@ -4,6 +4,7 @@
 
 @section('css')
 <link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
+<link href="{{ asset('frontend/css/pages/choosecompany.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -14,7 +15,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard') }}">{{ __('translation.label_dashboard') }}</a>
+                    <a href="{{ route('choosecompant.index') }}">Back</a>
                 </li>
 
                 <li class="breadcrumb-item active">Company Information</li>
@@ -31,7 +32,7 @@
         <div class="card-body">
         @if(isset($memberComp) && $memberComp)
             @if($memberComp->member->m_type != 6)
-            <form method="POST" action="{{ route('companyinfo.update') }}" onsubmit="disableSubmitButton(this)">
+            <form method="POST" action="{{ route('companyinfo.update') }}" onsubmit="disableSubmitButton(this)" id="companyinfo-form">
             @csrf
             @endif
                 <div class="row mt-3">
@@ -44,21 +45,21 @@
                         <p class="mb-0 form-label-lg">{{ $memberComp->d_compssmno }}</p>
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="address" class="form-label form-label-lg required_label">Address</label>
-                        <input class="form-control form-control-lg address" type="text" id="address" name="address" value="{{ $memberComp->d_compadd }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
+                        <label for="address" class="form-label form-label-lg required_label">Address Line 1</label>
+                        <input class="form-control form-control-lg address" type="text" id="address" name="address" value="{{ $memberComp->d_compadd }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} oninput="this.value = this.value.toUpperCase();" />
                         @if ($errors->has('address'))
                         <span class="error">{{ $errors->first('address') }}</span>
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="city" class="form-label form-label-lg required_label">City</label>
-                        <input class="form-control form-control-lg city" type="text" id="city" name="city" value="{{ $memberComp->d_compaddcity }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
+                        <label for="city" class="form-label form-label-lg required_label">Address Line 2</label>
+                        <input class="form-control form-control-lg city" type="text" id="city" name="city" value="{{ $memberComp->d_compaddcity }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} oninput="this.value = this.value.toUpperCase();" />
                         @if ($errors->has('city'))
                         <span class="error">{{ $errors->first('city') }}</span>
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="state" class="form-label form-label-lg required_label">State</label>
+                        <label for="state" class="form-label form-label-lg">Address Line 3</label>
                         <select id="state" name="state" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
                             <option value="">Select State</option>
                             @foreach($states as $state)
@@ -97,14 +98,14 @@
                     </div>
                     <div class="mb-3 col-md-12">
                         <label for="office_no" class="form-label form-label-lg required_label">Office No</label>
-                        <input class="form-control form-control-lg office_no" type="text" id="office_no" name="office_no" value="{{ $memberComp->d_offno }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
+                        <input class="form-control form-control-lg office_no" type="text" id="office_no" name="office_no" value="{{ $memberComp->d_offno }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} oninput="this.value = this.value.toUpperCase();" />
                         @if ($errors->has('office_no'))
                         <span class="error">{{ $errors->first('office_no') }}</span>
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
                         <label for="faxno" class="form-label form-label-lg">Fax No.</label>
-                        <input class="form-control form-control-lg faxno" type="text" id="faxno" name="faxno" value="{{ $memberComp->d_faxno }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
+                        <input class="form-control form-control-lg faxno" type="text" id="faxno" name="faxno" value="{{ $memberComp->d_faxno }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} oninput="this.value = this.value.toUpperCase();" />
                         <span class="error"></span>
                     </div>
                     <div class="mb-3 col-md-12">

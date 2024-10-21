@@ -21,35 +21,35 @@ class BranchCircularController extends Controller
         $memberType = $memberComp->member->m_type;
         $branchId = $memberComp->member->m_branch;
         $notices = Notice::where('ar_status', 2)
-        ->where(function ($query) use ($ctype, $memberType, $branchId) {
-            // HQ Level condition
-            $query->where(function ($subquery) use ($ctype, $memberType, $branchId) {
-                $subquery->where('ar_level', 'HQ')
-                    ->whereIn('ar_id', function ($q) use ($ctype, $memberType) {
-                        $q->select('cm_item')
-                            ->from('content_mperm')
-                            ->where('cm_item_type', $ctype)
-                            ->where('cm_membertype', $memberType);
-                    })
-                    ->whereIn('ar_id', function ($q) use ($branchId, $ctype) {
-                        $q->select('cp_item')
-                            ->from('content_perm')
-                            ->where('cp_branch', $branchId)
-                            ->where('cp_item_type', $ctype);
-                    });
-            })
-            // Branch level condition
-            ->orWhere(function ($subquery) use ($ctype, $memberType, $branchId) {
-                $subquery->where('ar_level', 'Branch')
-                    ->where('ar_branchid', $branchId)
-                    ->whereIn('ar_id', function ($q) use ($ctype, $memberType) {
-                        $q->select('cm_item')
-                            ->from('content_mperm')
-                            ->where('cm_item_type', $ctype)
-                            ->where('cm_membertype', $memberType);
-                    });
-            });
-        })
+        // ->where(function ($query) use ($ctype, $memberType, $branchId) {
+        //     // HQ Level condition
+        //     $query->where(function ($subquery) use ($ctype, $memberType, $branchId) {
+        //         $subquery->where('ar_level', 'HQ')
+        //             ->whereIn('ar_id', function ($q) use ($ctype, $memberType) {
+        //                 $q->select('cm_item')
+        //                     ->from('content_mperm')
+        //                     ->where('cm_item_type', $ctype)
+        //                     ->where('cm_membertype', $memberType);
+        //             })
+        //             ->whereIn('ar_id', function ($q) use ($branchId, $ctype) {
+        //                 $q->select('cp_item')
+        //                     ->from('content_perm')
+        //                     ->where('cp_branch', $branchId)
+        //                     ->where('cp_item_type', $ctype);
+        //             });
+        //     })
+        //     // Branch level condition
+        //     ->orWhere(function ($subquery) use ($ctype, $memberType, $branchId) {
+        //         $subquery->where('ar_level', 'Branch')
+        //             ->where('ar_branchid', $branchId)
+        //             ->whereIn('ar_id', function ($q) use ($ctype, $memberType) {
+        //                 $q->select('cm_item')
+        //                     ->from('content_mperm')
+        //                     ->where('cm_item_type', $ctype)
+        //                     ->where('cm_membertype', $memberType);
+        //             });
+        //     });
+        // })
         ->orderBy('ar_date', 'desc');
         // ->get();
 
