@@ -29,7 +29,9 @@ class InvoiceController extends Controller
             if($membertype == 1){
                 $arr = getChildMid(session('compid'));
 
-                $usernames = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_mykad')->toArray();
+                $up_ids = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_id')->toArray();
+
+                $usernames = MemberUser::whereIn('ml_uid', $up_ids)->pluck('ml_username')->toArray();
 
                 $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
                 ->whereIn('member_users.ml_username', $usernames)
