@@ -29,17 +29,19 @@ class InvoiceController extends Controller
             if($membertype == 1){
                 $arr = getChildMid(session('compid'));
 
-                $up_ids = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_id')->toArray();
+                if(auth()->user()->ml_priv == "CompanyAdmin") {
+                    $up_ids = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_id')->toArray();
 
-                $usernames = MemberUser::whereIn('ml_uid', $up_ids)->pluck('ml_username')->toArray();
+                    $usernames = MemberUser::whereIn('ml_uid', $up_ids)->pluck('ml_username')->toArray();
 
-                $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
-                ->whereIn('member_users.ml_username', $usernames)
-                ->groupBy('member_userprofiles.up_mid')
-                ->orderBy('member_userprofiles.up_mid', 'asc')
-                ->pluck('member_userprofiles.up_mid')->toArray();
+                    $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
+                    ->whereIn('member_users.ml_username', $usernames)
+                    ->groupBy('member_userprofiles.up_mid')
+                    ->orderBy('member_userprofiles.up_mid', 'asc')
+                    ->pluck('member_userprofiles.up_mid')->toArray();
 
-                $arr = array_unique(array_merge($upMidList,$arr), SORT_REGULAR);
+                    $arr = array_unique(array_merge($upMidList,$arr), SORT_REGULAR);
+                }
 
                 $orders = Order::with('orderStatus')->whereIn('order_mid', $arr)->orderBy('order_created_at', 'DESC');
             } else {
@@ -84,8 +86,12 @@ class InvoiceController extends Controller
 
         $membertype = getMemberType(session('compid'));
         if($membertype == 1){
-            $arr = getChildMid(session('compid'));
-            $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            if(auth()->user()->ml_priv == "CompanyAdmin") {
+                $order = Order::where('oid', $id)->first();
+            } else {
+                $arr = getChildMid(session('compid'));
+                $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            }
         } else {
 
             $order = Order::where('oid', $id)->where('order_mid', session('compid'))->first();
@@ -116,8 +122,12 @@ class InvoiceController extends Controller
     {
         $membertype = getMemberType(session('compid'));
         if($membertype == 1){
-            $arr = getChildMid(session('compid'));
-            $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            if(auth()->user()->ml_priv == "CompanyAdmin") {
+                $order = Order::where('oid', $id)->first();
+            } else {
+                $arr = getChildMid(session('compid'));
+                $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            }
         } else {
             $order = Order::where('oid', $id)->where('order_mid', session('compid'))->first();
         }
