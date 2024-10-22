@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\MemberComp;
+use App\Models\MemberUser;
 use App\Models\MemberUserProfile;
 use App\Models\Order;
 use App\Models\Payment;
@@ -27,6 +28,17 @@ class InvoiceController extends Controller
             $membertype = getMemberType(session('compid'));
             if($membertype == 1){
                 $arr = getChildMid(session('compid'));
+
+                $usernames = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_mykad')->toArray();
+
+                $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
+                ->whereIn('member_users.ml_username', $usernames)
+                ->groupBy('member_userprofiles.up_mid')
+                ->orderBy('member_userprofiles.up_mid', 'asc')
+                ->pluck('member_userprofiles.up_mid')->toArray();
+
+                $arr = array_unique(array_merge($upMidList,$arr), SORT_REGULAR);
+
                 $orders = Order::with('orderStatus')->whereIn('order_mid', $arr)->orderBy('order_created_at', 'DESC');
             } else {
                 $orders = Order::with('orderStatus')->where('order_mid', session('compid'))->orderBy('order_created_at', 'DESC');
