@@ -131,7 +131,8 @@ class OfficialRepresentativeController extends Controller
             ChangeRequestMember::create([
                 'rc_uid' => $request->resetNorId,
                 'rc_name' => $request->resetNorName,
-                'rc_mykad' => $request->resetNorMyKad ?? $request->resetNorPassportno,
+                'rc_mykad' => $request->resetNorMyKad ?? NULL,
+                'rc_passportno' => $request->resetNorPassportno ?? NULL,
                 'rc_contactno' => $request->resetNorContact,
                 'rc_emailadd' => $request->resetNorEmail,
                 'rc_created_at' => date('Y-m-d H:i:s'),

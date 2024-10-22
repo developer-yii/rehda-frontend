@@ -130,6 +130,7 @@
                             ->where('ml_priv', "OfficeRep")
                             ->where('ml_status', 1)
                             ->first();
+                            $memberComp = App\Models\MemberComp::with('member')->where('did', session('compid'))->first();
                         } else {
                             $user = auth()->user();
                             $memberComp = App\Models\MemberComp::with('member')->where('did', session('compid'))->first();
@@ -140,8 +141,9 @@
                         @endphp
 
                         <div class="flex-grow-1 ms-5">
-                            <span class="fw-medium d-block">{{ (auth()->user()->ml_priv == "OfficeRep") ? $profile->up_fullname : $memberComp->d_compname }}</span>
-                            <small class="text-muted">{{ Auth::user()->ml_priv }}</small>
+                            <span class="fw-medium d-block">{{ $memberComp->d_compname }}</span>
+                            <!-- <small class="text-muted">{{ Auth::user()->ml_priv }}</small> -->
+                            <small class="text-muted">Company Name</small>
                         </div>
                         <div class="flex-grow-1 ms-2">
                             <span class="fw-medium d-block">{{ getMembershipNobyMID($profile->up_mid) }}</span>

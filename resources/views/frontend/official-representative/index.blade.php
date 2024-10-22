@@ -120,6 +120,7 @@
                                             <span class="error">{{ $errors->first('official1title') }}</span>
                                             @endif
                                         </div>
+                                        @if($profile->up_mykad)
                                         <div class="mb-3 col-md-12">
                                             <label for="official1mykad" class="form-label form-label-lg required_label">MyKad No.:</label>
                                             <input class="form-control form-control-lg" type="text" id="official1mykad" name="official1mykad" value="{{ $profile->up_mykad }}" disabled />
@@ -127,6 +128,16 @@
                                             <span class="error">{{ $errors->first('official1mykad') }}</span>
                                             @endif
                                         </div>
+                                        @endif
+                                        @if($profile->passportno)
+                                        <div class="mb-3 col-md-12">
+                                            <label for="passportno1" class="form-label form-label-lg required_label">MyKad No.:</label>
+                                            <input class="form-control form-control-lg" type="text" id="passportno1" name="passportno1" value="{{ $profile->passportno }}" disabled />
+                                            @if ($errors->has('passportno1'))
+                                            <span class="error">{{ $errors->first('passportno1') }}</span>
+                                            @endif
+                                        </div>
+                                        @endif
                                         <div class="mb-3 col-md-12">
                                             <label for="official1designation" class="form-label form-label-lg required_label">Designation:</label>
                                             <input class="form-control form-control-lg" type="text" id="official1designation" name="official1designation" value="{{ old('official1designation', $profile->up_designation ?? '') }}" />
@@ -301,6 +312,7 @@
                                             <span class="error">{{ $errors->first('official2title') }}</span>
                                             @endif
                                         </div>
+                                        @if($profile->up_mykad)
                                         <div class="mb-3 col-md-12">
                                             <label for="official2mykad" class="form-label form-label-lg required_label">MyKad No.:</label>
                                             <input class="form-control form-control-lg" type="text" id="official2mykad" name="official2mykad" value="{{ $profile->up_mykad }}" disabled />
@@ -308,6 +320,17 @@
                                             <span class="error">{{ $errors->first('official2mykad') }}</span>
                                             @endif
                                         </div>
+                                        @endif
+                                        @if($profile->passportno)
+                                        <div class="mb-3 col-md-12">
+                                            <label for="passportno2" class="form-label form-label-lg required_label">MyKad No.:</label>
+                                            <input class="form-control form-control-lg" type="text" id="passportno2" name="passportno2" value="{{ $profile->passportno }}" disabled />
+                                            @if ($errors->has('passportno2'))
+                                            <span class="error">{{ $errors->first('passportno2') }}</span>
+                                            @endif
+                                        </div>
+                                        @endif
+
                                         <div class="mb-3 col-md-12">
                                             <label for="official2designation" class="form-label form-label-lg required_label">Designation:</label>
                                             <input class="form-control form-control-lg" type="text" id="official2designation" name="official2designation" value="{{ old('official2designation', $profile->up_designation ?? '') }}" />
