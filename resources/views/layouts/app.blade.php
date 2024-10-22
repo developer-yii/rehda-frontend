@@ -136,6 +136,11 @@
                             $memberComp = App\Models\MemberComp::with('member')->where('did', session('compid'))->first();
                         }
 
+                        if (!$user) {
+                            header("Location: " . config('app.url') . 'logout');
+                            die();
+                        }
+
                         $profile = App\Models\MemberUserProfile::where('up_id', $user->ml_uid)->first();
 
                         @endphp

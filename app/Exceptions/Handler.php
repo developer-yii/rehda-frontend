@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
         // Check for the TokenMismatchException (CSRF token mismatch)
         if ($exception instanceof TokenMismatchException) {
             // Redirect to the login page
-            return redirect()->route('logout')->with('message', 'Your session has expired. Please log in again.');
+            return redirect()->route('user.logout')->with('message', 'Your session has expired. Please log in again.');
         }
 
         return parent::render($request, $exception);
