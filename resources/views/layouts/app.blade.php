@@ -126,7 +126,7 @@
                             $user = App\Models\MemberUser::whereHas('memberUserProfile', function ($query) {
                                 $query->where('up_mid', session('compid'));
                             })
-                            //->where('ml_username', auth()->user()->ml_username)
+                            ->where('ml_username', auth()->user()->ml_username)
                             ->where('ml_priv', "OfficeRep")
                             ->where('ml_status', 1)
                             ->first();
@@ -212,7 +212,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span
-                                                        class="fw-medium d-block">{{ Auth::user()->memberUserProfile->up_fullname }}</span>
+                                                        class="fw-medium d-block">{{ $profile->up_fullname }}</span>
                                                     <small
                                                         class="text-muted">{{ Auth::user()->ml_priv }}</small>
 

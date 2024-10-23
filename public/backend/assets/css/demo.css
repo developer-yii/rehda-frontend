@@ -132,3 +132,11 @@
   border-top-right-radius: var(--bs-border-radius) !important;
   border-bottom-right-radius: var(--bs-border-radius) !important;
 }
+
+.register-member-section{
+  font-size: 0.7125rem;
+}
+
+.authentication-inner video {
+  object-fit: cover !important;
+}
