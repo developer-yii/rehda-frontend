@@ -17,13 +17,13 @@
         </div>
 
         <!-- Login -->
-        <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
+        <div class="d-flex col-12 col-lg-5 align-items-center p-4">
             <div class="w-px-400 mx-auto">
                 <!-- Logo -->
                 <div class="app-brand mb-4 justify-content-center">
                     <a href="{{ route('login') }}" class="app-brand-link gap-2">
                         <span class="app-brand-logo demo w-auto h-auto">
-                            <img src="{{ getLogoPath() }}" width="210" id="loginlogo" />
+                            <img src="{{ getLogoPath() }}" width="150" id="loginlogo" />
                         </span>
                     </a>
                 </div>
@@ -79,9 +79,24 @@
                                 </div>
                             </div>
 
-                            <div class="submit form-text">
+                            <div class="submit form-text mb-2">
                                 <button type="submit" name="membership-submit" id="membership-submit" class="btn btn-primary d-grid w-100">Login</button>
                             </div>
+
+                            <div class="register-member-section">
+                                <b>How to Become a REHDA Member?</b>
+
+                                <p class="mb-2">Applicants may fill in the REHDA Membership Application form.</p>
+
+                                <p class="mb-2">Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
+
+                                <p class="mb-2">The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the President will be issued to the successful applicants.</p>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 text-center mb-2 d-flex justify-content-center">
+                                    <a href="{{ route('register') }}" class="btn btn-outline-primary d-grid w-100">New Member Registration</a>
+                                </div>
+                            </div>
+
                         </form>
                     <!-- </div> -->
                     <!-- <div class="tab-pane fade {{ session('form') == 'representative' || old('form_type') == 'representative' ? 'show active' : '' }}" id="representative" role="tabpanel" aria-labelledby="representative-tab">
@@ -136,19 +151,6 @@
 
             </div>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center pt-2 ps-5 pe-5 pb-2">
-                    <h3>How to Become a REHDA Member?</h3>
-
-                    <p>Applicants may fill in the REHDA Membership Application form.</p>
-
-                    <p>Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
-
-                    <p>The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the President will be issued to the successful applicants.</p>
-                </div>
-
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center mb-5 d-flex justify-content-center">
-                   <a href="{{ route('register') }}" class="btn btn-outline-primary d-grid w-25">New Member Registration</a>
-                </div>
         </div>
         <!-- /Login -->
 
