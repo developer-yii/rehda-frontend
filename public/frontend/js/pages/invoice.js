@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#invoiceTable").DataTable({
+    var datatable = $("#invoiceTable").DataTable({
         processing: true,
         serverSide: false,
         scrollX: true,
@@ -13,7 +13,10 @@ $(document).ready(function () {
 
         ajax: {
             url: getInvoice,
-            type: "GET",
+            type: "POST",
+            data: function(d) {
+                d.status_filter = $('#status_filter').val();
+            }
         },
         columns: [
             {
@@ -57,6 +60,10 @@ $(document).ready(function () {
         drawCallback: function (settings) {
             $('[data-bs-toggle="tooltip"]').tooltip();
         }
+    });
+
+    $("#status_filter").on("change", function() {
+        datatable.ajax.reload();
     });
 
 });
