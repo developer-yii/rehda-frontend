@@ -58,7 +58,7 @@ class UserprofileController extends Controller
             'city' => 'required',
             'state' => 'required',
             'postcode' => 'required',
-            'country' => 'required',
+            // 'country' => 'required',
             'contact_no' => 'required',
             'old_password' => [
                 'nullable',
@@ -120,6 +120,7 @@ class UserprofileController extends Controller
         $profile->up_profq = $request->professional_qualification;
         $profile->up_address = $request->correspondence_address;
         $profile->up_city = $request->city;
+        $profile->up_address_3 = $request->address_3;
         $profile->up_state = $request->state;
         $profile->up_postcode = $request->postcode;
         $profile->up_country = $request->country;
@@ -137,7 +138,7 @@ class UserprofileController extends Controller
     {
         $request->validate([
             'name_of_admin' => 'required',
-            'title' => 'required',
+            // 'title' => 'required',
             'designation' => 'required',
             'email' => 'required|email',
             'contact_no' => 'required',

@@ -32,4 +32,7 @@ return [
     'CC_FEE' => env('CC_FEE', '2.5'),
     'FPX_FEE' => env('FPX_FEE', '0'),
 
+    // ipay merchnat credentials
+    'MERCHANT_KEY' => env('MERCHANT_KEY', 'PqtEkbDgCg'),
+    'MERCHANT_CODE' => env('MERCHANT_CODE', 'M29137'),
 ];

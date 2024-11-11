@@ -29,26 +29,40 @@ class InvoiceController extends Controller
             if($membertype == 1){
                 $arr = getChildMid(session('compid'));
 
-                if(auth()->user()->ml_priv == "CompanyAdmin") {
-                    $up_ids = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_id')->toArray();
+                // if(auth()->user()->ml_priv == "CompanyAdmin") {
+                //     $up_ids = MemberUserProfile::where('up_mid',auth()->user()->memberUserProfile->up_mid)->whereNot('up_id', auth()->user()->ml_id)->pluck('up_id')->toArray();
 
-                    $usernames = MemberUser::whereIn('ml_uid', $up_ids)->pluck('ml_username')->toArray();
+                //     $usernames = MemberUser::whereIn('ml_uid', $up_ids)->pluck('ml_username')->toArray();
 
-                    $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
-                    ->whereIn('member_users.ml_username', $usernames)
-                    ->groupBy('member_userprofiles.up_mid')
-                    ->orderBy('member_userprofiles.up_mid', 'asc')
-                    ->pluck('member_userprofiles.up_mid')->toArray();
+                //     $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
+                //     ->whereIn('member_users.ml_username', $usernames)
+                //     ->groupBy('member_userprofiles.up_mid')
+                //     ->orderBy('member_userprofiles.up_mid', 'asc')
+                //     ->pluck('member_userprofiles.up_mid')->toArray();
 
-                    $arr = array_unique(array_merge($upMidList,$arr), SORT_REGULAR);
-                }
+                //     $arr = array_unique(array_merge($upMidList,$arr), SORT_REGULAR);
+                // }
 
-                $orders = Order::with('orderStatus')->whereIn('order_mid', $arr)->orderBy('order_created_at', 'DESC');
+                $orders = Order::with('orderStatus', 'memberComp')
+                ->whereIn('order_mid', $arr)->orderBy('order_created_at', 'DESC');
+
             } else {
-                $orders = Order::with('orderStatus')->where('order_mid', session('compid'))->orderBy('order_created_at', 'DESC');
+                $orders = Order::with('orderStatus', 'memberComp')
+                ->where('order_mid', session('compid'))->orderBy('order_created_at', 'DESC');
+            }
+
+            // Apply the status filter if present
+            if ($request->input('status_filter') !== null) {
+                $orders->where('order_status', $request->input('status_filter'));
             }
 
             return DataTables::eloquent($orders)
+            ->addColumn('membership_no', function ($row) {
+                return getMembershipNobyMID($row->memberComp->d_mid);
+            })
+            ->addColumn('member_type', function ($row) {
+                return $row->memberComp->member->memberType->typename ?? '';
+            })
             ->addColumn('date', function ($row) {
                 return '<p>'.date('d-M-Y',strtotime($row->order_created_at)).'</p><span class="badge bg-label-'.$row->orderStatus->label.'">'.$row->orderStatus->status.'</span>';
             })
@@ -69,7 +83,9 @@ class InvoiceController extends Controller
                     $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Proforma Invoice</a>';
                 } else {
                     $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Invoice</a>';
-                    $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1">Receipt</a>';
+                    if($row->order_status != 99) {
+                        $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1">Receipt</a>';
+                    }
                 }
 
                 return $buttons;

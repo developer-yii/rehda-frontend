@@ -14,7 +14,7 @@
                 <ol class="breadcrumb">
 
                     <li class="breadcrumb-item">
-                        <a href="{{ route('choosecompant.index') }}">Back</a>
+                        <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                     </li>
 
                     <li class="breadcrumb-item active">Bulletin</li>

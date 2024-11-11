@@ -57,7 +57,7 @@ class BranchCircularController extends Controller
 
             return DataTables::eloquent($notices)
             ->addColumn('date', function ($row) {
-                return '<h3>('. date('d F Y', strtotime($row->ar_date)) .') '. $row->ar_name .'</h3><p>'. $row->ar_yr .'</p>';
+                return '<p class="h5">('. date('d F Y', strtotime($row->ar_date)) .') '. $row->ar_name .'</p><p>'. $row->ar_yr .'</p>';
             })
             ->addColumn('actions', function ($row) {
                 $buttons = '';

@@ -117,3 +117,37 @@
   height: auto !important;
   max-width: 100% !important;
 }
+
+.home-banner{
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.home-banner video {
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+  width: 100%;
+  z-index: 0;
+}
+.animate_text{
+  animation-delay: 0.5s;
+  bottom: 10%;
+  left: 7%;
+  position: absolute;
+  z-index: 1;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+}
+.animate_text h2{
+  color: white;
+  font-size: 55px;
+  font-weight: 400;
+}

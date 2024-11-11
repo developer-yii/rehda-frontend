@@ -249,6 +249,7 @@ Route::middleware('auth')->group(function () {
       Route::get('user-profile', [ChooseCompanyController::class, 'index'])->name('userprofile');
       Route::get('/membership-certificate', [MembershipCertificateController::class, 'index'])->name('membership-certificate.index');
       Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index');
+      Route::post('/invoice', [InvoiceController::class, 'index'])->name('invoice.indexget');
       Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
       Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
 

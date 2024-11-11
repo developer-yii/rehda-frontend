@@ -21,6 +21,18 @@ $(document).ready(function () {
                 name: "date",
             },
             {
+                data: "membership_no",
+                name: "membership_no",
+            },
+            {
+                data: "member_comp.d_compname",
+                name: "member_comp.d_compname",
+            },
+            {
+                data: "member_type",
+                name: "member_type",
+            },
+            {
                 data: "invoice_no",
                 name: "invoice_no",
             },

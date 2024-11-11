@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">User Profile</li>
@@ -77,7 +77,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-md-12">
-                                        <label for="title" class="form-label form-label-lg required_label">Title:</label>
+                                        <label for="title" class="form-label form-label-lg">Title:</label>
                                         <select id="title" name="title" class="form-select form-select-lg">
                                             <option value="0" {{ ($profile->up_title == 0) ? 'selected' : '' }}>-</option>
                                             @foreach($titles as $title)

@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">Others</li>
@@ -30,7 +30,7 @@
 
         <div class="card-body pt-4">
             @if(count($papers) == 0)
-                <p class="mb-0">Stay tune for more content...</p>
+                <p class="mb-0">Content is currently unavailable. Please check back soon for updates!</p>
             @else
                 @foreach($papers as $paper)
                     <div class="col-md-6 col-lg-6 mb-3">
