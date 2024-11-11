@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">Branch Newsletter</li>
@@ -30,7 +30,7 @@
 
         <div class="card-body pt-4">
             @if(count($newsletters) == 0)
-            <p class="mt-3 mb-0">Stay tune for more content...</p>
+            <p class="mt-3 mb-0">Content is currently unavailable. Please check back soon for updates!</p>
             @else
             <div class="accordion accordion-flush accordion-arrow-left" id="accordionYearParent">
                 @php
@@ -81,11 +81,11 @@
 
                                 <h2>Newsletter {{$year[$firstKey]->bu_yr}}</h2>
                                 @if(count($newslettersData) == 0)
-                                <p>Stay tune for more content...</p>
+                                <p>Content is currently unavailable. Please check back soon for updates!</p>
                                 @else
                                 @foreach($newslettersData as $data)
 
-                                    <div class="col-md-6 col-lg-6 mb-3">
+                                    <div class="col-md-6 col-lg-4 mb-3">
                                         <div class="card h-100">
                                             <div class="card-body card-body-box">
                                                 <center>
@@ -115,7 +115,7 @@
                 @endforeach
 
                 @if($datacount == 0)
-                    <p>Stay tune for more content...</p>
+                    <p>Content is currently unavailable. Please check back soon for updates!</p>
                 @endif
             </div>
             @endif

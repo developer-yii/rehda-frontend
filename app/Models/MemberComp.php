@@ -44,6 +44,7 @@ class MemberComp extends Model
         'd_refer_branch',
         'd_mod_at',
         'd_mod_by',
+        'd_compadd_3',
     ];
 
     // Relationship with Member

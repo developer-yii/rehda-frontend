@@ -15,7 +15,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">Company Information</li>
@@ -59,7 +59,21 @@
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="state" class="form-label form-label-lg">Address Line 3</label>
+                        <label for="address_3" class="form-label form-label-lg">Address Line 3</label>
+                        <input class="form-control form-control-lg address_3" type="text" id="address_3" name="address_3" value="{{ $memberComp->d_compadd_3 }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} oninput="this.value = this.value.toUpperCase();" />
+                        @if ($errors->has('address_3'))
+                        <span class="error">{{ $errors->first('address_3') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-3 col-md-12">
+                        <label for="postcode" class="form-label form-label-lg required_label">Postcode</label>
+                        <input class="form-control form-control-lg postcode" type="text" id="postcode" name="postcode" value="{{ $memberComp->d_compaddpcode }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
+                        @if ($errors->has('postcode'))
+                        <span class="error">{{ $errors->first('postcode') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-3 col-md-12">
+                        <label for="state" class="form-label form-label-lg required_label">State</label>
                         <select id="state" name="state" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
                             <option value="">Select State</option>
                             @foreach($states as $state)
@@ -71,15 +85,8 @@
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="postcode" class="form-label form-label-lg required_label">Postcode</label>
-                        <input class="form-control form-control-lg postcode" type="text" id="postcode" name="postcode" value="{{ $memberComp->d_compaddpcode }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
-                        @if ($errors->has('postcode'))
-                        <span class="error">{{ $errors->first('postcode') }}</span>
-                        @endif
-                    </div>
-                    <div class="mb-3 col-md-12">
                         <label for="country" class="form-label form-label-lg required_label">Country</label>
-                        <select id="country" name="country" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }}>
+                        <select id="country" name="country" class="form-select form-select-lg" {{ $memberComp->member->m_type == 6 ? 'disabled' : 'disabled' }}>
                             <option value="">Select Country</option>
                             @foreach($countries as $country)
                                 <option value="{{ $country->country_id }}" {{ ($country->country_id == $memberComp->d_compaddcountry) ? 'selected' : '' }}>{{ $country->country_name }}</option>
@@ -90,7 +97,7 @@
                         @endif
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="official_website" class="form-label form-label-lg required_label">Official Website</label>
+                        <label for="official_website" class="form-label form-label-lg">Official Website</label>
                         <input class="form-control form-control-lg official_website" type="text" id="official_website" name="official_website" value="{{ $memberComp->d_comp_weburl }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
                         @if ($errors->has('official_website'))
                         <span class="error">{{ $errors->first('official_website') }}</span>
@@ -109,7 +116,7 @@
                         <span class="error"></span>
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label for="date_of_company_formation" class="form-label form-label-lg required_label">Date Of Company Formation</label>
+                        <label for="date_of_company_formation" class="form-label form-label-lg required_label">Date Company Formation</label>
                         <input class="form-control form-control-lg date_of_company_formation" type="date" id="date_of_company_formation" name="date_of_company_formation" value="{{ $memberComp->d_datecompform }}" {{ $memberComp->member->m_type == 6 ? 'disabled' : '' }} />
                         @if ($errors->has('date_of_company_formation'))
                         <span class="error">{{ $errors->first('date_of_company_formation') }}</span>

@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">Circular</li>
@@ -29,7 +29,7 @@
         </div>
         <div class="card-body">
             @if(count($circulers) == 0)
-            <p class="mt-3 mb-0">Stay tune for more content...</p>
+            <p class="mt-3 mb-0">Content is currently unavailable. Please check back soon for updates!</p>
             @else
             <div class="accordion accordion-flush accordion-arrow-left mt-4" id="accordionYearParent">
 
@@ -80,7 +80,7 @@
                                     <tr>
                                         <td width="80%">
                                             <div>
-                                                <h3>({{ date('d F Y', strtotime($data->ar_date)) }}) {{ $data->ar_name }}</h3>
+                                                <p class="h5">({{ date('d F Y', strtotime($data->ar_date)) }}) {{ $data->ar_name }}</p>
                                                 <p>{{ $data->ar_yr }}</p>
                                             </div>
                                         </td>

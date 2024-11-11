@@ -31,8 +31,8 @@ class CompanyinfoController extends Controller
             'city' => 'required',
             // 'state' => 'required',
             'postcode' => 'required',
-            'country' => 'required',
-            'official_website' => 'required',
+            // 'country' => 'required',
+            // 'official_website' => 'required',
             'office_no' => 'required',
             'date_of_company_formation' => 'required',
             // 'latest_paid_up_capital' => 'required',
@@ -41,9 +41,10 @@ class CompanyinfoController extends Controller
         $memberComp = MemberComp::where('did',session('compid'))->first();
         $memberComp->d_compadd = $request->address;
         $memberComp->d_compaddcity = $request->city;
+        $memberComp->d_compadd_3 = $request->address_3;
         $memberComp->d_compaddstate = $request->state ?? 0;
         $memberComp->d_compaddpcode = $request->postcode;
-        $memberComp->d_compaddcountry = $request->country;
+        $memberComp->d_compaddcountry = $memberComp->d_compaddcountry;
         $memberComp->d_comp_weburl = $request->official_website;
         $memberComp->d_offno = $request->office_no;
         $memberComp->d_faxno = $request->faxno;

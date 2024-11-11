@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="{{ route('choosecompant.index') }}">Back</a>
+                    <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
                 <li class="breadcrumb-item active">User Profile</li>
@@ -89,21 +89,20 @@
                                         <span class="error">{{ $errors->first('title') }}</span>
                                         @endif
                                     </div>
-                                    @if($profile->up_mykad)
-                                    <div class="mb-3 col-md-12">
-                                        <label for="mykad_no" class="form-label form-label-lg required_label">MyKad No.:</label>
-                                        <input class="form-control form-control-lg" type="text" id="mykad_no" name="mykad_no" value="{{ $profile->up_mykad }}" disabled />
-                                        @if ($errors->has('mykad_no'))
-                                        <span class="error">{{ $errors->first('mykad_no') }}</span>
-                                        @endif
-                                    </div>
-                                    @endif
                                     @if($profile->passportno)
                                     <div class="mb-3 col-md-12">
                                         <label for="passport_no" class="form-label form-label-lg required_label">Passport No.:</label>
                                         <input class="form-control form-control-lg" type="text" id="passport_no" name="passport_no" value="{{ $profile->passportno }}" disabled />
                                         @if ($errors->has('passport_no'))
                                         <span class="error">{{ $errors->first('passport_no') }}</span>
+                                        @endif
+                                    </div>
+                                    @else
+                                    <div class="mb-3 col-md-12">
+                                        <label for="mykad_no" class="form-label form-label-lg required_label">MyKad No.:</label>
+                                        <input class="form-control form-control-lg" type="text" id="mykad_no" name="mykad_no" value="{{ $profile->up_mykad }}" disabled />
+                                        @if ($errors->has('mykad_no'))
+                                        <span class="error">{{ $errors->first('mykad_no') }}</span>
                                         @endif
                                     </div>
                                     @endif
@@ -149,17 +148,31 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-md-12">
-                                        <label for="correspondence_address" class="form-label form-label-lg required_label">Correspondence Address:</label>
+                                        <label for="correspondence_address" class="form-label form-label-lg required_label">Address Line 1:</label>
                                         <input class="form-control form-control-lg" type="text" id="correspondence_address" name="correspondence_address" value="{{ $profile->up_address }}" />
                                         @if ($errors->has('correspondence_address'))
                                         <span class="error">{{ $errors->first('correspondence_address') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-3 col-md-12">
-                                        <label for="city" class="form-label form-label-lg required_label">City:</label>
+                                        <label for="city" class="form-label form-label-lg required_label">Address Line 2:</label>
                                         <input class="form-control form-control-lg" type="text" id="city" name="city" value="{{ $profile->up_city }}" />
                                         @if ($errors->has('city'))
                                         <span class="error">{{ $errors->first('city') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 col-md-12">
+                                        <label for="address_3" class="form-label form-label-lg">Address Line 3:</label>
+                                        <input class="form-control form-control-lg" type="text" id="address_3" name="address_3" value="{{ $profile->up_address_3 }}" />
+                                        @if ($errors->has('address_3'))
+                                        <span class="error">{{ $errors->first('address_3') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 col-md-12">
+                                        <label for="postcode" class="form-label form-label-lg required_label">Postcode:</label>
+                                        <input class="form-control form-control-lg" type="text" id="postcode" name="postcode" value="{{ $profile->up_postcode }}" />
+                                        @if ($errors->has('postcode'))
+                                        <span class="error">{{ $errors->first('postcode') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-3 col-md-12">
@@ -175,15 +188,8 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-md-12">
-                                        <label for="postcode" class="form-label form-label-lg required_label">Postcode:</label>
-                                        <input class="form-control form-control-lg" type="text" id="postcode" name="postcode" value="{{ $profile->up_postcode }}" />
-                                        @if ($errors->has('postcode'))
-                                        <span class="error">{{ $errors->first('postcode') }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="mb-3 col-md-12">
                                         <label for="country" class="form-label form-label-lg required_label">Country:</label>
-                                        <select id="country" name="country" class="form-select form-select-lg">
+                                        <select id="country" name="country" class="form-select form-select-lg" disabled>
                                             <option value="">Select Country</option>
                                             @foreach($countries as $country)
                                                 <option value="{{ $country->country_id }}" {{ ($country->country_id == $profile->up_country) ? 'selected' : '' }}>{{ $country->country_name }}</option>

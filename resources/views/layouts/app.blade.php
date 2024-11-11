@@ -211,10 +211,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span
-                                                        class="fw-medium d-block">{{ $profile->up_fullname }}</span>
-                                                    <small
-                                                        class="text-muted">{{ Auth::user()->ml_priv }}</small>
+                                                    <span class="fw-medium d-block">{{ $profile->up_fullname }}</span>
+                                                    @php
+                                                    if(Auth::user()->ml_priv == "OfficeRep"){
+                                                        $usertype = "Official Representative";
+                                                    } else {
+                                                        $usertype = Auth::user()->ml_priv;
+                                                    }
+                                                    @endphp
+                                                    <small class="text-muted">{{ $usertype }}</small>
 
                                                 </div>
                                             </div>

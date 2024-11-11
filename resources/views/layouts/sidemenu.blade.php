@@ -102,24 +102,31 @@
             </a>
         </li>
 
-        <li class="menu-item {{ request()->is('circular') ? 'active' : '' }}">
-            <a href="{{ route('circular.index') }}" class="menu-link">
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-speakerphone"></i>
-                <div data-i18n="Circular">Circular</div>
+                <div data-i18n="HQ Circular">HQ Circular</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('circular') ? 'active' : '' }}">
+                    <a href="{{ route('circular.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="HQ Circular">HQ Circular</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('branch-circular') ? 'active' : '' }}">
+                    <a href="{{ route('branch-circular.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Branch Circular">Branch Circular</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="menu-item {{ request()->is('branch-newsletter') ? 'active' : '' }}">
             <a href="{{ route('branch-newsletter.index') }}" class="menu-link">
                 <i class="menu-icon  ti ti-news"></i>
                 <div data-i18n="Branch Newsletter">Branch Newsletter</div>
-            </a>
-        </li>
-
-        <li class="menu-item {{ request()->is('branch-circular') ? 'active' : '' }}">
-            <a href="{{ route('branch-circular.index') }}" class="menu-link">
-                <i class="menu-icon  ti ti-speakerphone"></i>
-                <div data-i18n="Branch Circular">Branch Circular</div>
             </a>
         </li>
 

@@ -33,48 +33,48 @@ class OfficialRepresentativeController extends Controller
             'official1title' => 'required',
             'official1designation' => 'required',
             'official1gender' => 'required',
-            'official1email' => 'required|email',
+            // 'official1email' => 'required|email',
             'official1contact_no' => 'required',
             'official1address' => 'required',
             'official1city' => 'required',
             'official1state' => 'required',
             'official1postcode' => 'required',
-            'official1country' => 'required',
+            // 'official1country' => 'required',
 
             'official2title' => 'required',
             'official2designation' => 'required',
             'official2gender' => 'required',
-            'official2email' => 'required|email',
+            // 'official2email' => 'required|email',
             'official2contact_no' => 'required',
             'official2address' => 'required',
             'official2city' => 'required',
             'official2state' => 'required',
             'official2postcode' => 'required',
-            'official2country' => 'required',
+            // 'official2country' => 'required',
         ],[
             'official1title.required' => 'The title field is required.',
             'official1designation.required' => 'The designation field is required.',
             'official1gender.required' => 'The gender field is required.',
-            'official1email.required' => 'The email field is required.',
-            'official1email.email' => 'Please enter valid email.',
+            // 'official1email.required' => 'The email field is required.',
+            // 'official1email.email' => 'Please enter valid email.',
             'official1contact_no.required' => 'The contact no field is required.',
             'official1address.required' => 'The correspondence address field is required.',
             'official1city.required' => 'The city field is required.',
             'official1state.required' => 'The state field is required.',
             'official1postcode.required' => 'The postcode field is required.',
-            'official1country.required' => 'The country field is required.',
+            // 'official1country.required' => 'The country field is required.',
 
             'official2title.required' => 'The title field is required.',
             'official2designation.required' => 'The designation field is required.',
             'official2gender.required' => 'The gender field is required.',
-            'official2email.required' => 'The email field is required.',
-            'official2email.email' => 'Please enter valid email.',
+            // 'official2email.required' => 'The email field is required.',
+            // 'official2email.email' => 'Please enter valid email.',
             'official2contact_no.required' => 'The contact no field is required.',
             'official2address.required' => 'The correspondence address field is required.',
             'official2city.required' => 'The city field is required.',
             'official2state.required' => 'The state field is required.',
             'official2postcode.required' => 'The postcode field is required.',
-            'official2country.required' => 'The country field is required.',
+            // 'official2country.required' => 'The country field is required.',
         ]);
 
         if(isset($request->official1) && $request->official1 != null) {
@@ -83,10 +83,11 @@ class OfficialRepresentativeController extends Controller
             $userProfile1->up_designation = $request->official1designation;
             $userProfile1->up_gender = $request->official1gender;
             $userProfile1->up_contactno = $request->official1contact_no;
-            $userProfile1->up_emailadd = $request->official1email;
+            // $userProfile1->up_emailadd = $request->official1email;
             $userProfile1->up_profq = $request->official1pro_qualification;
             $userProfile1->up_address = $request->official1address;
             $userProfile1->up_city = $request->official1city;
+            $userProfile1->up_address_3 = $request->official1address_3;
             $userProfile1->up_state = $request->official1state;
             $userProfile1->up_postcode = $request->official1postcode;
             $userProfile1->up_country = $request->official1country;
@@ -104,10 +105,11 @@ class OfficialRepresentativeController extends Controller
             $userProfile2->up_designation = $request->official2designation;
             $userProfile2->up_gender = $request->official2gender;
             $userProfile2->up_contactno = $request->official2contact_no;
-            $userProfile2->up_emailadd = $request->official2email;
+            // $userProfile2->up_emailadd = $request->official2email;
             $userProfile2->up_profq = $request->official2pro_qualification;
             $userProfile2->up_address = $request->official2address;
             $userProfile2->up_city = $request->official2city;
+            $userProfile2->up_address_3 = $request->official2address_3;
             $userProfile2->up_state = $request->official2state;
             $userProfile2->up_postcode = $request->official2postcode;
             $userProfile2->up_country = $request->official2country;
