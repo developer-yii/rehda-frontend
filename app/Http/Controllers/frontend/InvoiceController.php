@@ -257,7 +257,7 @@ class InvoiceController extends Controller
 
         $payments = Payment::where('trans_id', $transid)->where('refno', $refno)->where('pstatus',1)->get();
 
-        if(count($payment) == 0) {
+        if ($payment === null) {
             $paymentInsert = Payment::create([
                 'trans_id' => $transid,
                 'authcode' => $authcode,
@@ -272,7 +272,7 @@ class InvoiceController extends Controller
                 'pymt_dt' => $now
             ]);
         } else {
-            if(count($payments) == 0) {
+            if ($payments->isEmpty()) {
                 $paymentInsert = Payment::create([
                     'trans_id' => $transid,
                     'authcode' => $authcode,
