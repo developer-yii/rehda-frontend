@@ -197,6 +197,8 @@ class InvoiceController extends Controller
 
     public function invoicePaymentreturn(Request $request)
     {
+        \Log::info($request->all());
+
         if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )
         {
             $now = date('Y-m-d H:i:s');
