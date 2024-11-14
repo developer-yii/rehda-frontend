@@ -223,6 +223,10 @@ class InvoiceController extends Controller
                 if($result == 2){
                     return redirect(route('payment.fail'));
                 } else {
+
+                    // create certificate when invoice create
+                    memberCertificatePdfCreate(session('compid'));
+
                     return redirect(route('payment.success'));
                 }
 
@@ -380,9 +384,6 @@ class InvoiceController extends Controller
 
     public function paymentSuccess()
     {
-        // create certificate when invoice create
-        $response = memberCertificatePdfCreate(session('compid'));
-
         return view('frontend.invoice.paymentsuccess');
     }
 
