@@ -25,7 +25,21 @@
                 <h3 class="success">Payment Successful!</h3>
                 <p>Thank you for the payment! Please check your receipt from your REHDA Members Portal.</p>
             </div>
+
+            <div class="d-flex justify-content-center mt-4 mb-3">
+                <a href="{{ route('invoice.index') }}" name="membership-submit" id="membership-submit" class="btn btn-primary d-grid w-25 waves-effect waves-light">Back to Invoice</a>
+            </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('auth-js')
+<script type="text/javascript">
+$(document).ready(function(){
+    setTimeout(function(){
+        window.location.href = "{{ route('invoice.index') }}";
+    }, 3000);
+});
+</script>
 @endsection
