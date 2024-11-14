@@ -197,6 +197,7 @@ class InvoiceController extends Controller
 
     public function invoicePaymentreturn(Request $request)
     {
+        \Log::info('Payment return request');
         \Log::info($request->all());
 
         if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )
@@ -222,12 +223,15 @@ class InvoiceController extends Controller
             {
                 $result = $this->succUpdateMember($orderid, $ttype, $merchantcode, $paymentid, $refno, $pamount, $ecurrency, $remark, $transid, $authcode, $response_code, $errdesc, $signature);
 
+                \Log::info('succUpdateMember function result - '.$result);
+
                 if($result == 2){
                     return redirect(route('payment.fail'));
                 } else {
 
                     // create certificate when invoice create
-                    memberCertificatePdfCreate(session('compid'));
+                    $resultnew = memberCertificatePdfCreate(session('compid'));
+                    \Log::info($resultnew);
 
                     return redirect(route('payment.success'));
                 }
@@ -264,6 +268,7 @@ class InvoiceController extends Controller
         $payments = Payment::where('trans_id', $transid)->where('refno', $refno)->where('pstatus',1)->get();
 
         if ($payment === null) {
+            \Log::info("succUpdateMember not found single payment record");
             $paymentInsert = Payment::create([
                 'trans_id' => $transid,
                 'authcode' => $authcode,
@@ -279,7 +284,7 @@ class InvoiceController extends Controller
             ]);
         } else {
             if ($payments->isEmpty()) {
-                $paymentInsert = Payment::create([
+                \Log::info("succUpdateMember not found multiple payment record");                $paymentInsert = Payment::create([
                     'trans_id' => $transid,
                     'authcode' => $authcode,
                     'pstatus' => $response_code,
@@ -293,6 +298,7 @@ class InvoiceController extends Controller
                     'pymt_dt' => $now
                 ]);
             } else {
+                \Log::info("succUpdateMember found ".$payments->count()." payment record");
                 $paymentInsert = Paymentdev::create([
                     'trans_id' => $transid,
                     'authcode' => $authcode,
@@ -314,6 +320,7 @@ class InvoiceController extends Controller
         $refnonew = str_replace(config('constant.ORDERID_SET'),'',$refno);
         $order = Order::where('order_no', $refnonew)->where('order_status',1)->first();
         if($order) {
+            \Log::info("succUpdateMember found order record");
             $pamount = $order->order_grandtotal;
 
             $order_status_paid = 2;
@@ -332,12 +339,16 @@ class InvoiceController extends Controller
 
             return 1;
         } else {
+            \Log::info("succUpdateMember not found order record");
             return 2;
         }
     }
 
     public function invoicePaymentreturncallback(Request $request)
     {
+        \Log::info('Payment return callback');
+        \Log::info($request->all());
+
         if ( !empty($request->PaymentId) && !empty( $request->RefNo ) )
         {
             $now = date('Y-m-d H:i:s');
