@@ -179,7 +179,7 @@
                         @endif
 
                         <p>{{ strtoupper($memberComp->d_compaddcity) }}</p>
-                        <p>{{ $memberComp->d_compaddpcode.' '.strtoupper($memberComp->state->state_name) }}</p>
+                        <p>{{ $memberComp->d_compaddpcode.' '.(isset($memberComp->state) ? strtoupper($memberComp->state->state_name) : '') }}</p>
                     </td>
                 </tr>
 

@@ -27,4 +27,10 @@ class MemberCert extends Model
         }
         return $this->mc_cert_path;
     }
+
+    protected $fillable = [
+        'mc_mid',
+        'mc_cert_path',
+        'mc_yr',
+    ];
 }

@@ -14,6 +14,7 @@ use App\Models\LogSystem;
 use App\Models\Salutation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 if (!function_exists('pr')) {
@@ -606,4 +607,21 @@ function chkMembershipNo($str)
     } else {
         return $member;
     }
+}
+
+function memberCertificatePdfCreate($id) {
+
+    $admin_url = config('app.backendurl')."api/member-certificate-create";
+    $response = Http::withOptions(['verify' => false])->post($admin_url, ['image_secret' => config('app.image_secret'), 'id' => $id]);
+
+    if ($response->failed()) {
+        $errorResponse = [
+            'status' => $response->status(), // HTTP status code
+            'error' => $response->body(),    // The response body
+        ];
+        \Log::error('Error response from Admin API to generate member certificate', $errorResponse);
+        return $errorResponse;
+    }
+    return $response;
+
 }

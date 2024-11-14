@@ -380,6 +380,9 @@ class InvoiceController extends Controller
 
     public function paymentSuccess()
     {
+        // create certificate when invoice create
+        $response = memberCertificatePdfCreate(session('compid'));
+
         return view('frontend.invoice.paymentsuccess');
     }
 
