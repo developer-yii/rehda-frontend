@@ -231,6 +231,7 @@ class InvoiceController extends Controller
 
                     // create certificate when invoice create
                     $resultnew = memberCertificatePdfCreate(session('compid'));
+                    \Log::info('session-compid - '.session('compid'));
                     \Log::info($resultnew);
 
                     return redirect(route('payment.success'));
@@ -299,19 +300,27 @@ class InvoiceController extends Controller
                 ]);
             } else {
                 \Log::info("succUpdateMember found ".$payments->count()." payment record");
-                $paymentInsert = Paymentdev::create([
-                    'trans_id' => $transid,
-                    'authcode' => $authcode,
-                    'pstatus' => $response_code,
-                    'pamount' => $pamount,
-                    'refno' => $refno,
-                    'pymtid' => $paymentid,
-                    'ecurr' => $ecurrency,
-                    'remark' => $remark,
-                    'errdesc' => $errdesc,
-                    'sign' => $signature,
-                    'pymt_dt' => $now
-                ]);
+
+                $check_paymentInsert = Paymentdev::where('trans_id', $transid)->where('refno', $refno)->first();
+                if($check_paymentInsert === null) {
+
+                    $paymentInsert = Paymentdev::create([
+                        'trans_id' => $transid,
+                        'authcode' => $authcode,
+                        'pstatus' => $response_code,
+                        'pamount' => $pamount,
+                        'refno' => $refno,
+                        'pymtid' => $paymentid,
+                        'ecurr' => $ecurrency,
+                        'remark' => $remark,
+                        'errdesc' => $errdesc,
+                        'sign' => $signature,
+                        'pymt_dt' => $now
+                    ]);
+
+                }
+
+                return 1;
             }
         }
 
