@@ -229,9 +229,12 @@ class InvoiceController extends Controller
                     return redirect(route('payment.fail'));
                 } else {
 
+                    $refnonew = str_replace(config('constant.ORDERID_SET'),'',$refno);
+                    $findorder = Order::with('memberComp.member')->where('order_no', $refnonew)->first();
+
                     // create certificate when invoice create
-                    $resultnew = memberCertificatePdfCreate(session('compid'));
-                    \Log::info('session-compid - '.session('compid'));
+                    $resultnew = memberCertificatePdfCreate($findorder->memberComp->member->mid);
+                    \Log::info('member-id - '.$findorder->memberComp->member->mid);
                     \Log::info($resultnew);
 
                     return redirect(route('payment.success'));
