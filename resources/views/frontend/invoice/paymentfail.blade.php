@@ -39,7 +39,7 @@
 $(document).ready(function(){
     setTimeout(function(){
         window.location.href = "{{ route('invoice.index') }}";
-    }, 3000);
+    }, 5000);
 });
 </script>
 @endsection
