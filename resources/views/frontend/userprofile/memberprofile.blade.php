@@ -70,6 +70,9 @@
                             <div class="tab-content ps-0 pe-0 pb-0">
                                 <div class="tab-pane fade @if(!$errors->has('old_password') && !$errors->has('new_password') && !$errors->has('retype_password')) show active @endif" id="navs-info" role="tabpanel">
 
+                                    Please login using your company’s REHDA Membership Number to make updates to the Representative Name or MyKad Number.
+                                    <br><br>
+
                                     <div class="mb-3 col-md-12">
                                         <label for="name_of_official_representative" class="form-label form-label-lg required_label">Name of Official Representative:</label>
                                         <input class="form-control form-control-lg" type="text" id="name_of_official_representative" name="name_of_official_representative" value="{{ $profile->up_fullname }}" disabled />
