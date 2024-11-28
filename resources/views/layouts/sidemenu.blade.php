@@ -88,11 +88,25 @@
             </a>
         </li>
 
-        <li class="menu-item {{ request()->is('annualreport') ? 'active' : '' }}">
-            <a href="{{ route('annualreport.index') }}" class="menu-link">
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-report-analytics"></i>
                 <div data-i18n="Annual Report">Annual Report</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('annualreport') ? 'active' : '' }}">
+                    <a href="{{ route('annualreport.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="HQ Annual Report">HQ Annual Report</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('branch-annualreport') ? 'active' : '' }}">
+                    <a href="{{ route('branch-annualreport.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-devices"></i>
+                        <div data-i18n="Branch Annual Report">Branch Annual Report</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="menu-item {{ request()->is('bulletin') ? 'active' : '' }}">
@@ -105,7 +119,7 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-speakerphone"></i>
-                <div data-i18n="HQ Circular">HQ Circular</div>
+                <div data-i18n="Circular">Circular</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->is('circular') ? 'active' : '' }}">

@@ -27,6 +27,7 @@ use App\Http\Controllers\backend\AssociateUserController;
 use App\Http\Controllers\backend\YouthUserController;
 use App\Http\Controllers\backend\NoticeController;
 use App\Http\Controllers\backend\OfficialRepChangeRequestController;
+use App\Http\Controllers\BranchAnnualreportController;
 use App\Http\Controllers\frontend\AnnualreportController;
 use App\Http\Controllers\frontend\BranchCircularController;
 use App\Http\Controllers\frontend\BranchNewsletterController;
@@ -252,6 +253,7 @@ Route::middleware('auth')->group(function () {
       Route::post('/invoice', [InvoiceController::class, 'index'])->name('invoice.indexget');
       Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
       Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
+      Route::get('/branch-annualreport', [BranchAnnualreportController::class, 'index'])->name('branch-annualreport.index');
 
 
 
