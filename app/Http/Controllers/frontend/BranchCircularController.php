@@ -4,6 +4,8 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\MemberComp;
+use App\Models\MemberUser;
+use App\Models\MemberUserProfile;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -20,7 +22,7 @@ class BranchCircularController extends Controller
         $ctype = "notice";
         $memberType = $memberComp->member->m_type;
         $branchId = $memberComp->member->m_branch;
-        $notices = Notice::where('ar_status', 2)
+        $notices = Notice::where('ar_status', 2);
         // ->where(function ($query) use ($ctype, $memberType, $branchId) {
         //     // HQ Level condition
         //     $query->where(function ($subquery) use ($ctype, $memberType, $branchId) {
@@ -50,7 +52,31 @@ class BranchCircularController extends Controller
         //             });
         //     });
         // })
-        ->orderBy('ar_date', 'desc');
+
+        if(auth()->user()->ml_priv == "OfficeRep") {
+            $user = MemberUser::whereHas('memberUserProfile', function ($query) {
+                $query->where('up_mid', session('compid'));
+            })
+            ->where('ml_username', auth()->user()->ml_username)
+            ->where('ml_priv', "OfficeRep")
+            ->where('ml_status', 1)
+            ->first();
+            $memberComp = MemberComp::with('member')->where('did', session('compid'))->first();
+        } else {
+            $user = auth()->user();
+            $memberComp = MemberComp::with('member')->where('did', session('compid'))->first();
+        }
+        if($user) {
+            $profile = MemberUserProfile::where('up_id', $user->ml_uid)->first();
+            if($profile){
+                $branch = getMemberBranch(getMemberBid(getMemberDid($profile->up_mid)));
+                if(strtolower($branch) != "johor" && $memberComp && $memberComp->member && $memberComp->member->m_branch){
+                    $notices->where('ar_branchid', $memberComp->member->m_branch);
+                }
+            }
+        }
+
+        $notices = $notices->orderBy('ar_date', 'desc');
         // ->get();
 
         if ($request->ajax()) {

@@ -48,7 +48,7 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon  ti ti-users-group"></i>
-                <div data-i18n="Official Representative">Official Representative</div>
+                <div data-i18n="Representatives">Representatives</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->is('official-representative') ? 'active' : '' }}">
@@ -171,5 +171,13 @@
                 </ul>
             </li>
         @endcanany
+
+        <li class="menu-item {{ request()->is('branch-contact-details') ? 'active' : '' }}">
+            <a href="{{ route('branch.contact.details.index') }}" class="menu-link">
+                <i class="menu-icon  ti ti-list-details"></i>
+                <div data-i18n="Branch Contact Details">Branch Contact Details</div>
+            </a>
+        </li>
+
     </ul>
 </aside>

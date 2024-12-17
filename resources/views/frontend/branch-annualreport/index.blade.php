@@ -38,7 +38,7 @@
                                 <img class="img-fluid d-flex mb-3 rounded annualreportimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->img_cover) }}">
 
                                 <h5>{{ strtoupper($report->name) }}</h5>
-                                <h4 class="fw-bolder">{{ $report->yr }}</h4>
+                                <h4 class="fw-bolder">{{ $report->year }}</h4>
 
                                 <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
                                 <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$report->file_path) }}" download class="btn btn-outline-primary waves-effect">Download</a>
@@ -47,6 +47,9 @@
                         </div>
                     </div>
                 @endforeach
+                @if($annualreports->count() == 0)
+                    <p>Content is currently unavailable. Please check back soon for updates!</p>
+                @endif
             </div>
         </div>
     </div>

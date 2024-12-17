@@ -53,7 +53,7 @@ class Circularcontroller extends Controller
         //             });
         //     });
         // })
-        // ->orderBy('ar_date', 'desc')
+        ->orderBy('ar_date', 'desc')
         ->get();
 
         return view('frontend.circular.index', compact('circulers'));

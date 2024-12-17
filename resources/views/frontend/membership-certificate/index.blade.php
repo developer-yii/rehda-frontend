@@ -31,7 +31,7 @@
                 <table class="datatables-users table" id="membershipCertificateTable">
                     <thead class="border-top">
                         <tr>
-                            <th>Date</th>
+                            <th>Year</th>
                             <th>Action</th>
                         </tr>
                     </thead>

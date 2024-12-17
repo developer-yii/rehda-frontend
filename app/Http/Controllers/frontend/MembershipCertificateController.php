@@ -21,7 +21,7 @@ class MembershipCertificateController extends Controller
 
             return DataTables::eloquent($certificates)
             ->addColumn('date', function ($row) {
-                return 'Membership Certificate '.$row->mc_yr;
+                return 'Membership Certificate Year '.$row->mc_yr;
             })
             ->addColumn('actions', function ($row) {
                 $buttons = '';

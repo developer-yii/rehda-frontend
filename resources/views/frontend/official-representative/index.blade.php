@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Official Representative')
+@section('title', 'Representatives')
 
 @section('css')
 <link href="{{ asset('frontend/css/pages/bulletin.css') }}"></link>
@@ -17,7 +17,7 @@
                     <a href="{{ route('choosecompant.index') }}">Other Accounts</a>
                 </li>
 
-                <li class="breadcrumb-item active">Official Representative</li>
+                <li class="breadcrumb-item active">Representatives</li>
 
             </ol>
         </nav>
@@ -25,7 +25,7 @@
 
     <div class="card">
         <div class="card-header border-bottom d-flex justify-content-between">
-            <h5 class="card-title mb-3">Official Representative</h5>
+            <h5 class="card-title mb-3">Representatives</h5>
         </div>
 
         <div class="card-body pt-4">
@@ -95,7 +95,7 @@
                             </div>
                             <div id="official-representative-1" class="accordion-collapse collapse {{ ($count < 2 && $errorcheck != 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
                                 <!-- <div class="card-body"> -->
-                                    <a class="edit-name-of-offcial-representative text-danger" id="nor1" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
+                                    <a class="edit-name-of-offcial-representative" id="nor1" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
                                         <i class="menu-icon ti ti-edit"></i>Click here to change Official Representative / Update
                                     </a>
                                     @php $id1 = $profile->up_id; @endphp
@@ -167,7 +167,7 @@
                                         </div>
                                         <div class="mb-3 col-md-12">
                                             <label for="official1email" class="form-label form-label-lg required_label">Email:</label>
-                                            <input class="form-control form-control-lg" type="email" id="official1email" name="official1email" value="Please update your email address" disabled/>
+                                            <input class="form-control form-control-lg" type="email" id="official1email" name="official1email" value="{{ old('official1email', $profile->up_emailadd ?? '') }}"/>
                                             @if ($errors->has('official1email'))
                                             <span class="error">{{ $errors->first('official1email') }}</span>
                                             @endif
@@ -293,7 +293,7 @@
                             </div>
                             <div id="official-representative-2" class="accordion-collapse collapse {{ ($count < 2 || $errorcheck == 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
                                 <!-- <div class="card-body"> -->
-                                    <a class="edit-name-of-offcial-representative text-danger" id="nor2" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
+                                    <a class="edit-name-of-offcial-representative" id="nor2" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
                                         <i class="menu-icon ti ti-edit"></i>Click here to change Alternate Representative / Update
                                     </a>
                                     @php $id2 = $profile->up_id; @endphp
@@ -366,7 +366,7 @@
                                         </div>
                                         <div class="mb-3 col-md-12">
                                             <label for="official2email" class="form-label form-label-lg required_label">Email:</label>
-                                            <input class="form-control form-control-lg" type="email" id="official2email" name="official2email" value="Please update your email address" disabled />
+                                            <input class="form-control form-control-lg" type="email" id="official2email" name="official2email" value="{{ old('official2email', $profile->up_emailadd ?? '') }}" />
                                             @if ($errors->has('official2email'))
                                             <span class="error">{{ $errors->first('official2email') }}</span>
                                             @endif
@@ -516,14 +516,14 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor1Name" name="resetNor1Name" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container">
-                        <label class="form-label form-label-lg" for="resetNor1MyKadSelect">MyKad No.:</label>
+                        <label class="form-label form-label-lg" for="resetNor1MyKadSelect">Type:</label>
                         <select name="resetNor1MyKadSelect" id="resetNor1MyKadSelect" class="form-select form-select-lg mykadSelect">
                             <option value="1">MyKad No.</option>
                             <option value="2">Passport No.</option>
                         </select>
                     </div>
                     <div class="col-12 fv-plugins-icon-container mykadDiv">
-                        <label class="form-label form-label-lg" for="resetNor1MyKad">MyKad No.:</label>
+                        <label class="form-label form-label-lg" for="resetNor1MyKad">MyKad No. <small>[without dash (-)]</small> :</label>
                         <input class="form-control form-control-lg mykad" type="text" id="resetNor1MyKad" name="resetNor1MyKad" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container passportDiv">
@@ -569,14 +569,14 @@
                         <input class="form-control form-control-lg" type="text" id="resetNor2Name" name="resetNor2Name" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container">
-                        <label class="form-label form-label-lg" for="resetNor2MyKadSelect">MyKad No.:</label>
+                        <label class="form-label form-label-lg" for="resetNor2MyKadSelect">Type:</label>
                         <select name="resetNor2MyKadSelect" id="resetNor2MyKadSelect" class="form-select form-select-lg mykadSelect">
                             <option value="1">MyKad No.</option>
                             <option value="2">Passport No.</option>
                         </select>
                     </div>
                     <div class="col-12 fv-plugins-icon-container mykadDiv">
-                        <label class="form-label form-label-lg" for="resetNor2MyKad">MyKad No.:</label>
+                        <label class="form-label form-label-lg" for="resetNor2MyKad">MyKad No. <small>[without dash (-)]</small> :</label>
                         <input class="form-control form-control-lg mykad" type="text" id="resetNor2MyKad" name="resetNor2MyKad" value="" />
                     </div>
                     <div class="col-12 fv-plugins-icon-container passportDiv">
