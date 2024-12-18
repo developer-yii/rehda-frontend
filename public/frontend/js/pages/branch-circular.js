@@ -17,6 +17,12 @@ $(document).ready(function () {
         },
         columns: [
             {
+                data: "ar_date",  // Hidden column for sorting
+                name: "ar_date",
+                visible: false,   // Hide the column from display
+                searchable: false
+            },
+            {
                 data: "date",
                 name: "date",
             },

@@ -38,6 +38,7 @@
                 <table class="datatables-users table" id="branchCircularTable">
                     <thead class="border-top">
                         <tr>
+                            <th class="d-none">Ar Date</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>

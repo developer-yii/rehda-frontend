@@ -107,3 +107,14 @@ table.dataTable thead tr {
 .displaytext-vertical{
     vertical-align: top;
 }
+
+.edit-name-of-offcial-representative{
+    color: red !important;
+}
+#branch-contact-details-card p{
+    margin-bottom: 0 !important;
+}
+
+#branch-contact-details-card .accordion-collapse {
+    transition: height 0.2s ease !important; /* Adjust the duration here */
+}

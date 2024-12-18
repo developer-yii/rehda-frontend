@@ -28,6 +28,7 @@ use App\Http\Controllers\backend\YouthUserController;
 use App\Http\Controllers\backend\NoticeController;
 use App\Http\Controllers\backend\OfficialRepChangeRequestController;
 use App\Http\Controllers\BranchAnnualreportController;
+use App\Http\Controllers\BranchContactDetailsController;
 use App\Http\Controllers\frontend\AnnualreportController;
 use App\Http\Controllers\frontend\BranchCircularController;
 use App\Http\Controllers\frontend\BranchNewsletterController;
@@ -275,6 +276,7 @@ Route::middleware('auth')->group(function () {
       Route::get('branch-newsletter', [BranchNewsletterController::class, 'index'])->name('branch-newsletter.index');
       Route::get('branch-circular', [BranchCircularController::class, 'index'])->name('branch-circular.index');
       Route::get('others', [OthersController::class, 'index'])->name('others.index');
+      Route::get('branch-contact-details', [BranchContactDetailsController::class, 'index'])->name('branch.contact.details.index');
 
 });
 

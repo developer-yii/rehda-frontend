@@ -36,6 +36,8 @@ class CompanyinfoController extends Controller
             'office_no' => 'required',
             'date_of_company_formation' => 'required',
             // 'latest_paid_up_capital' => 'required',
+        ],[
+            'date_of_company_formation.required' => 'The date of incorporation field is required.',
         ]);
 
         $memberComp = MemberComp::where('did',session('compid'))->first();

@@ -70,7 +70,7 @@
                                 <div class="tab-pane fade @if(!$errors->has('old_password') && !$errors->has('new_password') && !$errors->has('retype_password')) show active @endif" id="navs-info" role="tabpanel">
 
                                     <div class="mb-3 col-md-12">
-                                        <label for="name_of_admin" class="form-label form-label-lg required_label">Name of Admin:</label>
+                                        <label for="name_of_admin" class="form-label form-label-lg required_label">Admin Name:</label>
                                         <input class="form-control form-control-lg" type="text" id="name_of_admin" name="name_of_admin" value="{{ $profile->up_fullname }}" />
                                         @if ($errors->has('name_of_admin'))
                                         <span class="error">{{ $errors->first('name_of_admin') }}</span>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BranchAnnualReport;
 use App\Models\MemberComp;
+use App\Models\MemberUser;
+use App\Models\MemberUserProfile;
 use Illuminate\Http\Request;
 
 class BranchAnnualreportController extends Controller
@@ -34,9 +36,32 @@ class BranchAnnualreportController extends Controller
                 ->from('content_perm')
                 ->where('cp_branch', $cp_branch)
                 ->where('cp_item_type', $cp_item_type);
-        })
-        ->orderBy('sorting', 'asc')
-        ->get();
+        });
+
+        if(auth()->user()->ml_priv == "OfficeRep") {
+            $user = MemberUser::whereHas('memberUserProfile', function ($query) {
+                $query->where('up_mid', session('compid'));
+            })
+            ->where('ml_username', auth()->user()->ml_username)
+            ->where('ml_priv', "OfficeRep")
+            ->where('ml_status', 1)
+            ->first();
+            $memberComp = MemberComp::with('member')->where('did', session('compid'))->first();
+        } else {
+            $user = auth()->user();
+            $memberComp = MemberComp::with('member')->where('did', session('compid'))->first();
+        }
+        if($user) {
+            $profile = MemberUserProfile::where('up_id', $user->ml_uid)->first();
+            if($profile){
+                $branch = getMemberBranch(getMemberBid(getMemberDid($profile->up_mid)));
+                if(strtolower($branch) != "johor" && $memberComp && $memberComp->member && $memberComp->member->m_branch){
+                    $annualreports->where('branchid', $memberComp->member->m_branch);
+                }
+            }
+        }
+
+        $annualreports = $annualreports->orderBy('sorting', 'asc')->get();
 
         return view('frontend.branch-annualreport.index', compact('annualreports'));
     }

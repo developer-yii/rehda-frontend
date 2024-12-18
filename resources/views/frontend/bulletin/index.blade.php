@@ -64,8 +64,8 @@
                                             <center>
                                             <img class="img-fluid d-flex mb-3 rounded bulletinimage" src="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_img_cover) }}">
 
-                                            <h5>{{ strtoupper($yeardata->bu_name) }}</h5>
-                                            <h4 class="fw-bolder">{{ $yeardata->bu_yr }}</h4>
+                                            <h4>{{ strtoupper($yeardata->bu_name) }}</h4>
+                                            <h5 class="fw-bolder mb-3">{{ $yeardata->bu_yr }}</h5>
 
                                             <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" class="btn btn-outline-primary waves-effect">View</a>
                                             <a href="{{ config('app.backendurl').'storage/'.str_replace('../','',$yeardata->bu_file_path) }}" target="_blank" download class="btn btn-outline-primary waves-effect">Download</a>
