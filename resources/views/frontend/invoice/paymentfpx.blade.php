@@ -14,8 +14,7 @@
 
             @php
 
-            // $totalprice = $order->order_grandtotal;
-            $totalprice = 1;
+            $totalprice = $order->order_grandtotal;
             $amounthash = $totalprice*100;
             $merchant_key = config('constant.MERCHANT_KEY');
             $merchant_code = config('constant.MERCHANT_CODE');
