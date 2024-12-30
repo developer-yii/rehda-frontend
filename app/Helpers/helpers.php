@@ -472,7 +472,7 @@ function getFavicon()
 {
     $setting = Setting::where('name', 'favicon')->first();
     if($setting && $setting->value)
-        return asset('storage/backend/assets/img/favicon') . "/" . $setting->value;
+        return config('app.backendurl').'storage/backend/assets/img/favicon' . "/" . $setting->value;
     else
         return asset('backend/assets/img/favicon/favicon.ico');
 }
