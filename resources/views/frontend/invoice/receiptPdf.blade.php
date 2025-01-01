@@ -126,7 +126,7 @@
                     </td>
 
                     <td class="text-right">
-                        <img src="'.IMG_URL.'images/email-rehda-logo-blue.png?v='.time().'" alt="Rehda Logo" style="text-align:right; width:100px;">
+                        <img src="{{ asset('frontend/img/logo/email-rehda-logo-blue.png') }}" alt="Rehda Logo" style="text-align:right; width:100px;">
                     </td>
                 </tr>
 
