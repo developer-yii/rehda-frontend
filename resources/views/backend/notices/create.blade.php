@@ -86,7 +86,7 @@
 @section('page-js')
 
 
-    <script src="https://cdn.tiny.cloud/1/lvk0yg6tvfmkn3s9eqkeokxdf897diz5cm11953q99rdxnfd/tinymce/7/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/jqr6fryyvp757ant1wfm7o98aa9ofvsu6upc16bwosc412ii/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
 
             <script>
