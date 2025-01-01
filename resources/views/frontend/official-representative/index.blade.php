@@ -491,7 +491,7 @@
                         </div>
                     </div>
 
-                    @if((isset($id1) && $id1) || @if(isset($id2) && $id2))
+                    @if((isset($id1) && $id1) || (isset($id2) && $id2))
                     <div>
                         <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="submitBtn">Update</button>
                     </div>
