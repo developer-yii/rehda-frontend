@@ -70,12 +70,23 @@
                                     header('Location: ' . route('bulletin.index'));
                                     exit();
                                 @endphp
+                            @else
+                                <div class="row">
+                                    <div class="col-md mb-md-0 mb-2">
+                                        No Account Found
+                                    </div>
+                                </div>
                             @endif
 
+                            @if(count($upMidList))
                             <div class="submit mt-3 text-center">
                                 <button type="submit" name="submit" id="submit"
                                     class="btn btn-primary btn-lg waves-effect waves-light w-100">View</button>
                             </div>
+                            @else
+                                <a href="{{route('logout')}}"
+                                    class="btn btn-primary btn-lg waves-effect waves-light w-100 mt-3">Logout</a>
+                            @endif
 
                         </form>
 

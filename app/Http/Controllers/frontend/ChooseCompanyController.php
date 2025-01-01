@@ -31,7 +31,7 @@ class ChooseCompanyController extends Controller
                 return redirect(route('logout'));
             }
         } else {
-            return redirect(route('login'));
+            return view('frontend.choosecompany.index', compact('upMidList'));
         }
 
     }
