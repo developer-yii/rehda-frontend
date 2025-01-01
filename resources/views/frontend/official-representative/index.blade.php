@@ -95,6 +95,7 @@
                             </div>
                             <div id="official-representative-1" class="accordion-collapse collapse {{ ($count < 2 && $errorcheck != 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
                                 <!-- <div class="card-body"> -->
+                                    @if($profile->up_id)
                                     <a class="edit-name-of-offcial-representative" id="nor1" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
                                         <i class="menu-icon ti ti-edit"></i>Click here to change Official Representative / Update
                                     </a>
@@ -268,6 +269,7 @@
                                         </div>
 
                                     </div>
+                                    @endif
                                 <!-- </div> -->
                             <!-- </div>
                         </div> -->
@@ -293,6 +295,7 @@
                             </div>
                             <div id="official-representative-2" class="accordion-collapse collapse {{ ($count < 2 || $errorcheck == 2) ? 'show' : '' }}" data-bs-parent="#accordionYearParent"> -->
                                 <!-- <div class="card-body"> -->
+                                    @if($profile->up_id)
                                     <a class="edit-name-of-offcial-representative" id="nor2" data-toggle="modal" data-target="#resetNor1" style="cursor: pointer;">
                                         <i class="menu-icon ti ti-edit"></i>Click here to change Alternate Representative / Update
                                     </a>
@@ -467,6 +470,7 @@
                                         </div>
 
                                     </div>
+                                    @endif
                                 <!-- </div> -->
                             <!-- </div>
                         </div> -->
@@ -487,15 +491,18 @@
                         </div>
                     </div>
 
+                    @if((isset($id1) && $id1) || @if(isset($id2) && $id2))
                     <div>
                         <button type="submit" class="btn btn-lg btn-primary me-sm-3 me-1 waves-effect waves-light" id="submitBtn">Update</button>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+@if(isset($id1) && $id1)
 <div class="modal fade" id="resetNor1" tabindex="-1" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-simple modal-dialog-centered">
         <div class="modal-content p-3 p-md-5">
@@ -548,7 +555,9 @@
         </div>
     </div>
 </div>
+@endif
 
+@if(isset($id2) && $id2)
 <div class="modal fade" id="resetNor2" tabindex="-1" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-simple modal-dialog-centered">
         <div class="modal-content p-3 p-md-5">
@@ -601,6 +610,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @endsection
 
