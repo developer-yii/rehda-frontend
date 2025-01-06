@@ -401,7 +401,7 @@ class RegisterController extends Controller
 
         $memberBillingController = new MemberBillingController();
         $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice-".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
+        $filename = config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
@@ -688,7 +688,7 @@ class RegisterController extends Controller
 
         $memberBillingController = new MemberBillingController();
         $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice-".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
+        $filename = config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
@@ -1019,7 +1019,7 @@ class RegisterController extends Controller
 
         $memberBillingController = new MemberBillingController();
         $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice-".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
+        $filename = config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
@@ -1355,7 +1355,7 @@ class RegisterController extends Controller
 
         $memberBillingController = new MemberBillingController();
         $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice-".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
+        $filename = config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
@@ -1525,7 +1525,7 @@ class RegisterController extends Controller
 
         $memberBillingController = new MemberBillingController();
         $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice-".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
+        $filename = config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
