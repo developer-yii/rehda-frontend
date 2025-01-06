@@ -16,12 +16,13 @@
         }
 
         body {
-            font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+            /* font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif; */
+            font-family: 'Times New Roman', Times, serif;
             font-size: 14px; line-height: 1; letter-spacing: 0px;
         }
 
         p {
-            font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+            /* font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif; */
             font-size: 14px;
             font-weight: 300;
             line-height: 1; letter-spacing: 0px;
@@ -29,7 +30,7 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+            /* font-family: \'Outfit\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif; */
             font-weight: 400;
             margin: 0;
         }
@@ -137,7 +138,7 @@
 
                     <td class="text-right">
                         <p>Date: <span style="font-weight:500;">{{ date("d-F-Y", strtotime($order->order_created_at)) }}</span></p>
-                        <p>Terms: 60 Days</p>
+                        <p>Terms: 90 Days</p>
                     </td>
                 </tr>
             </tbody>

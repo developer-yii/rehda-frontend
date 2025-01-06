@@ -130,7 +130,7 @@ class InvoiceController extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $filename = config('constant.ORDERID_SET').$order->order_no.".pdf";
+        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$order->order_no.".pdf";
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
