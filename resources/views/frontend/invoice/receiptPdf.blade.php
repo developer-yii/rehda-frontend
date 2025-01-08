@@ -17,12 +17,12 @@
     }
 
     body {
-      font-family: \'Public Sans\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+      font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
       font-size: 14px; line-height: 1; letter-spacing: 0px;
     }
 
     p {
-      font-family: \'Public Sans\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+      font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
       font-size: 14px;
       font-weight: 300;
       line-height: 1; letter-spacing: 0px;
@@ -30,7 +30,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: \'Public Sans\', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
+      font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;
       font-weight: 400;
       margin: 0;
     }

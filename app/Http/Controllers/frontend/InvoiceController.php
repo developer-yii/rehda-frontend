@@ -165,7 +165,7 @@ class InvoiceController extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $filename = "Receipt-" . "pdf";
+        $filename = "REHDA Receipt - ".config('constant.ORDERID_SET').$order->order_no;
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
@@ -228,15 +228,6 @@ class InvoiceController extends Controller
                 if($result == 2){
                     return redirect(route('payment.fail'));
                 } else {
-
-                    $refnonew = str_replace(config('constant.ORDERID_SET'),'',$refno);
-                    $findorder = Order::with('memberComp.member')->where('order_no', $refnonew)->first();
-
-                    // create certificate when invoice create
-                    $resultnew = memberCertificatePdfCreate($findorder->memberComp->member->mid);
-                    \Log::info('member-id - '.$findorder->memberComp->member->mid);
-                    \Log::info($resultnew);
-
                     return redirect(route('payment.success'));
                 }
 
@@ -288,7 +279,8 @@ class InvoiceController extends Controller
             ]);
         } else {
             if ($payments->isEmpty()) {
-                \Log::info("succUpdateMember not found multiple payment record");                $paymentInsert = Payment::create([
+                \Log::info("succUpdateMember not found multiple payment record");
+                $paymentInsert = Payment::create([
                     'trans_id' => $transid,
                     'authcode' => $authcode,
                     'pstatus' => $response_code,
@@ -342,12 +334,27 @@ class InvoiceController extends Controller
                 $newgt = $pamount + $order->order_payfpx;
             }
 
-            $orderUpdate = Order::where('oid', $order->oid)->where('order_status',1)->update([
-                'order_status' => $order_status_paid,
-                'order_paid_at' => $now,
-                'order_pm' => $paymentid,
-                'order_grandtotal' => $newgt
-            ]);
+            $paidOrder = Order::where('oid', $order->oid)->where('order_status',1)->where('order_status', '=', $order_status_paid)->first();
+            \Log::info('paidOrder');
+            \Log::info($paidOrder);
+
+            if(!$paidOrder){
+                \Log::info('update order');
+
+                $orderUpdate = Order::where('oid', $order->oid)->where('order_status',1)->update([
+                    'order_status' => $order_status_paid,
+                    'order_paid_at' => $now,
+                    'order_pm' => $paymentid,
+                    'order_grandtotal' => $newgt
+                ]);
+            }
+
+            $findorder = Order::with('memberComp.member')->where('order_no', $refnonew)->first();
+
+            // create certificate when invoice create
+            $resultnew = memberCertificatePdfCreate($findorder->memberComp->member->mid);
+            \Log::info('member-id - '.$findorder->memberComp->member->mid);
+            \Log::info($resultnew);
 
             return 1;
         } else {
@@ -400,6 +407,9 @@ class InvoiceController extends Controller
             }
 
         }
+
+        echo "RECEIVEOK";
+        exit;
     }
 
     public function paymentFail()
