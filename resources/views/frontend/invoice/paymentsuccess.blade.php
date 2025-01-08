@@ -17,7 +17,7 @@
 <div class="container mb-4">
     <div class="card">
         <div class="card-header border-bottom d-flex justify-content-between">
-            <h3 class="card-title mb-3">Rehda Member Portal</h3>
+            <h3 class="card-title mb-3">REHDA Member Portal</h3>
         </div>
 
         <div class="card-body pt-3">

@@ -25,8 +25,8 @@
                 <input type="hidden" name="MerchantCode" value="{{ $merchant_code }}">
                 <input type="hidden" name="PaymentId" value="2">
                 <input type="hidden" name="RefNo" value="{{ config('constant.ORDERID_SET').$order->order_no }}">
-                <!-- <input type="hidden" name="Amount" value="{{ number_format(($order->order_grandtotal + $order->order_paycc),2) }}"> -->
-                <input type="hidden" name="Amount" value="{{ number_format(1,2) }}">
+                <input type="hidden" name="Amount" value="{{ number_format(($totalprice),2) }}">
+                {{-- <input type="hidden" name="Amount" value="{{ number_format(1,2) }}"> --}}
                 <input type="hidden" name="Currency" value="MYR">
                 <input type="hidden" name="ProdDesc" value="REHDA MEMBERSHIP">
                 <input type="hidden" name="UserName" value="{{ $memberDetails['fullname'] }}">

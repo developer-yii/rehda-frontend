@@ -50,7 +50,7 @@
 
     <!-- Copyright -->
     <div class="text-center text-muted mb-2">
-      <small>2022 Copyright © REHDA Malaysia (ROS No.: PPM-002-10-21051970). All Rights Reserved</small>
+      <small>{{date('Y')}} Copyright © REHDA Malaysia (ROS No.: PPM-002-10-21051970). All Rights Reserved</small>
     </div>
   </div>
 </div>
