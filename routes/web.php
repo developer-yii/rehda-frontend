@@ -64,6 +64,8 @@ Route::post('invoice/paymentreturn', [InvoiceController::class, 'invoicePaymentr
 Route::post('invoice/paymentreturncallback', [InvoiceController::class, 'invoicePaymentreturncallback'])->name('invoice.paymentreturncallback');
 Route::get('invoice/paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
 Route::get('invoice/paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
+Route::get('paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentcard'])->name('invoice.paymentcard');
+Route::get('paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
 Route::get('payment/fail', [InvoiceController::class, 'paymentFail'])->name('payment.fail');
 Route::get('payment/success', [InvoiceController::class, 'paymentSuccess'])->name('payment.success');
 
