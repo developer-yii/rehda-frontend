@@ -353,15 +353,19 @@
                                 <input class="form-control form-control-lg" type="text" id="ordinaryCompanyName" name="ordinaryCompanyName" value="{{ old('ordinaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddress" class="form-label form-label-lg required_label">Address Line 1:</label>
+                                <label for="ordinaryCompanyAddress" class="form-label form-label-lg required_label">Address Line 1</label>
                                 <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddress" name="ordinaryCompanyAddress" value="{{ old('ordinaryCompanyAddress') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2:</label>
+                                <label for="ordinaryCompanyAddressCity" class="form-label form-label-lg required_label">Address Line 2</label>
                                 <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddressCity" name="ordinaryCompanyAddressCity" value="{{ old('ordinaryCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyAddressState" class="form-label form-label-lg">Address Line 3:</label>
+                                <label for="ordinaryCompanyAddress3" class="form-label form-label-lg">Address Line 3</label>
+                                <input class="form-control form-control-lg" type="text" id="ordinaryCompanyAddress3" name="ordinaryCompanyAddress3" value="{{ old('ordinaryCompanyAddress3') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="ordinaryCompanyAddressState" class="form-label form-label-lg required_label">State</label>
                                 <select id="ordinaryCompanyAddressState" name="ordinaryCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -454,7 +458,7 @@
                         </div>
                         <div class="row g-3">
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryAdminTitle" class="form-label form-label-lg">Title</label>
+                                <label for="ordinaryAdminTitle" class="form-label form-label-lg required_label">Title</label>
                                 <select id="ordinaryAdminTitle" name="ordinaryAdminTitle" class="form-select form-select-lg">
                                     <option value="" selected disabled>Select Title</option>
                                     <option value="0">-</option>
@@ -773,7 +777,7 @@
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyName" name="subsidiaryCompanyName" value="{{ old('subsidiaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyAddress" class="form-label form-label-lg">Address Line 1</label>
+                                <label for="subsidiaryCompanyAddress" class="form-label form-label-lg required_label">Address Line 1</label>
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddress" name="subsidiaryCompanyAddress" value="{{ old('subsidiaryCompanyAddress') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -781,7 +785,11 @@
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddressCity" name="subsidiaryCompanyAddressCity" value="{{ old('subsidiaryCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="subsidiaryCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
+                                <label for="subsidiaryCompanyAddress3" class="form-label form-label-lg">Address Line 3</label>
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyAddress3" name="subsidiaryCompanyAddress3" value="{{ old('subsidiaryCompanyAddress3') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="subsidiaryCompanyAddressState" class="form-label form-label-lg required_label">State</label>
                                 <select id="subsidiaryCompanyAddressState" name="subsidiaryCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1072,7 +1080,11 @@
                                 <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddressCity" name="affiliateCompanyAddressCity" value="{{ old('affiliateCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="affiliateCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
+                                <label for="affiliateCompanyAddress3" class="form-label form-label-lg">Address Line 3</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyAddress3" name="affiliateCompanyAddress3" value="{{ old('affiliateCompanyAddress3') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="affiliateCompanyAddressState" class="form-label form-label-lg required_label">State</label>
                                 <select id="affiliateCompanyAddressState" name="affiliateCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1500,7 +1512,11 @@
                                 <input class="form-control form-control-lg" type="text" id="associateCompanyAddressCity" name="associateCompanyAddressCity" value="{{ old('associateCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="associateCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
+                                <label for="associateCompanyAddress3" class="form-label form-label-lg">Address Line 3</label>
+                                <input class="form-control form-control-lg" type="text" id="associateCompanyAddress3" name="associateCompanyAddress3" value="{{ old('associateCompanyAddress3') }}"  oninput="this.value = this.value.toUpperCase();"/>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="associateCompanyAddressState" class="form-label form-label-lg required_label">State</label>
                                 <select id="associateCompanyAddressState" name="associateCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -1904,7 +1920,11 @@
                                 <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddressCity" name="rehdaYouthCompanyAddressCity" value="{{ old('rehdaYouthCompanyAddressCity') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthCompanyAddressState" class="form-label form-label-lg">Address Line 3</label>
+                                <label for="rehdaYouthCompanyAddressCity3" class="form-label form-label-lg">Address Line 3</label>
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyAddressCity3" name="rehdaYouthCompanyAddressCity3" value="{{ old('rehdaYouthCompanyAddressCity3') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="rehdaYouthCompanyAddressState" class="form-label form-label-lg required_label">State</label>
                                 <select id="rehdaYouthCompanyAddressState" name="rehdaYouthCompanyAddressState" class="form-select form-select-lg">
                                     <option value="">Select State</option>
                                     @foreach($states as $state)
@@ -2123,7 +2143,7 @@
                 ordinaryCompanyName: "required",
                 ordinaryCompanyAddress: "required",
                 ordinaryCompanyAddressCity: "required",
-                //ordinaryCompanyAddressState: "required",
+                ordinaryCompanyAddressState: "required",
                 ordinaryCompanyAddressPc: "required",
                 ordinaryCompanyAddressCountry: "required",
                 // ordinaryOfficialWebsite: "required",
@@ -2334,7 +2354,7 @@
                 subsidiaryCompanyName: "required",
                 subsidiaryCompanyAddress: "required",
                 subsidiaryCompanyAddressCity: "required",
-                // subsidiaryCompanyAddressState: "required",
+                subsidiaryCompanyAddressState: "required",
                 subsidiaryCompanyAddressPc: "required",
                 subsidiaryCompanyAddressCountry: "required",
                 // subsidiaryOfficialWebsite: "required",
@@ -2513,7 +2533,7 @@
                 affiliateCompanyName: "required",
                 affiliateCompanyAddress: "required",
                 affiliateCompanyAddressCity: "required",
-                // affiliateCompanyAddressState: "required",
+                affiliateCompanyAddressState: "required",
                 affiliateCompanyAddressPc: "required",
                 affiliateCompanyAddressCountry: "required",
                 // affiliateOfficialWebsite: "required",
@@ -2753,7 +2773,7 @@
                 associateCompanyName: "required",
                 associateCompanyAddress: "required",
                 associateCompanyAddressCity: "required",
-                // associateCompanyAddressState: "required",
+                associateCompanyAddressState: "required",
                 associateCompanyAddressPc: "required",
                 associateCompanyAddressCountry: "required",
                 // associateOfficialWebsite: "required",
@@ -2991,7 +3011,7 @@
                 rehdaYouthCompanyName: "required",
                 rehdaYouthCompanyAddress: "required",
                 rehdaYouthCompanyAddressCity: "required",
-                // rehdaYouthCompanyAddressState: "required",
+                rehdaYouthCompanyAddressState: "required",
                 rehdaYouthCompanyAddressPc: "required",
                 rehdaYouthCompanyAddressCountry: "required",
                 // rehdaYouthOfficialWebsite: "required",
