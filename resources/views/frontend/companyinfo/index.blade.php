@@ -138,25 +138,25 @@
                     @if(!empty($memberComp->d_f9ssm))
                     <div class="mb-3 col-md-12">
                         <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Copy of SSM Certification</label>
-                        <p class="mb-0"><a href="{{ url(str_replace('../','',$memberComp->d_f9ssm)) }}" target="_blank">View</a></p>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_f9ssm }}" target="_blank">View</a></p>
                     </div>
                     @endif
                     @if(!empty($memberComp->d_f24))
                     <div class="mb-3 col-md-12">
                         <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Copy of Form 24</label>
-                        <p class="mb-0"><a href="{{ url(str_replace('../','',$memberComp->d_f24)) }}" target="_blank">View</a></p>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_f24 }}" target="_blank">View</a></p>
                     </div>
                     @endif
                     @if(!empty($memberComp->d_f49))
                     <div class="mb-3 col-md-12">
                         <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Copy of Form 49</label>
-                        <p class="mb-0"><a href="{{ url(str_replace('../','',$memberComp->d_f49)) }}" target="_blank">View</a></p>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_f49 }}" target="_blank">View</a></p>
                     </div>
                     @endif
                     @if(!empty($memberComp->d_anualretuncopy))
                     <div class="mb-3 col-md-12">
                         <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Copy of Annual Return</label>
-                        <p class="mb-0"><a href="{{ url(str_replace('../','',$memberComp->d_anualretuncopy)) }}" target="_blank">View</a></p>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_anualretuncopy }}" target="_blank">View</a></p>
                     </div>
                     @endif
                     @if(!empty($memberComp->d_devlicense))
@@ -168,7 +168,7 @@
                     @if(!empty($memberComp->d_devlicensecopy))
                     <div class="mb-3 col-md-12">
                         <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Copy of Housing Developer's License No.</label>
-                        <p class="mb-0"><a href="{{ url(str_replace('../','',$memberComp->d_devlicensecopy)) }}" target="_blank">View</a></p>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_devlicensecopy }}" target="_blank">View</a></p>
                     </div>
                     @endif
                 </div>

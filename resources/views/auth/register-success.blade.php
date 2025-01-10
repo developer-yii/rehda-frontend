@@ -24,7 +24,7 @@
         <div class="card-body text-center pt-4">
               <h4>“Your Application has been submitted”</h4>
 
-              <h5>Please check your email for the membership fees, invoice and payment link. Thank you.</h5>
+              <h5>Thank you.</h5>
         </div>
     </div>
 </div>

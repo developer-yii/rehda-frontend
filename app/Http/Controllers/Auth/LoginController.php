@@ -81,7 +81,7 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        $user = MemberUser::where('ml_username', $request->input($this->username()))->first();
+        $user = MemberUser::where('ml_username', $request->input($this->username()))->latest()->first();
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
 
         // if ($user && $ml_priv == $user->ml_priv) {
@@ -153,7 +153,7 @@ class LoginController extends Controller
             $ml_username = $request->mykadno;
             $errormsg = "Invalid mykad number or email";
         }
-        $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->first();
+        $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->latest()->first();
 
         if(!$checkUser){
             return response()->json([

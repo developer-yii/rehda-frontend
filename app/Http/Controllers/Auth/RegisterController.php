@@ -2,33 +2,23 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\backend\MemberBillingController;
 use App\Http\Controllers\Controller;
-use App\Mail\PaymentEmail;
 use App\Models\Branch;
 use App\Models\Country;
 use App\Models\Gender;
 use App\Models\Member;
 use App\Models\MemberComp;
 use App\Models\MemberUserProfile;
-use App\Models\Order;
-use App\Models\Plan;
 use App\Models\PlanTier;
 use App\Models\Salutation;
 use App\Models\State;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Mail\SentMessage;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -354,89 +344,11 @@ class RegisterController extends Controller
 
         }
 
-        $plan = Plan::where('pid', $ord)->first();
-        $plantier = PlanTier::where('pt_id', $request->ordinaryLatestPaidUpCapital)->first();
-        $curr_mth = date('n');
-
-        if($curr_mth==1 || $curr_mth==2 || $curr_mth==3){
-            $fee = $plantier->pt_fee;
-        } else if($curr_mth==4 || $curr_mth==5 || $curr_mth==6){
-            $fee = round(0.75*$plantier->pt_fee);
-        } else if($curr_mth==7 || $curr_mth==8 || $curr_mth==9){
-            $fee = round(0.5*$plantier->pt_fee);
-        } else if($curr_mth==10 || $curr_mth==11){
-            $fee = round(0.25*$plantier->pt_fee);
+        if($userprofile1 || $userprofile2 || $userprofileAdmin) {
+            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
         } else {
-            $fee = 0;
-        }
-
-        $total = $fee + $plan->plan_entrance_fee;
-        $fpxfee = round(config('constant.FPX_FEE')*$total/100);
-        $ccfee = round(config('constant.CC_FEE')*$total/100);
-        $year = date('Y');
-        $orderno = date('ym').getRunningNo();
-
-        $order = Order::create([
-            'order_no' => $orderno,
-            'order_mid' => $memberComp->did,
-            'order_planid' => $plan->pid,
-            'order_planname' => $plan->plan_name,
-            'order_sub_fee' => $fee,
-            'order_entrance_fee' => $plan->plan_entrance_fee,
-            'order_grandtotal' => $total,
-            'order_payfpx' => $fpxfee,
-            'order_paycc' => $ccfee,
-            'order_created_at' => $now,
-            'order_sub_fee_year' => $year
-        ]);
-        logSystem(auth()->id(), 'Create', $order->toArray(), 'Order');
-
-        $ordercheck = Order::where('order_mid', $memberComp->did)->where('order_status',1)->first();
-
-        $invno = config('constant.ORDERID_SET').$ordercheck->order_no;
-        $subject = "[".config('constant.COMP_NAME2')."] Invoice ".$invno;
-        $membercid = getMemberToSendInv($ordercheck->order_mid);
-        $fullname = $membercid['fullname'];
-        $email = $membercid['email'];
-        Log::info($email);
-
-        $memberBillingController = new MemberBillingController();
-        $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
-
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $directoryPath = storage_path('app/public/invoices');
-        $filePath = $directoryPath . '/' . $filename;
-
-        // set from email and name
-        $fromEmail = config('constant.ADMIN_EMAIL');
-        $fromName = config('constant.COMP_NAME2');
-
-        // Check if the directory exists, if not create it
-        if (!File::exists($directoryPath)) {
-            File::makeDirectory($directoryPath, 0755, true); // 0755 permissions and true for recursive directory creation
-        }
-
-        // Save the file, overwriting it if it already exists, with exclusive lock
-        file_put_contents($filePath, $dompdf->output(), LOCK_EX);
-
-        try {
-            Mail::to($email)->send(new PaymentEmail($invno, $fullname, $filename, $filePath, $subject,  $fromEmail, $fromName));
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Please check your email now for the invoice and payment link. Thank you.']);
-        } catch (\Exception $e) {
-            Log::error("Email failed to send. Error: " . $e->getMessage());
             return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
-
     }
 
     public function subsidiaryRegister(Request $request)
@@ -655,76 +567,11 @@ class RegisterController extends Controller
 
         }
 
-        $plan = Plan::where('pid', $ord)->first();
-        $fee = $plan->plan_yearly_fee;
-
-        $total = $fee + $plan->plan_entrance_fee;
-        $fpxfee = round(config('constant.FPX_FEE')*$total/100);
-        $ccfee = round(config('constant.CC_FEE')*$total/100);
-        $year = date('Y');
-        $orderno = date('ym').getRunningNo();
-
-        $order = Order::create([
-            'order_no' => $orderno,
-            'order_mid' => $memberComp->did,
-            'order_planid' => $plan->pid,
-            'order_planname' => $plan->plan_name,
-            'order_sub_fee' => $fee,
-            'order_entrance_fee' => $plan->plan_entrance_fee,
-            'order_grandtotal' => $total,
-            'order_payfpx' => $fpxfee,
-            'order_paycc' => $ccfee,
-            'order_created_at' => $now,
-            'order_sub_fee_year' => $year
-        ]);
-        logSystem(auth()->id(), 'Create', $order->toArray(), 'Order');
-
-        $ordercheck = Order::where('order_mid', $memberComp->did)->where('order_status',1)->first();
-
-        $invno = config('constant.ORDERID_SET').$ordercheck->order_no;
-        $subject = "[".config('constant.COMP_NAME2')."] Invoice ".$invno;
-        $membercid = getMemberToSendInv($ordercheck->order_mid);
-        $fullname = $membercid['fullname'];
-        $email = $membercid['email'];
-        Log::info($email);
-
-        $memberBillingController = new MemberBillingController();
-        $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
-
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $directoryPath = storage_path('app/public/invoices');
-        $filePath = $directoryPath . '/' . $filename;
-
-        // set from email and name
-        $fromEmail = config('constant.ADMIN_EMAIL');
-        $fromName = config('constant.COMP_NAME2');
-
-        // Check if the directory exists, if not create it
-        if (!File::exists($directoryPath)) {
-            File::makeDirectory($directoryPath, 0755, true); // 0755 permissions and true for recursive directory creation
-        }
-
-        // Save the file, overwriting it if it already exists, with exclusive lock
-        file_put_contents($filePath, $dompdf->output(), LOCK_EX);
-
-        try {
-            Mail::to($email)->send(new PaymentEmail($invno, $fullname, $filename, $filePath, $subject,  $fromEmail, $fromName));
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Please check your email now for the invoice and payment link. Thank you.']);
-        } catch (\Exception $e) {
-            Log::error("Email failed to send. Error: " . $e->getMessage());
+        if($userprofile1 || $userprofileAdmin){
+            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+        } else {
             return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
-
     }
 
     public function affiliateRegister(Request $request)
@@ -987,73 +834,9 @@ class RegisterController extends Controller
 
         }
 
-        $plan = Plan::where('pid', $ord)->first();
-        $fee = $plan->plan_yearly_fee;
-
-        $total = $fee + $plan->plan_entrance_fee;
-        $fpxfee = round(config('constant.FPX_FEE')*$total/100);
-        $ccfee = round(config('constant.CC_FEE')*$total/100);
-        $year = date('Y');
-        $orderno = date('ym').getRunningNo();
-
-        $order = Order::create([
-            'order_no' => $orderno,
-            'order_mid' => $memberComp->did,
-            'order_planid' => $plan->pid,
-            'order_planname' => $plan->plan_name,
-            'order_sub_fee' => $fee,
-            'order_entrance_fee' => $plan->plan_entrance_fee,
-            'order_grandtotal' => $total,
-            'order_payfpx' => $fpxfee,
-            'order_paycc' => $ccfee,
-            'order_created_at' => $now,
-            'order_sub_fee_year' => $year
-        ]);
-        logSystem(auth()->id(), 'Create', $order->toArray(), 'Order');
-
-        $ordercheck = Order::where('order_mid', $memberComp->did)->where('order_status',1)->first();
-
-        $invno = config('constant.ORDERID_SET').$ordercheck->order_no;
-        $subject = "[".config('constant.COMP_NAME2')."] Invoice ".$invno;
-        $membercid = getMemberToSendInv($ordercheck->order_mid);
-        $fullname = $membercid['fullname'];
-        $email = $membercid['email'];
-        Log::info($email);
-
-        $memberBillingController = new MemberBillingController();
-        $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
-
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $directoryPath = storage_path('app/public/invoices');
-        $filePath = $directoryPath . '/' . $filename;
-
-        // set from email and name
-        $fromEmail = config('constant.ADMIN_EMAIL');
-        $fromName = config('constant.COMP_NAME2');
-
-        // Check if the directory exists, if not create it
-        if (!File::exists($directoryPath)) {
-            File::makeDirectory($directoryPath, 0755, true); // 0755 permissions and true for recursive directory creation
-        }
-
-        // Save the file, overwriting it if it already exists, with exclusive lock
-        file_put_contents($filePath, $dompdf->output(), LOCK_EX);
-
-        try {
-            Mail::to($email)->send(new PaymentEmail($invno, $fullname, $filename, $filePath, $subject,  $fromEmail, $fromName));
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Please check your email now for the invoice and payment link. Thank you.']);
-        } catch (\Exception $e) {
-            Log::error("Email failed to send. Error: " . $e->getMessage());
+        if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
+            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+        } else {
             return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
     }
@@ -1324,73 +1107,9 @@ class RegisterController extends Controller
         }
 
 
-        $plan = Plan::where('pid', $ord)->first();
-        $fee = $plan->plan_yearly_fee;
-
-        $total = $fee + $plan->plan_entrance_fee;
-        $fpxfee = round(config('constant.FPX_FEE')*$total/100);
-        $ccfee = round(config('constant.CC_FEE')*$total/100);
-        $year = date('Y');
-        $orderno = date('ym').getRunningNo();
-
-        $order = Order::create([
-            'order_no' => $orderno,
-            'order_mid' => $memberComp->did,
-            'order_planid' => $plan->pid,
-            'order_planname' => $plan->plan_name,
-            'order_sub_fee' => $fee,
-            'order_entrance_fee' => $plan->plan_entrance_fee,
-            'order_grandtotal' => $total,
-            'order_payfpx' => $fpxfee,
-            'order_paycc' => $ccfee,
-            'order_created_at' => $now,
-            'order_sub_fee_year' => $year
-        ]);
-        logSystem(auth()->id(), 'Create', $order->toArray(), 'Order');
-
-        $ordercheck = Order::where('order_mid', $memberComp->did)->where('order_status',1)->first();
-
-        $invno = config('constant.ORDERID_SET').$ordercheck->order_no;
-        $subject = "[".config('constant.COMP_NAME2')."] Invoice ".$invno;
-        $membercid = getMemberToSendInv($ordercheck->order_mid);
-        $fullname = $membercid['fullname'];
-        $email = $membercid['email'];
-        Log::info($email);
-
-        $memberBillingController = new MemberBillingController();
-        $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
-
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $directoryPath = storage_path('app/public/invoices');
-        $filePath = $directoryPath . '/' . $filename;
-
-        // set from email and name
-        $fromEmail = config('constant.ADMIN_EMAIL');
-        $fromName = config('constant.COMP_NAME2');
-
-        // Check if the directory exists, if not create it
-        if (!File::exists($directoryPath)) {
-            File::makeDirectory($directoryPath, 0755, true); // 0755 permissions and true for recursive directory creation
-        }
-
-        // Save the file, overwriting it if it already exists, with exclusive lock
-        file_put_contents($filePath, $dompdf->output(), LOCK_EX);
-
-        try {
-            Mail::to($email)->send(new PaymentEmail($invno, $fullname, $filename, $filePath, $subject,  $fromEmail, $fromName));
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Please check your email now for the invoice and payment link. Thank you.']);
-        } catch (\Exception $e) {
-            Log::error("Email failed to send. Error: " . $e->getMessage());
+        if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
+            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+        } else {
             return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
     }
@@ -1494,77 +1213,11 @@ class RegisterController extends Controller
 
         }
 
-        $plan = Plan::where('pid', $ord)->first();
-
-        $fee = $plan->plan_yearly_fee;
-
-        $total = $fee + $plan->plan_entrance_fee;
-        $fpxfee = round(config('constant.FPX_FEE')*$total/100);
-        $ccfee = round(config('constant.CC_FEE')*$total/100);
-        $year = date('Y');
-        $orderno = date('ym').getRunningNo();
-
-        $order = Order::create([
-            'order_no' => $orderno,
-            'order_mid' => $memberComp->did,
-            'order_planid' => $plan->pid,
-            'order_planname' => $plan->plan_name,
-            'order_sub_fee' => $fee,
-            'order_entrance_fee' => $plan->plan_entrance_fee,
-            'order_grandtotal' => $total,
-            'order_payfpx' => $fpxfee,
-            'order_paycc' => $ccfee,
-            'order_created_at' => $now,
-            'order_sub_fee_year' => $year
-        ]);
-        logSystem(auth()->id(), 'Create', $order->toArray(), 'Order');
-
-        $ordercheck = Order::where('order_mid', $memberComp->did)->where('order_status',1)->first();
-
-        $invno = config('constant.ORDERID_SET').$ordercheck->order_no;
-        $subject = "[".config('constant.COMP_NAME2')."] Invoice ".$invno;
-        $membercid = getMemberToSendInv($ordercheck->order_mid);
-        $fullname = $membercid['fullname'];
-        $email = $membercid['email'];
-        Log::info($email);
-
-        $memberBillingController = new MemberBillingController();
-        $html = $memberBillingController->generateInvoiceHtml($ordercheck->oid);
-        $filename = "Rehda Invoice - ".config('constant.ORDERID_SET').$ordercheck->order_no.".pdf";
-
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $directoryPath = storage_path('app/public/invoices');
-        $filePath = $directoryPath . '/' . $filename;
-
-        // set from email and name
-        $fromEmail = config('constant.ADMIN_EMAIL');
-        $fromName = config('constant.COMP_NAME2');
-
-        // Check if the directory exists, if not create it
-        if (!File::exists($directoryPath)) {
-            File::makeDirectory($directoryPath, 0755, true); // 0755 permissions and true for recursive directory creation
-        }
-
-        // Save the file, overwriting it if it already exists, with exclusive lock
-        file_put_contents($filePath, $dompdf->output(), LOCK_EX);
-
-        try {
-            Mail::to($email)->send(new PaymentEmail($invno, $fullname, $filename, $filePath, $subject,  $fromEmail, $fromName));
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Please check your email now for the invoice and payment link. Thank you.']);
-        } catch (\Exception $e) {
-            Log::error("Email failed to send. Error: " . $e->getMessage());
+        if($memberComp || $userprofile1){
+            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+        } else {
             return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
-
     }
 
     public function uploadPDF($file, $path, $filenameLimit)
