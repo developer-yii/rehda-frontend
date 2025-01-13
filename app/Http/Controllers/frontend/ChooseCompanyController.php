@@ -5,20 +5,21 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\MemberUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChooseCompanyController extends Controller
 {
     public function index()
     {
-        $currentUser = auth()->user();
+        $currentUser = auth()->user();          
 
         $upMidList = MemberUser::join('member_userprofiles', 'member_users.ml_uid', '=', 'member_userprofiles.up_id')
-        ->where('member_users.ml_username', auth()->user()->ml_username)
-        ->groupBy('member_userprofiles.up_mid')
-        ->orderBy('member_userprofiles.up_mid', 'asc')
-        ->pluck('member_userprofiles.up_mid')->toArray();
+            ->where('member_users.ml_username', $currentUser->ml_username)
+            ->groupBy('member_userprofiles.up_mid')
+            ->orderBy('member_userprofiles.up_mid', 'asc')
+            ->pluck('member_userprofiles.up_mid')
+            ->toArray();
 
-        // dd($upMidList);
         if(count($upMidList) > 1) {
             return view('frontend.choosecompany.index', compact('upMidList'));
         } else if(count($upMidList)==1){

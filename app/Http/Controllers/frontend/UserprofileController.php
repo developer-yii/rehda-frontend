@@ -46,8 +46,7 @@ class UserprofileController extends Controller
 
     public function updateMember(Request $request)
     {
-
-        $userfind = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
+        $userfind = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->latest('ml_id')->first();
 
         $request->validate([
             'title' => 'required',
@@ -88,7 +87,7 @@ class UserprofileController extends Controller
         if(isset($request->new_password) && $request->new_password != '') {
 
             // $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
-            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
+            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->latest('ml_id')->first();
             // Generate new salt and hash new password
             $newSalt = Hash::make(uniqid(openssl_random_pseudo_bytes(16), TRUE));
 
@@ -106,6 +105,7 @@ class UserprofileController extends Controller
             ->where('ml_username', auth()->user()->ml_username)
             ->where('ml_priv', "OfficeRep")
             ->where('ml_status', 1)
+            ->latest('ml_id')
             ->first();
         } else {
             $userfind = auth()->user();
@@ -156,7 +156,7 @@ class UserprofileController extends Controller
         if(isset($request->new_password) && $request->new_password != '') {
 
             // $user = MemberUser::where('ml_id', auth()->user()->ml_id)->first();
-            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->first();
+            $user = MemberUser::where('ml_username', auth()->user()->ml_username)->where('ml_status',1)->latest('ml_id')->first();
 
             // Generate new salt and hash new password
             $newSalt = Hash::make(uniqid(openssl_random_pseudo_bytes(16), TRUE));

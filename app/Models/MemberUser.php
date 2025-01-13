@@ -38,7 +38,7 @@ class MemberUser extends Authenticatable
 
     public function getAuthIdentifierName()
     {
-        return 'ml_emailadd'; // Use 'emailadd' instead of 'email'
+        return 'ml_username'; // Use 'username' instead of 'email'
     }
 
     public function getEmailForPasswordReset()
