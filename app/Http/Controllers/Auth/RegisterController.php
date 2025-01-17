@@ -1167,6 +1167,7 @@ class RegisterController extends Controller
         $mid = $member->mid;
 
         $memberComp = MemberComp::create([
+            'd_parentcomp' => $parentid,
             'd_mid' => $mid,
             'd_compname' => $request->rehdaYouthCompanyName,
             'd_compadd' => $request->rehdaYouthCompanyAddress,
