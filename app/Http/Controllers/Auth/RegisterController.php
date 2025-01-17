@@ -99,7 +99,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'ordinaryCompanyPreferBranch' => 'required',
-            'ordinaryCompanyName' => 'required',
+            'ordinaryCompanyName' => 'required|unique:member_comps,d_compname',
             'ordinaryCompanyAddress' => 'required',
             'ordinaryCompanyAddressCity' => 'required',
             'ordinaryCompanyAddressState' => 'required',
@@ -356,7 +356,7 @@ class RegisterController extends Controller
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
             'subsidiaryOrdinaryMembershipNumber' => 'required',
-            'subsidiaryCompanyName' => 'required',
+            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname',
             'subsidiaryCompanyAddress' => 'required',
             'subsidiaryCompanyAddressCity' => 'required',
             'subsidiaryCompanyAddressState' => 'required',
@@ -579,7 +579,7 @@ class RegisterController extends Controller
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
             'affiliateOrdinaryMembershipNumber' => 'required',
-            'affiliateCompanyName' => 'required',
+            'affiliateCompanyName' => 'required|unique:member_comps,d_compname',
             'affiliateCompanyAddress' => 'required',
             'affiliateCompanyAddressCity' => 'required',
             'affiliateCompanyAddressState' => 'required',
@@ -846,7 +846,7 @@ class RegisterController extends Controller
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
             'associateAccType' => 'required',
-            'associateCompanyName' => 'required',
+            'associateCompanyName' => 'required|unique:member_comps,d_compname',
             'associateCompanyAddress' => 'required',
             'associateCompanyAddressCity' => 'required',
             'associateCompanyAddressState' => 'required',
@@ -1118,7 +1118,7 @@ class RegisterController extends Controller
     {
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
-            'rehdaYouthCompanyName' => 'required',
+            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname',
             'rehdaYouthCompanyAddress' => 'required',
             'rehdaYouthCompanyAddressCity' => 'required',
             'rehdaYouthCompanyAddressState' => 'required',

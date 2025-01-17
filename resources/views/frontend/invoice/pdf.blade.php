@@ -189,7 +189,7 @@
 
                 <tr class="body-info">
                     <td width="50%">
-                        <h3>Person in Charge: {{ ucwords(strtolower($memberProfile->up_title.' '.$memberProfile->up_fullname)) }}</h3>
+                        <h3>Person in Charge: {{ ucwords(strtolower(getTitle($memberProfile->up_title).' '.$memberProfile->up_fullname)) }}</h3>
                         <p>Contact No.: {{ $memberProfile->up_contactno }}</p>
                     </td>
                 </tr>

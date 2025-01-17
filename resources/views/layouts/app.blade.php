@@ -151,7 +151,7 @@
                             <small class="text-muted">Company Name</small>
                         </div>
                         <div class="flex-grow-1 ms-2">
-                            <span class="fw-medium d-block">{{ getMembershipNobyMID($profile->up_mid) }}</span>
+                            <span class="fw-medium d-block">{{ getMembershipNobyMIDNew($profile->up_mid) }}</span>
                             <small class="text-muted">Membership No.</small>
                         </div>
                         <div class="flex-grow-1 ms-2">
