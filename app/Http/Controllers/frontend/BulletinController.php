@@ -15,7 +15,7 @@ class BulletinController extends Controller
         if(auth()->user()->ml_priv == "CompanyAdmin"){
             $lastdigit = substr(auth()->user()->ml_username,-2);
             $year = '20'.$lastdigit;
-            $bulletins->where('bu_yr','>',$year);
+            $bulletins->where('bu_yr','>=',$year);
         }
 
         $bulletins = $bulletins->get();
