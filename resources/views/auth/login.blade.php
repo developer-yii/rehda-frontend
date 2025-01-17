@@ -88,9 +88,9 @@
 
                     <p class="mb-2">Applicants may fill in the REHDA Membership Application form.</p>
 
-                    <p class="mb-2">Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the <br> Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
+                    <p class="mb-2">Upon receipt of the application form from applicants, an administration personnel will verify all the information submitted before sending it to the Branch for vetting and recommendation. On approval by the Branch Committee, the application will be tabled for the National Council’s approval.</p>
 
-                    <p class="mb-2">The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the <br> President will be issued to the successful applicants.</p>
+                    <p class="mb-2">The applicants will be informed once their applications have been approved. A Membership Certificate and an Approval Letter signed by the President will be issued to the successful applicants.</p>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-3 mb-5 d-flex justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-outline-primary d-grid w-50">New Member Registration</a>

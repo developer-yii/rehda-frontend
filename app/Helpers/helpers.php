@@ -113,6 +113,39 @@ if (!function_exists('getMembershipNobyMID')) {
     }
 }
 
+if (!function_exists('getMembershipNobyMIDNew')) {
+    function getMembershipNobyMIDNew($mid)
+    {
+        // Fetch the MemberComp related to the given MID
+        $memberComp = MemberComp::where('did', $mid)->with('member')->first();
+
+        if (!$memberComp) {
+            return null; // Or handle the case where the member is not found
+        }
+
+        // If m_type is not 6, construct the membership number
+        if ($memberComp->member->m_type != 6) {
+            $mno = $memberComp->member->m_no_p1 .
+                $memberComp->member->m_no_p2 .
+                $memberComp->member->m_no_p3 .
+                $memberComp->member->m_no_p4 .
+                config('constant.MNP2') .
+                $memberComp->member->m_no_p5;
+        } else {
+            // If m_type is 6, get the membership number from member_userprofiles
+            $userProfile = MemberUserProfile::where('up_mid', $memberComp->did)->first();
+
+            if ($userProfile) {
+                $mno = $userProfile->up_mykad;
+            } else {
+                $mno = null; // Or handle the case where the profile is not found
+            }
+        }
+
+        return $mno;
+    }
+}
+
 if (!function_exists('getStatex')) {
     function getStatex($stateId)
     {
