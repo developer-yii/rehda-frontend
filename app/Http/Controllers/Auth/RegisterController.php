@@ -99,7 +99,7 @@ class RegisterController extends Controller
     {
 
         Log::info('ordinary-request-data');
-        Log::info($request);
+        Log::info($request->all());
 
         $request->validate([
             'ordinaryCompanyPreferBranch' => 'required',
@@ -360,7 +360,7 @@ class RegisterController extends Controller
     public function subsidiaryRegister(Request $request)
     {
         Log::info('subsidiary-request-data');
-        Log::info($request);
+        Log::info($request->all());
 
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
@@ -588,7 +588,7 @@ class RegisterController extends Controller
     public function affiliateRegister(Request $request)
     {
         Log::info('affiliate-request-data');
-        Log::info($request);
+        Log::info($request->all());
 
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
@@ -860,7 +860,7 @@ class RegisterController extends Controller
     public function associateRegister(Request $request)
     {
         Log::info('associate-request-data');
-        Log::info($request);
+        Log::info($request->all());
 
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
@@ -1138,7 +1138,7 @@ class RegisterController extends Controller
     public function rehdayouthRegister(Request $request)
     {
         Log::info('rehdaYouth-request-data');
-        Log::info($request);
+        Log::info($request->all());
 
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
