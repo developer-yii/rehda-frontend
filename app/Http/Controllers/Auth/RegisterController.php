@@ -99,7 +99,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'ordinaryCompanyPreferBranch' => 'required',
-            'ordinaryCompanyName' => 'required|unique:member_comps,d_compname',
+            'ordinaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
             'ordinaryCompanyAddress' => 'required',
             'ordinaryCompanyAddressCity' => 'required',
             'ordinaryCompanyAddressState' => 'required',
@@ -356,7 +356,7 @@ class RegisterController extends Controller
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
             'subsidiaryOrdinaryMembershipNumber' => 'required',
-            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname',
+            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
             'subsidiaryCompanyAddress' => 'required',
             'subsidiaryCompanyAddressCity' => 'required',
             'subsidiaryCompanyAddressState' => 'required',
@@ -579,7 +579,7 @@ class RegisterController extends Controller
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
             'affiliateOrdinaryMembershipNumber' => 'required',
-            'affiliateCompanyName' => 'required|unique:member_comps,d_compname',
+            'affiliateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
             'affiliateCompanyAddress' => 'required',
             'affiliateCompanyAddressCity' => 'required',
             'affiliateCompanyAddressState' => 'required',
@@ -846,7 +846,7 @@ class RegisterController extends Controller
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
             'associateAccType' => 'required',
-            'associateCompanyName' => 'required|unique:member_comps,d_compname',
+            'associateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
             'associateCompanyAddress' => 'required',
             'associateCompanyAddressCity' => 'required',
             'associateCompanyAddressState' => 'required',
@@ -1118,7 +1118,7 @@ class RegisterController extends Controller
     {
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
-            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname',
+            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
             'rehdaYouthCompanyAddress' => 'required',
             'rehdaYouthCompanyAddressCity' => 'required',
             'rehdaYouthCompanyAddressState' => 'required',
@@ -1277,5 +1277,11 @@ class RegisterController extends Controller
     public function registerSuccess()
     {
         return view("auth.register-success");
+    }
+
+    public function validateCompanyName(Request $request)
+    {
+        $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_status','!=',3)->exists();
+        return response()->json(['isUnique' => $isUnique]);
     }
 }

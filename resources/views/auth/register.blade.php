@@ -2118,6 +2118,8 @@
 <script>
     $(document).ready(function() {
 
+        var validateCompanyNameUrl = "{{ route('validateCompanyName') }}";
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('input[name="csrf-token"]').val()
@@ -2140,7 +2142,23 @@
             ignore: [],
             rules: {
                 ordinaryCompanyPreferBranch: "required",
-                ordinaryCompanyName: "required",
+                ordinaryCompanyName: {
+                    required: true,
+                    remote: {
+                        url: validateCompanyNameUrl,
+                        type: "POST",
+                        data: {
+                            company_name: function() {
+                                return $("#ordinaryCompanyName").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            return result.isUnique ? false : true;
+                        }
+                    }
+                },
                 ordinaryCompanyAddress: "required",
                 ordinaryCompanyAddressCity: "required",
                 ordinaryCompanyAddressState: "required",
@@ -2214,6 +2232,11 @@
                 ordinaryOfficial2AddressState: "required",
                 ordinaryOfficial2AddressPc: "required",
                 ordinaryOfficial2AddressCountry: "required",
+            },
+            messages: {
+                ordinaryCompanyName: {
+                    remote: "This company name is already taken."
+                }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -2351,7 +2374,23 @@
                     required: true,
                     minlength: 15
                 },
-                subsidiaryCompanyName: "required",
+                subsidiaryCompanyName: {
+                    required: true,
+                    remote: {
+                        url: validateCompanyNameUrl,
+                        type: "POST",
+                        data: {
+                            company_name: function() {
+                                return $("#subsidiaryCompanyName").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            return result.isUnique ? false : true;
+                        }
+                    }
+                },
                 subsidiaryCompanyAddress: "required",
                 subsidiaryCompanyAddressCity: "required",
                 subsidiaryCompanyAddressState: "required",
@@ -2398,6 +2437,11 @@
                 subsidiaryOfficial1AddressState: "required",
                 subsidiaryOfficial1AddressPc: "required",
                 subsidiaryOfficial1AddressCountry: "required"
+            },
+            messages: {
+                subsidiaryCompanyName: {
+                    remote: "This company name is already taken."
+                }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -2530,7 +2574,23 @@
                     required: true,
                     minlength: 15
                 },
-                affiliateCompanyName: "required",
+                affiliateCompanyName: {
+                    required: true,
+                    remote: {
+                        url: validateCompanyNameUrl,
+                        type: "POST",
+                        data: {
+                            company_name: function() {
+                                return $("#affiliateCompanyName").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            return result.isUnique ? false : true;
+                        }
+                    }
+                },
                 affiliateCompanyAddress: "required",
                 affiliateCompanyAddressCity: "required",
                 affiliateCompanyAddressState: "required",
@@ -2604,6 +2664,11 @@
                 affiliateOfficial2AddressState: "required",
                 affiliateOfficial2AddressPc: "required",
                 affiliateOfficial2AddressCountry: "required"
+            },
+            messages: {
+                affiliateCompanyName: {
+                    remote: "This company name is already taken."
+                }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -2770,7 +2835,23 @@
             rules: {
                 associateCompanyPreferBranch: "required",
                 associateAccType: "required",
-                associateCompanyName: "required",
+                associateCompanyName: {
+                    required: true,
+                    remote: {
+                        url: validateCompanyNameUrl,
+                        type: "POST",
+                        data: {
+                            company_name: function() {
+                                return $("#associateCompanyName").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            return result.isUnique ? false : true;
+                        }
+                    }
+                },
                 associateCompanyAddress: "required",
                 associateCompanyAddressCity: "required",
                 associateCompanyAddressState: "required",
@@ -2873,6 +2954,11 @@
                 associateOfficial2AddressState: "required",
                 associateOfficial2AddressPc: "required",
                 associateOfficial2Country: "required",
+            },
+            messages: {
+                associateCompanyName: {
+                    remote: "This company name is already taken."
+                }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -3008,7 +3094,23 @@
                     required: true,
                     minlength: 15
                 },
-                rehdaYouthCompanyName: "required",
+                rehdaYouthCompanyName: {
+                    required: true,
+                    remote: {
+                        url: validateCompanyNameUrl,
+                        type: "POST",
+                        data: {
+                            company_name: function() {
+                                return $("#rehdaYouthCompanyName").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            return result.isUnique ? false : true;
+                        }
+                    }
+                },
                 rehdaYouthCompanyAddress: "required",
                 rehdaYouthCompanyAddressCity: "required",
                 rehdaYouthCompanyAddressState: "required",
@@ -3043,6 +3145,11 @@
                 rehdaYouthOfficial1AddressState: "required",
                 rehdaYouthOfficial1AddressPc: "required",
                 rehdaYouthOfficial1AddressCountry: "required"
+            },
+            messages: {
+                rehdaYouthCompanyName: {
+                    remote: "This company name is already taken."
+                }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
