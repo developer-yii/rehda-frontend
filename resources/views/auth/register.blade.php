@@ -269,9 +269,6 @@
                 </div>
 
             </div>
-            <div class="bs-stepper-content pb-0">
-                <span class="text-danger h5" id="error-message-main"></span>
-            </div>
             <div class="bs-stepper-content">
                 <div id="account-details" class="content">
                     <form method="POST" action="" name="membertype-form">
@@ -2267,7 +2264,6 @@
                 // $('.error-message').remove();
                 // Clear any existing error messages
                 $('.error-message').remove();
-                $("#error-message-main").text('');
 
                 $.ajax({
                     url: $(form).attr('action'),
@@ -2278,7 +2274,6 @@
                     contentType: false, // Prevent jQuery from setting content type
                     success: function(response) {
 
-                        $("#error-message-main").text('');
                         if (response.status == 1) {
                             //form[0].reset();
                             $("form[name='ordinary-membership-form']")[0].reset();
@@ -2301,7 +2296,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
-                        $("#error-message-main").text('Please fill all required fields correctly');
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -2475,7 +2470,6 @@
                 $('.error-message').remove();
                 // Clear any existing error messages
                 $('.error-message').remove();
-                $("#error-message-main").text('');
 
                 $.ajax({
                     url: $(form).attr('action'),
@@ -2485,7 +2479,6 @@
                     contentType: false, // Prevent jQuery from setting content type
                     success: function(response) {
 
-                        $("#error-message-main").text('');
                         if (response.status == 1) {
                             $("form[name='subsidiary-membership-form']")[0].reset();
                             $('input[type="radio"]').prop('checked', false);
@@ -2507,7 +2500,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
-                        $("#error-message-main").text('Please fill all required fields correctly');
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -2705,7 +2698,6 @@
                 $('.error-message').remove();
                 // Clear any existing error messages
                 $('.error-message').remove();
-                $("#error-message-main").text('');
 
                 $.ajax({
                     url: $(form).attr('action'),
@@ -2715,7 +2707,6 @@
                     contentType: false, // Prevent jQuery from setting content type
                     success: function(response) {
 
-                        $("#error-message-main").text('');
                         if (response.status == 1) {
                             $("form[name='affiliate-membership-form']")[0].reset();
                             $('input[type="radio"]').prop('checked', false);
@@ -2737,7 +2728,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
-                        $("#error-message-main").text('Please fill all required fields correctly');
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -2998,7 +2989,6 @@
                 $('.error-message').remove();
                 // Clear any existing error messages
                 $('.error-message').remove();
-                $("#error-message-main").text('');
 
                 $.ajax({
                     url: $(form).attr('action'),
@@ -3008,7 +2998,6 @@
                     contentType: false, // Prevent jQuery from setting content type
                     success: function(response) {
 
-                        $("#error-message-main").text('');
                         if (response.status == 1) {
                             $("form[name='associate-membership-form']")[0].reset();
                             $('input[type="radio"]').prop('checked', false);
@@ -3031,7 +3020,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
-                        $("#error-message-main").text('Please fill all required fields correctly');
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -3192,7 +3181,6 @@
                 $('.error-message').remove();
                 // Clear any existing error messages
                 $('.error-message').remove();
-                $("#error-message-main").text('');
 
                 $.ajax({
                     url: $(form).attr('action'),
@@ -3202,7 +3190,6 @@
                     contentType: false, // Prevent jQuery from setting content type
                     success: function(response) {
 
-                        $("#error-message-main").text('');
                         if (response.status == 1) {
                             $("form[name='rehdayouth-membership-form']")[0].reset();
                             $('input[type="radio"]').prop('checked', false);
@@ -3224,7 +3211,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
-                        $("#error-message-main").text('Please fill all required fields correctly');
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
