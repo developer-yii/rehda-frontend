@@ -75,7 +75,7 @@ Route::post('affiliate-register', [RegisterController::class, 'affiliateRegister
 Route::post('associate-register', [RegisterController::class, 'associateRegister'])->name('associate.register');
 Route::post('rehdayouth-register', [RegisterController::class, 'rehdayouthRegister'])->name('rehdayouth.register');
 Route::get('register-success', [RegisterController::class, 'registerSuccess'])->name('register-success');
-
+Route::post('validate-company-name', [RegisterController::class, 'validateCompanyName'])->name('validateCompanyName');
 
 Route::middleware('auth')->group(function () {
 
