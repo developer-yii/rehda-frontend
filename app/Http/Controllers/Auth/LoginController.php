@@ -153,7 +153,7 @@ class LoginController extends Controller
             $ml_username = $request->mykadno;
             $errormsg = "Invalid mykad number or email";
         }
-        $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->latest('id')->first();
+        $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->latest('ml_id')->first();
 
         if(!$checkUser){
             return response()->json([

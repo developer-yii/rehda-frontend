@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -97,6 +98,9 @@ class RegisterController extends Controller
     public function ordinaryRegister(Request $request)
     {
 
+        Log::info('ordinary-request-data');
+        Log::info($request);
+
         $request->validate([
             'ordinaryCompanyPreferBranch' => 'required',
             'ordinaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
@@ -158,6 +162,8 @@ class RegisterController extends Controller
             'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
+
+        Log::info('ordinary-request-data-validated-successfuly');
 
         $dir = 'uploads/members/';
 
@@ -353,6 +359,9 @@ class RegisterController extends Controller
 
     public function subsidiaryRegister(Request $request)
     {
+        Log::info('subsidiary-request-data');
+        Log::info($request);
+
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
             'subsidiaryOrdinaryMembershipNumber' => 'required',
@@ -400,6 +409,8 @@ class RegisterController extends Controller
             'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
+
+        Log::info('subsidiary-request-data-validated-successfuly');
 
         $parentid = chkMembershipNo($request->subsidiaryOrdinaryMembershipNumber);
         if($parentid == null){
@@ -576,6 +587,9 @@ class RegisterController extends Controller
 
     public function affiliateRegister(Request $request)
     {
+        Log::info('affiliate-request-data');
+        Log::info($request);
+
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
             'affiliateOrdinaryMembershipNumber' => 'required',
@@ -638,6 +652,8 @@ class RegisterController extends Controller
             'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
+
+        Log::info('affiliate-request-data-validated-successfuly');
 
         $parentid = chkMembershipNo($request->affiliateOrdinaryMembershipNumber);
         if($parentid == null){
@@ -843,6 +859,9 @@ class RegisterController extends Controller
 
     public function associateRegister(Request $request)
     {
+        Log::info('associate-request-data');
+        Log::info($request);
+
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
             'associateAccType' => 'required',
@@ -905,6 +924,8 @@ class RegisterController extends Controller
             'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
+
+        Log::info('associate-request-data-validated-successfuly');
 
         $dir = 'uploads/members/';
 
@@ -1116,6 +1137,9 @@ class RegisterController extends Controller
 
     public function rehdayouthRegister(Request $request)
     {
+        Log::info('rehdaYouth-request-data');
+        Log::info($request);
+
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
             'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
@@ -1145,6 +1169,8 @@ class RegisterController extends Controller
             'required' => 'This field is required.',
             'email' => 'Please enter a valid email address.',
         ]);
+
+        Log::info('rehdaYouth-request-data-validated-successfuly');
 
         $parentid = chkMembershipNo($request->rehdaYouthOrdinaryMembershipNumber);
         if($parentid == null){
