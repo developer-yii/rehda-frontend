@@ -268,7 +268,6 @@
                     <span class="badge bg-danger text-uppercase required-badge">Required</span>
                 </div>
 
-
             </div>
             <div class="bs-stepper-content">
                 <div id="account-details" class="content">
@@ -2297,6 +2296,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -2500,6 +2500,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -2727,6 +2728,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -3018,6 +3020,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -3208,6 +3211,7 @@
                         // Flag to track if an accordion item has been opened
                         var hasOpenedAccordion = false;
 
+                        toastr.error('Please fill all required fields correctly', 'Error');
                         // Iterate through the errors
                         $.each(errors, function(field, message) {
                             if (!hasOpenedAccordion) {
@@ -3281,12 +3285,12 @@
             }
         });
         $(".ordinary-official-representative-1-btn").on("click", function () {
-            if($("#ordinaryOfficial1Title, #ordinaryOfficial1Nop, #ordinaryMyKad, #ordinaryOfficial1Designation, .ordinaryGender, #ordinaryOfficial1Email, #ordinaryOfficial1Contact, #ordinaryOfficial1Address, #ordinaryOfficial1AddressCity, #ordinaryOfficial1AddressState, #ordinaryOfficial1AddressPc, #ordinaryOfficial1AddressCountry, #ordinaryOfficial1SecretartEmail").valid()){
+            if($("#ordinaryOfficial1Title, #ordinaryOfficial1Nop, #ordinaryMyKad, #ordinaryPassportno #ordinaryOfficial1Designation, .ordinaryGender, #ordinaryOfficial1Email, #ordinaryOfficial1Contact, #ordinaryOfficial1Address, #ordinaryOfficial1AddressCity, #ordinaryOfficial1AddressState, #ordinaryOfficial1AddressPc, #ordinaryOfficial1AddressCountry, #ordinaryOfficial1SecretartEmail").valid()){
                 stepper.next();
             } else {
 
                 // Trigger validation on all fields to display error messages
-                $("#ordinaryOfficial1Title, #ordinaryOfficial1Nop, #ordinaryMyKad, #ordinaryOfficial1Designation, .ordinaryGender, #ordinaryOfficial1Email, #ordinaryOfficial1Contact, #ordinaryOfficial1Address, #ordinaryOfficial1AddressCity, #ordinaryOfficial1AddressState, #ordinaryOfficial1AddressPc, #ordinaryOfficial1AddressCountry, #ordinaryOfficial1SecretartEmail").each(function() {
+                $("#ordinaryOfficial1Title, #ordinaryOfficial1Nop, #ordinaryMyKad, #ordinaryPassportno, #ordinaryOfficial1Designation, .ordinaryGender, #ordinaryOfficial1Email, #ordinaryOfficial1Contact, #ordinaryOfficial1Address, #ordinaryOfficial1AddressCity, #ordinaryOfficial1AddressState, #ordinaryOfficial1AddressPc, #ordinaryOfficial1AddressCountry, #ordinaryOfficial1SecretartEmail").each(function() {
                     $(this).valid();  // This will trigger the validation and display errors
                 });
                 // Focus on the first invalid input field
@@ -3326,7 +3330,7 @@
             }
         });
         $(".affiliate-official-representative-1-btn").on("click", function () {
-            if($("#affiliateOfficial1Title, #affiliateOfficial1Nop, #affiliateMyKad, #affiliateOfficial1Designation, .affiliateOfficial1Gender, #affiliateOfficial1Email, #affiliateOfficial1Contact, #affiliateOfficial1Address, #affiliateOfficial1AddressCity, #affiliateOfficial1AddressState, #affiliateOfficial1AddressPc, #affiliateOfficial1AddressCountry, #affiliateOfficial1SecretartEmail").valid()){
+            if($("#affiliateOfficial1Title, #affiliateOfficial1Nop, #affiliateMyKad, #affiliatePassportno, #affiliateOfficial1Designation, .affiliateOfficial1Gender, #affiliateOfficial1Email, #affiliateOfficial1Contact, #affiliateOfficial1Address, #affiliateOfficial1AddressCity, #affiliateOfficial1AddressState, #affiliateOfficial1AddressPc, #affiliateOfficial1AddressCountry, #affiliateOfficial1SecretartEmail").valid()){
                 stepper.next();
             } else {
                 affiliateMembershipForm.find(":input.error").first().focus();
@@ -3353,7 +3357,7 @@
             }
         });
         $(".associate-official-representative-1-btn").on("click", function () {
-            if($("#associateOfficial1Title, #associateOfficial1Nop, #associateOfficial1MyKad, #associateOfficial1Designation, .associateOfficial1Gender, #associateOfficial1Email, #associateOfficial1Contact, #associateOfficial1Address, #associateOfficial1AddressCity, #associateOfficial1AddressState, #associateOfficial1AddressPc, #associateOfficial1Country, #associateOfficial1SecretartEmail").valid()){
+            if($("#associateOfficial1Title, #associateOfficial1Nop, #associateOfficial1MyKad, #associateOfficial1Passportno, #associateOfficial1Designation, .associateOfficial1Gender, #associateOfficial1Email, #associateOfficial1Contact, #associateOfficial1Address, #associateOfficial1AddressCity, #associateOfficial1AddressState, #associateOfficial1AddressPc, #associateOfficial1Country, #associateOfficial1SecretartEmail").valid()){
                 stepper.next();
             } else {
                 associateMembershipForm.find(":input.error").first().focus();
