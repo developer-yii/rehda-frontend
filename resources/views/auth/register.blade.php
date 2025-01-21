@@ -3374,7 +3374,8 @@
         });
 
 
-        $(".member-prev").on("click", function () {
+        $(".member-prev").on("click", function (e) {
+            e.preventDefault();
             // stepper.previous();
             var activeStepIndex = $('.step.active').index('.step');
             if($('input[name="membertype"]:checked').val() == "ordinary") {
