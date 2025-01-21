@@ -177,8 +177,12 @@ class InvoiceController extends Controller
             die();
         } else {
             $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
-            $memberDetails = getMemberToSendInv($order->order_mid);
-            return view('frontend.invoice.paymentfpx', compact('order','memberDetails'));
+            if($order) {
+                $memberDetails = getMemberToSendInv($order->order_mid);
+                return view('frontend.invoice.paymentfpx', compact('order','memberDetails'));
+            } else {
+                return redirect()->back()->with('error', 'Order not found.');
+            }
         }
     }
 
@@ -190,8 +194,12 @@ class InvoiceController extends Controller
             die();
         } else {
             $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
-            $memberDetails = getMemberToSendInv($order->order_mid);
-            return view('frontend.invoice.paymentcard', compact('order','memberDetails'));
+            if($order) {
+                $memberDetails = getMemberToSendInv($order->order_mid);
+                return view('frontend.invoice.paymentcard', compact('order','memberDetails'));
+            } else {
+                return redirect()->back()->with('error', 'Order not found.');
+            }
         }
     }
 
