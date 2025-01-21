@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -103,7 +104,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'ordinaryCompanyPreferBranch' => 'required',
-            'ordinaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
+            'ordinaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
             'ordinaryCompanyAddress' => 'required',
             'ordinaryCompanyAddressCity' => 'required',
             'ordinaryCompanyAddressState' => 'required',
@@ -240,120 +241,165 @@ class RegisterController extends Controller
         $ord = 1;
         $now = date("Y-m-d H:i:s");
 
-        $member = Member::create([
-            'm_type' => $ord,
-            'm_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
+        try {
 
-        $mid = $member->mid;
+            $userprofile1 = '';
+            $userprofile2 = '';
+            $userprofileAdmin = '';
 
-        $memberComp = MemberComp::create([
-            'd_mid' => $mid,
-            'd_compname' => $request->ordinaryCompanyName,
-            'd_compadd' => $request->ordinaryCompanyAddress,
-            'd_compadd_3' => $request->ordinaryCompanyAddress3,
-            'd_compaddcity' => $request->ordinaryCompanyAddressCity,
-            'd_compaddstate' => $request->ordinaryCompanyAddressState ?? 0,
-            'd_compaddpcode' => $request->ordinaryCompanyAddressPc,
-            'd_compaddcountry' => $request->ordinaryCompanyAddressCountry,
-            'd_comp_weburl' => $request->ordinaryOfficialWebsite ?? NULL,
-            'd_offno' => $request->ordinaryOfficialNumber,
-            'd_faxno' => $request->ordinaryFaxNumber,
-            'd_compssmno' => $request->ordinarySSMRegNumber,
-            'd_datecompform' => $request->ordinaryDateOfCompanyFormation,
-            'd_paidcapital' => $request->ordinaryLatestPaidUpCapital,
-            'd_f9ssm' => $path1,
-            'd_f24' => $path2 ?? NULL,
-            'd_f49' => $path3 ?? NULL,
-            'd_anualretuncopy' => $path4,
-            'd_devlicense' => $request->ordinaryHouseDevelopingLicense,
-            'd_devlicensecopy' => $path5,
-            'd_created_at' => $now,
-            'd_refer_branch' => $request->ordinaryCompanyPreferBranch
-        ]);
-        logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
-
-        $up_usertype = 1;
-        if(!empty($request->ordinaryOfficial1Nop)){
-
-            $userprofile1 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->ordinaryOfficial1Nop,
-                'up_title' => $request->ordinaryOfficial1Title,
-                'up_mykad' => $request->ordinaryMyKad ?? NULL,
-                'passportno' => $request->ordinaryPassportno ?? NULL,
-                'up_designation' => $request->ordinaryOfficial1Designation,
-                'up_gender' => $request->ordinaryGender,
-                'up_contactno' => $request->ordinaryOfficial1Contact,
-                'up_emailadd' => $request->ordinaryOfficial1Email,
-                'up_profq' => $request->ordinaryOfficial1ProQualification,
-                'up_address' => $request->ordinaryOfficial1Address,
-                'up_city' => $request->ordinaryOfficial1AddressCity,
-                'up_state' => $request->ordinaryOfficial1AddressState,
-                'up_postcode' => $request->ordinaryOfficial1AddressPc,
-                'up_country' => $request->ordinaryOfficial1AddressCountry,
-                'up_sec_name' => $request->ordinaryOfficial1SecretartName,
-                'up_sec_title' => $request->ordinaryOfficial1SecretartTitle,
-                'up_sec_email' => $request->ordinaryOfficial1SecretartEmail,
-                'up_sec_mobile' => $request->ordinaryOfficial1SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $member = Member::create([
+                'm_type' => $ord,
+                'm_created_at' => $now
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+            logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
 
-        }
+            $mid = $member->mid;
 
-        if(!empty($request->ordinaryOfficial2Nop)){
-
-            $userprofile2 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->ordinaryOfficial2Nop,
-                'up_title' => $request->ordinaryOfficial2Title,
-                'up_mykad' => $request->ordinaryMyKad2 ?? NULL,
-                'passportno' => $request->ordinary2Passportno ?? NULL,
-                'up_designation' => $request->ordinaryOfficial2Designation,
-                'up_gender' => $request->ordinaryOfficial2Gender,
-                'up_contactno' => $request->ordinaryOfficial2Contact,
-                'up_emailadd' => $request->ordinaryOfficial2Email,
-                'up_profq' => $request->ordinaryOfficial2ProQualification,
-                'up_address' => $request->ordinaryOfficial2Address,
-                'up_city' => $request->ordinaryOfficial2AddressCity,
-                'up_state' => $request->ordinaryOfficial2AddressState,
-                'up_postcode' => $request->ordinaryOfficial2AddressPc,
-                'up_country' => $request->ordinaryOfficial2AddressCountry,
-                'up_sec_name' => $request->ordinaryOfficial2SecretartName,
-                'up_sec_title' => $request->ordinaryOfficial2SecretartTitle,
-                'up_sec_email' => $request->ordinaryOfficial2SecretartEmail,
-                'up_sec_mobile' => $request->ordinaryOfficial2SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $memberComp = MemberComp::create([
+                'd_mid' => $mid,
+                'd_compname' => $request->ordinaryCompanyName,
+                'd_compadd' => $request->ordinaryCompanyAddress,
+                'd_compadd_3' => $request->ordinaryCompanyAddress3,
+                'd_compaddcity' => $request->ordinaryCompanyAddressCity,
+                'd_compaddstate' => $request->ordinaryCompanyAddressState ?? 0,
+                'd_compaddpcode' => $request->ordinaryCompanyAddressPc,
+                'd_compaddcountry' => $request->ordinaryCompanyAddressCountry,
+                'd_comp_weburl' => $request->ordinaryOfficialWebsite ?? NULL,
+                'd_offno' => $request->ordinaryOfficialNumber,
+                'd_faxno' => $request->ordinaryFaxNumber,
+                'd_compssmno' => $request->ordinarySSMRegNumber,
+                'd_datecompform' => $request->ordinaryDateOfCompanyFormation,
+                'd_paidcapital' => $request->ordinaryLatestPaidUpCapital,
+                'd_f9ssm' => $path1,
+                'd_f24' => $path2 ?? NULL,
+                'd_f49' => $path3 ?? NULL,
+                'd_anualretuncopy' => $path4,
+                'd_devlicense' => $request->ordinaryHouseDevelopingLicense,
+                'd_devlicensecopy' => $path5,
+                'd_created_at' => $now,
+                'd_refer_branch' => $request->ordinaryCompanyPreferBranch
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
+            logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
-        }
+            $up_usertype = 1;
+            if(!empty($request->ordinaryOfficial1Nop)){
 
-        if(!empty($request->ordinaryNameOfAdmin)){
+                $userprofile1 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->ordinaryOfficial1Nop,
+                    'up_title' => $request->ordinaryOfficial1Title,
+                    'up_mykad' => $request->ordinaryMyKad ?? NULL,
+                    'passportno' => $request->ordinaryPassportno ?? NULL,
+                    'up_designation' => $request->ordinaryOfficial1Designation,
+                    'up_gender' => $request->ordinaryGender,
+                    'up_contactno' => $request->ordinaryOfficial1Contact,
+                    'up_emailadd' => $request->ordinaryOfficial1Email,
+                    'up_profq' => $request->ordinaryOfficial1ProQualification,
+                    'up_address' => $request->ordinaryOfficial1Address,
+                    'up_city' => $request->ordinaryOfficial1AddressCity,
+                    'up_state' => $request->ordinaryOfficial1AddressState,
+                    'up_postcode' => $request->ordinaryOfficial1AddressPc,
+                    'up_country' => $request->ordinaryOfficial1AddressCountry,
+                    'up_sec_name' => $request->ordinaryOfficial1SecretartName,
+                    'up_sec_title' => $request->ordinaryOfficial1SecretartTitle,
+                    'up_sec_email' => $request->ordinaryOfficial1SecretartEmail,
+                    'up_sec_mobile' => $request->ordinaryOfficial1SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
 
-            $admin = 2;
-            $userprofileAdmin = MemberUserProfile::create([
-                'up_usertype' => $admin,
-                'up_fullname' => $request->ordinaryNameOfAdmin,
-                'up_title' => $request->ordinaryAdminTitle,
-                'up_designation' => $request->ordinaryAdminDesignation,
-                'up_contactno' => $request->ordinaryAdminContactNumber,
-                'up_emailadd' => $request->ordinaryAdminEmail,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            }
+
+            if(!empty($request->ordinaryOfficial2Nop)){
+
+                $userprofile2 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->ordinaryOfficial2Nop,
+                    'up_title' => $request->ordinaryOfficial2Title,
+                    'up_mykad' => $request->ordinaryMyKad2 ?? NULL,
+                    'passportno' => $request->ordinary2Passportno ?? NULL,
+                    'up_designation' => $request->ordinaryOfficial2Designation,
+                    'up_gender' => $request->ordinaryOfficial2Gender,
+                    'up_contactno' => $request->ordinaryOfficial2Contact,
+                    'up_emailadd' => $request->ordinaryOfficial2Email,
+                    'up_profq' => $request->ordinaryOfficial2ProQualification,
+                    'up_address' => $request->ordinaryOfficial2Address,
+                    'up_city' => $request->ordinaryOfficial2AddressCity,
+                    'up_state' => $request->ordinaryOfficial2AddressState,
+                    'up_postcode' => $request->ordinaryOfficial2AddressPc,
+                    'up_country' => $request->ordinaryOfficial2AddressCountry,
+                    'up_sec_name' => $request->ordinaryOfficial2SecretartName,
+                    'up_sec_title' => $request->ordinaryOfficial2SecretartTitle,
+                    'up_sec_email' => $request->ordinaryOfficial2SecretartEmail,
+                    'up_sec_mobile' => $request->ordinaryOfficial2SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
+
+            }
+
+            if(!empty($request->ordinaryNameOfAdmin)){
+
+                $admin = 2;
+                $userprofileAdmin = MemberUserProfile::create([
+                    'up_usertype' => $admin,
+                    'up_fullname' => $request->ordinaryNameOfAdmin,
+                    'up_title' => $request->ordinaryAdminTitle,
+                    'up_designation' => $request->ordinaryAdminDesignation,
+                    'up_contactno' => $request->ordinaryAdminContactNumber,
+                    'up_emailadd' => $request->ordinaryAdminEmail,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+
+            }
+
+            if($userprofile1 || $userprofile2 || $userprofileAdmin) {
+                return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+            } else {
+                return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+            }
+        } catch (\Exception $e) {
+
+            // Cleanup Member record
+            if (!$memberComp) {
+                $member->delete();
+            }
+
+            // Cleanup MemberComp and Member
+            if ($member && $memberComp && !$userprofile1) {
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-1 and MemberComp and Member
+            if ($member && $memberComp && $userprofile1 && !$userprofile2) {
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-2 and MemberUser-Profile-1 and MemberComp and Member
+            if($member && $memberComp && $userprofile1 && $userprofile2 && !$userprofileAdmin) {
+                $userprofile2->delete();
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Log the error details
+            \Log::error('Error while ordinary registration: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
-            logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
 
-        }
+            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
 
-        if($userprofile1 || $userprofile2 || $userprofileAdmin) {
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
-        } else {
-            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
     }
 
@@ -365,7 +411,7 @@ class RegisterController extends Controller
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
             'subsidiaryOrdinaryMembershipNumber' => 'required',
-            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
+            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
             'subsidiaryCompanyAddress' => 'required',
             'subsidiaryCompanyAddressCity' => 'required',
             'subsidiaryCompanyAddressState' => 'required',
@@ -496,92 +542,129 @@ class RegisterController extends Controller
         $ord = 2;
         $now = date("Y-m-d H:i:s");
 
-        $member = Member::create([
-            'm_type' => $ord,
-            'm_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
+        try {
 
-        $mid = $member->mid;
+            $userprofile1 = '';
+            $userprofileAdmin = '';
 
-        $memberComp = MemberComp::create([
-            'd_parentcomp' => $parentid,
-            'd_mid' => $mid,
-            'd_compname' => $request->subsidiaryCompanyName,
-            'd_compadd' => $request->subsidiaryCompanyAddress,
-            'd_compadd_3' => $request->subsidiaryCompanyAddress3,
-            'd_compaddcity' => $request->subsidiaryCompanyAddressCity,
-            'd_compaddstate' => $request->subsidiaryCompanyAddressState ?? 0,
-            'd_compaddpcode' => $request->subsidiaryCompanyAddressPc,
-            'd_compaddcountry' => $request->subsidiaryCompanyAddressCountry,
-            'd_comp_weburl' => $request->subsidiaryOfficialWebsite ?? NULL,
-            'd_offno' => $request->subsidiaryOfficialNumber,
-            'd_faxno' => $request->subsidiaryFaxNumber,
-            'd_compssmno' => $request->subsidiarySSMRegNumber,
-            'd_datecompform' => $request->subsidiaryDateOfCompanyFormation,
-            'd_paidcapital' => $request->subsidiaryLatestPaidUpCapital,
-            'd_f9ssm' => $path1,
-            'd_f24' => $path2 ?? NULL,
-            'd_f49' => $path3 ?? NULL,
-            'd_anualretuncopy' => $path4,
-            'd_devlicense' => $request->subsidiaryHouseDevelopingLicense,
-            'd_devlicensecopy' => $path5,
-            'd_created_at' => $now,
-            'd_refer_branch' => $request->subsidiaryCompanyPreferBranch
-        ]);
-        logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
-
-        $up_usertype = 1;
-        if(!empty($request->subsidiaryOfficial1Nop)){
-
-            $userprofile1 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->subsidiaryOfficial1Nop,
-                'up_title' => $request->subsidiaryOfficial1Title,
-                'up_mykad' => $request->subsidiaryMyKad ?? NULL,
-                'passportno' => $request->subsidiaryPassportno ?? NULL,
-                'up_designation' => $request->subsidiaryOfficial1Designation,
-                'up_gender' => $request->subsidiaryOfficial1Gender,
-                'up_contactno' => $request->subsidiaryOfficial1Contact,
-                'up_emailadd' => $request->subsidiaryOfficial1Email,
-                'up_profq' => $request->subsidiaryOfficial1ProQualification,
-                'up_address' => $request->subsidiaryOfficial1Address,
-                'up_city' => $request->subsidiaryOfficial1AddressCity,
-                'up_state' => $request->subsidiaryOfficial1AddressState,
-                'up_postcode' => $request->subsidiaryOfficial1AddressPc,
-                'up_country' => $request->subsidiaryOfficial1AddressCountry,
-                'up_sec_name' => $request->subsidiaryOfficial1SecretartName,
-                'up_sec_title' => $request->subsidiaryOfficial1SecretartTitle,
-                'up_sec_email' => $request->subsidiaryOfficial1SecretartEmail,
-                'up_sec_mobile' => $request->subsidiaryOfficial1SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $member = Member::create([
+                'm_type' => $ord,
+                'm_created_at' => $now
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+            logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
 
-        }
+            $mid = $member->mid;
 
-        if(!empty($request->subsidiaryNameOfAdmin)){
-
-            $admin = 2;
-            $userprofileAdmin = MemberUserProfile::create([
-                'up_usertype' => $admin,
-                'up_fullname' => $request->subsidiaryNameOfAdmin,
-                'up_title' => $request->subsidiaryAdminTitle,
-                'up_designation' => $request->subsidiaryAdminDesignation,
-                'up_contactno' => $request->subsidiaryAdminContactNumber,
-                'up_emailadd' => $request->subsidiaryAdminEmail,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $memberComp = MemberComp::create([
+                'd_parentcomp' => $parentid,
+                'd_mid' => $mid,
+                'd_compname' => $request->subsidiaryCompanyName,
+                'd_compadd' => $request->subsidiaryCompanyAddress,
+                'd_compadd_3' => $request->subsidiaryCompanyAddress3,
+                'd_compaddcity' => $request->subsidiaryCompanyAddressCity,
+                'd_compaddstate' => $request->subsidiaryCompanyAddressState ?? 0,
+                'd_compaddpcode' => $request->subsidiaryCompanyAddressPc,
+                'd_compaddcountry' => $request->subsidiaryCompanyAddressCountry,
+                'd_comp_weburl' => $request->subsidiaryOfficialWebsite ?? NULL,
+                'd_offno' => $request->subsidiaryOfficialNumber,
+                'd_faxno' => $request->subsidiaryFaxNumber,
+                'd_compssmno' => $request->subsidiarySSMRegNumber,
+                'd_datecompform' => $request->subsidiaryDateOfCompanyFormation,
+                'd_paidcapital' => $request->subsidiaryLatestPaidUpCapital,
+                'd_f9ssm' => $path1,
+                'd_f24' => $path2 ?? NULL,
+                'd_f49' => $path3 ?? NULL,
+                'd_anualretuncopy' => $path4,
+                'd_devlicense' => $request->subsidiaryHouseDevelopingLicense,
+                'd_devlicensecopy' => $path5,
+                'd_created_at' => $now,
+                'd_refer_branch' => $request->subsidiaryCompanyPreferBranch
             ]);
-            logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+            logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
-        }
+            $up_usertype = 1;
+            if(!empty($request->subsidiaryOfficial1Nop)){
 
-        if($userprofile1 || $userprofileAdmin){
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
-        } else {
-            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
+                $userprofile1 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->subsidiaryOfficial1Nop,
+                    'up_title' => $request->subsidiaryOfficial1Title,
+                    'up_mykad' => $request->subsidiaryMyKad ?? NULL,
+                    'passportno' => $request->subsidiaryPassportno ?? NULL,
+                    'up_designation' => $request->subsidiaryOfficial1Designation,
+                    'up_gender' => $request->subsidiaryOfficial1Gender,
+                    'up_contactno' => $request->subsidiaryOfficial1Contact,
+                    'up_emailadd' => $request->subsidiaryOfficial1Email,
+                    'up_profq' => $request->subsidiaryOfficial1ProQualification,
+                    'up_address' => $request->subsidiaryOfficial1Address,
+                    'up_city' => $request->subsidiaryOfficial1AddressCity,
+                    'up_state' => $request->subsidiaryOfficial1AddressState,
+                    'up_postcode' => $request->subsidiaryOfficial1AddressPc,
+                    'up_country' => $request->subsidiaryOfficial1AddressCountry,
+                    'up_sec_name' => $request->subsidiaryOfficial1SecretartName,
+                    'up_sec_title' => $request->subsidiaryOfficial1SecretartTitle,
+                    'up_sec_email' => $request->subsidiaryOfficial1SecretartEmail,
+                    'up_sec_mobile' => $request->subsidiaryOfficial1SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+
+            }
+
+            if(!empty($request->subsidiaryNameOfAdmin)){
+
+                $admin = 2;
+                $userprofileAdmin = MemberUserProfile::create([
+                    'up_usertype' => $admin,
+                    'up_fullname' => $request->subsidiaryNameOfAdmin,
+                    'up_title' => $request->subsidiaryAdminTitle,
+                    'up_designation' => $request->subsidiaryAdminDesignation,
+                    'up_contactno' => $request->subsidiaryAdminContactNumber,
+                    'up_emailadd' => $request->subsidiaryAdminEmail,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+
+            }
+
+            if($userprofile1 || $userprofileAdmin){
+                return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+            } else {
+                return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+            }
+
+        } catch (\Exception $e) {
+
+            // Cleanup Member record
+            if (!$memberComp) {
+                $member->delete();
+            }
+
+            // Cleanup MemberComp and Member
+            if ($member && $memberComp && !$userprofile1) {
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-2 and MemberUser-Profile-1 and MemberComp and Member
+            if($member && $memberComp && $userprofile1 && !$userprofileAdmin) {
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Log the error details
+            \Log::error('Error while subsidiary registration: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+
         }
     }
 
@@ -593,7 +676,7 @@ class RegisterController extends Controller
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
             'affiliateOrdinaryMembershipNumber' => 'required',
-            'affiliateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
+            'affiliateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
             'affiliateCompanyAddress' => 'required',
             'affiliateCompanyAddressCity' => 'required',
             'affiliateCompanyAddressState' => 'required',
@@ -739,121 +822,167 @@ class RegisterController extends Controller
         $ord = 3;
         $now = date("Y-m-d H:i:s");
 
-        $member = Member::create([
-            'm_type' => $ord,
-            'm_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
+        try {
 
-        $mid = $member->mid;
+            $userprofile1 = '';
+            $userprofile2 = '';
+            $userprofileAdmin = '';
 
-        $memberComp = MemberComp::create([
-            'd_parentcomp' => $parentid,
-            'd_mid' => $mid,
-            'd_compname' => $request->affiliateCompanyName,
-            'd_compadd' => $request->affiliateCompanyAddress,
-            'd_compadd_3' => $request->affiliateCompanyAddress3,
-            'd_compaddcity' => $request->affiliateCompanyAddressCity,
-            'd_compaddstate' => $request->affiliateCompanyAddressState ?? 0,
-            'd_compaddpcode' => $request->affiliateCompanyAddressPc,
-            'd_compaddcountry' => $request->affiliateCompanyAddressCountry,
-            'd_comp_weburl' => $request->affiliateOfficialWebsite ?? NULL,
-            'd_offno' => $request->affiliateOfficialNumber,
-            'd_faxno' => $request->affiliateFaxNumber,
-            'd_compssmno' => $request->affiliateSSMRegNumber,
-            'd_datecompform' => $request->affiliateDateOfCompanyFormation,
-            'd_paidcapital' => $request->affiliateLatestPaidUpCapital,
-            'd_f9ssm' => $path1,
-            'd_f24' => $path2 ?? NULL,
-            'd_f49' => $path3 ?? NULL,
-            'd_anualretuncopy' => $path4,
-            'd_devlicense' => $request->affiliateHouseDevelopingLicense,
-            'd_devlicensecopy' => $path5,
-            'd_created_at' => $now,
-            'd_refer_branch' => $request->affiliateCompanyPreferBranch
-        ]);
-        logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
-
-        $up_usertype = 1;
-        if(!empty($request->affiliateOfficial1Nop)){
-
-            $userprofile1 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->affiliateOfficial1Nop,
-                'up_title' => $request->affiliateOfficial1Title,
-                'up_mykad' => $request->affiliateMyKad ?? NULL,
-                'passportno' => $request->affiliatePassportno ?? NULL,
-                'up_designation' => $request->affiliateOfficial1Designation,
-                'up_gender' => $request->affiliateOfficial1Gender,
-                'up_contactno' => $request->affiliateOfficial1Contact,
-                'up_emailadd' => $request->affiliateOfficial1Email,
-                'up_profq' => $request->affiliateOfficial1ProQualification,
-                'up_address' => $request->affiliateOfficial1Address,
-                'up_city' => $request->affiliateOfficial1AddressCity,
-                'up_state' => $request->affiliateOfficial1AddressState,
-                'up_postcode' => $request->affiliateOfficial1AddressPc,
-                'up_country' => $request->affiliateOfficial1AddressCountry,
-                'up_sec_name' => $request->affiliateOfficial1SecretartName,
-                'up_sec_title' => $request->affiliateOfficial1SecretartTitle,
-                'up_sec_email' => $request->affiliateOfficial1SecretartEmail,
-                'up_sec_mobile' => $request->affiliateOfficial1SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $member = Member::create([
+                'm_type' => $ord,
+                'm_created_at' => $now
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+            logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
 
-        }
+            $mid = $member->mid;
 
-        if(!empty($request->affiliateOfficial2Nop)){
-
-            $userprofile2 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->affiliateOfficial2Nop,
-                'up_title' => $request->affiliateOfficial2Title,
-                'up_mykad' => $request->affiliateMyKad2 ?? NULL,
-                'passportno' => $request->affiliate2Passportno ?? NULL,
-                'up_designation' => $request->affiliateOfficial2Designation,
-                'up_gender' => $request->affiliateOfficial2Gender,
-                'up_contactno' => $request->affiliateOfficial2Contact,
-                'up_emailadd' => $request->affiliateOfficial2Email,
-                'up_profq' => $request->affiliateOfficial2ProQualification,
-                'up_address' => $request->affiliateOfficial2Address,
-                'up_city' => $request->affiliateOfficial2AddressCity,
-                'up_state' => $request->affiliateOfficial2AddressState,
-                'up_postcode' => $request->affiliateOfficial2AddressPc,
-                'up_country' => $request->affiliateOfficial2AddressCountry,
-                'up_sec_name' => $request->affiliateOfficial2SecretartName,
-                'up_sec_title' => $request->affiliateOfficial2SecretartTitle,
-                'up_sec_email' => $request->affiliateOfficial2SecretartEmail,
-                'up_sec_mobile' => $request->affiliateOfficial2SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $memberComp = MemberComp::create([
+                'd_parentcomp' => $parentid,
+                'd_mid' => $mid,
+                'd_compname' => $request->affiliateCompanyName,
+                'd_compadd' => $request->affiliateCompanyAddress,
+                'd_compadd_3' => $request->affiliateCompanyAddress3,
+                'd_compaddcity' => $request->affiliateCompanyAddressCity,
+                'd_compaddstate' => $request->affiliateCompanyAddressState ?? 0,
+                'd_compaddpcode' => $request->affiliateCompanyAddressPc,
+                'd_compaddcountry' => $request->affiliateCompanyAddressCountry,
+                'd_comp_weburl' => $request->affiliateOfficialWebsite ?? NULL,
+                'd_offno' => $request->affiliateOfficialNumber,
+                'd_faxno' => $request->affiliateFaxNumber,
+                'd_compssmno' => $request->affiliateSSMRegNumber,
+                'd_datecompform' => $request->affiliateDateOfCompanyFormation,
+                'd_paidcapital' => $request->affiliateLatestPaidUpCapital,
+                'd_f9ssm' => $path1,
+                'd_f24' => $path2 ?? NULL,
+                'd_f49' => $path3 ?? NULL,
+                'd_anualretuncopy' => $path4,
+                'd_devlicense' => $request->affiliateHouseDevelopingLicense,
+                'd_devlicensecopy' => $path5,
+                'd_created_at' => $now,
+                'd_refer_branch' => $request->affiliateCompanyPreferBranch
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
+            logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
-        }
+            $up_usertype = 1;
+            if(!empty($request->affiliateOfficial1Nop)){
 
-        if(!empty($request->affiliateNameOfAdmin)){
+                $userprofile1 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->affiliateOfficial1Nop,
+                    'up_title' => $request->affiliateOfficial1Title,
+                    'up_mykad' => $request->affiliateMyKad ?? NULL,
+                    'passportno' => $request->affiliatePassportno ?? NULL,
+                    'up_designation' => $request->affiliateOfficial1Designation,
+                    'up_gender' => $request->affiliateOfficial1Gender,
+                    'up_contactno' => $request->affiliateOfficial1Contact,
+                    'up_emailadd' => $request->affiliateOfficial1Email,
+                    'up_profq' => $request->affiliateOfficial1ProQualification,
+                    'up_address' => $request->affiliateOfficial1Address,
+                    'up_city' => $request->affiliateOfficial1AddressCity,
+                    'up_state' => $request->affiliateOfficial1AddressState,
+                    'up_postcode' => $request->affiliateOfficial1AddressPc,
+                    'up_country' => $request->affiliateOfficial1AddressCountry,
+                    'up_sec_name' => $request->affiliateOfficial1SecretartName,
+                    'up_sec_title' => $request->affiliateOfficial1SecretartTitle,
+                    'up_sec_email' => $request->affiliateOfficial1SecretartEmail,
+                    'up_sec_mobile' => $request->affiliateOfficial1SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
 
-            $admin = 2;
-            $userprofileAdmin = MemberUserProfile::create([
-                'up_usertype' => $admin,
-                'up_fullname' => $request->affiliateNameOfAdmin,
-                'up_title' => $request->affiliateAdminTitle,
-                'up_designation' => $request->affiliateAdminDesignation,
-                'up_contactno' => $request->affiliateAdminContactNumber,
-                'up_emailadd' => $request->affiliateAdminEmail,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            }
+
+            if(!empty($request->affiliateOfficial2Nop)){
+
+                $userprofile2 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->affiliateOfficial2Nop,
+                    'up_title' => $request->affiliateOfficial2Title,
+                    'up_mykad' => $request->affiliateMyKad2 ?? NULL,
+                    'passportno' => $request->affiliate2Passportno ?? NULL,
+                    'up_designation' => $request->affiliateOfficial2Designation,
+                    'up_gender' => $request->affiliateOfficial2Gender,
+                    'up_contactno' => $request->affiliateOfficial2Contact,
+                    'up_emailadd' => $request->affiliateOfficial2Email,
+                    'up_profq' => $request->affiliateOfficial2ProQualification,
+                    'up_address' => $request->affiliateOfficial2Address,
+                    'up_city' => $request->affiliateOfficial2AddressCity,
+                    'up_state' => $request->affiliateOfficial2AddressState,
+                    'up_postcode' => $request->affiliateOfficial2AddressPc,
+                    'up_country' => $request->affiliateOfficial2AddressCountry,
+                    'up_sec_name' => $request->affiliateOfficial2SecretartName,
+                    'up_sec_title' => $request->affiliateOfficial2SecretartTitle,
+                    'up_sec_email' => $request->affiliateOfficial2SecretartEmail,
+                    'up_sec_mobile' => $request->affiliateOfficial2SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
+
+            }
+
+            if(!empty($request->affiliateNameOfAdmin)){
+
+                $admin = 2;
+                $userprofileAdmin = MemberUserProfile::create([
+                    'up_usertype' => $admin,
+                    'up_fullname' => $request->affiliateNameOfAdmin,
+                    'up_title' => $request->affiliateAdminTitle,
+                    'up_designation' => $request->affiliateAdminDesignation,
+                    'up_contactno' => $request->affiliateAdminContactNumber,
+                    'up_emailadd' => $request->affiliateAdminEmail,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+
+            }
+
+            if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
+                return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+            } else {
+                return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+            }
+
+        } catch (\Exception $e) {
+
+            // Cleanup Member record
+            if (!$memberComp) {
+                $member->delete();
+            }
+
+            // Cleanup MemberComp and Member
+            if ($member && $memberComp && !$userprofile1) {
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-1 and MemberComp and Member
+            if ($member && $memberComp && $userprofile1 && !$userprofile2) {
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-2 and MemberUser-Profile-1 and MemberComp and Member
+            if($member && $memberComp && $userprofile1 && $userprofile2 && !$userprofileAdmin) {
+                $userprofile2->delete();
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Log the error details
+            \Log::error('Error while affiliate registration: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
-            logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
 
-        }
+            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
 
-        if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
-        } else {
-            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
         }
     }
 
@@ -865,7 +994,7 @@ class RegisterController extends Controller
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
             'associateAccType' => 'required',
-            'associateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
+            'associateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
             'associateCompanyAddress' => 'required',
             'associateCompanyAddressCity' => 'required',
             'associateCompanyAddressState' => 'required',
@@ -905,8 +1034,22 @@ class RegisterController extends Controller
 
             'associateOfficial2Title' => 'required_if:associateAccType,==,1',
             'associateOfficial2Nop' => 'required_if:associateAccType,==,1',
-            'associateOfficial2MyKad' => 'required_if:associateAccType,==,1|required_if:associateOfficial2MyKad2Select,==,1',
-            'associateOfficial2Passportno' => 'required_if:associateAccType,==,1|required_if:associateOfficial2MyKad2Select,==,2',
+            'associateOfficial2MyKad' => [
+                'nullable', // Optional by default
+                function ($attribute, $value, $fail) {
+                    if (request('associateAccType') == 1 && request('associateOfficial2MyKad2Select') == 1 && empty($value)) {
+                        $fail('The mykad no. field is required.');
+                    }
+                }
+            ],
+            'associateOfficial2Passportno' => [
+                'nullable', // Optional by default
+                function ($attribute, $value, $fail) {
+                    if (request('associateAccType') == 1 && request('associateOfficial2MyKad2Select') == 2 && empty($value)) {
+                        $fail('The passport no. field is required.');
+                    }
+                }
+            ],
             'associateOfficial2Designation' => 'required_if:associateAccType,==,1',
             'associateOfficial2Gender' => 'required_if:associateAccType,==,1',
             'associateOfficial2Email' => 'required_if:associateAccType,==,1|email',
@@ -992,146 +1135,192 @@ class RegisterController extends Controller
         }
         $now = date("Y-m-d H:i:s");
 
-        $member = Member::create([
-            'm_type' => $ord,
-            'm_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
+        try {
 
-        $mid = $member->mid;
+            $userprofile1 = '';
+            $userprofile2 = '';
+            $userprofileAdmin = '';
 
-        if($request->associateAccType == 1) {
-            $memberComp = MemberComp::create([
-                'd_mid' => $mid,
-                'd_compname' => $request->associateCompanyName,
-                'd_compadd' => $request->associateCompanyAddress,
-                'd_compadd_3' => $request->associateCompanyAddress3,
-                'd_compaddcity' => $request->associateCompanyAddressCity,
-                'd_compaddstate' => $request->associateCompanyAddressState ?? 0,
-                'd_compaddpcode' => $request->associateCompanyAddressPc,
-                'd_compaddcountry' => $request->associateCompanyAddressCountry,
-                'd_comp_weburl' => $request->associateOfficialWebsite ?? NULL,
-                'd_offno' => $request->associateOfficialNumber,
-                'd_faxno' => $request->associateFaxNumber,
-                'd_compssmno' => $request->associateSSMRegNumber,
-                'd_datecompform' => $request->associateDateOfCompanyFormation,
-                'd_paidcapital' => $request->associateLatestPaidUpCapital,
-                'd_f9ssm' => $path1,
-                'd_f24' => $path2 ?? NULL,
-                'd_f49' => $path3 ?? NULL,
-                'd_anualretuncopy' => $path4,
-                'd_created_at' => $now,
-                'd_refer_branch' => $request->associateCompanyPreferBranch
+            $member = Member::create([
+                'm_type' => $ord,
+                'm_created_at' => $now
             ]);
-        } else {
-            $memberComp = MemberComp::create([
-                'd_mid' => $mid,
-                'd_compname' => $request->associateCompanyName,
-                'd_compadd' => $request->associateCompanyAddress,
-                'd_compaddcity' => $request->associateCompanyAddressCity,
-                'd_compaddstate' => $request->associateCompanyAddressState ?? 0,
-                'd_compaddpcode' => $request->associateCompanyAddressPc,
-                'd_compaddcountry' => $request->associateCompanyAddressCountry,
-                'd_comp_weburl' => $request->associateOfficialWebsite ?? NULL,
-                'd_offno' => $request->associateOfficialNumber,
-                'd_faxno' => $request->associateFaxNumber,
-                'd_compssmno' => ' ',
-                // 'd_compssmno' => $request->associateSSMRegNumber,
-                // 'd_datecompform' => $request->associateDateOfCompanyFormation,
-                // 'd_paidcapital' => $request->associateLatestPaidUpCapital,
-                'd_f9ssm' => $path1 ?? NULL,
-                // 'd_f24' => $path2 ?? NULL,
-                // 'd_f49' => $path3 ?? NULL,
-                // 'd_anualretuncopy' => $path4,
-                'd_created_at' => $now,
-                'd_refer_branch' => $request->associateCompanyPreferBranch
-            ]);
-        }
-        logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
+            logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
 
-        $up_usertype = 1;
-        if(!empty($request->associateOfficial1Nop)){
+            $mid = $member->mid;
 
-            $userprofile1 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->associateOfficial1Nop,
-                'up_title' => $request->associateOfficial1Title,
-                'up_mykad' => $request->associateOfficial1MyKad ?? NULL,
-                'passportno' => $request->associateOfficial1Passportno ?? NULL,
-                'up_designation' => $request->associateOfficial1Designation,
-                'up_gender' => $request->associateOfficial1Gender,
-                'up_contactno' => $request->associateOfficial1Contact,
-                'up_emailadd' => $request->associateOfficial1Email,
-                'up_profq' => $request->associateOfficial1ProQualification,
-                'up_address' => $request->associateOfficial1Address,
-                'up_city' => $request->associateOfficial1AddressCity,
-                'up_state' => $request->associateOfficial1AddressState,
-                'up_postcode' => $request->associateOfficial1AddressPc,
-                'up_country' => $request->associateOfficial1AddressCountry,
-                'up_sec_name' => $request->associateOfficial1SecretartName,
-                'up_sec_title' => $request->associateOfficial1SecretartTitle,
-                'up_sec_email' => $request->associateOfficial1SecretartEmail,
-                'up_sec_mobile' => $request->associateOfficial1SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
-            ]);
-            logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+            if($request->associateAccType == 1) {
+                $memberComp = MemberComp::create([
+                    'd_mid' => $mid,
+                    'd_compname' => $request->associateCompanyName,
+                    'd_compadd' => $request->associateCompanyAddress,
+                    'd_compadd_3' => $request->associateCompanyAddress3,
+                    'd_compaddcity' => $request->associateCompanyAddressCity,
+                    'd_compaddstate' => $request->associateCompanyAddressState ?? 0,
+                    'd_compaddpcode' => $request->associateCompanyAddressPc,
+                    'd_compaddcountry' => $request->associateCompanyAddressCountry,
+                    'd_comp_weburl' => $request->associateOfficialWebsite ?? NULL,
+                    'd_offno' => $request->associateOfficialNumber,
+                    'd_faxno' => $request->associateFaxNumber,
+                    'd_compssmno' => $request->associateSSMRegNumber,
+                    'd_datecompform' => $request->associateDateOfCompanyFormation,
+                    'd_paidcapital' => $request->associateLatestPaidUpCapital,
+                    'd_f9ssm' => $path1,
+                    'd_f24' => $path2 ?? NULL,
+                    'd_f49' => $path3 ?? NULL,
+                    'd_anualretuncopy' => $path4,
+                    'd_created_at' => $now,
+                    'd_refer_branch' => $request->associateCompanyPreferBranch
+                ]);
+            } else {
+                $memberComp = MemberComp::create([
+                    'd_mid' => $mid,
+                    'd_compname' => $request->associateCompanyName,
+                    'd_compadd' => $request->associateCompanyAddress,
+                    'd_compaddcity' => $request->associateCompanyAddressCity,
+                    'd_compaddstate' => $request->associateCompanyAddressState ?? 0,
+                    'd_compaddpcode' => $request->associateCompanyAddressPc,
+                    'd_compaddcountry' => $request->associateCompanyAddressCountry,
+                    'd_comp_weburl' => $request->associateOfficialWebsite ?? NULL,
+                    'd_offno' => $request->associateOfficialNumber,
+                    'd_faxno' => $request->associateFaxNumber,
+                    'd_compssmno' => ' ',
+                    // 'd_compssmno' => $request->associateSSMRegNumber,
+                    // 'd_datecompform' => $request->associateDateOfCompanyFormation,
+                    // 'd_paidcapital' => $request->associateLatestPaidUpCapital,
+                    'd_f9ssm' => $path1 ?? NULL,
+                    // 'd_f24' => $path2 ?? NULL,
+                    // 'd_f49' => $path3 ?? NULL,
+                    // 'd_anualretuncopy' => $path4,
+                    'd_created_at' => $now,
+                    'd_refer_branch' => $request->associateCompanyPreferBranch
+                ]);
+            }
+            logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
-        }
+            $up_usertype = 1;
+            if(!empty($request->associateOfficial1Nop)){
 
-        if($request->associateAccType == 1) {
-            if(!empty($request->associateOfficial2Nop)){
-
-                $userprofile2 = MemberUserProfile::create([
+                $userprofile1 = MemberUserProfile::create([
                     'up_usertype' => $up_usertype,
-                    'up_fullname' => $request->associateOfficial2Nop,
-                    'up_title' => $request->associateOfficial2Title,
-                    'up_mykad' => $request->associateOfficial2MyKad ?? NULL,
-                    'passportno' => $request->associateOfficial2Passportno ?? NULL,
-                    'up_designation' => $request->associateOfficial2Designation,
-                    'up_gender' => $request->associateOfficial2Gender,
-                    'up_contactno' => $request->associateOfficial2Contact,
-                    'up_emailadd' => $request->associateOfficial2Email,
-                    'up_profq' => $request->associateOfficial2ProQualification,
-                    'up_address' => $request->associateOfficial2Address,
-                    'up_city' => $request->associateOfficial2AddressCity,
-                    'up_state' => $request->associateOfficial2AddressState,
-                    'up_postcode' => $request->associateOfficial2AddressPc,
-                    'up_country' => $request->associateOfficial2AddressCountry,
-                    'up_sec_name' => $request->associateOfficial2SecretartName,
-                    'up_sec_title' => $request->associateOfficial2SecretartTitle,
-                    'up_sec_email' => $request->associateOfficial2SecretartEmail,
-                    'up_sec_mobile' => $request->associateOfficial2SecretartContact,
+                    'up_fullname' => $request->associateOfficial1Nop,
+                    'up_title' => $request->associateOfficial1Title,
+                    'up_mykad' => $request->associateOfficial1MyKad ?? NULL,
+                    'passportno' => $request->associateOfficial1Passportno ?? NULL,
+                    'up_designation' => $request->associateOfficial1Designation,
+                    'up_gender' => $request->associateOfficial1Gender,
+                    'up_contactno' => $request->associateOfficial1Contact,
+                    'up_emailadd' => $request->associateOfficial1Email,
+                    'up_profq' => $request->associateOfficial1ProQualification,
+                    'up_address' => $request->associateOfficial1Address,
+                    'up_city' => $request->associateOfficial1AddressCity,
+                    'up_state' => $request->associateOfficial1AddressState,
+                    'up_postcode' => $request->associateOfficial1AddressPc,
+                    'up_country' => $request->associateOfficial1AddressCountry,
+                    'up_sec_name' => $request->associateOfficial1SecretartName,
+                    'up_sec_title' => $request->associateOfficial1SecretartTitle,
+                    'up_sec_email' => $request->associateOfficial1SecretartEmail,
+                    'up_sec_mobile' => $request->associateOfficial1SecretartContact,
                     'up_created_at' => $now,
                     'up_mid' => $memberComp->did
                 ]);
-                logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
+                logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
 
             }
 
-            if(!empty($request->associateNameOfAdmin)){
+            if($request->associateAccType == 1) {
+                if(!empty($request->associateOfficial2Nop)){
 
-                $admin = 2;
-                $userprofileAdmin = MemberUserProfile::create([
-                    'up_usertype' => $admin,
-                    'up_fullname' => $request->associateNameOfAdmin,
-                    'up_title' => $request->associateAdminTitle,
-                    'up_designation' => $request->associateAdminDesignation,
-                    'up_contactno' => $request->associateAdminContactNumber,
-                    'up_emailadd' => $request->associateAdminEmail,
-                    'up_created_at' => $now,
-                    'up_mid' => $memberComp->did
-                ]);
-                logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+                    $userprofile2 = MemberUserProfile::create([
+                        'up_usertype' => $up_usertype,
+                        'up_fullname' => $request->associateOfficial2Nop,
+                        'up_title' => $request->associateOfficial2Title,
+                        'up_mykad' => $request->associateOfficial2MyKad ?? NULL,
+                        'passportno' => $request->associateOfficial2Passportno ?? NULL,
+                        'up_designation' => $request->associateOfficial2Designation,
+                        'up_gender' => $request->associateOfficial2Gender,
+                        'up_contactno' => $request->associateOfficial2Contact,
+                        'up_emailadd' => $request->associateOfficial2Email,
+                        'up_profq' => $request->associateOfficial2ProQualification,
+                        'up_address' => $request->associateOfficial2Address,
+                        'up_city' => $request->associateOfficial2AddressCity,
+                        'up_state' => $request->associateOfficial2AddressState,
+                        'up_postcode' => $request->associateOfficial2AddressPc,
+                        'up_country' => $request->associateOfficial2AddressCountry,
+                        'up_sec_name' => $request->associateOfficial2SecretartName,
+                        'up_sec_title' => $request->associateOfficial2SecretartTitle,
+                        'up_sec_email' => $request->associateOfficial2SecretartEmail,
+                        'up_sec_mobile' => $request->associateOfficial2SecretartContact,
+                        'up_created_at' => $now,
+                        'up_mid' => $memberComp->did
+                    ]);
+                    logSystem(auth()->id(), 'Create', $userprofile2->toArray(), 'MemberProfile2');
 
+                }
+
+                if(!empty($request->associateNameOfAdmin)){
+
+                    $admin = 2;
+                    $userprofileAdmin = MemberUserProfile::create([
+                        'up_usertype' => $admin,
+                        'up_fullname' => $request->associateNameOfAdmin,
+                        'up_title' => $request->associateAdminTitle,
+                        'up_designation' => $request->associateAdminDesignation,
+                        'up_contactno' => $request->associateAdminContactNumber,
+                        'up_emailadd' => $request->associateAdminEmail,
+                        'up_created_at' => $now,
+                        'up_mid' => $memberComp->did
+                    ]);
+                    logSystem(auth()->id(), 'Create', $userprofileAdmin->toArray(), 'MemberProfileAdmin');
+
+                }
             }
-        }
 
 
-        if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
-        } else {
-            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
+            if($userprofile1 || $userprofile2 ||  $userprofileAdmin){
+                return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+            } else {
+                return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+            }
+
+        } catch (\Exception $e) {
+
+            // Cleanup Member record
+            if (!$memberComp) {
+                $member->delete();
+            }
+
+            // Cleanup MemberComp and Member
+            if ($member && $memberComp && !$userprofile1) {
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-1 and MemberComp and Member
+            if ($request->associateAccType == 1 && $member && $memberComp && $userprofile1 && !$userprofile2) {
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Cleanup MemberUser-Profile-2 and MemberUser-Profile-1 and MemberComp and Member
+            if($request->associateAccType == 1 && $member && $memberComp && $userprofile1 && $userprofile2 && !$userprofileAdmin) {
+                $userprofile2->delete();
+                $userprofile1->delete();
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Log the error details
+            \Log::error('Error while associate registration: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+
         }
     }
 
@@ -1142,7 +1331,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
-            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3',
+            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
             'rehdaYouthCompanyAddress' => 'required',
             'rehdaYouthCompanyAddressCity' => 'required',
             'rehdaYouthCompanyAddressState' => 'required',
@@ -1184,66 +1373,95 @@ class RegisterController extends Controller
         $ord = 6;
         $now = date("Y-m-d H:i:s");
 
-        $member = Member::create([
-            'm_type' => $ord,
-            'm_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
+        try {
 
-        $mid = $member->mid;
+            $userprofile1 = '';
 
-        $memberComp = MemberComp::create([
-            'd_parentcomp' => $parentid,
-            'd_mid' => $mid,
-            'd_compname' => $request->rehdaYouthCompanyName,
-            'd_compadd' => $request->rehdaYouthCompanyAddress,
-            'd_compadd_3' => $request->rehdaYouthCompanyAddressCity3,
-            'd_compaddcity' => $request->rehdaYouthCompanyAddressCity,
-            'd_compaddstate' => $request->rehdaYouthCompanyAddressState ?? 0,
-            'd_compaddpcode' => $request->rehdaYouthCompanyAddressPc,
-            'd_compaddcountry' => $request->rehdaYouthCompanyAddressCountry,
-            'd_comp_weburl' => $request->rehdaYouthOfficialWebsite ?? NULL,
-            'd_offno' => $request->rehdaYouthOfficialNumber,
-            'd_faxno' => $request->rehdaYouthFaxNumber,
-            'd_compssmno' => ' ',
-            'd_created_at' => $now
-        ]);
-        logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
-
-        $up_usertype = 1;
-        if(!empty($request->rehdaYouthOfficial1Nop)){
-
-            $userprofile1 = MemberUserProfile::create([
-                'up_usertype' => $up_usertype,
-                'up_fullname' => $request->rehdaYouthOfficial1Nop,
-                'up_title' => $request->rehdaYouthOfficial1Title,
-                'up_mykad' => $request->rehdaYouthOfficial1MyKad ?? NULL,
-                'passportno' => $request->rehdaYouthOfficial1Passportno ?? NULL,
-                'up_designation' => $request->rehdaYouthOfficial1Designation,
-                'up_gender' => $request->rehdaYouthOfficial1Gender,
-                'up_contactno' => $request->rehdaYouthOfficial1Contact,
-                'up_emailadd' => $request->rehdaYouthOfficial1Email,
-                'up_profq' => $request->rehdaYouthOfficial1ProQualification,
-                'up_address' => $request->rehdaYouthOfficial1Address,
-                'up_city' => $request->rehdaYouthOfficial1AddressCity,
-                'up_state' => $request->rehdaYouthOfficial1AddressState,
-                'up_postcode' => $request->rehdaYouthOfficial1AddressPc,
-                'up_country' => $request->rehdaYouthOfficial1AddressCountry,
-                'up_sec_name' => $request->rehdaYouthOfficial1SecretartName,
-                'up_sec_title' => $request->rehdaYouthOfficial1SecretartTitle,
-                'up_sec_email' => $request->rehdaYouthOfficial1SecretartEmail,
-                'up_sec_mobile' => $request->rehdaYouthOfficial1SecretartContact,
-                'up_created_at' => $now,
-                'up_mid' => $memberComp->did
+            $member = Member::create([
+                'm_type' => $ord,
+                'm_created_at' => $now
             ]);
-            logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+            logSystem(auth()->id(), 'Create', $member->toArray(), 'Member');
 
-        }
+            $mid = $member->mid;
 
-        if($memberComp || $userprofile1){
-            return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
-        } else {
-            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []], 400);
+            $memberComp = MemberComp::create([
+                'd_parentcomp' => $parentid,
+                'd_mid' => $mid,
+                'd_compname' => $request->rehdaYouthCompanyName,
+                'd_compadd' => $request->rehdaYouthCompanyAddress,
+                'd_compadd_3' => $request->rehdaYouthCompanyAddressCity3,
+                'd_compaddcity' => $request->rehdaYouthCompanyAddressCity,
+                'd_compaddstate' => $request->rehdaYouthCompanyAddressState ?? 0,
+                'd_compaddpcode' => $request->rehdaYouthCompanyAddressPc,
+                'd_compaddcountry' => $request->rehdaYouthCompanyAddressCountry,
+                'd_comp_weburl' => $request->rehdaYouthOfficialWebsite ?? NULL,
+                'd_offno' => $request->rehdaYouthOfficialNumber,
+                'd_faxno' => $request->rehdaYouthFaxNumber,
+                'd_compssmno' => ' ',
+                'd_created_at' => $now
+            ]);
+            logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
+
+            $up_usertype = 1;
+            if(!empty($request->rehdaYouthOfficial1Nop)){
+
+                $userprofile1 = MemberUserProfile::create([
+                    'up_usertype' => $up_usertype,
+                    'up_fullname' => $request->rehdaYouthOfficial1Nop,
+                    'up_title' => $request->rehdaYouthOfficial1Title,
+                    'up_mykad' => $request->rehdaYouthOfficial1MyKad ?? NULL,
+                    'passportno' => $request->rehdaYouthOfficial1Passportno ?? NULL,
+                    'up_designation' => $request->rehdaYouthOfficial1Designation,
+                    'up_gender' => $request->rehdaYouthOfficial1Gender,
+                    'up_contactno' => $request->rehdaYouthOfficial1Contact,
+                    'up_emailadd' => $request->rehdaYouthOfficial1Email,
+                    'up_profq' => $request->rehdaYouthOfficial1ProQualification,
+                    'up_address' => $request->rehdaYouthOfficial1Address,
+                    'up_city' => $request->rehdaYouthOfficial1AddressCity,
+                    'up_state' => $request->rehdaYouthOfficial1AddressState,
+                    'up_postcode' => $request->rehdaYouthOfficial1AddressPc,
+                    'up_country' => $request->rehdaYouthOfficial1AddressCountry,
+                    'up_sec_name' => $request->rehdaYouthOfficial1SecretartName,
+                    'up_sec_title' => $request->rehdaYouthOfficial1SecretartTitle,
+                    'up_sec_email' => $request->rehdaYouthOfficial1SecretartEmail,
+                    'up_sec_mobile' => $request->rehdaYouthOfficial1SecretartContact,
+                    'up_created_at' => $now,
+                    'up_mid' => $memberComp->did
+                ]);
+                logSystem(auth()->id(), 'Create', $userprofile1->toArray(), 'MemberProfile1');
+
+            }
+
+            if($memberComp || $userprofile1){
+                return response()->json(['status' => true, 'message' => 'Your registration has been submitted! Thank you.']);
+            } else {
+                return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+            }
+
+        } catch (\Exception $e) {
+
+            // Cleanup Member record
+            if (!$memberComp) {
+                $member->delete();
+            }
+
+            // Cleanup MemberComp and Member
+            if ($member && $memberComp && !$userprofile1) {
+                $memberComp->delete();
+                $member->delete();
+            }
+
+            // Log the error details
+            \Log::error('Error while rehdaYouth registration: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+            return response()->json(['status' => false, 'message' => "Your registration can't be submitted! Try again later.", 'data' => []]);
+
         }
     }
 
@@ -1307,7 +1525,7 @@ class RegisterController extends Controller
 
     public function validateCompanyName(Request $request)
     {
-        $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_status','!=',3)->exists();
+        $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_status','!=',3)->where('d_deleted_at', null)->exists();
         return response()->json(['isUnique' => $isUnique]);
     }
 }
