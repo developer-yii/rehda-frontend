@@ -154,29 +154,24 @@
 
                         @php
                         $full = strtoupper($memberComp->d_compadd);
-                        if(strpos($full,',')!==false){
-                            $array = explode(',', $full);
-                        }
+                        $addressParts = explode(',', $full);
+                        $addressParts = array_filter($addressParts); // Filter empty parts
                         @endphp
 
-                        @if(empty($array))
+                        @if(empty($addressParts))
                             <p>{{ strtoupper($full) }}</p>
                         @else
-                            @for($v=0; $v <= count($array); $v++)
-                                @if(empty($array[$v]) || $array[$v]==" ")
-                                    @php unset($array[$v]); @endphp
-                                @endif
-                            @endfor
 
-                            @for($g=0; $g < count($array); $g+=2)
-
-                                <p>{{ strtoupper($array[$g]) }},
-                                @if(( isset($array[$g+1]) && $array[$g+1] != " ") && !empty($array[$g+1]))
-                                    {{ strtoupper($array[$g+1]) }}, </p>
-                                @else
+                            @foreach ($addressParts as $index => $part)
+                                @if ($index % 2 == 0)
+                                    <p>
+                                        {{ strtoupper($part) }}
+                                        @if (isset($addressParts[$index + 1]))
+                                            , {{ strtoupper($addressParts[$index + 1]) }}
+                                        @endif
                                     </p>
                                 @endif
-                            @endfor
+                            @endforeach
                         @endif
                         <p>{{ strtoupper($memberComp->d_compaddcity) }}</p>
                         <p>{{ $memberComp->d_compaddpcode.' '.(isset($memberComp->state) ? strtoupper($memberComp->state->state_name) : '') }}</p>
