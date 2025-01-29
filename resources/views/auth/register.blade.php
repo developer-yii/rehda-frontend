@@ -429,6 +429,14 @@
                                 <input class="form-control form-control-lg" type="file" id="ordinaryCopyOfAnnualReturn" name="ordinaryCopyOfAnnualReturn" value="" accept="application/pdf" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="ordinaryAttachmentForm" class="form-label form-label-lg required_label">Attachment: Form</label>
+                                <input class="form-control form-control-lg" type="file" id="ordinaryAttachmentForm" name="ordinaryAttachmentForm" value="" accept="application/pdf" />
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="ordinaryNominationForm" class="form-label form-label-lg required_label">Attachment: Nomination Form</label>
+                                <input class="form-control form-control-lg" type="file" id="ordinaryNominationForm" name="ordinaryNominationForm" value="" accept="application/pdf" />
+                            </div>
+                            <div class="mb-3 col-md-12">
                                 <label for="ordinaryHouseDevelopingLicense" class="form-label form-label-lg required_label">Housing Developer's Licence No.</label>
                                 <input class="form-control form-control-lg" type="text" id="ordinaryHouseDevelopingLicense" name="ordinaryHouseDevelopingLicense" value="{{ old('ordinaryHouseDevelopingLicense') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
@@ -518,7 +526,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryMyKadSelect" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="ordinaryMyKadSelect" name="ordinaryMyKadSelect" class="form-select form-select-lg mykadSelect1">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -646,7 +654,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryMyKad2Select" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="ordinaryMyKad2Select" name="ordinaryMyKad2Select" class="form-select form-select-lg mykadSelect2">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -941,7 +949,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryMyKadSelect" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="subsidiaryMyKadSelect" name="subsidiaryMyKadSelect" class="form-select form-select-lg mykadSelect1">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -1236,7 +1244,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateMyKadSelect" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="affiliateMyKadSelect" name="affiliateMyKadSelect" class="form-select form-select-lg mykadSelect1">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -1364,7 +1372,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateMyKad2Select" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="affiliateMyKad2Select" name="affiliateMyKad2Select" class="form-select form-select-lg mykadSelect2">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -1661,7 +1669,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial1MyKadSelect" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="associateOfficial1MyKadSelect" name="associateOfficial1MyKadSelect" class="form-select form-select-lg mykadSelect1">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -1789,7 +1797,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficial2MyKad2Select" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="associateOfficial2MyKad2Select" name="associateOfficial2MyKad2Select" class="form-select form-select-lg mykadSelect2">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -1903,7 +1911,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthOrdinaryMembershipNumber" class="form-label form-label-lg required_label">REHDA Ordinary Membership No.</label>
+                                <label for="rehdaYouthOrdinaryMembershipNumber" class="form-label form-label-lg required_label">Company Registered Under REHDA (Membership No.)</label>
                                 <input class="form-control form-control-lg" type="text" id="rehdaYouthOrdinaryMembershipNumber" name="rehdaYouthOrdinaryMembershipNumber" value="{{ old('rehdaYouthOrdinaryMembershipNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1991,7 +1999,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1MyKadSelect" class="form-label
-                                form-label-lg required_label">MyKad No.</label>
+                                form-label-lg required_label">Type of Identity</label>
                                 <select id="rehdaYouthOfficial1MyKadSelect" name="rehdaYouthOfficial1MyKadSelect" class="form-select form-select-lg mykadSelect1">
                                     <option value="1">MyKad No.</option>
                                     <option value="2">Passport No.</option>
@@ -2060,6 +2068,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="rehdaYouthOfficial1MembersNominationsForm" class="form-label form-label-lg required_label">Members Nominations Form</label>
+                                <input class="form-control form-control-lg" type="file" id="rehdaYouthOfficial1MembersNominationsForm" name="rehdaYouthOfficial1MembersNominationsForm" value="" accept="application/pdf" />
+                            </div>
+
+                            <div class="mb-3 col-md-12">
+                                <label for="rehdaYouthOfficial1MyKadCopy" class="form-label form-label-lg required_label">MyKad Copy (front and back)</label>
+                                <input class="form-control form-control-lg" type="file" id="rehdaYouthOfficial1MyKadCopy" name="rehdaYouthOfficial1MyKadCopy" value="" accept="application/pdf" />
+                            </div>
                             <hr>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficial1SecretartTitle" class="form-label form-label-lg">Title</label>
@@ -2118,6 +2135,7 @@
     $(document).ready(function() {
 
         var validateCompanyNameUrl = "{{ route('validateCompanyName') }}";
+        var validateOrdinaryMembershipNumberUrl = "{{ route('validateCompanyRegNo') }}";
 
         $.ajaxSetup({
             headers: {
@@ -2172,6 +2190,8 @@
                 ordinaryCopyOfAnnualReturn: "required",
                 ordinaryHouseDevelopingLicense: "required",
                 ordinaryCopyOfHousingDeveloperLicense: "required",
+                ordinaryAttachmentForm: "required",
+                ordinaryNominationForm: "required",
                 ordinaryNameOfAdmin: "required",
                 ordinaryAdminTitle: "required",
                 ordinaryAdminDesignation: "required",
@@ -2326,6 +2346,8 @@
                                     "#ordinaryCopyOfHousingDeveloperLicense",
                                     "#ordinaryCopyForm24",
                                     "#ordinaryCopyForm49",
+                                    "#ordinaryAttachmentForm",
+                                    "#ordinaryNominationForm",
                                 ];
                                 if (ordinaryGeneral.includes("#" + field)) {
                                     stepper.to(2);
@@ -3095,7 +3117,24 @@
             rules: {
                 rehdaYouthOrdinaryMembershipNumber: {
                     required: true,
-                    minlength: 15
+                    minlength: 15,
+                    remote: {
+                        url: validateOrdinaryMembershipNumberUrl,
+                        type: "POST",
+                        data: {
+                            membership_number: function() {
+                                return $("#rehdaYouthOrdinaryMembershipNumber").val();
+                            },
+                            _token: "{{ csrf_token() }}"
+                        },
+                        dataFilter: function (response) {
+                            const result = JSON.parse(response);
+                            if(result.found == false){
+                                $("#rehdaYouthCompanyName").val(result.company_name).prop("readonly", true).css('background-color', 'rgba(75, 70, 92, 0.08)');
+                            }
+                            return result.found ? false : true;
+                        }
+                    }
                 },
                 rehdaYouthCompanyName: {
                     required: true,
@@ -3105,6 +3144,9 @@
                         data: {
                             company_name: function() {
                                 return $("#rehdaYouthCompanyName").val();
+                            },
+                            membership_number: function() {
+                                return $("#rehdaYouthOrdinaryMembershipNumber").val();
                             },
                             _token: "{{ csrf_token() }}"
                         },
@@ -3147,9 +3189,14 @@
                 rehdaYouthOfficial1AddressCity: "required",
                 rehdaYouthOfficial1AddressState: "required",
                 rehdaYouthOfficial1AddressPc: "required",
-                rehdaYouthOfficial1AddressCountry: "required"
+                rehdaYouthOfficial1AddressCountry: "required",
+                rehdaYouthOfficial1MembersNominationsForm: "required",
+                rehdaYouthOfficial1MyKadCopy: "required",
             },
             messages: {
+                rehdaYouthOrdinaryMembershipNumber: {
+                    remote: "Invalid Ordinary Membership No."
+                },
                 rehdaYouthCompanyName: {
                     remote: "This company name is already taken."
                 }
@@ -3237,7 +3284,7 @@
                                     stepper.to(17);
                                 }
 
-                                var associateOR1 = ["#rehdaYouthOfficial1Title", "#rehdaYouthOfficial1Nop", "#rehdaYouthOfficial1MyKad", "#rehdaYouthOfficial1Designation", "#rehdaYouthOfficial1Email", "#rehdaYouthOfficial1Contact", "#rehdaYouthOfficial1Address", "#rehdaYouthOfficial1AddressCity", "#rehdaYouthOfficial1AddressState", "#rehdaYouthOfficial1AddressPc", "#rehdaYouthOfficial1AddressCountry","#rehdaYouthOfficial1SecretartEmail"];
+                                var associateOR1 = ["#rehdaYouthOfficial1Title", "#rehdaYouthOfficial1Nop", "#rehdaYouthOfficial1MyKad", "#rehdaYouthOfficial1Designation", "#rehdaYouthOfficial1Email", "#rehdaYouthOfficial1Contact", "#rehdaYouthOfficial1Address", "#rehdaYouthOfficial1AddressCity", "#rehdaYouthOfficial1AddressState", "#rehdaYouthOfficial1AddressPc", "#rehdaYouthOfficial1AddressCountry","#rehdaYouthOfficial1SecretartEmail", "#rehdaYouthOfficial1MembersNominationsForm", "#rehdaYouthOfficial1MyKadCopy"];
                                 if (associateOR1.includes("#" + field)) {
                                     stepper.to(18);
                                 }
@@ -3271,7 +3318,7 @@
         // });
 
         $(".ordinary-general-information-btn").on("click", function () {
-            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense").valid()){
+            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense, #ordinaryAttachmentForm, #ordinaryNominationForm").valid()){
                 stepper.next();
             } else {
                 ordinaryMembershipForm.find(":input.error").first().focus();
