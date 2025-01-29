@@ -45,6 +45,10 @@ class MemberComp extends Model
         'd_mod_at',
         'd_mod_by',
         'd_compadd_3',
+        'mykad_copy',
+        'acknowledgement_form',
+        'attachment_form',
+        'nomination_form',
     ];
 
     // Relationship with Member

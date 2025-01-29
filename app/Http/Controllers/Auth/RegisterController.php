@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -121,6 +122,8 @@ class RegisterController extends Controller
             'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
             'ordinaryHouseDevelopingLicense' => 'required',
             'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryAttachmentForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryNominationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
 
             'ordinaryAdminTitle' => 'required',
             'ordinaryNameOfAdmin' => 'required',
@@ -238,6 +241,34 @@ class RegisterController extends Controller
             }
         }
 
+        if ($request->hasFile('ordinaryAttachmentForm')) {
+            $file = $request->file('ordinaryAttachmentForm');
+
+            $attachment_form = $this->uploadPDF($file, $dir, 100);
+
+            if ($attachment_form === "1003") {
+                return response()->json([
+                    'errors' => [
+                        'ordinaryAttachmentForm' => "Copy of Form has an error while uploading.",
+                    ],
+                ], 422);
+            }
+        }
+
+        if ($request->hasFile('ordinaryNominationForm')) {
+            $file = $request->file('ordinaryNominationForm');
+
+            $nomination_form = $this->uploadPDF($file, $dir, 100);
+
+            if ($nomination_form === "1003") {
+                return response()->json([
+                    'errors' => [
+                        'ordinaryNominationForm' => "Copy of Nomination Form has an error while uploading.",
+                    ],
+                ], 422);
+            }
+        }
+
         $ord = 1;
         $now = date("Y-m-d H:i:s");
 
@@ -277,7 +308,9 @@ class RegisterController extends Controller
                 'd_devlicense' => $request->ordinaryHouseDevelopingLicense,
                 'd_devlicensecopy' => $path5,
                 'd_created_at' => $now,
-                'd_refer_branch' => $request->ordinaryCompanyPreferBranch
+                'd_refer_branch' => $request->ordinaryCompanyPreferBranch,
+                'attachment_form' => $attachment_form,
+                'nomination_form' => $nomination_form,
             ]);
             logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
@@ -1329,9 +1362,24 @@ class RegisterController extends Controller
         Log::info('rehdaYouth-request-data');
         Log::info($request->all());
 
+        $parentid = chkMembershipNo($request->rehdaYouthOrdinaryMembershipNumber);
+        if($parentid == null){
+            return response()->json([
+                'errors' => [
+                    'rehdaYouthOrdinaryMembershipNumber' => "Invalid Ordinary Membership No.", // Return error message if upload fails
+                ],
+            ], 422);
+        }
+
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
-            'rehdaYouthCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            'rehdaYouthCompanyName' => ['required',
+                                        Rule::unique('member_comps', 'd_compname')
+                                        ->where(function ($query) use ($parentid) {
+                                            return $query->where('d_parentcomp', $parentid)
+                                                        ->where('d_status', '!=', 3)
+                                                        ->whereNull('d_deleted_at');
+                                        })],
             'rehdaYouthCompanyAddress' => 'required',
             'rehdaYouthCompanyAddressCity' => 'required',
             'rehdaYouthCompanyAddressState' => 'required',
@@ -1354,20 +1402,45 @@ class RegisterController extends Controller
             'rehdaYouthOfficial1AddressPc' => 'required',
             'rehdaYouthOfficial1AddressCountry' => 'required',
             'rehdaYouthOfficial1SecretartEmail' => 'nullable|email',
+            'rehdaYouthOfficial1MembersNominationsForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'rehdaYouthOfficial1MyKadCopy' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
         ],[
             'required' => 'This field is required.',
             'email' => 'Please enter a valid email address.',
+            'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
         ]);
 
         Log::info('rehdaYouth-request-data-validated-successfuly');
 
-        $parentid = chkMembershipNo($request->rehdaYouthOrdinaryMembershipNumber);
-        if($parentid == null){
-            return response()->json([
-                'errors' => [
-                    'rehdaYouthOrdinaryMembershipNumber' => "Invalid Ordinary Membership No.", // Return error message if upload fails
-                ],
-            ], 422);
+        $dir = 'uploads/members/';
+
+        if ($request->hasFile('rehdaYouthOfficial1MembersNominationsForm')) {
+            $file = $request->file('rehdaYouthOfficial1MembersNominationsForm');
+
+            $member_nominations_form = $this->uploadPDF($file, $dir, 300);
+
+            if ($member_nominations_form === "1003") {
+                return response()->json([
+                    'errors' => [
+                        'rehdaYouthOfficial1MembersNominationsForm' => "Members Nominations Form has an error while uploading.",
+                    ],
+                ], 422);
+            }
+        }
+
+        if ($request->hasFile('rehdaYouthOfficial1MyKadCopy')) {
+            $file = $request->file('rehdaYouthOfficial1MyKadCopy');
+
+            $mykad_copy = $this->uploadPDF($file, $dir, 300);
+
+            if ($mykad_copy === "1003") {
+                return response()->json([
+                    'errors' => [
+                        'rehdaYouthOfficial1MyKadCopy' => "MyKad Copy has an error while uploading.",
+                    ],
+                ], 422);
+            }
         }
 
         $ord = 6;
@@ -1426,6 +1499,8 @@ class RegisterController extends Controller
                     'up_sec_title' => $request->rehdaYouthOfficial1SecretartTitle,
                     'up_sec_email' => $request->rehdaYouthOfficial1SecretartEmail,
                     'up_sec_mobile' => $request->rehdaYouthOfficial1SecretartContact,
+                    'member_nominations_form' => $member_nominations_form,
+                    'mykad_copy' => $mykad_copy,
                     'up_created_at' => $now,
                     'up_mid' => $memberComp->did
                 ]);
@@ -1525,7 +1600,32 @@ class RegisterController extends Controller
 
     public function validateCompanyName(Request $request)
     {
-        $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_status','!=',3)->where('d_deleted_at', null)->exists();
-        return response()->json(['isUnique' => $isUnique]);
+        if(isset($request->membership_number)){
+            $parentid = chkMembershipNo($request->membership_number);
+            if($parentid == null){
+                return response()->json(['isUnique' => true]);
+            } else {
+                $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_parentcomp', $parentid)->where('d_status','!=',3)->where('d_deleted_at', null)->exists();
+                return response()->json(['isUnique' => $isUnique]);
+            }
+        } else {
+            $isUnique = MemberComp::where('d_compname', $request->company_name)->where('d_status','!=',3)->where('d_deleted_at', null)->exists();
+            return response()->json(['isUnique' => $isUnique]);
+        }
+    }
+
+    public function validateCompanyRegNo(Request $request)
+    {
+        $parentid = chkMembershipNo($request->membership_number);
+        if($parentid == null){
+            return response()->json(['found' => true]);
+        } else {
+            $memberComp = MemberComp::where('did', $parentid)->where('d_status','!=',3)->where('d_deleted_at', null)->first();
+            if($memberComp) {
+                return response()->json(['found' => false, 'company_name' => $memberComp->d_compname]);
+            } else {
+                return response()->json(['found' => true]);
+            }
+        }
     }
 }
