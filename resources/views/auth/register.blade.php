@@ -429,10 +429,6 @@
                                 <input class="form-control form-control-lg" type="file" id="ordinaryCopyOfAnnualReturn" name="ordinaryCopyOfAnnualReturn" value="" accept="application/pdf" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryAttachmentForm" class="form-label form-label-lg required_label">Attachment: Form</label>
-                                <input class="form-control form-control-lg" type="file" id="ordinaryAttachmentForm" name="ordinaryAttachmentForm" value="" accept="application/pdf" />
-                            </div>
-                            <div class="mb-3 col-md-12">
                                 <label for="ordinaryNominationForm" class="form-label form-label-lg required_label">Attachment: Nomination Form</label>
                                 <input class="form-control form-control-lg" type="file" id="ordinaryNominationForm" name="ordinaryNominationForm" value="" accept="application/pdf" />
                             </div>
@@ -2190,7 +2186,6 @@
                 ordinaryCopyOfAnnualReturn: "required",
                 ordinaryHouseDevelopingLicense: "required",
                 ordinaryCopyOfHousingDeveloperLicense: "required",
-                ordinaryAttachmentForm: "required",
                 ordinaryNominationForm: "required",
                 ordinaryNameOfAdmin: "required",
                 ordinaryAdminTitle: "required",
@@ -2346,7 +2341,6 @@
                                     "#ordinaryCopyOfHousingDeveloperLicense",
                                     "#ordinaryCopyForm24",
                                     "#ordinaryCopyForm49",
-                                    "#ordinaryAttachmentForm",
                                     "#ordinaryNominationForm",
                                 ];
                                 if (ordinaryGeneral.includes("#" + field)) {
@@ -3318,7 +3312,7 @@
         // });
 
         $(".ordinary-general-information-btn").on("click", function () {
-            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense, #ordinaryAttachmentForm, #ordinaryNominationForm").valid()){
+            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense, #ordinaryNominationForm").valid()){
                 stepper.next();
             } else {
                 ordinaryMembershipForm.find(":input.error").first().focus();

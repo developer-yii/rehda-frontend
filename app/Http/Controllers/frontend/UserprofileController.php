@@ -35,7 +35,7 @@ class UserprofileController extends Controller
             ->where('ml_status', 1)
             ->first();
 
-            $profile = MemberUserProfile::where('up_id', $userfind->ml_uid)->first();
+            $profile = MemberUserProfile::with('memberComp')->where('up_id', $userfind->ml_uid)->first();
             $titles = Salutation::orderBy('sname', 'ASC')->get();
             $genders = Gender::orderBy('gname','ASC')->get();
             $states = State::orderBy('state_name', 'ASC')->get();
