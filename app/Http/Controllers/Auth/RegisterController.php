@@ -122,7 +122,6 @@ class RegisterController extends Controller
             'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
             'ordinaryHouseDevelopingLicense' => 'required',
             'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryAttachmentForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
             'ordinaryNominationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
 
             'ordinaryAdminTitle' => 'required',
@@ -241,20 +240,6 @@ class RegisterController extends Controller
             }
         }
 
-        if ($request->hasFile('ordinaryAttachmentForm')) {
-            $file = $request->file('ordinaryAttachmentForm');
-
-            $attachment_form = $this->uploadPDF($file, $dir, 100);
-
-            if ($attachment_form === "1003") {
-                return response()->json([
-                    'errors' => [
-                        'ordinaryAttachmentForm' => "Copy of Form has an error while uploading.",
-                    ],
-                ], 422);
-            }
-        }
-
         if ($request->hasFile('ordinaryNominationForm')) {
             $file = $request->file('ordinaryNominationForm');
 
@@ -309,7 +294,6 @@ class RegisterController extends Controller
                 'd_devlicensecopy' => $path5,
                 'd_created_at' => $now,
                 'd_refer_branch' => $request->ordinaryCompanyPreferBranch,
-                'attachment_form' => $attachment_form,
                 'nomination_form' => $nomination_form,
             ]);
             logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
