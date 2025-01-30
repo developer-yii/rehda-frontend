@@ -1604,7 +1604,7 @@ class RegisterController extends Controller
         if($parentid == null){
             return response()->json(['found' => true]);
         } else {
-            $memberComp = MemberComp::where('did', $parentid)->where('d_status','!=',3)->where('d_deleted_at', null)->first();
+            $memberComp = MemberComp::where('d_mid', $parentid)->where('d_status','!=',3)->where('d_deleted_at', null)->first();
             if($memberComp) {
                 return response()->json(['found' => false, 'company_name' => $memberComp->d_compname]);
             } else {
