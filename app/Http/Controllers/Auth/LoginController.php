@@ -81,7 +81,14 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        $user = MemberUser::where('ml_username', $request->input($this->username()))->latest('ml_id')->first();
+        $user = MemberUser::where('ml_username', $request->input($this->username()))
+        // check member is-active
+        ->whereHas('memberUserProfile', function ($query) {
+            $query->whereHas('memberComp', function ($query1) {
+                $query1->where('d_status', 1);
+            });
+        })
+        ->latest('ml_id')->first();
         $ml_priv = ($request->form_type == "representative") ? "OfficeRep" : "CompanyAdmin";
 
         // if ($user && $ml_priv == $user->ml_priv) {
