@@ -284,7 +284,8 @@
                                     <option value="associate">Associate</option>
                                     <option value="rehdayouth">Rehda Youth</option>
                                 </select> -->
-
+                                <a href="{{ asset('frontend/file/REHDA Youth Membership Application (Nomination Form).pdf') }}" download class="btn btn-primary float-end">Download Nomination Form</a>
+                                <a href="{{ asset('frontend/file/REHDA Membership Application (Declaration Form).pdf') }}" download class="btn btn-primary float-end me-3">Download Declaration Form</a>
                                 <br><br>
                                 <div class="form-check-inline">
                                     <input class="form-check-input membertype" type="radio" name="membertype" id="membertype-ordinary" value="ordinary">
@@ -348,7 +349,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryCompanyName" class="form-label form-label-lg required_label">Company Name</label>
+                                <label for="ordinaryCompanyName" class="form-label form-label-lg">Ordinary Company Name</label>
                                 <input class="form-control form-control-lg" type="text" id="ordinaryCompanyName" name="ordinaryCompanyName" value="{{ old('ordinaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -390,7 +391,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="ordinaryOfficialNumber" name="ordinaryOfficialNumber" value="{{ old('ordinaryOfficialNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="ordinaryOfficialNumber" name="ordinaryOfficialNumber" value="{{ old('ordinaryOfficialNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryFaxNumber" class="form-label form-label-lg">Fax No.</label>
@@ -784,6 +785,10 @@
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryOrdinaryMembershipNumber" name="subsidiaryOrdinaryMembershipNumber" value="{{ old('subsidiaryOrdinaryMembershipNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="subsidiaryCompanyNameOrdinary" class="form-label form-label-lg">Ordinary Company Name</label>
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyNameOrdinary" name="subsidiaryCompanyNameOrdinary" value="{{ old('subsidiaryCompanyNameOrdinary') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
                                 <label for="subsidiaryCompanyName" class="form-label form-label-lg required_label">Company Name</label>
                                 <input class="form-control form-control-lg" type="text" id="subsidiaryCompanyName" name="subsidiaryCompanyName" value="{{ old('subsidiaryCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
@@ -826,7 +831,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="subsidiaryOfficialNumber" name="subsidiaryOfficialNumber" value="{{ old('subsidiaryOfficialNumber') }}" oninput="this.value = this.value.toUpperCase();" />
+                                <input class="form-control form-control-lg" type="text" id="subsidiaryOfficialNumber" name="subsidiaryOfficialNumber" value="{{ old('subsidiaryOfficialNumber') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="subsidiaryFaxNumber" class="form-label form-label-lg">Fax No.</label>
@@ -1083,6 +1088,10 @@
                                 <input class="form-control form-control-lg" type="text" id="affiliateOrdinaryMembershipNumber" name="affiliateOrdinaryMembershipNumber" value="{{ old('affiliateOrdinaryMembershipNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
+                                <label for="affiliateCompanyNameOrdinary" class="form-label form-label-lg">Ordinary Company Name</label>
+                                <input class="form-control form-control-lg" type="text" id="affiliateCompanyNameOrdinary" name="affiliateCompanyNameOrdinary" value="{{ old('affiliateCompanyNameOrdinary') }}" oninput="this.value = this.value.toUpperCase();" />
+                            </div>
+                            <div class="mb-3 col-md-12">
                                 <label for="affiliateCompanyName" class="form-label form-label-lg required_label">Company Name</label>
                                 <input class="form-control form-control-lg" type="text" id="affiliateCompanyName" name="affiliateCompanyName" value="{{ old('affiliateCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
@@ -1125,7 +1134,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="affiliateOfficialNumber" name="affiliateOfficialNumber" value="{{ old('affiliateOfficialNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="affiliateOfficialNumber" name="affiliateOfficialNumber" value="{{ old('affiliateOfficialNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="affiliateFaxNumber" class="form-label form-label-lg">Fax No.</label>
@@ -1565,7 +1574,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="associateOfficialNumber" name="associateOfficialNumber" value="{{ old('associateOfficialNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="associateOfficialNumber" name="associateOfficialNumber" value="{{ old('associateOfficialNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="associateFaxNumber" class="form-label form-label-lg">Fax No.</label>
@@ -1939,7 +1948,7 @@
                                 <input class="form-control form-control-lg" type="text" id="rehdaYouthOrdinaryMembershipNumber" name="rehdaYouthOrdinaryMembershipNumber" value="{{ old('rehdaYouthOrdinaryMembershipNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthCompanyName" class="form-label form-label-lg required_label">Company Name</label>
+                                <label for="rehdaYouthCompanyName" class="form-label form-label-lg">Company Registered Name</label>
                                 <input class="form-control form-control-lg" type="text" id="rehdaYouthCompanyName" name="rehdaYouthCompanyName" value="{{ old('rehdaYouthCompanyName') }}" oninput="this.value = this.value.toUpperCase();" />
                             </div>
                             <div class="mb-3 col-md-12">
@@ -1981,7 +1990,7 @@
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthOfficialNumber" class="form-label form-label-lg required_label">Office No.</label>
-                                <input class="form-control form-control-lg" type="number" id="rehdaYouthOfficialNumber" name="rehdaYouthOfficialNumber" value="{{ old('rehdaYouthOfficialNumber') }}" />
+                                <input class="form-control form-control-lg" type="text" id="rehdaYouthOfficialNumber" name="rehdaYouthOfficialNumber" value="{{ old('rehdaYouthOfficialNumber') }}" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="rehdaYouthFaxNumber" class="form-label form-label-lg">Fax No.</label>
@@ -2420,24 +2429,41 @@
                 subsidiaryCompanyPreferBranch: "required",
                 subsidiaryOrdinaryMembershipNumber: {
                     required: true,
-                    minlength: 15
-                },
-                subsidiaryCompanyName: {
-                    required: true,
+                    minlength: 15,
                     remote: {
-                        url: validateCompanyNameUrl,
+                        url: validateOrdinaryMembershipNumberUrl,
                         type: "POST",
                         data: {
-                            company_name: function() {
-                                return $("#subsidiaryCompanyName").val();
+                            membership_number: function() {
+                                return $("#subsidiaryOrdinaryMembershipNumber").val();
                             },
                             _token: "{{ csrf_token() }}"
                         },
                         dataFilter: function (response) {
                             const result = JSON.parse(response);
-                            return result.isUnique ? false : true;
+                            if(result.found == false){
+                                $("#subsidiaryCompanyNameOrdinary").val(result.company_name).prop("readonly", true).css('background-color', 'rgba(75, 70, 92, 0.08)');
+                            }
+                            return result.found ? false : true;
                         }
                     }
+                },
+                subsidiaryCompanyName: {
+                    required: true,
+                    // remote: {
+                    //     url: validateCompanyNameUrl,
+                    //     type: "POST",
+                    //     data: {
+                    //         company_name: function() {
+                    //             return $("#subsidiaryCompanyName").val();
+                    //         },
+                    //         _token: "{{ csrf_token() }}"
+                    //     },
+                    //     dataFilter: function (response) {
+                    //         const result = JSON.parse(response);
+                    //         return result.isUnique ? false : true;
+                    //     }
+                    // }
                 },
                 subsidiaryCompanyAddress: "required",
                 subsidiaryCompanyAddressCity: "required",
@@ -2487,9 +2513,12 @@
                 subsidiaryOfficial1AddressCountry: "required"
             },
             messages: {
-                subsidiaryCompanyName: {
-                    remote: "This company name is already taken."
-                }
+                // subsidiaryCompanyName: {
+                //     remote: "This company name is already taken."
+                // },
+                subsidiaryOrdinaryMembershipNumber: {
+                    remote: "Invalid Ordinary Membership No."
+                },
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -2621,24 +2650,41 @@
                 affiliateCompanyPreferBranch: "required",
                 affiliateOrdinaryMembershipNumber: {
                     required: true,
-                    minlength: 15
-                },
-                affiliateCompanyName: {
-                    required: true,
+                    minlength: 15,
                     remote: {
-                        url: validateCompanyNameUrl,
+                        url: validateOrdinaryMembershipNumberUrl,
                         type: "POST",
                         data: {
-                            company_name: function() {
-                                return $("#affiliateCompanyName").val();
+                            membership_number: function() {
+                                return $("#affiliateOrdinaryMembershipNumber").val();
                             },
                             _token: "{{ csrf_token() }}"
                         },
                         dataFilter: function (response) {
                             const result = JSON.parse(response);
-                            return result.isUnique ? false : true;
+                            if(result.found == false){
+                                $("#affiliateCompanyNameOrdinary").val(result.company_name).prop("readonly", true).css('background-color', 'rgba(75, 70, 92, 0.08)');
+                            }
+                            return result.found ? false : true;
                         }
                     }
+                },
+                affiliateCompanyName: {
+                    required: true,
+                    // remote: {
+                    //     url: validateCompanyNameUrl,
+                    //     type: "POST",
+                    //     data: {
+                    //         company_name: function() {
+                    //             return $("#affiliateCompanyName").val();
+                    //         },
+                    //         _token: "{{ csrf_token() }}"
+                    //     },
+                    //     dataFilter: function (response) {
+                    //         const result = JSON.parse(response);
+                    //         return result.isUnique ? false : true;
+                    //     }
+                    // }
                 },
                 affiliateCompanyAddress: "required",
                 affiliateCompanyAddressCity: "required",
@@ -2715,9 +2761,12 @@
                 affiliateOfficial2AddressCountry: "required"
             },
             messages: {
-                affiliateCompanyName: {
-                    remote: "This company name is already taken."
-                }
+                // affiliateCompanyName: {
+                //     remote: "This company name is already taken."
+                // }
+                affiliateOrdinaryMembershipNumber: {
+                    remote: "Invalid Ordinary Membership No."
+                },
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -2887,20 +2936,20 @@
                 associateAccType: "required",
                 associateCompanyName: {
                     required: true,
-                    remote: {
-                        url: validateCompanyNameUrl,
-                        type: "POST",
-                        data: {
-                            company_name: function() {
-                                return $("#associateCompanyName").val();
-                            },
-                            _token: "{{ csrf_token() }}"
-                        },
-                        dataFilter: function (response) {
-                            const result = JSON.parse(response);
-                            return result.isUnique ? false : true;
-                        }
-                    }
+                    // remote: {
+                    //     url: validateCompanyNameUrl,
+                    //     type: "POST",
+                    //     data: {
+                    //         company_name: function() {
+                    //             return $("#associateCompanyName").val();
+                    //         },
+                    //         _token: "{{ csrf_token() }}"
+                    //     },
+                    //     dataFilter: function (response) {
+                    //         const result = JSON.parse(response);
+                    //         return result.isUnique ? false : true;
+                    //     }
+                    // }
                 },
                 associateCompanyAddress: "required",
                 associateCompanyAddressCity: "required",
@@ -3006,9 +3055,9 @@
                 associateOfficial2Country: "required",
             },
             messages: {
-                associateCompanyName: {
-                    remote: "This company name is already taken."
-                }
+                // associateCompanyName: {
+                //     remote: "This company name is already taken."
+                // }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {
@@ -3163,24 +3212,24 @@
                     }
                 },
                 rehdaYouthCompanyName: {
-                    required: true,
-                    remote: {
-                        url: validateCompanyNameUrl,
-                        type: "POST",
-                        data: {
-                            company_name: function() {
-                                return $("#rehdaYouthCompanyName").val();
-                            },
-                            membership_number: function() {
-                                return $("#rehdaYouthOrdinaryMembershipNumber").val();
-                            },
-                            _token: "{{ csrf_token() }}"
-                        },
-                        dataFilter: function (response) {
-                            const result = JSON.parse(response);
-                            return result.isUnique ? false : true;
-                        }
-                    }
+                    // required: true,
+                    // remote: {
+                    //     url: validateCompanyNameUrl,
+                    //     type: "POST",
+                    //     data: {
+                    //         company_name: function() {
+                    //             return $("#rehdaYouthCompanyName").val();
+                    //         },
+                    //         membership_number: function() {
+                    //             return $("#rehdaYouthOrdinaryMembershipNumber").val();
+                    //         },
+                    //         _token: "{{ csrf_token() }}"
+                    //     },
+                    //     dataFilter: function (response) {
+                    //         const result = JSON.parse(response);
+                    //         return result.isUnique ? false : true;
+                    //     }
+                    // }
                 },
                 rehdaYouthCompanyAddress: "required",
                 rehdaYouthCompanyAddressCity: "required",
@@ -3223,9 +3272,9 @@
                 rehdaYouthOrdinaryMembershipNumber: {
                     remote: "Invalid Ordinary Membership No."
                 },
-                rehdaYouthCompanyName: {
-                    remote: "This company name is already taken."
-                }
+                // rehdaYouthCompanyName: {
+                //     remote: "This company name is already taken."
+                // }
             },
             invalidHandler: function(form, validator) {
                 if (validator.numberOfInvalids() > 0) {

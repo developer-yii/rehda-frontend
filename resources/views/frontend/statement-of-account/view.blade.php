@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title>REHDA Statement-{{ $year }}</title>
     <style type='text/css'>
     @media print {
         /*@page { size: A4 landscape; max-height:100%; max-width:100%; margin: 1cm; }*/
@@ -61,7 +61,7 @@
         <table cellpadding='0' cellspacing='0' width='100%' class='header'>
             <tbody>
                 <tr>
-                    <td width='25%'><img src="{{ asset('frontend/img/logo/email-rehda-logo-blue.png') }}"></td>
+                    <td width='25%'><img src="{{ asset('frontend/img/logo/email-rehda-logo-blue.png') }}" style="width:100px;"></td>
                     <td width='5%'>&nbsp;</td>
                     <td class='title text-right'>STATEMENT YEAR {{ $year }}</td>
                 </tr>
@@ -97,7 +97,11 @@
                                     <td>
                                         <p><b>{{ strtoupper($memberComp->d_compname) }}</b></p>
                                         <small>{{ $memberComp->d_compssmno }}</small>
-                                        <p>{{ strtoupper($memberComp->d_compadd) }}</p><p>{{ $memberComp->d_compaddcity }}</p><p>{{ $memberComp->d_compaddpcode}} {{ $memberComp->state->state_name }}</p><p>{{ $memberComp->country->country_name }}</p>
+                                        <p>{{ strtoupper($memberComp->d_compadd) }}</p>
+                                        <p>{{ $memberComp->d_compaddcity }}</p>
+                                        <p>{{ $memberComp->d_compadd_3 }}</p>
+                                        <p>{{ $memberComp->d_compaddpcode}} {{ $memberComp->state->state_name }}</p>
+                                        <p>{{ $memberComp->country->country_name }}</p>
                                     </td>
                                 </tr>
                             </tbody>

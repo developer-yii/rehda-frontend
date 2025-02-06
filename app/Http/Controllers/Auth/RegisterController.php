@@ -430,7 +430,8 @@ class RegisterController extends Controller
         $request->validate([
             'subsidiaryCompanyPreferBranch' => 'required',
             'subsidiaryOrdinaryMembershipNumber' => 'required',
-            'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            // 'subsidiaryCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            'subsidiaryCompanyName' => 'required',
             'subsidiaryCompanyAddress' => 'required',
             'subsidiaryCompanyAddressCity' => 'required',
             'subsidiaryCompanyAddressState' => 'required',
@@ -696,7 +697,8 @@ class RegisterController extends Controller
         $request->validate([
             'affiliateCompanyPreferBranch' => 'required',
             'affiliateOrdinaryMembershipNumber' => 'required',
-            'affiliateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            // 'affiliateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            'affiliateCompanyName' => 'required',
             'affiliateCompanyAddress' => 'required',
             'affiliateCompanyAddressCity' => 'required',
             'affiliateCompanyAddressState' => 'required',
@@ -1016,7 +1018,8 @@ class RegisterController extends Controller
         $request->validate([
             'associateCompanyPreferBranch' => 'required',
             'associateAccType' => 'required',
-            'associateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            // 'associateCompanyName' => 'required|unique:member_comps,d_compname,NULL,id,d_status,!3,d_deleted_at,NULL',
+            'associateCompanyName' => 'required',
             'associateCompanyAddress' => 'required',
             'associateCompanyAddressCity' => 'required',
             'associateCompanyAddressState' => 'required',
@@ -1364,13 +1367,13 @@ class RegisterController extends Controller
 
         $request->validate([
             'rehdaYouthOrdinaryMembershipNumber' => 'required',
-            'rehdaYouthCompanyName' => ['required',
-                                        Rule::unique('member_comps', 'd_compname')
-                                        ->where(function ($query) use ($parentid) {
-                                            return $query->where('d_parentcomp', $parentid)
-                                                        ->where('d_status', '!=', 3)
-                                                        ->whereNull('d_deleted_at');
-                                        })],
+            // 'rehdaYouthCompanyName' => ['required',
+            //                             Rule::unique('member_comps', 'd_compname')
+            //                             ->where(function ($query) use ($parentid) {
+            //                                 return $query->where('d_parentcomp', $parentid)
+            //                                             ->where('d_status', '!=', 3)
+            //                                             ->whereNull('d_deleted_at');
+            //                             })],
             'rehdaYouthCompanyAddress' => 'required',
             'rehdaYouthCompanyAddressCity' => 'required',
             'rehdaYouthCompanyAddressState' => 'required',
@@ -1452,7 +1455,7 @@ class RegisterController extends Controller
             $memberComp = MemberComp::create([
                 'd_parentcomp' => $parentid,
                 'd_mid' => $mid,
-                'd_compname' => $request->rehdaYouthCompanyName,
+                'd_compname' => $request->rehdaYouthCompanyName ?? '-',
                 'd_compadd' => $request->rehdaYouthCompanyAddress,
                 'd_compadd_3' => $request->rehdaYouthCompanyAddressCity3,
                 'd_compaddcity' => $request->rehdaYouthCompanyAddressCity,

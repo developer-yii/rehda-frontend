@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title>REHDA Statement-{{ $year }}</title>
     <style type='text/css'>
         @media print {
 
@@ -165,7 +165,7 @@
         <table cellpadding='0' cellspacing='0' width='100%' class='header'>
             <tbody>
                 <tr>
-                    <td width='25%'><img src="{{ asset('backend/assets/img/logo/email-rehda-logo-blue.png') }}"></td>
+                    <td width='25%'><img src="{{ asset('backend/assets/img/logo/email-rehda-logo-blue.png') }}" style="width:100px;"></td>
                     <td width='5%'>&nbsp;</td>
                     <td class='title text-right'>STATEMENT YEAR {{ $year }}</td>
                 </tr>
@@ -206,6 +206,7 @@
                                         <small>{{ $transaction->d_compssmno }}</small>
                                         <p>{{ strtoupper($transaction->d_compadd) }}</p>
                                         <p>{{ $transaction->d_compaddcity }}</p>
+                                        <p>{{ $transaction->d_compadd_3 }}</p>
                                         <p>{{ $transaction->d_compaddpcode . ' ' . getStatex($transaction->d_compaddstate) }}
                                         </p>
                                         <p>{{ getCountryx($transaction->d_compaddcountry) }}</p>
