@@ -57,7 +57,7 @@ class StatementOfAccountController extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $filename = "Rehda Statement-" . $year;
+        $filename = "REHDA Statement-" . $year;
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
@@ -76,7 +76,7 @@ class StatementOfAccountController extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $filename = "Rehda Statement-" . $year;
+        $filename = "REHDA Statement-" . $year;
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 }

@@ -71,7 +71,7 @@ class MemberStatementAccountController extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $filename = "Rehda Statement-" . $year;
+        $filename = "REHDA Statement-" . $year;
         return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 }

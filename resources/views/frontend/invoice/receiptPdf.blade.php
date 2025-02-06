@@ -174,6 +174,7 @@
                             @endforeach
                         @endif
                         <p>{{ strtoupper($memberComp->d_compaddcity) }}</p>
+                        <p>{{ $memberComp->d_compadd_3 }}</p>
                         <p>{{ $memberComp->d_compaddpcode.' '.(isset($memberComp->state) ? strtoupper($memberComp->state->state_name) : '') }}</p>
                     </td>
                 </tr>
