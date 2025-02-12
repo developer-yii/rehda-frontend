@@ -64,7 +64,12 @@ class InvoiceController extends Controller
                 return $row->memberComp->member->memberType->typename ?? '';
             })
             ->addColumn('date', function ($row) {
-                return '<p>'.date('d-M-Y',strtotime($row->order_created_at)).'</p><span class="badge bg-label-'.$row->orderStatus->label.'">'.$row->orderStatus->status.'</span>';
+                if($row->order_status == 100){
+                    $label = 'Pending - For Checker Approval';
+                } else {
+                    $label = $row->orderStatus->label;
+                }
+                return '<p>'.date('d-M-Y',strtotime($row->order_created_at)).'</p><span class="badge bg-label-'.$row->orderStatus->label.'">'.$label.'</span>';
             })
             ->addColumn('invoice_no', function ($row) {
                 return '#'.config('constant.ORDERID_SET').$row->order_no;
@@ -75,7 +80,7 @@ class InvoiceController extends Controller
             ->addColumn('actions', function ($row) {
                 $buttons = '';
 
-                if($row->order_status == 1) {
+                if($row->order_status == 1 || $row->order_status == 100) {
                     $invno = config('constant.ORDERID_SET').$row->order_no;
                     $auth = md5($invno).sha1($invno).md5(sha1($invno));
                     $buttons .= '<a href="'.route('invoice.paymentfpx', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with FPX</a>';
@@ -240,19 +245,27 @@ class InvoiceController extends Controller
                 }
 
             } else {
-                $payment = Payment::create([
-                    'trans_id' => $transid,
-                    'authcode' => $authcode,
-                    'pstatus' => $response_code,
-                    'pamount' => $pamount,
-                    'refno' => $refno,
-                    'pymtid' => $paymentid,
-                    'ecurr' => $ecurrency,
-                    'remark' => $remark,
-                    'errdesc' => $errdesc,
-                    'sign' => $signature,
-                    'pymt_dt' => $now
-                ]);
+
+                $checkPayment = Payment::where('refno', $refno)->where('trans_id',$transid)->first();
+                if(!$checkPayment) {
+                    $payment = Payment::create([
+                        'trans_id' => $transid,
+                        'authcode' => $authcode,
+                        'pstatus' => $response_code,
+                        'pamount' => $pamount,
+                        'refno' => $refno,
+                        'pymtid' => $paymentid,
+                        'ecurr' => $ecurrency,
+                        'remark' => $remark,
+                        'errdesc' => $errdesc,
+                        'sign' => $signature,
+                        'pymt_dt' => $now
+                    ]);
+                }
+
+                if($payment->pstatus == 6 && ($payment->errdesc == 'Payment Pending' || $payment->errdesc == 'Pending Checker Approval')){
+                    return redirect(route('payment.pending', $refno));
+                }
 
                 return redirect(route('payment.fail'));
             }
@@ -330,7 +343,7 @@ class InvoiceController extends Controller
         $status = 1;
 
         $refnonew = str_replace(config('constant.ORDERID_SET'),'',$refno);
-        $order = Order::where('order_no', $refnonew)->where('order_status',1)->first();
+        $order = Order::where('order_no', $refnonew)->whereIn('order_status',[1,100])->first();
         if($order) {
             \Log::info("succUpdateMember found order record");
             $pamount = $order->order_grandtotal;
@@ -342,14 +355,14 @@ class InvoiceController extends Controller
                 $newgt = $pamount + $order->order_payfpx;
             }
 
-            $paidOrder = Order::where('oid', $order->oid)->where('order_status',1)->where('order_status', '=', $order_status_paid)->first();
+            $paidOrder = Order::where('oid', $order->oid)->whereIn('order_status',[1,100])->where('order_status', '=', $order_status_paid)->first();
             \Log::info('paidOrder');
             \Log::info($paidOrder);
 
             if(!$paidOrder){
                 \Log::info('update order');
 
-                $orderUpdate = Order::where('oid', $order->oid)->where('order_status',1)->update([
+                $orderUpdate = Order::where('oid', $order->oid)->whereIn('order_status',[1,100])->update([
                     'order_status' => $order_status_paid,
                     'order_paid_at' => $now,
                     'order_pm' => $paymentid,
@@ -399,19 +412,23 @@ class InvoiceController extends Controller
             {
                 $result = $this->succUpdateMember($orderid,$ttype,$merchantcode,$paymentid,$refno,$pamount,$ecurrency,$remark,$transid,$authcode,$response_code,$errdesc,$signature);
             } else { //failed
-                $payment = Payment::create([
-                    'trans_id' => $transid,
-                    'authcode' => $authcode,
-                    'pstatus' => $response_code,
-                    'pamount' => $pamount,
-                    'refno' => $refno,
-                    'pymtid' => $paymentid,
-                    'ecurr' => $ecurrency,
-                    'remark' => $remark,
-                    'errdesc' => $errdesc,
-                    'sign' => $signature,
-                    'pymt_dt' => $now
-                ]);
+
+                $checkPayment = Payment::where('refno', $refno)->where('trans_id',$transid)->first();
+                if(!$checkPayment) {
+                    $payment = Payment::create([
+                        'trans_id' => $transid,
+                        'authcode' => $authcode,
+                        'pstatus' => $response_code,
+                        'pamount' => $pamount,
+                        'refno' => $refno,
+                        'pymtid' => $paymentid,
+                        'ecurr' => $ecurrency,
+                        'remark' => $remark,
+                        'errdesc' => $errdesc,
+                        'sign' => $signature,
+                        'pymt_dt' => $now
+                    ]);
+                }
             }
 
         }
@@ -428,6 +445,12 @@ class InvoiceController extends Controller
     public function paymentSuccess()
     {
         return view('frontend.invoice.paymentsuccess');
+    }
+
+    public function PaymentPending($orderno)
+    {
+        Order::where('order_no', $orderno)->update(['order_status' => 100]);
+        return view('frontend.invoice.paymentpending');
     }
 
 }

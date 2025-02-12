@@ -68,6 +68,7 @@ Route::get('paymentcard/{order_no}/{auth}', [InvoiceController::class, 'invoiceP
 Route::get('paymentfpx/{order_no}/{auth}', [InvoiceController::class, 'invoicePaymentfpx'])->name('invoice.paymentfpx');
 Route::get('payment/fail', [InvoiceController::class, 'paymentFail'])->name('payment.fail');
 Route::get('payment/success', [InvoiceController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('payment/pending/{orderno}', [InvoiceController::class, 'PaymentPending'])->name('payment.pending');
 
 Route::post('ordinary-register', [RegisterController::class, 'ordinaryRegister'])->name('ordinary.register');
 Route::post('subsidiary-register', [RegisterController::class, 'subsidiaryRegister'])->name('subsidiary.register');
