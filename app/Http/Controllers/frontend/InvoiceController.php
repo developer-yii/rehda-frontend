@@ -67,7 +67,7 @@ class InvoiceController extends Controller
                 if($row->order_status == 100){
                     $label = 'Pending - For Checker Approval';
                 } else {
-                    $label = $row->orderStatus->label;
+                    $label = $row->orderStatus->status;
                 }
                 return '<p>'.date('d-M-Y',strtotime($row->order_created_at)).'</p><span class="badge bg-label-'.$row->orderStatus->label.'">'.$label.'</span>';
             })
@@ -263,7 +263,7 @@ class InvoiceController extends Controller
                     ]);
                 }
 
-                if($payment->pstatus == 6 && ($payment->errdesc == 'Payment Pending' || $payment->errdesc == 'Pending Checker Approval')){
+                if($response_code == 6 && ($errdesc == 'Payment Pending' || $errdesc == 'Pending Checker Approval')){
                     return redirect(route('payment.pending', $refno));
                 }
 
