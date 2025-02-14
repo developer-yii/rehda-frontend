@@ -159,10 +159,10 @@
                         <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->d_anualretuncopy }}" target="_blank">View</a></p>
                     </div>
                     @endif
-                    @if($memberComp->member->m_type == 1 && !empty($memberComp->nomination_form))
+                    @if($memberComp->member->m_type == 1 && !empty($memberComp->declaration_form))
                     <div class="mb-3 col-md-12">
-                        <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Nomination Form</label>
-                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->nomination_form }}" target="_blank">View</a></p>
+                        <label for="ssmcertificate" class="form-label form-label-lg required_label">Attachment: Declaration Form</label>
+                        <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$memberComp->declaration_form }}" target="_blank">View</a></p>
                     </div>
                     @endif
                     @if(!empty($memberComp->d_devlicense))

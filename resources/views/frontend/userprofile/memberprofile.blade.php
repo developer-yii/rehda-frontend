@@ -205,7 +205,7 @@
 
                                     @if($profile->memberComp->member->m_type == 6 && !empty($profile->member_nominations_form))
                                     <div class="mb-3 col-md-12">
-                                        <label for="ssmcertificate" class="form-label form-label-lg">Members Nominations Form:</label>
+                                        <label for="ssmcertificate" class="form-label form-label-lg">Attachment: Nominations Form:</label>
                                         <p class="mb-0"><a href="{{ config('app.backendurl').'storage/'.$profile->member_nominations_form }}" target="_blank">View</a></p>
                                     </div>
                                     @endif
