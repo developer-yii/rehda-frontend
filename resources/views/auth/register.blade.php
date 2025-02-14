@@ -430,8 +430,8 @@
                                 <input class="form-control form-control-lg" type="file" id="ordinaryCopyOfAnnualReturn" name="ordinaryCopyOfAnnualReturn" value="" accept="application/pdf" />
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="ordinaryNominationForm" class="form-label form-label-lg required_label">Attachment: Nomination Form</label>
-                                <input class="form-control form-control-lg" type="file" id="ordinaryNominationForm" name="ordinaryNominationForm" value="" accept="application/pdf" />
+                                <label for="ordinaryDeclarationForm" class="form-label form-label-lg required_label">Attachment: Declaration Form</label>
+                                <input class="form-control form-control-lg" type="file" id="ordinaryDeclarationForm" name="ordinaryDeclarationForm" value="" accept="application/pdf" />
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="ordinaryHouseDevelopingLicense" class="form-label form-label-lg required_label">Housing Developer's Licence No.</label>
@@ -2106,7 +2106,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="rehdaYouthOfficial1MembersNominationsForm" class="form-label form-label-lg required_label">Members Nominations Form</label>
+                                <label for="rehdaYouthOfficial1MembersNominationsForm" class="form-label form-label-lg required_label">Attachment: Nominations Form</label>
                                 <input class="form-control form-control-lg" type="file" id="rehdaYouthOfficial1MembersNominationsForm" name="rehdaYouthOfficial1MembersNominationsForm" value="" accept="application/pdf" />
                             </div>
 
@@ -2227,7 +2227,7 @@
                 ordinaryCopyOfAnnualReturn: "required",
                 ordinaryHouseDevelopingLicense: "required",
                 ordinaryCopyOfHousingDeveloperLicense: "required",
-                ordinaryNominationForm: "required",
+                ordinaryDeclarationForm: "required",
                 ordinaryNameOfAdmin: "required",
                 ordinaryAdminTitle: "required",
                 ordinaryAdminDesignation: "required",
@@ -2382,7 +2382,7 @@
                                     "#ordinaryCopyOfHousingDeveloperLicense",
                                     "#ordinaryCopyForm24",
                                     "#ordinaryCopyForm49",
-                                    "#ordinaryNominationForm",
+                                    "#ordinaryDeclarationForm",
                                 ];
                                 if (ordinaryGeneral.includes("#" + field)) {
                                     stepper.to(2);
@@ -3393,7 +3393,7 @@
         // });
 
         $(".ordinary-general-information-btn").on("click", function () {
-            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense, #ordinaryNominationForm").valid()){
+            if($("#ordinaryCompanyPreferBranch, #ordinaryCompanyName, #ordinaryCompanyAddress, #ordinaryCompanyAddressCity, #ordinaryCompanyAddressState, #ordinaryCompanyAddressPc, #ordinaryCompanyAddressCountry, #ordinaryOfficialWebsite, #ordinaryOfficialNumber, #ordinarySSMRegNumber, #ordinaryDateOfCompanyFormation, #ordinaryLatestPaidUpCapital, #ordinaryCopySSMCert, #ordinaryCopyOfAnnualReturn, #ordinaryHouseDevelopingLicense, #ordinaryCopyOfHousingDeveloperLicense, #ordinaryDeclarationForm").valid()){
                 stepper.next();
             } else {
                 ordinaryMembershipForm.find(":input.error").first().focus();

@@ -49,6 +49,7 @@ class MemberComp extends Model
         'acknowledgement_form',
         'attachment_form',
         'nomination_form',
+        'declaration_form',
     ];
 
     // Relationship with Member

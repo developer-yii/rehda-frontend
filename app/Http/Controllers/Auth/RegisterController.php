@@ -122,7 +122,7 @@ class RegisterController extends Controller
             'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
             'ordinaryHouseDevelopingLicense' => 'required',
             'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryNominationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryDeclarationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
 
             'ordinaryAdminTitle' => 'required',
             'ordinaryNameOfAdmin' => 'required',
@@ -240,15 +240,15 @@ class RegisterController extends Controller
             }
         }
 
-        if ($request->hasFile('ordinaryNominationForm')) {
-            $file = $request->file('ordinaryNominationForm');
+        if ($request->hasFile('ordinaryDeclarationForm')) {
+            $file = $request->file('ordinaryDeclarationForm');
 
-            $nomination_form = $this->uploadPDF($file, $dir, 100);
+            $declaration_form = $this->uploadPDF($file, $dir, 100);
 
-            if ($nomination_form === "1003") {
+            if ($declaration_form === "1003") {
                 return response()->json([
                     'errors' => [
-                        'ordinaryNominationForm' => "Copy of Nomination Form has an error while uploading.",
+                        'ordinaryDeclarationForm' => "Copy of Declaration Form has an error while uploading.",
                     ],
                 ], 422);
             }
@@ -294,7 +294,7 @@ class RegisterController extends Controller
                 'd_devlicensecopy' => $path5,
                 'd_created_at' => $now,
                 'd_refer_branch' => $request->ordinaryCompanyPreferBranch,
-                'nomination_form' => $nomination_form,
+                'declaration_form' => $declaration_form,
             ]);
             logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
@@ -1417,7 +1417,7 @@ class RegisterController extends Controller
             if ($member_nominations_form === "1003") {
                 return response()->json([
                     'errors' => [
-                        'rehdaYouthOfficial1MembersNominationsForm' => "Members Nominations Form has an error while uploading.",
+                        'rehdaYouthOfficial1MembersNominationsForm' => "Nominations Form has an error while uploading.",
                     ],
                 ], 422);
             }
