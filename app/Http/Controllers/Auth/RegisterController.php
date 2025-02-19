@@ -1466,7 +1466,8 @@ class RegisterController extends Controller
                 'd_offno' => $request->rehdaYouthOfficialNumber,
                 'd_faxno' => $request->rehdaYouthFaxNumber,
                 'd_compssmno' => ' ',
-                'd_created_at' => $now
+                'd_created_at' => $now,
+                'd_refer_branch' => 12, // Youth branch
             ]);
             logSystem(auth()->id(), 'Create', $memberComp->toArray(), 'MemberComp');
 
