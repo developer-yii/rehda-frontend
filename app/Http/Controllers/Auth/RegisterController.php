@@ -116,13 +116,13 @@ class RegisterController extends Controller
             'ordinarySSMRegNumber' => 'required',
             'ordinaryDateOfCompanyFormation' => 'required',
             'ordinaryLatestPaidUpCapital' => 'required',
-            'ordinaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'ordinaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'ordinaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'ordinaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
             'ordinaryHouseDevelopingLicense' => 'required',
-            'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'ordinaryDeclarationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'ordinaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'ordinaryDeclarationForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
 
             'ordinaryAdminTitle' => 'required',
             'ordinaryNameOfAdmin' => 'required',
@@ -162,7 +162,7 @@ class RegisterController extends Controller
         ],[
             'required' => 'This field is required.',
             'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
-            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 32 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
 
@@ -442,12 +442,12 @@ class RegisterController extends Controller
             'subsidiarySSMRegNumber' => 'required',
             'subsidiaryDateOfCompanyFormation' => 'required',
             'subsidiaryLatestPaidUpCapital' => 'required',
-            'subsidiaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'subsidiaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'subsidiaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'subsidiaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'subsidiaryCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'subsidiaryCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'subsidiaryCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
             'subsidiaryHouseDevelopingLicense' => 'required',
-            'subsidiaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'subsidiaryCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
 
             'subsidiaryAdminTitle' => 'required',
             'subsidiaryNameOfAdmin' => 'required',
@@ -472,7 +472,7 @@ class RegisterController extends Controller
         ],[
             'required' => 'This field is required.',
             'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
-            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 32 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
 
@@ -709,12 +709,12 @@ class RegisterController extends Controller
             'affiliateSSMRegNumber' => 'required',
             'affiliateDateOfCompanyFormation' => 'required',
             'affiliateLatestPaidUpCapital' => 'required',
-            'affiliateCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'affiliateCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'affiliateCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'affiliateCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateCopySSMCert' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'affiliateCopyForm24' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'affiliateCopyForm49' => 'nullable|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'affiliateCopyOfAnnualReturn' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
             'affiliateHouseDevelopingLicense' => 'required',
-            'affiliateCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'affiliateCopyOfHousingDeveloperLicense' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
 
             'affiliateAdminTitle' => 'required',
             'affiliateNameOfAdmin' => 'required',
@@ -754,7 +754,7 @@ class RegisterController extends Controller
         ],[
             'required' => 'This field is required.',
             'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
-            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 32 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
 
@@ -1031,10 +1031,10 @@ class RegisterController extends Controller
             'associateSSMRegNumber' => 'required_if:associateAccType,==,1',
             'associateDateOfCompanyFormation' => 'required_if:associateAccType,==,1',
             'associateLatestPaidUpCapital' => 'required_if:associateAccType,==,1',
-            'associateCopySSMCert' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'associateCopyForm24' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'associateCopyForm49' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'associateCopyOfAnnualReturn' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'associateCopySSMCert' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'associateCopyForm24' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'associateCopyForm49' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'associateCopyOfAnnualReturn' => 'required_if:associateAccType,==,1|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
 
             'associateAdminTitle' => 'required_if:associateAccType,==,1',
             'associateNameOfAdmin' => 'required_if:associateAccType,==,1',
@@ -1089,7 +1089,7 @@ class RegisterController extends Controller
             'required' => 'This field is required.',
             'required_if' => 'This field is required.',
             'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
-            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 32 MB.',
             'email' => 'Please enter a valid email address.',
         ]);
 
@@ -1396,13 +1396,13 @@ class RegisterController extends Controller
             'rehdaYouthOfficial1AddressPc' => 'required',
             'rehdaYouthOfficial1AddressCountry' => 'required',
             'rehdaYouthOfficial1SecretartEmail' => 'nullable|email',
-            'rehdaYouthOfficial1MembersNominationsForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
-            'rehdaYouthOfficial1MyKadCopy' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:10240',
+            'rehdaYouthOfficial1MembersNominationsForm' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
+            'rehdaYouthOfficial1MyKadCopy' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:32768',
         ],[
             'required' => 'This field is required.',
             'email' => 'Please enter a valid email address.',
             'mimes' => 'Invalid file format. Please upload a file in PDF, JPEG, PNG, GIF, or JPG format.',
-            'max' => 'File size exceeds the limit. Please upload a file smaller than 10 MB.',
+            'max' => 'File size exceeds the limit. Please upload a file smaller than 32 MB.',
         ]);
 
         Log::info('rehdaYouth-request-data-validated-successfuly');
@@ -1538,8 +1538,8 @@ class RegisterController extends Controller
 
     public function uploadPDF($file, $path, $filenameLimit)
     {
-        $MAX_PDF_FILESIZE_MB = 10;
-        $MAX_IMG_FILESIZE_MB = 5;
+        $MAX_PDF_FILESIZE_MB = 32;
+        $MAX_IMG_FILESIZE_MB = 32;
 
         if ($file) {
             $filename = $file->getClientOriginalName();
@@ -1565,6 +1565,7 @@ class RegisterController extends Controller
             // $newFileName = $indfile['filename'] . '-' . date('YmdHis') . '.' . $extension;
             // $newFileName = Str::limit($indfile['filename'], $filenameLimit - ( strlen(date('YmdHis')) + strlen($extension) ) - 1) . '.' . $extension;
             $newFileName = Str::limit($indfile['filename'], ($filenameLimit - 39)) . '-' . date('YmdHis') . '.' . $extension;
+            $newFileName = $this->sanitizeFilenameNew($newFileName);
             $newPath = $path . $newFileName;
 
             $admin_url = config('app.backendurl')."api/doc-upload";
@@ -1587,6 +1588,17 @@ class RegisterController extends Controller
         }
 
         return null;
+    }
+
+    function sanitizeFilenameNew($filename)
+    {
+        // Replace non-ASCII characters with an underscore
+        $filename = preg_replace('/[^\x20-\x7E]/u', '_', $filename);
+
+        // Remove extra spaces or special characters if needed
+        $filename = preg_replace('/[^\w\.-]/', '_', $filename);
+
+        return $filename;
     }
 
     public function registerSuccess()
