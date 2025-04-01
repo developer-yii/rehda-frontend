@@ -160,7 +160,7 @@ class LoginController extends Controller
             $ml_username = $request->mykadno;
             $errormsg = "Invalid mykad number or email";
         }
-        $checkUser = MemberUser::where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->latest('ml_id')->first();
+        $checkUser = MemberUser::with('memberUserProfile')->where('ml_username', $ml_username)->where('ml_emailadd', $request->email)->latest('ml_id')->first();
 
         if(!$checkUser){
             return response()->json([
@@ -180,7 +180,7 @@ class LoginController extends Controller
             'mt_token' => $token,
             'mt_created_at' => date('Y-m-d H:i:s'),
         ]);
-        if (Mail::to($request->ml_emailadd)->send(new ResetPasswordMail($token, $request->ml_emailadd))) {
+        if (Mail::to($request->ml_emailadd)->send(new ResetPasswordMail($token, $request->ml_emailadd, $user = $checkUser))) {
             return response()->json(['status' => 'success', 'message' => 'Reset password link send to your mail']);
         }
         return response()->json(['status' => 'error', 'message' => 'Failed to send reset password link send to your mail'], 400);
