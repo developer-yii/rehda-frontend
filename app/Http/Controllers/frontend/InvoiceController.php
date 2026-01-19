@@ -94,10 +94,11 @@ class InvoiceController extends Controller
                 } else {
                     if(date('Y', strtotime($row->order_created_at)) >= 2026) {
                         $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
                     } else {
                         $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
                     }
-                    $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
 
                     $orderYear = date('Y', strtotime($row->order_created_at));
                     $eInvoice = MemberEInvoice::where('mei_mid', $row->order_mid)->where('mei_yr', $orderYear)->first();
@@ -110,10 +111,12 @@ class InvoiceController extends Controller
                     if($row->order_status != 99) {
                         if(date('Y', strtotime($row->order_created_at)) >= 2026) {
                             $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
+                            $buttons .= '<a href="'.route('invoice.c-payment', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
                         } else {
                             $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
                         }
-                        $buttons .= '<a href="'.route('invoice.c-payment', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
+
 
                         $orderYear = date('Y', strtotime($row->order_created_at));
                         $oReceipt = MemberOReceipt::where('mor_mid', $row->order_mid)->where('mor_yr', $orderYear)->first();
