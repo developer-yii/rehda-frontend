@@ -9,6 +9,9 @@ use App\Models\MemberUserProfile;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Paymentdev;
+use App\Models\PaymentType;
+use App\Models\MemberEInvoice;
+use App\Models\MemberOReceipt;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Http\Request;
@@ -85,11 +88,40 @@ class InvoiceController extends Controller
                     $auth = md5($invno).sha1($invno).md5(sha1($invno));
                     $buttons .= '<a href="'.route('invoice.paymentfpx', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with FPX</a>';
                     $buttons .= '<a href="'.route('invoice.paymentcard', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with Credit/Debit Card<br><small>+'.config('constant.CC_FEE').'% Handling Fee</small></a>';
-                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Proforma Invoice</a>';
+                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                    $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                    $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
                 } else {
-                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Invoice</a>';
+                    if(date('Y', strtotime($row->order_created_at)) >= 2026) {
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                    } else {
+                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                    }
+                    $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+
+                    $orderYear = date('Y', strtotime($row->order_created_at));
+                    $eInvoice = MemberEInvoice::where('mei_mid', $row->order_mid)->where('mei_yr', $orderYear)->first();
+                    if($eInvoice) {
+                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                    } else {
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                    }
+
                     if($row->order_status != 99) {
-                        $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1">Receipt</a>';
+                        if(date('Y', strtotime($row->order_created_at)) >= 2026) {
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
+                        } else {
+                            $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
+                        }
+                        $buttons .= '<a href="'.route('invoice.c-payment', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
+
+                        $orderYear = date('Y', strtotime($row->order_created_at));
+                        $oReceipt = MemberOReceipt::where('mor_mid', $row->order_mid)->where('mor_yr', $orderYear)->first();
+                        if($oReceipt) {
+                            $buttons .= '<a href="'. config('app.backendurl').'storage/'.$oReceipt->oreceipt_path .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">Official Rct</a>';
+                        } else {
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">Official Rct</a>';
+                        }
                     }
                 }
 
@@ -451,6 +483,84 @@ class InvoiceController extends Controller
     {
         Order::where('order_no', $orderno)->update(['order_status' => 100]);
         return view('frontend.invoice.paymentpending');
+    }
+
+    public function prInvoicePdf($id)
+    {
+
+        $membertype = getMemberType(session('compid'));
+        if($membertype == 1){
+            if(auth()->user()->ml_priv == "CompanyAdmin") {
+                $order = Order::where('oid', $id)->first();
+            } else {
+                $arr = getChildMid(session('compid'));
+                $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            }
+        } else {
+
+            $order = Order::where('oid', $id)->where('order_mid', session('compid'))->first();
+        }
+
+        $memberComp = MemberComp::with('state')->where('did', $order->order_mid)->first();
+
+        $memberProfile = MemberUserProfile::where('up_mid', $order->order_mid)->where('up_usertype',2)->orderBy('up_id', 'ASC')->first();
+        if(!$memberProfile) {
+            $memberProfile = MemberUserProfile::where('up_mid', $order->order_mid)->where('up_usertype',1)->orderBy('up_id', 'ASC')->first();
+        }
+
+        $html = view('frontend.invoice.pr-invoice-pdf', compact('memberComp', 'memberProfile', 'order'))->render();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $filename = "REHDA Invoice - ".config('constant.PR_ORDERID_SET').$order->order_no.".pdf";
+        return $dompdf->stream($filename, ['Attachment' => 0]);
+    }
+
+    public function invoiceCPayment($id)
+    {
+        $membertype = getMemberType(session('compid'));
+        if($membertype == 1){
+            if(auth()->user()->ml_priv == "CompanyAdmin") {
+                $order = Order::where('oid', $id)->first();
+            } else {
+                $arr = getChildMid(session('compid'));
+                $order = Order::where('oid', $id)->whereIn('order_mid', $arr)->first();
+            }
+        } else {
+            $order = Order::where('oid', $id)->where('order_mid', session('compid'))->first();
+        }
+
+        $memberComp = MemberComp::where('did', $order->order_mid)->first();
+
+        $memberProfile = MemberUserProfile::where('up_mid', $order->order_mid)->where('up_usertype',2)->orderBy('up_id', 'ASC')->first();
+        if(!$memberProfile) {
+            $memberProfile = MemberUserProfile::where('up_mid', $order->order_mid)->where('up_usertype',1)->orderBy('up_id', 'ASC')->first();
+        }
+        $payment = Payment::where('refno', config('constant.ORDERID_SET').$order->order_no)->first();
+        if($payment){
+            $paymentType = PaymentType::where('display', PaymentType::DISPLAY_SHOW)->first()->type_name ?? '';
+        } else {
+            $paymentType = '';
+        }
+
+        $html = view('frontend.invoice.c-paymentPdf', compact('memberComp', 'memberProfile', 'order', 'payment', 'paymentType'))->render();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $filename = "REHDA Conformation of Payment - ".config('constant.PR_ORDERID_SET').$order->order_no;
+        return $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
 }
