@@ -257,7 +257,9 @@ Route::middleware('auth')->group(function () {
       Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index');
       Route::post('/invoice', [InvoiceController::class, 'index'])->name('invoice.indexget');
       Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'invoicePdf'])->name('invoice.pdf');
+      Route::get('/pr-invoice-pdf/{id}', [InvoiceController::class, 'prInvoicePdf'])->name('pr-invoice.pdf');
       Route::get('invoice-receipt/{id}', [InvoiceController::class, 'invoiceReceipt'])->name('invoice.receipt');
+      Route::get('invoice-c-payment/{id}', [InvoiceController::class, 'invoiceCPayment'])->name('invoice.c-payment');
       Route::get('/branch-annualreport', [BranchAnnualreportController::class, 'index'])->name('branch-annualreport.index');
 
 

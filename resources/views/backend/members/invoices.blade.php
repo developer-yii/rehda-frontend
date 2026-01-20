@@ -23,7 +23,7 @@
                     <th>Total ({{ config('currency.base_currency') }})</th>
                     <th>Remarks</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th style="min-width: 400px;">Action</th>
                   </tr>
                 </thead>
                 <tbody>

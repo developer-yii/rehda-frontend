@@ -16,6 +16,7 @@ return [
     'COMPANY_ADDRESS2' => env('COMPANY_ADDRESS2', '47301 PETALING JAYA, SELANGOR'),
     'SITE2' => env('SITE2', 'https://members.rehda.com/'),
     'ORDERID_SET' => env('ORDERID_SET', 'RDM'),
+    'PR_ORDERID_SET' => env('PR_ORDERID_SET', 'MRM'),
     'RECEIPTID_SET' => env('RECEIPTID_SET', 'OR'),
     'ENTRANCE_FEE_LABEL' => env('ENTRANCE_FEE_LABEL', 'Entrance Fee'),
     'FEE_LABEL' => env('FEE_LABEL', 'Subscription Fee'),
