@@ -123,12 +123,12 @@
             <tbody>
                 <tr>
                     <td colspan="2">
-                        <img src="{{ asset('frontend/img/receipt-bg.png') }}" alt="Rehda Header BG">
+                        <img src="{{ asset('frontend/img/receipt-bg.png') }}" alt="Rehda Header BG" width="100%">
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-left">
-                        <h1 style="font-size:45px;">Payment Successful</h1>
+                    <td class="text-left" width="80%">
+                        <h1 style="font-size:42px;">Payment Successful</h1>
                     </td>
 
                     <td class="text-right">
@@ -147,7 +147,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <table>
                             <tr>
                                 <td>PROFORMA INVOICE NO.</td>
