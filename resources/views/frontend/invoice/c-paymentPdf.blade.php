@@ -122,6 +122,11 @@
         <table cellpadding="0" cellspacing="0" width="100%" class="header">
             <tbody>
                 <tr>
+                    <td colspan="2">
+                        <img src="{{ asset('frontend/img/receipt-bg.png') }}" alt="Rehda Header BG">
+                    </td>
+                </tr>
+                <tr>
                     <td class="text-left">
                         <h1 style="font-size:45px;">Payment Successful</h1>
                     </td>
