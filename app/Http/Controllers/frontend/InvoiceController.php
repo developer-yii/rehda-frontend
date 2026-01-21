@@ -75,7 +75,11 @@ class InvoiceController extends Controller
                 return '<p>'.date('d-M-Y',strtotime($row->order_created_at)).'</p><span class="badge bg-label-'.$row->orderStatus->label.'">'.$label.'</span>';
             })
             ->addColumn('invoice_no', function ($row) {
-                return '#'.config('constant.ORDERID_SET').$row->order_no;
+                if(date('Y', strtotime($row->order_created_at)) >= 2026) {
+                    return '#'.config('constant.PR_ORDERID_SET').$row->order_no;
+                } else {
+                    return '#'.config('constant.ORDERID_SET').$row->order_no;
+                }
             })
             ->addColumn('amount', function ($row) {
                 return config('currency.base_currency').' '.number_format($row['order_grandtotal'],2);
