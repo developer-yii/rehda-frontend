@@ -88,9 +88,23 @@ class InvoiceController extends Controller
                     $auth = md5($invno).sha1($invno).md5(sha1($invno));
                     $buttons .= '<a href="'.route('invoice.paymentfpx', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with FPX</a>';
                     $buttons .= '<a href="'.route('invoice.paymentcard', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with Credit/Debit Card<br><small>+'.config('constant.CC_FEE').'% Handling Fee</small></a>';
-                    $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
-                    $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
-                    $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+
+                    if(date('Y', strtotime($row->order_created_at)) >= 2026) {
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                    } else {
+                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                    }
+
+                    $orderYear = date('Y', strtotime($row->order_created_at));
+                    $eInvoice = MemberEInvoice::where('mei_mid', $row->order_mid)->where('mei_yr', $orderYear)->first();
+                    if($eInvoice) {
+                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                    } else {
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                    }
+
                 } else {
                     if(date('Y', strtotime($row->order_created_at)) >= 2026) {
                         $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
