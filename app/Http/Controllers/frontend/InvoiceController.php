@@ -90,54 +90,54 @@ class InvoiceController extends Controller
                     $buttons .= '<a href="'.route('invoice.paymentcard', [$invno, $auth]).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1">Pay with Credit/Debit Card<br><small>+'.config('constant.CC_FEE').'% Handling Fee</small></a>';
 
                     if(date('Y', strtotime($row->order_created_at)) >= 2026) {
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
-                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Invoice</a>';
+                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Proforma Invoice</a>';
                     } else {
-                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Proforma Invoice</a>';
                     }
 
                     $orderYear = date('Y', strtotime($row->order_created_at));
                     $eInvoice = MemberEInvoice::where('mei_mid', $row->order_mid)->where('mei_yr', $orderYear)->first();
                     if($eInvoice) {
-                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">e-Invoice</a>';
                     } else {
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">e-Invoice</a>';
                     }
 
                 } else {
                     if(date('Y', strtotime($row->order_created_at)) >= 2026) {
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
-                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Invoice</a>';
+                        $buttons .= '<a href="'.route('pr-invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Proforma Invoice</a>';
                     } else {
-                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">Invoice</a>';
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">Pr. Invoice</a>';
+                        $buttons .= '<a href="'.route('invoice.pdf', $row->oid).'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">Proforma Invoice</a>';
                     }
 
                     $orderYear = date('Y', strtotime($row->order_created_at));
                     $eInvoice = MemberEInvoice::where('mei_mid', $row->order_mid)->where('mei_yr', $orderYear)->first();
                     if($eInvoice) {
-                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                        $buttons .= '<a href="'. config('app.backendurl').'storage/'.$eInvoice->einvoice_path .'" target="_blank" class="btn btn-outline-primary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">e-Invoice</a>';
                     } else {
-                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;">e-Invoice</a>';
+                        $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect me-2 mb-1" style="width: 122px;height: 55px;">e-Invoice</a>';
                     }
 
                     if($row->order_status != 99) {
                         if(date('Y', strtotime($row->order_created_at)) >= 2026) {
-                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
-                            $buttons .= '<a href="'.route('invoice.c-payment', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Receipt</a>';
+                            $buttons .= '<a href="'.route('invoice.c-payment', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Payment Confirmation</a>';
                         } else {
-                            $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">Receipt</a>';
-                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">C. Payment</a>';
+                            $buttons .= '<a href="'.route('invoice.receipt', $row->oid) .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Receipt</a>';
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Payment Confirmation</a>';
                         }
 
 
                         $orderYear = date('Y', strtotime($row->order_created_at));
                         $oReceipt = MemberOReceipt::where('mor_mid', $row->order_mid)->where('mor_yr', $orderYear)->first();
                         if($oReceipt) {
-                            $buttons .= '<a href="'. config('app.backendurl').'storage/'.$oReceipt->oreceipt_path .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;">Official Rct</a>';
+                            $buttons .= '<a href="'. config('app.backendurl').'storage/'.$oReceipt->oreceipt_path .'" target="_blank" class="btn btn-outline-primary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Official Rct</a>';
                         } else {
-                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;">Official Rct</a>';
+                            $buttons .= '<a href="javascript:void(0);" class="btn btn-outline-secondary waves-effect mb-1 me-2" style="width: 122px;height: 55px;">Official Rct</a>';
                         }
                     }
                 }
