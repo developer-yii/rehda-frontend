@@ -283,7 +283,7 @@
                 </tr>
                 @php $i++; @endphp
                 @else if($order->order_status == 2 && $order->order_pm != 2)
-                <tr>
+                <!-- <tr>
                     <td>
                         <p>{{ $i }}</p>
                     </td>
@@ -299,8 +299,8 @@
                     <td>
                         <p>(waived)</p>
                     </td>
-                </tr>
-                @php $i++; @endphp
+                </tr> -->
+                {{-- @php $i++; @endphp --}}
                 @endif
 
                 <tr height="50px">
