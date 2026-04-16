@@ -399,16 +399,16 @@ class InvoiceController extends Controller
         $refnonew = str_replace([config('constant.ORDERID_SET'), config('constant.PR_ORDERID_SET')], '', $refno);
         Log::info('[PAYMENT] refno: ' . $refno . ' | order_no: ' . $refnonew . ' | paymentid: ' . $paymentid . ' | transid: ' . $transid);
 
-        $order = Order::where('order_no', $refnonew)->whereIn('order_status',[1,100])->first();
+        $order = Order::with('memberComp')->where('order_no', $refnonew)->whereIn('order_status',[1,100])->first();
         if($order) {
             Log::info('[PAYMENT] Order found - oid: ' . $order->oid . ' | status: ' . $order->order_status . ' | company: ' . ($order->memberComp->d_compname ?? 'N/A'));
 
             $pamount = $order->order_grandtotal;
             $order_status_paid = 2;
             if($paymentid==2){
-                $newgt = $pamount + $order->order_paycc;
+                $newgt = $pamount + ($order->order_paycc ?? 0);
             } else {
-                $newgt = $pamount + $order->order_payfpx;
+                $newgt = $pamount + ($order->order_payfpx ?? 0);
             }
 
             $paidOrder = Order::where('oid', $order->oid)->where('order_status', 2)->first();
@@ -427,12 +427,17 @@ class InvoiceController extends Controller
             }
 
             $findorder = Order::with('memberComp.member')->where('order_no', $refnonew)->first();
-            $mid = $findorder->memberComp->member->mid;
 
+            if(!$findorder || !$findorder->memberComp || !$findorder->memberComp->member) {
+                Log::error('[CERTIFICATE] Cannot generate - memberComp or member not found for order_no: ' . $refnonew);
+                return 1;
+            }
+
+            $mid = $findorder->memberComp->member->mid;
             Log::info('[CERTIFICATE] Generating certificate - mid: ' . $mid . ' | company: ' . ($findorder->memberComp->d_compname ?? 'N/A'));
             // create certificate when invoice create
             $resultnew = memberCertificatePdfCreate($mid);
-            Log::info('[CERTIFICATE] Result - mid: ' . $mid . ' | result: ' . json_encode($resultnew));
+            Log::info('[CERTIFICATE] Result - mid: ' . $mid . ' | result: ' . (is_string($resultnew) ? $resultnew : json_encode($resultnew)));
 
             return 1;
         } else {
