@@ -33,13 +33,15 @@ class AnnualreportController extends Controller
             $query->select('cm_item')
                 ->from('content_mperm')
                 ->where('cm_item_type', $cm_item_type)
-                ->where('cm_membertype', $cm_membertype);
+                ->where('cm_membertype', $cm_membertype)
+                ->whereNull('cm_deleted_at');
         })
         ->whereIn('ar_id', function($query) use ($cp_branch, $cp_item_type) {
             $query->select('cp_item')
                 ->from('content_perm')
                 ->where('cp_branch', $cp_branch)
-                ->where('cp_item_type', $cp_item_type);
+                ->where('cp_item_type', $cp_item_type)
+                ->whereNull('cp_deleted_at');
         })
         ->orderBy('ar_sorting', 'asc')
         ->get();
