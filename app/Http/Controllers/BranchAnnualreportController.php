@@ -55,9 +55,9 @@ class BranchAnnualreportController extends Controller
             $profile = MemberUserProfile::where('up_id', $user->ml_uid)->first();
             if($profile){
                 $branch = getMemberBranch(getMemberBid(getMemberDid($profile->up_mid)));
-                if(strtolower($branch) != "johor" && $memberComp && $memberComp->member && $memberComp->member->m_branch){
-                    $annualreports->where('branchid', $memberComp->member->m_branch);
-                }
+                $annualreports->where(function($query) use ($memberComp) {
+                    $query->where('branchid', $memberComp->member->m_branch)->orWhereNull('branchid');
+                });
             }
         }
 
