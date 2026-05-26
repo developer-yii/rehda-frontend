@@ -642,10 +642,17 @@ function chkMembershipNo($str)
     }
 }
 
-function memberCertificatePdfCreate($id) {
+function memberCertificatePdfCreate($id, $year = null) {
 
     $admin_url = config('app.backendurl')."api/member-certificate-create";
-    $response = Http::withOptions(['verify' => false])->post($admin_url, ['image_secret' => config('app.image_secret'), 'id' => $id]);
+    $params = [
+        'image_secret' => config('app.image_secret'),
+        'id' => $id,
+    ];
+    if ($year !== null) {
+        $params['year'] = $year;
+    }
+    $response = Http::withOptions(['verify' => false])->post($admin_url, $params);
 
     if ($response->failed()) {
         $errorResponse = [

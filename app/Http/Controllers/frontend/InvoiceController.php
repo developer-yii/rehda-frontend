@@ -434,9 +434,10 @@ class InvoiceController extends Controller
             }
 
             $mid = $findorder->memberComp->member->mid;
-            Log::info('[CERTIFICATE] Generating certificate - mid: ' . $mid . ' | company: ' . ($findorder->memberComp->d_compname ?? 'N/A'));
+            $year = $findorder->order_sub_fee_year ?? date('Y', strtotime($findorder->order_created_at));
+            Log::info('[CERTIFICATE] Generating certificate - mid: ' . $mid . ' | company: ' . ($findorder->memberComp->d_compname ?? 'N/A') . ' | year: ' . $year);
             // create certificate when invoice create
-            $resultnew = memberCertificatePdfCreate($mid);
+            $resultnew = memberCertificatePdfCreate($mid, $year);
             Log::info('[CERTIFICATE] Result - mid: ' . $mid . ' | result: ' . (is_string($resultnew) ? $resultnew : json_encode($resultnew)));
 
             return 1;
