@@ -233,6 +233,11 @@ class InvoiceController extends Controller
         $authcodex = md5($order_no).sha1($order_no).md5(sha1($order_no));
         $order_no = str_replace(config('constant.ORDERID_SET'),'',$order_no);
         if($authcodex != $auth) {
+            Log::info('invoicePaymentfpx');
+            Log::info('Invalid auth code');
+            Log::info('Order no: '.$order_no);
+            Log::info('Auth code: '.$auth);
+            Log::info('Auth code: '.$authcodex);
             die();
         } else {
             $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
@@ -250,6 +255,11 @@ class InvoiceController extends Controller
         $authcodex = md5($order_no).sha1($order_no).md5(sha1($order_no));
         $order_no = str_replace(config('constant.ORDERID_SET'),'',$order_no);
         if($authcodex != $auth) {
+            Log::info('invoicePaymentcard');
+            Log::info('Invalid auth code');
+            Log::info('Order no: '.$order_no);
+            Log::info('Auth code: '.$auth);
+            Log::info('Auth code: '.$authcodex);
             die();
         } else {
             $order = Order::where('order_no', $order_no)->where('order_status',1)->first();
