@@ -53,6 +53,7 @@ class ResetPasswordMail extends Mailable
                     ->with([
                         'token' => $this->token,
                         'emailadd' => $this->emailadd,
+                        'user' => $this->user,
                     ]);
     }
 
